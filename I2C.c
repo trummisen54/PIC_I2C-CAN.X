@@ -3,9 +3,6 @@
 
 void I2CSetup(){
     
-    OSCCON            = 0x60;       // IRCFx = 110
-    OSCTUNEbits.PLLEN = 0;          // x4 PLL disabled
-
     SSPADD         = I2C_ADDR;      // Set I2C address
     SSPCON1        = 0x36;          // SSPEN: Synchronous Serial Port Enable bit - Enables the serial port and configures the SDA and SCL pins as the serial port pins
                                     // CKP: SCK Release Control bit              - Release clock
@@ -18,11 +15,6 @@ void I2CSetup(){
     INTCONbits.GIE_GIEH  = 1;       // GIE/GIEH: Global Interrupt Enable bit
     INTCONbits.PEIE_GIEL = 1;       // PEIE/GIEL: Peripheral Interrupt Enable bit
     
-    i2c_reg_map[1] = 4;
-    i2c_reg_map[2] = 4;
-    i2c_reg_map[3] = 4;
-    
-
 
 }
 
@@ -78,6 +70,7 @@ void checkI2C(){
                     // Write to register address - auto advance
                     //   to allow multiple bytes to be written
                     i2c_reg_map[i2c_reg_addr++] = sspBuf;
+                    I2C_FLAG = 1;
                 }
             }
         }

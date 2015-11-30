@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 void InitDevice(void);
-
+void Delay(unsigned int count);
 
 #ifdef	__cplusplus
 }

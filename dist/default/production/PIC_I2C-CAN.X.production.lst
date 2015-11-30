@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
-                                                                                               Thu Nov 26 17:05:55 2015
+                                                                                               Mon Nov 30 16:19:45 2015
 
 Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
      1                           	processor	18F26K80
@@ -20,1592 +20,1874 @@ Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080
     14                           	psect	text3,global,reloc=2,class=CODE,delta=1
     15                           	psect	text4,global,reloc=2,class=CODE,delta=1
     16                           	psect	text5,global,reloc=2,class=CODE,delta=1
-    17                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text6,global,reloc=2,class=CODE,delta=1
     18                           	psect	text7,global,reloc=2,class=CODE,delta=1
-    19                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
-    20                           	psect	rparam,global,class=COMRAM,space=1,delta=1
-    21                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
-    22  0000                     
-    23                           	psect	idataCOMRAM
-    24  0000'                    __pidataCOMRAM:
-    25                           	opt stack 0
-    26                           
-    27                           ;initializer for _BATTERISTATUS_ID
-    28  0000' 02                 	db	2
-    29                           
-    30                           ;initializer for _MOTOR_ID
-    31  0001' 01                 	db	1
-    32                           
-    33                           	psect	nvCOMRAM
-    34  0000'                    __pnvCOMRAM:
-    35                           	opt stack 0
-    36  0000'                    _count:
+    19                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    21                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    22                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    23                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    24  0000                     
+    25                           	psect	idataCOMRAM
+    26  000476                     __pidataCOMRAM:
+    27                           	opt stack 0
+    28                           
+    29                           ;initializer for _BATTERISTATUS_ID
+    30  000476  02                 	db	2
+    31                           
+    32                           ;initializer for _MOTOR_ID
+    33  000477  01                 	db	1
+    34                           
+    35                           	psect	nvCOMRAM
+    36  000042                     __pnvCOMRAM:
     37                           	opt stack 0
-    38  0000'                    	ds	1
-    39  0000                     _B0CONbits	set	3712
-    40  0000                     _B0D0	set	3718
-    41  0000                     _B0D1	set	3719
-    42  0000                     _B0D2	set	3720
-    43  0000                     _B0D3	set	3721
-    44  0000                     _B0D4	set	3722
-    45  0000                     _B0D5	set	3723
-    46  0000                     _B0D6	set	3724
-    47  0000                     _B0D7	set	3725
-    48  0000                     _B0DLC	set	3717
-    49  0000                     _B0EIDH	set	3715
-    50  0000                     _B0EIDL	set	3716
-    51  0000                     _B0SIDH	set	3713
-    52  0000                     _B0SIDL	set	3714
-    53  0000                     _BRGCON1	set	3651
-    54  0000                     _BRGCON2	set	3652
-    55  0000                     _BRGCON3	set	3653
-    56  0000                     _BSEL0	set	3709
-    57  0000                     _MSEL0	set	3705
-    58  0000                     _MSEL1	set	3706
-    59  0000                     _MSEL2	set	3707
-    60  0000                     _MSEL3	set	3708
-    61  0000                     _RXF0EIDH	set	3810
-    62  0000                     _RXF0EIDL	set	3811
-    63  0000                     _RXF0SIDH	set	3808
-    64  0000                     _RXF0SIDL	set	3809
-    65  0000                     _RXF1EIDH	set	3814
-    66  0000                     _RXF1EIDL	set	3815
-    67  0000                     _RXF1SIDH	set	3812
-    68  0000                     _RXF1SIDL	set	3813
-    69  0000                     _RXF2EIDH	set	3818
-    70  0000                     _RXF2EIDL	set	3819
-    71  0000                     _RXF2SIDH	set	3816
-    72  0000                     _RXF2SIDL	set	3817
-    73  0000                     _RXFBCON0	set	3697
-    74  0000                     _RXFBCON1	set	3698
-    75  0000                     _RXFBCON2	set	3699
-    76  0000                     _RXFBCON3	set	3700
-    77  0000                     _RXFBCON4	set	3701
-    78  0000                     _RXFBCON5	set	3702
-    79  0000                     _RXFBCON6	set	3703
-    80  0000                     _RXFBCON7	set	3704
-    81  0000                     _RXFCON0	set	3654
-    82  0000                     _RXFCON1	set	3655
-    83  0000                     _RXM0EIDH	set	3834
-    84  0000                     _RXM0EIDL	set	3835
-    85  0000                     _RXM0SIDH	set	3832
-    86  0000                     _RXM0SIDL	set	3833
-    87  0000                     _RXM1EIDH	set	3838
-    88  0000                     _RXM1EIDL	set	3839
-    89  0000                     _RXM1SIDH	set	3836
-    90  0000                     _RXM1SIDL	set	3837
-    91  0000                     _ANCON0	set	3933
-    92  0000                     _ANCON1	set	3932
-    93  0000                     _RXB1CON	set	3888
-    94  0000                     _RXB1CONbits	set	3888
-    95  0000                     _RXB1D0	set	3894
-    96  0000                     _RXB1D1	set	3895
-    97  0000                     _RXB1D2	set	3896
-    98  0000                     _RXB1D3	set	3897
-    99  0000                     _RXB1D4	set	3898
-   100  0000                     _RXB1D5	set	3899
-   101  0000                     _RXB1D6	set	3900
-   102  0000                     _RXB1D7	set	3901
-   103  0000                     _RXB1DLC	set	3893
-   104  0000                     _RXB1EIDH	set	3891
-   105  0000                     _RXB1EIDL	set	3892
-   106  0000                     _RXB1SIDH	set	3889
-   107  0000                     _RXB1SIDL	set	3890
-   108  0000                     _TXB0CONbits	set	3872
-   109  0000                     _TXB0D0	set	3878
-   110  0000                     _TXB0D1	set	3879
-   111  0000                     _TXB0D2	set	3880
-   112  0000                     _TXB0D3	set	3881
-   113  0000                     _TXB0D4	set	3882
-   114  0000                     _TXB0D5	set	3883
-   115  0000                     _TXB0D6	set	3884
-   116  0000                     _TXB0D7	set	3885
-   117  0000                     _TXB0DLC	set	3877
-   118  0000                     _TXB0EIDH	set	3875
-   119  0000                     _TXB0EIDL	set	3876
-   120  0000                     _TXB0SIDH	set	3873
-   121  0000                     _TXB0SIDL	set	3874
-   122  0000                     _CANCON	set	3951
-   123  0000                     _CANSTATbits	set	3950
-   124  0000                     _ECANCON	set	3954
-   125  0000                     _INTCONbits	set	4082
-   126  0000                     _LATAbits	set	3977
-   127  0000                     _OSCCON	set	4051
-   128  0000                     _OSCCONbits	set	4051
-   129  0000                     _OSCTUNEbits	set	3995
-   130  0000                     _PIE1bits	set	3997
-   131  0000                     _PIR1bits	set	3998
-   132  0000                     _PIR5bits	set	3959
-   133  0000                     _RXB0CON	set	3936
-   134  0000                     _RXB0CONbits	set	3936
-   135  0000                     _RXB0D0	set	3942
-   136  0000                     _RXB0D1	set	3943
-   137  0000                     _RXB0D2	set	3944
-   138  0000                     _RXB0D3	set	3945
-   139  0000                     _RXB0D4	set	3946
-   140  0000                     _RXB0D5	set	3947
-   141  0000                     _RXB0D6	set	3948
-   142  0000                     _RXB0D7	set	3949
-   143  0000                     _RXB0DLC	set	3941
-   144  0000                     _RXB0EIDH	set	3939
-   145  0000                     _RXB0EIDL	set	3940
-   146  0000                     _RXB0SIDH	set	3937
-   147  0000                     _RXB0SIDL	set	3938
-   148  0000                     _SSPADD	set	4040
-   149  0000                     _SSPBUF	set	4041
-   150  0000                     _SSPCON1	set	4038
-   151  0000                     _SSPCON1bits	set	4038
-   152  0000                     _SSPCON2	set	4037
-   153  0000                     _SSPSTAT	set	4039
-   154  0000                     _SSPSTATbits	set	4039
-   155  0000                     _TRISA	set	3986
-   156  0000                     _TRISB	set	3987
-   157  0000                     _TRISC	set	3988
-   158                           
-   159                           ; #config settings
-   160  0000                     
-   161                           	psect	cinit
-   162  0000'                    __pcinit:
-   163                           	opt stack 0
-   164  0000'                    start_initialization:
-   165                           	opt stack 0
-   166  0000'                    __initialization:
-   167                           	opt stack 0
-   168                           
-   169                           ; Clear objects allocated to COMRAM (35 bytes)
-   170  0000' EE00' F000'        	lfsr	0,__pbssCOMRAM
-   171  0004' 0E23               	movlw	35
-   172  0006'                    clear_0:
-   173  0006' 6AEE               	clrf	postinc0,c
-   174  0008' 06E8               	decf	wreg,f,c
-   175  000A' E1FD               	bnz	clear_0
-   176                           
-   177                           ; Initialize objects allocated to COMRAM (2 bytes)
-   178                           ; load TBLPTR registers with __pidataCOMRAM
-   179  000C' 0E00'              	movlw	low __pidataCOMRAM
-   180  000E' 6EF6               	movwf	tblptrl,c
-   181  0010' 0E00'              	movlw	high __pidataCOMRAM
-   182  0012' 6EF7               	movwf	tblptrh,c
-   183  0014' 0E00'              	movlw	low (__pidataCOMRAM shr (0+16))
-   184  0016' 6EF8               	movwf	tblptru,c
-   185  0018' 0009               	tblrd		*+	;fetch initializer
-   186  001A' CFF5 F000'         	movff	tablat,__pdataCOMRAM
-   187  001E' 0009               	tblrd		*+	;fetch initializer
-   188  0020' CFF5 F001'         	movff	tablat,__pdataCOMRAM+1
-   189  0024'                    end_of_initialization:
-   190                           	opt stack 0
-   191  0024'                    __end_of__initialization:
-   192                           	opt stack 0
-   193  0024' 9000'              	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
-   194  0026' 9200'              	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   195  0028' 0E00'              	movlw	low (__Lmediumconst shr (0+16))
-   196  002A' 6EF8               	movwf	tblptru,c
-   197  002C' 0100               	movlb	0
-   198  002E' EF00' F000'        	goto	_main	;jump to C main() function
-   199                           tblptru	equ	0xFF8
-   200                           tblptrh	equ	0xFF7
-   201                           tblptrl	equ	0xFF6
-   202                           tablat	equ	0xFF5
-   203                           postinc0	equ	0xFEE
-   204                           wreg	equ	0xFE8
-   205                           
-   206                           	psect	bssCOMRAM
-   207  0000'                    __pbssCOMRAM:
-   208                           	opt stack 0
-   209  0000'                    _i2c_reg_map:
-   210                           	opt stack 0
-   211  0000'                    	ds	16
-   212  0010'                    _heartbeatCount:
-   213                           	opt stack 0
-   214  0010'                    	ds	2
-   215  0012'                    _MOTOR_REG:
-   216                           	opt stack 0
-   217  0012'                    	ds	1
-   218  0013'                    _RECEIVE_ID:
-   219                           	opt stack 0
-   220  0013'                    	ds	1
-   221  0014'                    _buttonWasPressed:
-   222                           	opt stack 0
-   223  0014'                    	ds	1
-   224  0015'                    _i2c_byte_count:
-   225                           	opt stack 0
-   226  0015'                    	ds	1
-   227  0016'                    _i2c_reg_addr:
-   228                           	opt stack 0
-   229  0016'                    	ds	1
-   230  0017'                    _temp_D0:
-   231                           	opt stack 0
-   232  0017'                    	ds	1
-   233  0018'                    _temp_D2:
-   234                           	opt stack 0
-   235  0018'                    	ds	1
-   236  0019'                    _temp_D3:
-   237                           	opt stack 0
-   238  0019'                    	ds	1
-   239  001A'                    _temp_D4:
-   240                           	opt stack 0
-   241  001A'                    	ds	1
-   242  001B'                    _temp_D5:
-   243                           	opt stack 0
-   244  001B'                    	ds	1
-   245  001C'                    _temp_D6:
-   246                           	opt stack 0
-   247  001C'                    	ds	1
-   248  001D'                    _temp_D7:
-   249                           	opt stack 0
-   250  001D'                    	ds	1
-   251  001E'                    _temp_DLC:
-   252                           	opt stack 0
-   253  001E'                    	ds	1
-   254  001F'                    _temp_EIDH:
-   255                           	opt stack 0
-   256  001F'                    	ds	1
-   257  0020'                    _temp_EIDL:
-   258                           	opt stack 0
-   259  0020'                    	ds	1
-   260  0021'                    _temp_SIDH:
-   261                           	opt stack 0
-   262  0021'                    	ds	1
-   263  0022'                    _temp_SIDL:
-   264                           	opt stack 0
-   265  0022'                    	ds	1
-   266                           tblptru	equ	0xFF8
-   267                           tblptrh	equ	0xFF7
-   268                           tblptrl	equ	0xFF6
-   269                           tablat	equ	0xFF5
-   270                           postinc0	equ	0xFEE
-   271                           wreg	equ	0xFE8
-   272                           
-   273                           	psect	dataCOMRAM
-   274  0000'                    __pdataCOMRAM:
-   275                           	opt stack 0
-   276  0000'                    _BATTERISTATUS_ID:
-   277                           	opt stack 0
-   278  0000'                    	ds	1
-   279  0001'                    _MOTOR_ID:
-   280                           	opt stack 0
-   281  0001'                    	ds	1
-   282                           tblptru	equ	0xFF8
-   283                           tblptrh	equ	0xFF7
-   284                           tblptrl	equ	0xFF6
-   285                           tablat	equ	0xFF5
-   286                           postinc0	equ	0xFEE
-   287                           wreg	equ	0xFE8
-   288                           
-   289                           	psect	cstackCOMRAM
-   290  0000'                    __pcstackCOMRAM:
-   291                           	opt stack 0
-   292  0000'                    checkI2C@sspBuf:
-   293                           	opt stack 0
-   294                           
-   295                           ; 1 bytes @ 0x0
-   296  0000'                    	ds	1
-   297  0001'                    ??_ISR:
+    38  000042                     _count:
+    39                           	opt stack 0
+    40  000042                     	ds	1
+    41  0000                     _B0CONbits	set	3712
+    42  0000                     _B0D0	set	3718
+    43  0000                     _B0D1	set	3719
+    44  0000                     _B0D2	set	3720
+    45  0000                     _B0D3	set	3721
+    46  0000                     _B0D4	set	3722
+    47  0000                     _B0D5	set	3723
+    48  0000                     _B0D6	set	3724
+    49  0000                     _B0D7	set	3725
+    50  0000                     _B0DLC	set	3717
+    51  0000                     _B0EIDH	set	3715
+    52  0000                     _B0EIDL	set	3716
+    53  0000                     _B0SIDH	set	3713
+    54  0000                     _B0SIDL	set	3714
+    55  0000                     _BRGCON1	set	3651
+    56  0000                     _BRGCON2	set	3652
+    57  0000                     _BRGCON3	set	3653
+    58  0000                     _BSEL0	set	3709
+    59  0000                     _MSEL0	set	3705
+    60  0000                     _MSEL1	set	3706
+    61  0000                     _MSEL2	set	3707
+    62  0000                     _MSEL3	set	3708
+    63  0000                     _RXF0EIDH	set	3810
+    64  0000                     _RXF0EIDL	set	3811
+    65  0000                     _RXF0SIDH	set	3808
+    66  0000                     _RXF0SIDL	set	3809
+    67  0000                     _RXF1EIDH	set	3814
+    68  0000                     _RXF1EIDL	set	3815
+    69  0000                     _RXF1SIDH	set	3812
+    70  0000                     _RXF1SIDL	set	3813
+    71  0000                     _RXF2EIDH	set	3818
+    72  0000                     _RXF2EIDL	set	3819
+    73  0000                     _RXF2SIDH	set	3816
+    74  0000                     _RXF2SIDL	set	3817
+    75  0000                     _RXFBCON0	set	3697
+    76  0000                     _RXFBCON1	set	3698
+    77  0000                     _RXFBCON2	set	3699
+    78  0000                     _RXFBCON3	set	3700
+    79  0000                     _RXFBCON4	set	3701
+    80  0000                     _RXFBCON5	set	3702
+    81  0000                     _RXFBCON6	set	3703
+    82  0000                     _RXFBCON7	set	3704
+    83  0000                     _RXFCON0	set	3654
+    84  0000                     _RXFCON1	set	3655
+    85  0000                     _RXM0EIDH	set	3834
+    86  0000                     _RXM0EIDL	set	3835
+    87  0000                     _RXM0SIDH	set	3832
+    88  0000                     _RXM0SIDL	set	3833
+    89  0000                     _RXM1EIDH	set	3838
+    90  0000                     _RXM1EIDL	set	3839
+    91  0000                     _RXM1SIDH	set	3836
+    92  0000                     _RXM1SIDL	set	3837
+    93  0000                     _ANCON0	set	3933
+    94  0000                     _ANCON1	set	3932
+    95  0000                     _RXB1CON	set	3888
+    96  0000                     _RXB1CONbits	set	3888
+    97  0000                     _RXB1D0	set	3894
+    98  0000                     _RXB1D1	set	3895
+    99  0000                     _RXB1D2	set	3896
+   100  0000                     _RXB1D3	set	3897
+   101  0000                     _RXB1D4	set	3898
+   102  0000                     _RXB1D5	set	3899
+   103  0000                     _RXB1D6	set	3900
+   104  0000                     _RXB1D7	set	3901
+   105  0000                     _RXB1DLC	set	3893
+   106  0000                     _RXB1EIDH	set	3891
+   107  0000                     _RXB1EIDL	set	3892
+   108  0000                     _RXB1SIDH	set	3889
+   109  0000                     _RXB1SIDL	set	3890
+   110  0000                     _TXB0CONbits	set	3872
+   111  0000                     _TXB0D0	set	3878
+   112  0000                     _TXB0D1	set	3879
+   113  0000                     _TXB0D2	set	3880
+   114  0000                     _TXB0D3	set	3881
+   115  0000                     _TXB0D4	set	3882
+   116  0000                     _TXB0D5	set	3883
+   117  0000                     _TXB0D6	set	3884
+   118  0000                     _TXB0D7	set	3885
+   119  0000                     _TXB0DLC	set	3877
+   120  0000                     _TXB0EIDH	set	3875
+   121  0000                     _TXB0EIDL	set	3876
+   122  0000                     _TXB0SIDH	set	3873
+   123  0000                     _TXB0SIDL	set	3874
+   124  0000                     _CANCON	set	3951
+   125  0000                     _CANSTATbits	set	3950
+   126  0000                     _ECANCON	set	3954
+   127  0000                     _INTCONbits	set	4082
+   128  0000                     _LATAbits	set	3977
+   129  0000                     _LATCbits	set	3979
+   130  0000                     _OSCCON	set	4051
+   131  0000                     _OSCCONbits	set	4051
+   132  0000                     _OSCTUNEbits	set	3995
+   133  0000                     _PIE1bits	set	3997
+   134  0000                     _PIR1bits	set	3998
+   135  0000                     _PIR5bits	set	3959
+   136  0000                     _RXB0CON	set	3936
+   137  0000                     _RXB0CONbits	set	3936
+   138  0000                     _RXB0D0	set	3942
+   139  0000                     _RXB0D1	set	3943
+   140  0000                     _RXB0D2	set	3944
+   141  0000                     _RXB0D3	set	3945
+   142  0000                     _RXB0D4	set	3946
+   143  0000                     _RXB0D5	set	3947
+   144  0000                     _RXB0D6	set	3948
+   145  0000                     _RXB0D7	set	3949
+   146  0000                     _RXB0DLC	set	3941
+   147  0000                     _RXB0EIDH	set	3939
+   148  0000                     _RXB0EIDL	set	3940
+   149  0000                     _RXB0SIDH	set	3937
+   150  0000                     _RXB0SIDL	set	3938
+   151  0000                     _SSPADD	set	4040
+   152  0000                     _SSPBUF	set	4041
+   153  0000                     _SSPCON1	set	4038
+   154  0000                     _SSPCON1bits	set	4038
+   155  0000                     _SSPCON2	set	4037
+   156  0000                     _SSPSTAT	set	4039
+   157  0000                     _SSPSTATbits	set	4039
+   158  0000                     _TRISA	set	3986
+   159  0000                     _TRISB	set	3987
+   160  0000                     _TRISC	set	3988
+   161                           
+   162                           ; #config settings
+   163  0000                     
+   164                           	psect	cinit
+   165  00041C                     __pcinit:
+   166                           	opt stack 0
+   167  00041C                     start_initialization:
+   168                           	opt stack 0
+   169  00041C                     __initialization:
+   170                           	opt stack 0
+   171                           
+   172                           ; Clear objects allocated to COMRAM (37 bytes)
+   173  00041C  EE00  F001         	lfsr	0,__pbssCOMRAM
+   174  000420  0E25               	movlw	37
+   175  000422                     clear_0:
+   176  000422  6AEE               	clrf	postinc0,c
+   177  000424  06E8               	decf	wreg,f,c
+   178  000426  E1FD               	bnz	clear_0
+   179                           
+   180                           ; Initialize objects allocated to COMRAM (2 bytes)
+   181                           ; load TBLPTR registers with __pidataCOMRAM
+   182  000428  0E76               	movlw	low __pidataCOMRAM
+   183  00042A  6EF6               	movwf	tblptrl,c
+   184  00042C  0E04               	movlw	high __pidataCOMRAM
+   185  00042E  6EF7               	movwf	tblptrh,c
+   186  000430  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   187  000432  6EF8               	movwf	tblptru,c
+   188  000434  0009               	tblrd		*+	;fetch initializer
+   189  000436  CFF5 F040          	movff	tablat,__pdataCOMRAM
+   190  00043A  0009               	tblrd		*+	;fetch initializer
+   191  00043C  CFF5 F041          	movff	tablat,__pdataCOMRAM+1
+   192  000440                     end_of_initialization:
+   193                           	opt stack 0
+   194  000440                     __end_of__initialization:
+   195                           	opt stack 0
+   196  000440  9043               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   197  000442  9243               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   198  000444  0100               	movlb	0
+   199  000446  EF89  F001         	goto	_main	;jump to C main() function
+   200                           tblptru	equ	0xFF8
+   201                           tblptrh	equ	0xFF7
+   202                           tblptrl	equ	0xFF6
+   203                           tablat	equ	0xFF5
+   204                           postinc0	equ	0xFEE
+   205                           wreg	equ	0xFE8
+   206                           
+   207                           	psect	bssCOMRAM
+   208  000001                     __pbssCOMRAM:
+   209                           	opt stack 0
+   210  000001                     _i2c_reg_map:
+   211                           	opt stack 0
+   212  000001                     	ds	16
+   213  000011                     _I2C_FLAG:
+   214                           	opt stack 0
+   215  000011                     	ds	2
+   216  000013                     _heartbeatCount:
+   217                           	opt stack 0
+   218  000013                     	ds	2
+   219  000015                     _RECEIVE_ID:
+   220                           	opt stack 0
+   221  000015                     	ds	1
+   222  000016                     _buttonWasPressed:
+   223                           	opt stack 0
+   224  000016                     	ds	1
+   225  000017                     _i2c_byte_count:
+   226                           	opt stack 0
+   227  000017                     	ds	1
+   228  000018                     _i2c_reg_addr:
+   229                           	opt stack 0
+   230  000018                     	ds	1
+   231  000019                     _temp_D0:
+   232                           	opt stack 0
+   233  000019                     	ds	1
+   234  00001A                     _temp_D1:
+   235                           	opt stack 0
+   236  00001A                     	ds	1
+   237  00001B                     _temp_D2:
+   238                           	opt stack 0
+   239  00001B                     	ds	1
+   240  00001C                     _temp_D3:
+   241                           	opt stack 0
+   242  00001C                     	ds	1
+   243  00001D                     _temp_D4:
+   244                           	opt stack 0
+   245  00001D                     	ds	1
+   246  00001E                     _temp_D5:
+   247                           	opt stack 0
+   248  00001E                     	ds	1
+   249  00001F                     _temp_D6:
+   250                           	opt stack 0
+   251  00001F                     	ds	1
+   252  000020                     _temp_D7:
+   253                           	opt stack 0
+   254  000020                     	ds	1
+   255  000021                     _temp_DLC:
+   256                           	opt stack 0
+   257  000021                     	ds	1
+   258  000022                     _temp_EIDH:
+   259                           	opt stack 0
+   260  000022                     	ds	1
+   261  000023                     _temp_EIDL:
+   262                           	opt stack 0
+   263  000023                     	ds	1
+   264  000024                     _temp_SIDH:
+   265                           	opt stack 0
+   266  000024                     	ds	1
+   267  000025                     _temp_SIDL:
+   268                           	opt stack 0
+   269  000025                     	ds	1
+   270                           tblptru	equ	0xFF8
+   271                           tblptrh	equ	0xFF7
+   272                           tblptrl	equ	0xFF6
+   273                           tablat	equ	0xFF5
+   274                           postinc0	equ	0xFEE
+   275                           wreg	equ	0xFE8
+   276                           
+   277                           	psect	dataCOMRAM
+   278  000040                     __pdataCOMRAM:
+   279                           	opt stack 0
+   280  000040                     _BATTERISTATUS_ID:
+   281                           	opt stack 0
+   282  000040                     	ds	1
+   283  000041                     _MOTOR_ID:
+   284                           	opt stack 0
+   285  000041                     	ds	1
+   286                           tblptru	equ	0xFF8
+   287                           tblptrh	equ	0xFF7
+   288                           tblptrl	equ	0xFF6
+   289                           tablat	equ	0xFF5
+   290                           postinc0	equ	0xFEE
+   291                           wreg	equ	0xFE8
+   292                           
+   293                           	psect	cstackCOMRAM
+   294  000026                     __pcstackCOMRAM:
+   295                           	opt stack 0
+   296  000026                     checkI2C@sspBuf:
+   297                           	opt stack 0
    298                           
-   299                           ; 0 bytes @ 0x1
-   300  0001'                    	ds	14
-   301  000F'                    ECAN_Receive@RXMsgFlag:
-   302                           	opt stack 0
-   303  000F'                    _Delay$0:
-   304                           	opt stack 0
-   305                           
-   306                           ; 2 bytes @ 0xF
-   307  000F'                    	ds	1
-   308  0010'                    
-   309                           ; 0 bytes @ 0x10
-   310  0010'                    	ds	1
-   311  0011'                    tblptru	equ	0xFF8
-   312                           tblptrh	equ	0xFF7
-   313                           tblptrl	equ	0xFF6
-   314                           tablat	equ	0xFF5
-   315                           postinc0	equ	0xFEE
-   316                           wreg	equ	0xFE8
-   317                           
-   318                           ; 0 bytes @ 0x11
-   319 ;;
-   320 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   321 ;;
-   322 ;; *************** function _main *****************
-   323 ;; Defined at:
-   324 ;;		line 15 in file "main.c"
-   325 ;; Parameters:    Size  Location     Type
-   326 ;;		None
-   327 ;; Auto vars:     Size  Location     Type
-   328 ;;		None
-   329 ;; Return value:  Size  Location     Type
-   330 ;;                  2   41[None  ] int 
-   331 ;; Registers used:
-   332 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, pclat, btemp, btemp+1, btemp+2, bt
-      +emp+3, btemp+4, btemp+5, btemp+6, btemp+7, btemp+8, btemp+9, btemp+10, btemp+11, tosl, structret, tblptrl, tblptrh, tblp
-      +tru, prodl, prodh, bsr, cstack
-   333 ;; Tracked objects:
-   334 ;;		On entry : 0/0
-   335 ;;		On exit  : 0/0
-   336 ;;		Unchanged: 0/0
-   337 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   299                           ; 1 bytes @ 0x0
+   300  000026                     	ds	1
+   301  000027                     ??_ISR:
+   302                           
+   303                           ; 0 bytes @ 0x1
+   304  000027                     	ds	14
+   305  000035                     ECAN_Receive@RXMsgFlag:
+   306                           	opt stack 0
+   307  000035                     ECAN_Transmit@SIDL:
+   308                           	opt stack 0
+   309  000035                     Delay@count:
+   310                           	opt stack 0
+   311                           
+   312                           ; 2 bytes @ 0xF
+   313  000035                     	ds	1
+   314  000036                     ECAN_Transmit@DLC:
+   315                           	opt stack 0
+   316                           
+   317                           ; 1 bytes @ 0x10
+   318  000036                     	ds	1
+   319  000037                     ECAN_Transmit@TRANSMIT_ID:
+   320                           	opt stack 0
+   321                           
+   322                           ; 1 bytes @ 0x11
+   323  000037                     	ds	1
+   324  000038                     ECAN_Transmit@DATA1:
+   325                           	opt stack 0
+   326                           
+   327                           ; 1 bytes @ 0x12
+   328  000038                     	ds	1
+   329  000039                     ECAN_Transmit@DATA2:
+   330                           	opt stack 0
+   331                           
+   332                           ; 1 bytes @ 0x13
+   333  000039                     	ds	1
+   334  00003A                     ECAN_Transmit@DATA3:
+   335                           	opt stack 0
+   336                           
+   337                           ; 1 bytes @ 0x14
+   338  00003A                     	ds	1
+   339  00003B                     ECAN_Transmit@DATA4:
+   340                           	opt stack 0
+   341                           
+   342                           ; 1 bytes @ 0x15
+   343  00003B                     	ds	1
+   344  00003C                     ECAN_Transmit@DATA5:
+   345                           	opt stack 0
+   346                           
+   347                           ; 1 bytes @ 0x16
+   348  00003C                     	ds	1
+   349  00003D                     ECAN_Transmit@DATA6:
+   350                           	opt stack 0
+   351                           
+   352                           ; 1 bytes @ 0x17
+   353  00003D                     	ds	1
+   354  00003E                     ECAN_Transmit@DATA7:
+   355                           	opt stack 0
+   356                           
+   357                           ; 1 bytes @ 0x18
+   358  00003E                     	ds	1
+   359  00003F                     ECAN_Transmit@SIDH:
+   360                           	opt stack 0
+   361                           
+   362                           ; 1 bytes @ 0x19
+   363  00003F                     	ds	1
+   364  000040                     tblptru	equ	0xFF8
+   365                           tblptrh	equ	0xFF7
+   366                           tblptrl	equ	0xFF6
+   367                           tablat	equ	0xFF5
+   368                           postinc0	equ	0xFEE
+   369                           wreg	equ	0xFE8
+   370                           
+   371                           ; 0 bytes @ 0x1A
+   372 ;;
+   373 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   374 ;;
+   375 ;; *************** function _main *****************
+   376 ;; Defined at:
+   377 ;;		line 15 in file "main.c"
+   378 ;; Parameters:    Size  Location     Type
+   379 ;;		None
+   380 ;; Auto vars:     Size  Location     Type
+   381 ;;		None
+   382 ;; Return value:  Size  Location     Type
+   383 ;;                  2   47[None  ] int 
+   384 ;; Registers used:
+   385 ;;		wreg, status,2, status,0, cstack
+   386 ;; Tracked objects:
+   387 ;;		On entry : 0/0
+   388 ;;		On exit  : 0/0
+   389 ;;		Unchanged: 0/0
+   390 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14
-   338 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   391 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   339 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   392 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   340 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   393 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   341 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   394 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   342 ;;Total ram usage:        0 bytes
-   343 ;; Hardware stack levels required when called:    4
-   344 ;; This function calls:
-   345 ;;		_CANSetup
-   346 ;;		_Delay
-   347 ;;		_I2CSetup
-   348 ;;		_InitDevice
-   349 ;;		_checkCAN
-   350 ;; This function is called by:
-   351 ;;		Startup code after reset
-   352 ;; This function uses a non-reentrant model
-   353 ;;
-   354                           
-   355                           	psect	text0
-   356  0000'                    __ptext0:
-   357                           	opt stack 0
-   358  0000'                    _main:
-   359                           	opt stack 27
-   360                           
-   361                           ;main.c: 17: InitDevice();
-   362                           
-   363                           ;incstack = 0
-   364  0000' EC00' F000'        	call	_InitDevice	;wreg free
-   365                           
-   366                           ;main.c: 18: CANSetup();
-   367  0004' EC00' F000'        	call	_CANSetup	;wreg free
-   368                           
-   369                           ;main.c: 19: I2CSetup();
-   370  0008' EC00' F000'        	call	_I2CSetup	;wreg free
-   371  000C'                    l42:
-   372                           
-   373                           ;main.c: 23: checkCAN();
-   374  000C' EC00' F000'        	call	_checkCAN	;wreg free
-   375                           
-   376                           ;main.c: 24: Delay(100);
-   377  0010' 0E00               	movlw	0
-   378  0012' 6E10'              	movwf	_Delay$0+1,c
-   379  0014' 0E64               	movlw	100
-   380  0016' 6E0F'              	movwf	_Delay$0,c
-   381  0018' EC00' F000'        	call	_Delay	;wreg free
-   382  001C' D7F7               	goto	l42
-   383  001E'                    __end_of_main:
-   384                           	opt stack 0
-   385                           tblptru	equ	0xFF8
-   386                           tblptrh	equ	0xFF7
-   387                           tblptrl	equ	0xFF6
-   388                           tablat	equ	0xFF5
-   389                           postinc0	equ	0xFEE
-   390                           wreg	equ	0xFE8
-   391                           
-   392 ;; *************** function _checkCAN *****************
-   393 ;; Defined at:
-   394 ;;		line 344 in file "ECAN.c"
-   395 ;; Parameters:    Size  Location     Type
-   396 ;;		None
-   397 ;; Auto vars:     Size  Location     Type
-   398 ;;		None
-   399 ;; Return value:  Size  Location     Type
-   400 ;;                  2   10[None  ] int 
-   401 ;; Registers used:
-   402 ;;		wreg, status,2, status,0, cstack
-   403 ;; Tracked objects:
-   404 ;;		On entry : 0/0
-   405 ;;		On exit  : 0/0
-   406 ;;		Unchanged: 0/0
-   407 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
-      +1  BANK12  BANK13  BANK14
-   408 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0
-   409 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0
-   410 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0
-   411 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0
-   412 ;;Total ram usage:        0 bytes
-   413 ;; Hardware stack levels used:    1
-   414 ;; Hardware stack levels required when called:    3
-   415 ;; This function calls:
-   416 ;;		_ECAN_Receive
-   417 ;; This function is called by:
-   418 ;;		_main
-   419 ;; This function uses a non-reentrant model
-   420 ;;
-   421                           
-   422                           	psect	text1
-   423  0000'                    __ptext1:
-   424                           	opt stack 0
-   425  0000'                    _checkCAN:
-   426                           	opt stack 27
-   427                           
-   428                           ;ECAN.c: 345: if(ECAN_Receive()){
+   395 ;;Total ram usage:        0 bytes
+   396 ;; Hardware stack levels required when called:    4
+   397 ;; This function calls:
+   398 ;;		_CANSetup
+   399 ;;		_Delay
+   400 ;;		_ECAN_Transmit
+   401 ;;		_I2CSetup
+   402 ;;		_InitDevice
+   403 ;;		_checkCAN
+   404 ;; This function is called by:
+   405 ;;		Startup code after reset
+   406 ;; This function uses a non-reentrant model
+   407 ;;
+   408                           
+   409                           	psect	text0
+   410  000312                     __ptext0:
+   411                           	opt stack 0
+   412  000312                     _main:
+   413                           	opt stack 27
+   414                           
+   415                           ;main.c: 19: InitDevice();
+   416                           
+   417                           ;incstack = 0
+   418  000312  ECF3  F001         	call	_InitDevice	;wreg free
+   419                           
+   420                           ;main.c: 20: CANSetup();
+   421  000316  EC43  F000         	call	_CANSetup	;wreg free
+   422                           
+   423                           ;main.c: 21: I2CSetup();
+   424  00031A  EC25  F002         	call	_I2CSetup	;wreg free
+   425                           
+   426                           ;main.c: 23: LATAbits.LA7 = 1;
+   427  00031E  8E89               	bsf	3977,7,c	;volatile
+   428  000320                     l48:
    429                           
-   430                           ;incstack = 0
-   431  0000' EC00' F000'        	call	_ECAN_Receive	;wreg free
-   432  0004' 0900               	iorlw	0
-   433  0006' B4D8               	btfsc	status,2,c
-   434  0008' 0012               	return	
-   435  000A' D003               	goto	l1175
-   436  000C'                    l331:
-   437                           
-   438                           ;ECAN.c: 350: i2c_reg_map[0] = MOTOR_REG;
-   439  000C' C012' F000'        	movff	_MOTOR_REG,_i2c_reg_map	;volatile
-   440                           
-   441                           ;ECAN.c: 360: }
-   442                           
-   443                           ;ECAN.c: 358: break;
+   430                           ;main.c: 26: checkCAN();
+   431  000320  ECD8  F001         	call	_checkCAN	;wreg free
+   432                           
+   433                           ;main.c: 28: if(I2C_FLAG){
+   434  000324  5011               	movf	_I2C_FLAG,w,c
+   435  000326  1012               	iorwf	_I2C_FLAG+1,w,c
+   436  000328  B4D8               	btfsc	status,2,c
+   437  00032A  D01B               	goto	l1280
+   438                           
+   439                           ;main.c: 29: I2C_FLAG = 0;
+   440  00032C  0E00               	movlw	0
+   441  00032E  6E12               	movwf	_I2C_FLAG+1,c
+   442  000330  0E00               	movlw	0
+   443  000332  6E11               	movwf	_I2C_FLAG,c
    444                           
-   445                           ;ECAN.c: 354: case 2 :
-   446                           
-   447                           ;ECAN.c: 352: break;
-   448  0010' 0012               	return	
-   449  0012'                    l1175:
-   450  0012' 5013'              	movf	_RECEIVE_ID,w,c
-   451                           
-   452                           ; Switch size 1, requested type "space"
-   453                           ; Number of cases is 2, Range of values is 1 to 2
-   454                           ; switch strategies available:
-   455                           ; Name         Instructions Cycles
-   456                           ; simple_byte            7     4 (average)
-   457                           ;	Chosen strategy is simple_byte
-   458  0014' 0A01               	xorlw	1	; case 1
-   459  0016' B4D8               	btfsc	status,2,c
-   460  0018' D7F9               	goto	l331
-   461  001A' 0A03               	xorlw	3	; case 2
-   462  001C' 0012               	return	
-   463  001E'                    __end_of_checkCAN:
-   464                           	opt stack 0
-   465                           tblptru	equ	0xFF8
-   466                           tblptrh	equ	0xFF7
-   467                           tblptrl	equ	0xFF6
-   468                           tablat	equ	0xFF5
-   469                           postinc0	equ	0xFEE
-   470                           wreg	equ	0xFE8
-   471                           status	equ	0xFD8
-   472                           
-   473 ;; *************** function _ECAN_Receive *****************
-   474 ;; Defined at:
-   475 ;;		line 224 in file "ECAN.c"
-   476 ;; Parameters:    Size  Location     Type
-   477 ;;		None
-   478 ;; Auto vars:     Size  Location     Type
-   479 ;;  RXMsgFlag       1   15[COMRAM] unsigned char 
-   480 ;; Return value:  Size  Location     Type
-   481 ;;                  1    wreg      unsigned char 
-   482 ;; Registers used:
-   483 ;;		wreg, status,2, status,0
-   484 ;; Tracked objects:
-   485 ;;		On entry : 0/0
-   486 ;;		On exit  : 0/0
-   487 ;;		Unchanged: 0/0
-   488 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   445                           ;main.c: 30: ECAN_Transmit(0x32,0xC0, 0x08,
+   446                           ;main.c: 31: i2c_reg_map[0],
+   447                           ;main.c: 32: i2c_reg_map[1],
+   448                           ;main.c: 33: i2c_reg_map[2],
+   449                           ;main.c: 34: i2c_reg_map[3],
+   450                           ;main.c: 35: i2c_reg_map[4],
+   451                           ;main.c: 36: i2c_reg_map[5],
+   452                           ;main.c: 37: i2c_reg_map[6],
+   453                           ;main.c: 38: i2c_reg_map[7]);
+   454  000334  0EC0               	movlw	192
+   455  000336  6E35               	movwf	ECAN_Transmit@SIDL,c
+   456  000338  0E08               	movlw	8
+   457  00033A  6E36               	movwf	ECAN_Transmit@DLC,c
+   458  00033C  C001  F037         	movff	_i2c_reg_map,ECAN_Transmit@TRANSMIT_ID	;volatile
+   459  000340  C002  F038         	movff	_i2c_reg_map+1,ECAN_Transmit@DATA1	;volatile
+   460  000344  C003  F039         	movff	_i2c_reg_map+2,ECAN_Transmit@DATA2	;volatile
+   461  000348  C004  F03A         	movff	_i2c_reg_map+3,ECAN_Transmit@DATA3	;volatile
+   462  00034C  C005  F03B         	movff	_i2c_reg_map+4,ECAN_Transmit@DATA4	;volatile
+   463  000350  C006  F03C         	movff	_i2c_reg_map+5,ECAN_Transmit@DATA5	;volatile
+   464  000354  C007  F03D         	movff	_i2c_reg_map+6,ECAN_Transmit@DATA6	;volatile
+   465  000358  C008  F03E         	movff	_i2c_reg_map+7,ECAN_Transmit@DATA7	;volatile
+   466  00035C  0E32               	movlw	50
+   467  00035E  ECB8  F001         	call	_ECAN_Transmit
+   468  000362                     l1280:
+   469                           
+   470                           ;main.c: 40: }
+   471                           ;main.c: 42: Delay(100);
+   472  000362  0E00               	movlw	0
+   473  000364  6E36               	movwf	Delay@count+1,c
+   474  000366  0E64               	movlw	100
+   475  000368  6E35               	movwf	Delay@count,c
+   476  00036A  EC32  F002         	call	_Delay	;wreg free
+   477  00036E  D7D8               	goto	l48
+   478  000370                     __end_of_main:
+   479                           	opt stack 0
+   480                           tblptru	equ	0xFF8
+   481                           tblptrh	equ	0xFF7
+   482                           tblptrl	equ	0xFF6
+   483                           tablat	equ	0xFF5
+   484                           postinc0	equ	0xFEE
+   485                           wreg	equ	0xFE8
+   486                           status	equ	0xFD8
+   487                           
+   488 ;; *************** function _checkCAN *****************
+   489 ;; Defined at:
+   490 ;;		line 344 in file "ECAN.c"
+   491 ;; Parameters:    Size  Location     Type
+   492 ;;		None
+   493 ;; Auto vars:     Size  Location     Type
+   494 ;;		None
+   495 ;; Return value:  Size  Location     Type
+   496 ;;		None               void
+   497 ;; Registers used:
+   498 ;;		wreg, status,2, status,0, cstack
+   499 ;; Tracked objects:
+   500 ;;		On entry : 0/0
+   501 ;;		On exit  : 0/0
+   502 ;;		Unchanged: 0/0
+   503 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14
-   489 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   504 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   490 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+   505 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   491 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   506 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   492 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+   507 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   493 ;;Total ram usage:        1 bytes
-   494 ;; Hardware stack levels used:    1
-   495 ;; Hardware stack levels required when called:    2
-   496 ;; This function calls:
-   497 ;;		Nothing
-   498 ;; This function is called by:
-   499 ;;		_checkCAN
-   500 ;; This function uses a non-reentrant model
-   501 ;;
-   502                           
-   503                           	psect	text2
-   504  0000'                    __ptext2:
-   505                           	opt stack 0
-   506  0000'                    _ECAN_Receive:
-   507                           	opt stack 27
-   508                           
-   509                           ;ECAN.c: 226: unsigned char RXMsgFlag;
-   510                           ;ECAN.c: 228: RXMsgFlag = 0x00;
-   511                           
-   512                           ;incstack = 0
-   513  0000' 0E00               	movlw	0
-   514  0002' 6E0F'              	movwf	ECAN_Receive@RXMsgFlag,c
-   515                           
-   516                           ;ECAN.c: 230: if (RXB0CONbits.RXFUL)
-   517  0004' AE60               	btfss	3936,7,c	;volatile
-   518  0006' D01C               	goto	l316
-   519                           
-   520                           ;ECAN.c: 231: {
-   521                           ;ECAN.c: 232: temp_EIDH = RXB0EIDH;
-   522  0008' CF63 F01F'         	movff	3939,_temp_EIDH	;volatile
+   508 ;;Total ram usage:        0 bytes
+   509 ;; Hardware stack levels used:    1
+   510 ;; Hardware stack levels required when called:    3
+   511 ;; This function calls:
+   512 ;;		_ECAN_Receive
+   513 ;; This function is called by:
+   514 ;;		_main
+   515 ;; This function uses a non-reentrant model
+   516 ;;
+   517                           
+   518                           	psect	text1
+   519  0003B0                     __ptext1:
+   520                           	opt stack 0
+   521  0003B0                     _checkCAN:
+   522                           	opt stack 27
    523                           
-   524                           ;ECAN.c: 233: temp_EIDL = RXB0EIDL;
-   525  000C' CF64 F020'         	movff	3940,_temp_EIDL	;volatile
-   526                           
-   527                           ;ECAN.c: 234: temp_SIDH = RXB0SIDH;
-   528  0010' CF61 F021'         	movff	3937,_temp_SIDH	;volatile
-   529                           
-   530                           ;ECAN.c: 235: temp_SIDL = RXB0SIDL;
-   531  0014' CF62 F022'         	movff	3938,_temp_SIDL	;volatile
-   532                           
-   533                           ;ECAN.c: 236: temp_DLC = RXB0DLC;
-   534  0018' CF65 F01E'         	movff	3941,_temp_DLC	;volatile
-   535                           
-   536                           ;ECAN.c: 237: RECEIVE_ID = RXB0D0;
-   537  001C' CF66 F013'         	movff	3942,_RECEIVE_ID	;volatile
-   538                           
-   539                           ;ECAN.c: 238: MOTOR_REG = RXB0D1;
-   540  0020' CF67 F012'         	movff	3943,_MOTOR_REG	;volatile
-   541                           
-   542                           ;ECAN.c: 239: temp_D2 = RXB0D2;
-   543  0024' CF68 F018'         	movff	3944,_temp_D2	;volatile
-   544                           
-   545                           ;ECAN.c: 240: temp_D3 = RXB0D3;
-   546  0028' CF69 F019'         	movff	3945,_temp_D3	;volatile
-   547                           
-   548                           ;ECAN.c: 241: temp_D4 = RXB0D4;
-   549  002C' CF6A F01A'         	movff	3946,_temp_D4	;volatile
-   550                           
-   551                           ;ECAN.c: 242: temp_D5 = RXB0D5;
-   552  0030' CF6B F01B'         	movff	3947,_temp_D5	;volatile
-   553                           
-   554                           ;ECAN.c: 243: temp_D6 = RXB0D6;
-   555  0034' CF6C F01C'         	movff	3948,_temp_D6	;volatile
-   556                           
-   557                           ;ECAN.c: 244: temp_D7 = RXB0D7;
-   558  0038' CF6D F01D'         	movff	3949,_temp_D7	;volatile
-   559                           
-   560                           ;ECAN.c: 245: RXB0CONbits.RXFUL = 0;
-   561  003C' 9E60               	bcf	3936,7,c	;volatile
-   562  003E' D03F               	goto	l1037
-   563  0040'                    l316:
-   564                           
-   565                           ;ECAN.c: 248: else if (RXB1CONbits.RXFUL)
-   566  0040' 010F               	movlb	15	; () banked
-   567  0042' AF30               	btfss	48,7,b	;volatile
-   568  0044' D01D               	goto	l318
-   569                           
-   570                           ; BSR set to: 15
-   571                           ;ECAN.c: 249: {
-   572                           ;ECAN.c: 250: temp_EIDH = RXB1EIDH;
-   573  0046' CF33 F01F'         	movff	3891,_temp_EIDH	;volatile
+   524                           ;ECAN.c: 345: if(ECAN_Receive()){
+   525                           
+   526                           ;incstack = 0
+   527  0003B0  ECD8  F000         	call	_ECAN_Receive	;wreg free
+   528  0003B4  0900               	iorlw	0
+   529  0003B6  B4D8               	btfsc	status,2,c
+   530  0003B8  0012               	return	
+   531                           
+   532                           ;ECAN.c: 347: i2c_reg_map[0] = RECEIVE_ID;
+   533  0003BA  C015  F001         	movff	_RECEIVE_ID,_i2c_reg_map	;volatile
+   534                           
+   535                           ;ECAN.c: 348: i2c_reg_map[1] = temp_D1;
+   536  0003BE  C01A  F002         	movff	_temp_D1,_i2c_reg_map+1	;volatile
+   537                           
+   538                           ;ECAN.c: 349: i2c_reg_map[2] = temp_D2;
+   539  0003C2  C01B  F003         	movff	_temp_D2,_i2c_reg_map+2	;volatile
+   540                           
+   541                           ;ECAN.c: 350: i2c_reg_map[3] = temp_D3;
+   542  0003C6  C01C  F004         	movff	_temp_D3,_i2c_reg_map+3	;volatile
+   543                           
+   544                           ;ECAN.c: 351: i2c_reg_map[4] = temp_D4;
+   545  0003CA  C01D  F005         	movff	_temp_D4,_i2c_reg_map+4	;volatile
+   546                           
+   547                           ;ECAN.c: 352: i2c_reg_map[5] = temp_D5;
+   548  0003CE  C01E  F006         	movff	_temp_D5,_i2c_reg_map+5	;volatile
+   549                           
+   550                           ;ECAN.c: 353: i2c_reg_map[6] = temp_D6;
+   551  0003D2  C01F  F007         	movff	_temp_D6,_i2c_reg_map+6	;volatile
+   552                           
+   553                           ;ECAN.c: 354: i2c_reg_map[7] = temp_D7;
+   554  0003D6  C020  F008         	movff	_temp_D7,_i2c_reg_map+7	;volatile
+   555                           
+   556                           ;ECAN.c: 356: LATCbits.LATC7 = temp_D1;
+   557  0003DA  B01A               	btfsc	_temp_D1,0,c
+   558  0003DC  D002               	bra	u185
+   559  0003DE  9E8B               	bcf	3979,7,c	;volatile
+   560  0003E0  D001               	bra	u186
+   561  0003E2                     u185:
+   562  0003E2  8E8B               	bsf	3979,7,c	;volatile
+   563  0003E4                     u186:
+   564  0003E4  0012               	return	
+   565  0003E6                     __end_of_checkCAN:
+   566                           	opt stack 0
+   567                           tblptru	equ	0xFF8
+   568                           tblptrh	equ	0xFF7
+   569                           tblptrl	equ	0xFF6
+   570                           tablat	equ	0xFF5
+   571                           postinc0	equ	0xFEE
+   572                           wreg	equ	0xFE8
+   573                           status	equ	0xFD8
    574                           
-   575                           ;ECAN.c: 251: temp_EIDL = RXB1EIDL;
-   576  004A' CF34 F020'         	movff	3892,_temp_EIDL	;volatile
-   577                           
-   578                           ;ECAN.c: 252: temp_SIDH = RXB1SIDH;
-   579  004E' CF31 F021'         	movff	3889,_temp_SIDH	;volatile
-   580                           
-   581                           ;ECAN.c: 253: temp_SIDL = RXB1SIDL;
-   582  0052' CF32 F022'         	movff	3890,_temp_SIDL	;volatile
-   583                           
-   584                           ;ECAN.c: 254: temp_DLC = RXB1DLC;
-   585  0056' CF35 F01E'         	movff	3893,_temp_DLC	;volatile
-   586                           
-   587                           ;ECAN.c: 255: temp_D0 = RXB1D0;
-   588  005A' CF36 F017'         	movff	3894,_temp_D0	;volatile
-   589                           
-   590                           ;ECAN.c: 256: MOTOR_REG = RXB1D1;
-   591  005E' CF37 F012'         	movff	3895,_MOTOR_REG	;volatile
-   592                           
-   593                           ;ECAN.c: 257: temp_D2 = RXB1D2;
-   594  0062' CF38 F018'         	movff	3896,_temp_D2	;volatile
-   595                           
-   596                           ;ECAN.c: 258: temp_D3 = RXB1D3;
-   597  0066' CF39 F019'         	movff	3897,_temp_D3	;volatile
-   598                           
-   599                           ;ECAN.c: 259: temp_D4 = RXB1D4;
-   600  006A' CF3A F01A'         	movff	3898,_temp_D4	;volatile
-   601                           
-   602                           ;ECAN.c: 260: temp_D5 = RXB1D5;
-   603  006E' CF3B F01B'         	movff	3899,_temp_D5	;volatile
+   575 ;; *************** function _ECAN_Receive *****************
+   576 ;; Defined at:
+   577 ;;		line 224 in file "ECAN.c"
+   578 ;; Parameters:    Size  Location     Type
+   579 ;;		None
+   580 ;; Auto vars:     Size  Location     Type
+   581 ;;  RXMsgFlag       1   15[COMRAM] unsigned char 
+   582 ;; Return value:  Size  Location     Type
+   583 ;;                  1    wreg      unsigned char 
+   584 ;; Registers used:
+   585 ;;		wreg, status,2, status,0
+   586 ;; Tracked objects:
+   587 ;;		On entry : 0/0
+   588 ;;		On exit  : 0/0
+   589 ;;		Unchanged: 0/0
+   590 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+   591 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   592 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   593 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   594 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   595 ;;Total ram usage:        1 bytes
+   596 ;; Hardware stack levels used:    1
+   597 ;; Hardware stack levels required when called:    2
+   598 ;; This function calls:
+   599 ;;		Nothing
+   600 ;; This function is called by:
+   601 ;;		_checkCAN
+   602 ;; This function uses a non-reentrant model
+   603 ;;
    604                           
-   605                           ;ECAN.c: 261: temp_D6 = RXB1D6;
-   606  0072' CF3C F01C'         	movff	3900,_temp_D6	;volatile
-   607                           
-   608                           ;ECAN.c: 262: temp_D7 = RXB1D7;
-   609  0076' CF3D F01D'         	movff	3901,_temp_D7	;volatile
+   605                           	psect	text2
+   606  0001B0                     __ptext2:
+   607                           	opt stack 0
+   608  0001B0                     _ECAN_Receive:
+   609                           	opt stack 27
    610                           
-   611                           ;ECAN.c: 263: RXB1CONbits.RXFUL = 0;
-   612  007A' 010F               	movlb	15	; () banked
-   613  007C' 9F30               	bcf	48,7,b	;volatile
-   614  007E' D01F               	goto	l1037
-   615  0080'                    l318:
-   616                           
-   617                           ; BSR set to: 15
-   618                           ;ECAN.c: 266: else if (B0CONbits.RXFUL)
-   619  0080' 010E               	movlb	14	; () banked
-   620  0082' AF80               	btfss	128,7,b	;volatile
-   621  0084' D01E               	goto	l1039
-   622                           
-   623                           ; BSR set to: 14
-   624                           ;ECAN.c: 267: {
-   625                           ;ECAN.c: 268: temp_EIDH = B0EIDH;
-   626  0086' CE83 F01F'         	movff	3715,_temp_EIDH	;volatile
-   627                           
-   628                           ;ECAN.c: 269: temp_EIDL = B0EIDL;
-   629  008A' CE84 F020'         	movff	3716,_temp_EIDL	;volatile
-   630                           
-   631                           ;ECAN.c: 270: temp_SIDH = B0SIDH;
-   632  008E' CE81 F021'         	movff	3713,_temp_SIDH	;volatile
-   633                           
-   634                           ;ECAN.c: 271: temp_SIDL = B0SIDL;
-   635  0092' CE82 F022'         	movff	3714,_temp_SIDL	;volatile
-   636                           
-   637                           ;ECAN.c: 272: temp_DLC = B0DLC;
-   638  0096' CE85 F01E'         	movff	3717,_temp_DLC	;volatile
-   639                           
-   640                           ;ECAN.c: 273: temp_D0 = B0D0;
-   641  009A' CE86 F017'         	movff	3718,_temp_D0	;volatile
-   642                           
-   643                           ;ECAN.c: 274: MOTOR_REG = B0D1;
-   644  009E' CE87 F012'         	movff	3719,_MOTOR_REG	;volatile
-   645                           
-   646                           ;ECAN.c: 275: temp_D2 = B0D2;
-   647  00A2' CE88 F018'         	movff	3720,_temp_D2	;volatile
-   648                           
-   649                           ;ECAN.c: 276: temp_D3 = B0D3;
-   650  00A6' CE89 F019'         	movff	3721,_temp_D3	;volatile
-   651                           
-   652                           ;ECAN.c: 277: temp_D4 = B0D4;
-   653  00AA' CE8A F01A'         	movff	3722,_temp_D4	;volatile
-   654                           
-   655                           ;ECAN.c: 278: temp_D5 = B0D5;
-   656  00AE' CE8B F01B'         	movff	3723,_temp_D5	;volatile
-   657                           
-   658                           ;ECAN.c: 279: temp_D6 = B0D6;
-   659  00B2' CE8C F01C'         	movff	3724,_temp_D6	;volatile
-   660                           
-   661                           ;ECAN.c: 280: temp_D7 = B0D7;
-   662  00B6' CE8D F01D'         	movff	3725,_temp_D7	;volatile
-   663                           
-   664                           ;ECAN.c: 282: B0CONbits.RXFUL = 0;
-   665  00BA' 010E               	movlb	14	; () banked
-   666  00BC' 9F80               	bcf	128,7,b	;volatile
-   667  00BE'                    l1037:
-   668                           
-   669                           ; BSR set to: 14
-   670                           ;ECAN.c: 283: RXMsgFlag = 0x01;
-   671  00BE' 0E01               	movlw	1
-   672  00C0' 6E0F'              	movwf	ECAN_Receive@RXMsgFlag,c
-   673  00C2'                    l1039:
-   674                           
-   675                           ;ECAN.c: 284: }
-   676                           ;ECAN.c: 286: if (RXMsgFlag == 0x01)
-   677  00C2' 040F'              	decf	ECAN_Receive@RXMsgFlag,w,c
-   678  00C4' A4D8               	btfss	status,2,c
-   679  00C6' D005               	goto	l1051
-   680                           
-   681                           ;ECAN.c: 287: {
-   682                           ;ECAN.c: 288: RXMsgFlag = 0x00;
-   683  00C8' 0E00               	movlw	0
-   684  00CA' 6E0F'              	movwf	ECAN_Receive@RXMsgFlag,c
+   611                           ;ECAN.c: 226: unsigned char RXMsgFlag;
+   612                           ;ECAN.c: 228: RXMsgFlag = 0x00;
+   613                           
+   614                           ;incstack = 0
+   615  0001B0  0E00               	movlw	0
+   616  0001B2  6E35               	movwf	ECAN_Receive@RXMsgFlag,c
+   617                           
+   618                           ;ECAN.c: 230: if (RXB0CONbits.RXFUL)
+   619  0001B4  AE60               	btfss	3936,7,c	;volatile
+   620  0001B6  D01C               	goto	l327
+   621                           
+   622                           ;ECAN.c: 231: {
+   623                           ;ECAN.c: 232: temp_EIDH = RXB0EIDH;
+   624  0001B8  CF63 F022          	movff	3939,_temp_EIDH	;volatile
+   625                           
+   626                           ;ECAN.c: 233: temp_EIDL = RXB0EIDL;
+   627  0001BC  CF64 F023          	movff	3940,_temp_EIDL	;volatile
+   628                           
+   629                           ;ECAN.c: 234: temp_SIDH = RXB0SIDH;
+   630  0001C0  CF61 F024          	movff	3937,_temp_SIDH	;volatile
+   631                           
+   632                           ;ECAN.c: 235: temp_SIDL = RXB0SIDL;
+   633  0001C4  CF62 F025          	movff	3938,_temp_SIDL	;volatile
+   634                           
+   635                           ;ECAN.c: 236: temp_DLC = RXB0DLC;
+   636  0001C8  CF65 F021          	movff	3941,_temp_DLC	;volatile
+   637                           
+   638                           ;ECAN.c: 237: RECEIVE_ID = RXB0D0;
+   639  0001CC  CF66 F015          	movff	3942,_RECEIVE_ID	;volatile
+   640                           
+   641                           ;ECAN.c: 238: temp_D1 = RXB0D1;
+   642  0001D0  CF67 F01A          	movff	3943,_temp_D1	;volatile
+   643                           
+   644                           ;ECAN.c: 239: temp_D2 = RXB0D2;
+   645  0001D4  CF68 F01B          	movff	3944,_temp_D2	;volatile
+   646                           
+   647                           ;ECAN.c: 240: temp_D3 = RXB0D3;
+   648  0001D8  CF69 F01C          	movff	3945,_temp_D3	;volatile
+   649                           
+   650                           ;ECAN.c: 241: temp_D4 = RXB0D4;
+   651  0001DC  CF6A F01D          	movff	3946,_temp_D4	;volatile
+   652                           
+   653                           ;ECAN.c: 242: temp_D5 = RXB0D5;
+   654  0001E0  CF6B F01E          	movff	3947,_temp_D5	;volatile
+   655                           
+   656                           ;ECAN.c: 243: temp_D6 = RXB0D6;
+   657  0001E4  CF6C F01F          	movff	3948,_temp_D6	;volatile
+   658                           
+   659                           ;ECAN.c: 244: temp_D7 = RXB0D7;
+   660  0001E8  CF6D F020          	movff	3949,_temp_D7	;volatile
+   661                           
+   662                           ;ECAN.c: 245: RXB0CONbits.RXFUL = 0;
+   663  0001EC  9E60               	bcf	3936,7,c	;volatile
+   664  0001EE  D03F               	goto	l1052
+   665  0001F0                     l327:
+   666                           
+   667                           ;ECAN.c: 248: else if (RXB1CONbits.RXFUL)
+   668  0001F0  010F               	movlb	15	; () banked
+   669  0001F2  AF30               	btfss	48,7,b	;volatile
+   670  0001F4  D01D               	goto	l329
+   671                           
+   672                           ; BSR set to: 15
+   673                           ;ECAN.c: 249: {
+   674                           ;ECAN.c: 250: temp_EIDH = RXB1EIDH;
+   675  0001F6  CF33 F022          	movff	3891,_temp_EIDH	;volatile
+   676                           
+   677                           ;ECAN.c: 251: temp_EIDL = RXB1EIDL;
+   678  0001FA  CF34 F023          	movff	3892,_temp_EIDL	;volatile
+   679                           
+   680                           ;ECAN.c: 252: temp_SIDH = RXB1SIDH;
+   681  0001FE  CF31 F024          	movff	3889,_temp_SIDH	;volatile
+   682                           
+   683                           ;ECAN.c: 253: temp_SIDL = RXB1SIDL;
+   684  000202  CF32 F025          	movff	3890,_temp_SIDL	;volatile
    685                           
-   686                           ;ECAN.c: 289: PIR5bits.RXB1IF = 0;
-   687  00CC' 9277               	bcf	3959,1,c	;volatile
+   686                           ;ECAN.c: 254: temp_DLC = RXB1DLC;
+   687  000206  CF35 F021          	movff	3893,_temp_DLC	;volatile
    688                           
-   689                           ;ECAN.c: 290: return 1;
-   690  00CE' 0E01               	movlw	1
+   689                           ;ECAN.c: 255: temp_D0 = RXB1D0;
+   690  00020A  CF36 F019          	movff	3894,_temp_D0	;volatile
    691                           
-   692                           ;ECAN.c: 291: }
-   693  00D0' 0012               	return	
-   694  00D2'                    l1051:
-   695                           
-   696                           ;ECAN.c: 292: else
-   697                           ;ECAN.c: 293: {
-   698                           ;ECAN.c: 294: return 0;
-   699  00D2' 0E00               	movlw	0
-   700  00D4' 0012               	return	
-   701  00D6'                    __end_of_ECAN_Receive:
-   702                           	opt stack 0
-   703                           tblptru	equ	0xFF8
-   704                           tblptrh	equ	0xFF7
-   705                           tblptrl	equ	0xFF6
-   706                           tablat	equ	0xFF5
-   707                           postinc0	equ	0xFEE
-   708                           wreg	equ	0xFE8
-   709                           status	equ	0xFD8
-   710                           
-   711 ;; *************** function _InitDevice *****************
-   712 ;; Defined at:
-   713 ;;		line 5 in file "Other.c"
-   714 ;; Parameters:    Size  Location     Type
-   715 ;;		None
-   716 ;; Auto vars:     Size  Location     Type
-   717 ;;		None
-   718 ;; Return value:  Size  Location     Type
-   719 ;;		None               void
-   720 ;; Registers used:
-   721 ;;		wreg, status,2
-   722 ;; Tracked objects:
-   723 ;;		On entry : 0/0
-   724 ;;		On exit  : 0/0
-   725 ;;		Unchanged: 0/0
-   726 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
-      +1  BANK12  BANK13  BANK14
-   727 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0
-   728 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0
-   729 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0
-   730 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0
-   731 ;;Total ram usage:        0 bytes
-   732 ;; Hardware stack levels used:    1
-   733 ;; Hardware stack levels required when called:    2
-   734 ;; This function calls:
-   735 ;;		Nothing
-   736 ;; This function is called by:
-   737 ;;		_main
-   738 ;; This function uses a non-reentrant model
-   739 ;;
-   740                           
-   741                           	psect	text3
-   742  0000'                    __ptext3:
-   743                           	opt stack 0
-   744  0000'                    _InitDevice:
-   745                           	opt stack 28
-   746                           
-   747                           ;Other.c: 6: count = 0x01;
-   748                           
-   749                           ;incstack = 0
-   750  0000' 0E01               	movlw	1
-   751  0002' 6E00'              	movwf	_count,c
-   752                           
-   753                           ;Other.c: 9: OSCCONbits.IRCF = 7;
-   754  0004' 88D3               	bsf	4051,4,c	;volatile
-   755  0006' 8AD3               	bsf	4051,5,c	;volatile
-   756  0008' 8CD3               	bsf	4051,6,c	;volatile
-   757                           
-   758                           ;Other.c: 10: OSCTUNEbits.PLLEN = 1;
-   759  000A' 8C9B               	bsf	3995,6,c	;volatile
-   760                           
-   761                           ;Other.c: 13: heartbeatCount = 0;
-   762  000C' 0E00               	movlw	0
-   763  000E' 6E11'              	movwf	_heartbeatCount+1,c
-   764  0010' 0E00               	movlw	0
-   765  0012' 6E10'              	movwf	_heartbeatCount,c
-   766                           
-   767                           ;Other.c: 14: buttonWasPressed = 0;
-   768  0014' 0E00               	movlw	0
-   769  0016' 6E14'              	movwf	_buttonWasPressed,c
+   692                           ;ECAN.c: 256: temp_D1 = RXB1D1;
+   693  00020E  CF37 F01A          	movff	3895,_temp_D1	;volatile
+   694                           
+   695                           ;ECAN.c: 257: temp_D2 = RXB1D2;
+   696  000212  CF38 F01B          	movff	3896,_temp_D2	;volatile
+   697                           
+   698                           ;ECAN.c: 258: temp_D3 = RXB1D3;
+   699  000216  CF39 F01C          	movff	3897,_temp_D3	;volatile
+   700                           
+   701                           ;ECAN.c: 259: temp_D4 = RXB1D4;
+   702  00021A  CF3A F01D          	movff	3898,_temp_D4	;volatile
+   703                           
+   704                           ;ECAN.c: 260: temp_D5 = RXB1D5;
+   705  00021E  CF3B F01E          	movff	3899,_temp_D5	;volatile
+   706                           
+   707                           ;ECAN.c: 261: temp_D6 = RXB1D6;
+   708  000222  CF3C F01F          	movff	3900,_temp_D6	;volatile
+   709                           
+   710                           ;ECAN.c: 262: temp_D7 = RXB1D7;
+   711  000226  CF3D F020          	movff	3901,_temp_D7	;volatile
+   712                           
+   713                           ;ECAN.c: 263: RXB1CONbits.RXFUL = 0;
+   714  00022A  010F               	movlb	15	; () banked
+   715  00022C  9F30               	bcf	48,7,b	;volatile
+   716  00022E  D01F               	goto	l1052
+   717  000230                     l329:
+   718                           
+   719                           ; BSR set to: 15
+   720                           ;ECAN.c: 266: else if (B0CONbits.RXFUL)
+   721  000230  010E               	movlb	14	; () banked
+   722  000232  AF80               	btfss	128,7,b	;volatile
+   723  000234  D01E               	goto	l1054
+   724                           
+   725                           ; BSR set to: 14
+   726                           ;ECAN.c: 267: {
+   727                           ;ECAN.c: 268: temp_EIDH = B0EIDH;
+   728  000236  CE83 F022          	movff	3715,_temp_EIDH	;volatile
+   729                           
+   730                           ;ECAN.c: 269: temp_EIDL = B0EIDL;
+   731  00023A  CE84 F023          	movff	3716,_temp_EIDL	;volatile
+   732                           
+   733                           ;ECAN.c: 270: temp_SIDH = B0SIDH;
+   734  00023E  CE81 F024          	movff	3713,_temp_SIDH	;volatile
+   735                           
+   736                           ;ECAN.c: 271: temp_SIDL = B0SIDL;
+   737  000242  CE82 F025          	movff	3714,_temp_SIDL	;volatile
+   738                           
+   739                           ;ECAN.c: 272: temp_DLC = B0DLC;
+   740  000246  CE85 F021          	movff	3717,_temp_DLC	;volatile
+   741                           
+   742                           ;ECAN.c: 273: temp_D0 = B0D0;
+   743  00024A  CE86 F019          	movff	3718,_temp_D0	;volatile
+   744                           
+   745                           ;ECAN.c: 274: temp_D1 = B0D1;
+   746  00024E  CE87 F01A          	movff	3719,_temp_D1	;volatile
+   747                           
+   748                           ;ECAN.c: 275: temp_D2 = B0D2;
+   749  000252  CE88 F01B          	movff	3720,_temp_D2	;volatile
+   750                           
+   751                           ;ECAN.c: 276: temp_D3 = B0D3;
+   752  000256  CE89 F01C          	movff	3721,_temp_D3	;volatile
+   753                           
+   754                           ;ECAN.c: 277: temp_D4 = B0D4;
+   755  00025A  CE8A F01D          	movff	3722,_temp_D4	;volatile
+   756                           
+   757                           ;ECAN.c: 278: temp_D5 = B0D5;
+   758  00025E  CE8B F01E          	movff	3723,_temp_D5	;volatile
+   759                           
+   760                           ;ECAN.c: 279: temp_D6 = B0D6;
+   761  000262  CE8C F01F          	movff	3724,_temp_D6	;volatile
+   762                           
+   763                           ;ECAN.c: 280: temp_D7 = B0D7;
+   764  000266  CE8D F020          	movff	3725,_temp_D7	;volatile
+   765                           
+   766                           ;ECAN.c: 282: B0CONbits.RXFUL = 0;
+   767  00026A  010E               	movlb	14	; () banked
+   768  00026C  9F80               	bcf	128,7,b	;volatile
+   769  00026E                     l1052:
    770                           
-   771                           ;Other.c: 17: ANCON0 = ANCON1 = 0x00;
-   772  0018' 0E00               	movlw	0
-   773  001A' 010F               	movlb	15	; () banked
-   774  001C' 6F5C               	movwf	92,b	;volatile
-   775  001E' CF5C FF5D          	movff	3932,3933	;volatile
+   771                           ; BSR set to: 14
+   772                           ;ECAN.c: 283: RXMsgFlag = 0x01;
+   773  00026E  0E01               	movlw	1
+   774  000270  6E35               	movwf	ECAN_Receive@RXMsgFlag,c
+   775  000272                     l1054:
    776                           
-   777                           ; BSR set to: 15
-   778                           ;Other.c: 18: TRISB = 0xFF;
-   779  0022' 6893               	setf	3987,c	;volatile
-   780                           
-   781                           ;Other.c: 21: TRISA = 0b00111111;
-   782  0024' 0E3F               	movlw	63
-   783  0026' 6E92               	movwf	3986,c	;volatile
-   784                           
-   785                           ; BSR set to: 15
-   786                           ;Other.c: 22: LATAbits.LATA7 = 0;
-   787  0028' 9E89               	bcf	3977,7,c	;volatile
-   788                           
-   789                           ; BSR set to: 15
-   790                           ;Other.c: 23: LATAbits.LATA6 = 0;
-   791  002A' 9C89               	bcf	3977,6,c	;volatile
-   792                           
-   793                           ;Other.c: 26: TRISC = 0b00011000;
-   794  002C' 0E18               	movlw	24
-   795  002E' 6E94               	movwf	3988,c	;volatile
-   796                           
-   797                           ; BSR set to: 15
-   798  0030' 0012               	return		;funcret
-   799  0032'                    __end_of_InitDevice:
-   800                           	opt stack 0
-   801                           tblptru	equ	0xFF8
-   802                           tblptrh	equ	0xFF7
-   803                           tblptrl	equ	0xFF6
-   804                           tablat	equ	0xFF5
-   805                           postinc0	equ	0xFEE
-   806                           wreg	equ	0xFE8
-   807                           status	equ	0xFD8
-   808                           
-   809 ;; *************** function _I2CSetup *****************
-   810 ;; Defined at:
-   811 ;;		line 4 in file "I2C.c"
-   812 ;; Parameters:    Size  Location     Type
-   813 ;;		None
-   814 ;; Auto vars:     Size  Location     Type
-   815 ;;		None
-   816 ;; Return value:  Size  Location     Type
-   817 ;;		None               void
-   818 ;; Registers used:
-   819 ;;		wreg, status,2
-   820 ;; Tracked objects:
-   821 ;;		On entry : 0/0
-   822 ;;		On exit  : 0/0
-   823 ;;		Unchanged: 0/0
-   824 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   777                           ;ECAN.c: 284: }
+   778                           ;ECAN.c: 286: if (RXMsgFlag == 0x01)
+   779  000272  0435               	decf	ECAN_Receive@RXMsgFlag,w,c
+   780  000274  A4D8               	btfss	status,2,c
+   781  000276  D005               	goto	l1066
+   782                           
+   783                           ;ECAN.c: 287: {
+   784                           ;ECAN.c: 288: RXMsgFlag = 0x00;
+   785  000278  0E00               	movlw	0
+   786  00027A  6E35               	movwf	ECAN_Receive@RXMsgFlag,c
+   787                           
+   788                           ;ECAN.c: 289: PIR5bits.RXB1IF = 0;
+   789  00027C  9277               	bcf	3959,1,c	;volatile
+   790                           
+   791                           ;ECAN.c: 290: return 1;
+   792  00027E  0E01               	movlw	1
+   793                           
+   794                           ;ECAN.c: 291: }
+   795  000280  0012               	return	
+   796  000282                     l1066:
+   797                           
+   798                           ;ECAN.c: 292: else
+   799                           ;ECAN.c: 293: {
+   800                           ;ECAN.c: 294: return 0;
+   801  000282  0E00               	movlw	0
+   802  000284  0012               	return	
+   803  000286                     __end_of_ECAN_Receive:
+   804                           	opt stack 0
+   805                           tblptru	equ	0xFF8
+   806                           tblptrh	equ	0xFF7
+   807                           tblptrl	equ	0xFF6
+   808                           tablat	equ	0xFF5
+   809                           postinc0	equ	0xFEE
+   810                           wreg	equ	0xFE8
+   811                           status	equ	0xFD8
+   812                           
+   813 ;; *************** function _InitDevice *****************
+   814 ;; Defined at:
+   815 ;;		line 5 in file "Other.c"
+   816 ;; Parameters:    Size  Location     Type
+   817 ;;		None
+   818 ;; Auto vars:     Size  Location     Type
+   819 ;;		None
+   820 ;; Return value:  Size  Location     Type
+   821 ;;		None               void
+   822 ;; Registers used:
+   823 ;;		wreg, status,2
+   824 ;; Tracked objects:
+   825 ;;		On entry : 0/0
+   826 ;;		On exit  : 0/0
+   827 ;;		Unchanged: 0/0
+   828 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14
-   825 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   829 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   826 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   830 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   827 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   831 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   828 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   832 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   829 ;;Total ram usage:        0 bytes
-   830 ;; Hardware stack levels used:    1
-   831 ;; Hardware stack levels required when called:    2
-   832 ;; This function calls:
-   833 ;;		Nothing
-   834 ;; This function is called by:
-   835 ;;		_main
-   836 ;; This function uses a non-reentrant model
-   837 ;;
-   838                           
-   839                           	psect	text4
-   840  0000'                    __ptext4:
-   841                           	opt stack 0
-   842  0000'                    _I2CSetup:
-   843                           	opt stack 28
-   844                           
-   845                           ;I2C.c: 6: OSCCON = 0x60;
-   846                           
-   847                           ; BSR set to: 15
-   848                           ;incstack = 0
-   849  0000' 0E60               	movlw	96
-   850  0002' 6ED3               	movwf	4051,c	;volatile
-   851                           
-   852                           ;I2C.c: 7: OSCTUNEbits.PLLEN = 0;
-   853  0004' 9C9B               	bcf	3995,6,c	;volatile
+   833 ;;Total ram usage:        0 bytes
+   834 ;; Hardware stack levels used:    1
+   835 ;; Hardware stack levels required when called:    2
+   836 ;; This function calls:
+   837 ;;		Nothing
+   838 ;; This function is called by:
+   839 ;;		_main
+   840 ;; This function uses a non-reentrant model
+   841 ;;
+   842                           
+   843                           	psect	text3
+   844  0003E6                     __ptext3:
+   845                           	opt stack 0
+   846  0003E6                     _InitDevice:
+   847                           	opt stack 28
+   848                           
+   849                           ;Other.c: 7: count = 0x01;
+   850                           
+   851                           ;incstack = 0
+   852  0003E6  0E01               	movlw	1
+   853  0003E8  6E42               	movwf	_count,c
    854                           
-   855                           ;I2C.c: 9: SSPADD = 0x54;
-   856  0006' 0E54               	movlw	84
-   857  0008' 6EC8               	movwf	4040,c	;volatile
+   855                           ;Other.c: 10: OSCCON = 0x60;
+   856  0003EA  0E60               	movlw	96
+   857  0003EC  6ED3               	movwf	4051,c	;volatile
    858                           
-   859                           ;I2C.c: 10: SSPCON1 = 0x36;
-   860  000A' 0E36               	movlw	54
-   861  000C' 6EC6               	movwf	4038,c	;volatile
-   862                           
-   863                           ;I2C.c: 13: SSPSTAT = 0x00;
-   864  000E' 0E00               	movlw	0
-   865  0010' 6EC7               	movwf	4039,c	;volatile
+   859                           ;Other.c: 11: OSCCONbits.IRCF = 7;
+   860  0003EE  88D3               	bsf	4051,4,c	;volatile
+   861  0003F0  8AD3               	bsf	4051,5,c	;volatile
+   862  0003F2  8CD3               	bsf	4051,6,c	;volatile
+   863                           
+   864                           ;Other.c: 12: OSCTUNEbits.PLLEN = 1;
+   865  0003F4  8C9B               	bsf	3995,6,c	;volatile
    866                           
-   867                           ;I2C.c: 14: SSPCON2 = 0x01;
-   868  0012' 0E01               	movlw	1
-   869  0014' 6EC5               	movwf	4037,c	;volatile
-   870                           
-   871                           ;I2C.c: 16: PIR1bits.SSPIF = 0;
-   872  0016' 969E               	bcf	3998,3,c	;volatile
-   873                           
-   874                           ;I2C.c: 17: PIE1bits.SSPIE = 1;
-   875  0018' 869D               	bsf	3997,3,c	;volatile
+   867                           ;Other.c: 15: heartbeatCount = 0;
+   868  0003F6  0E00               	movlw	0
+   869  0003F8  6E14               	movwf	_heartbeatCount+1,c
+   870  0003FA  0E00               	movlw	0
+   871  0003FC  6E13               	movwf	_heartbeatCount,c
+   872                           
+   873                           ;Other.c: 16: buttonWasPressed = 0;
+   874  0003FE  0E00               	movlw	0
+   875  000400  6E16               	movwf	_buttonWasPressed,c
    876                           
-   877                           ;I2C.c: 18: INTCONbits.GIE_GIEH = 1;
-   878  001A' 8EF2               	bsf	intcon,7,c	;volatile
-   879                           
-   880                           ;I2C.c: 19: INTCONbits.PEIE_GIEL = 1;
-   881  001C' 8CF2               	bsf	intcon,6,c	;volatile
+   877                           ;Other.c: 19: ANCON0 = ANCON1 = 0x00;
+   878  000402  0E00               	movlw	0
+   879  000404  010F               	movlb	15	; () banked
+   880  000406  6F5C               	movwf	92,b	;volatile
+   881  000408  CF5C FF5D          	movff	3932,3933	;volatile
    882                           
-   883                           ;I2C.c: 21: i2c_reg_map[1] = 4;
-   884  001E' 0E04               	movlw	4
-   885  0020' 6E01'              	movwf	_i2c_reg_map+1,c	;volatile
+   883                           ; BSR set to: 15
+   884                           ;Other.c: 20: TRISB = 0xFF;
+   885  00040C  6893               	setf	3987,c	;volatile
    886                           
-   887                           ;I2C.c: 22: i2c_reg_map[2] = 4;
-   888  0022' 0E04               	movlw	4
-   889  0024' 6E02'              	movwf	_i2c_reg_map+2,c	;volatile
+   887                           ;Other.c: 23: TRISA = 0b00111111;
+   888  00040E  0E3F               	movlw	63
+   889  000410  6E92               	movwf	3986,c	;volatile
    890                           
-   891                           ;I2C.c: 23: i2c_reg_map[3] = 4;
-   892  0026' 0E04               	movlw	4
-   893  0028' 6E03'              	movwf	_i2c_reg_map+3,c	;volatile
-   894  002A' 0012               	return		;funcret
-   895  002C'                    __end_of_I2CSetup:
-   896                           	opt stack 0
-   897                           tblptru	equ	0xFF8
-   898                           tblptrh	equ	0xFF7
-   899                           tblptrl	equ	0xFF6
-   900                           tablat	equ	0xFF5
-   901                           intcon	equ	0xFF2
-   902                           postinc0	equ	0xFEE
-   903                           wreg	equ	0xFE8
-   904                           status	equ	0xFD8
-   905                           
-   906 ;; *************** function _CANSetup *****************
-   907 ;; Defined at:
-   908 ;;		line 113 in file "ECAN.c"
-   909 ;; Parameters:    Size  Location     Type
-   910 ;;		None
-   911 ;; Auto vars:     Size  Location     Type
-   912 ;;		None
-   913 ;; Return value:  Size  Location     Type
-   914 ;;		None               void
-   915 ;; Registers used:
-   916 ;;		wreg, status,2, status,0
-   917 ;; Tracked objects:
-   918 ;;		On entry : 0/0
-   919 ;;		On exit  : 0/0
-   920 ;;		Unchanged: 0/0
-   921 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   891                           ; BSR set to: 15
+   892                           ;Other.c: 24: LATAbits.LATA7 = 0;
+   893  000412  9E89               	bcf	3977,7,c	;volatile
+   894                           
+   895                           ; BSR set to: 15
+   896                           ;Other.c: 25: LATAbits.LATA6 = 0;
+   897  000414  9C89               	bcf	3977,6,c	;volatile
+   898                           
+   899                           ;Other.c: 28: TRISC = 0b00011000;
+   900  000416  0E18               	movlw	24
+   901  000418  6E94               	movwf	3988,c	;volatile
+   902                           
+   903                           ; BSR set to: 15
+   904  00041A  0012               	return		;funcret
+   905  00041C                     __end_of_InitDevice:
+   906                           	opt stack 0
+   907                           tblptru	equ	0xFF8
+   908                           tblptrh	equ	0xFF7
+   909                           tblptrl	equ	0xFF6
+   910                           tablat	equ	0xFF5
+   911                           postinc0	equ	0xFEE
+   912                           wreg	equ	0xFE8
+   913                           status	equ	0xFD8
+   914                           
+   915 ;; *************** function _I2CSetup *****************
+   916 ;; Defined at:
+   917 ;;		line 4 in file "I2C.c"
+   918 ;; Parameters:    Size  Location     Type
+   919 ;;		None
+   920 ;; Auto vars:     Size  Location     Type
+   921 ;;		None
+   922 ;; Return value:  Size  Location     Type
+   923 ;;		None               void
+   924 ;; Registers used:
+   925 ;;		wreg, status,2
+   926 ;; Tracked objects:
+   927 ;;		On entry : 0/0
+   928 ;;		On exit  : 0/0
+   929 ;;		Unchanged: 0/0
+   930 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14
-   922 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   931 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   923 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   932 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   924 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   933 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   925 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   934 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-   926 ;;Total ram usage:        0 bytes
-   927 ;; Hardware stack levels used:    1
-   928 ;; Hardware stack levels required when called:    2
-   929 ;; This function calls:
-   930 ;;		Nothing
-   931 ;; This function is called by:
-   932 ;;		_main
-   933 ;; This function uses a non-reentrant model
-   934 ;;
-   935                           
-   936                           	psect	text5
-   937  0000'                    __ptext5:
-   938                           	opt stack 0
-   939  0000'                    _CANSetup:
-   940                           	opt stack 28
-   941                           
-   942                           ;ECAN.c: 116: CANCON = 0x80;
-   943                           
-   944                           ;incstack = 0
-   945  0000' 0E80               	movlw	128
-   946  0002' 6E6F               	movwf	3951,c	;volatile
-   947  0004'                    l1113:
-   948  0004' 386E               	swapf	3950,w,c	;volatile
-   949  0006' 32E8               	rrcf	wreg,f,c
-   950  0008' 0B07               	andlw	7
-   951  000A' 0A04               	xorlw	4
-   952  000C' A4D8               	btfss	status,2,c
-   953  000E' D7FA               	goto	l1113
-   954                           
-   955                           ;ECAN.c: 120: ECANCON = 0x40;
-   956  0010' 0E40               	movlw	64
-   957  0012' 6E72               	movwf	3954,c	;volatile
-   958                           
-   959                           ;ECAN.c: 124: BRGCON1 = 0x81;
-   960  0014' 0E81               	movlw	129
-   961  0016' 010E               	movlb	14	; () banked
-   962  0018' 6F43               	movwf	67,b	;volatile
-   963                           
-   964                           ;ECAN.c: 125: BRGCON2 = 0xB8;
-   965  001A' 0EB8               	movlw	184
-   966  001C' 010E               	movlb	14	; () banked
-   967  001E' 6F44               	movwf	68,b	;volatile
-   968                           
-   969                           ;ECAN.c: 126: BRGCON3 = 0x05;
-   970  0020' 0E05               	movlw	5
-   971  0022' 010E               	movlb	14	; () banked
-   972  0024' 6F45               	movwf	69,b	;volatile
-   973                           
-   974                           ;ECAN.c: 131: BSEL0 = 0xF8;
-   975  0026' 0EF8               	movlw	248
-   976  0028' 010E               	movlb	14	; () banked
-   977  002A' 6F7D               	movwf	125,b	;volatile
+   935 ;;Total ram usage:        0 bytes
+   936 ;; Hardware stack levels used:    1
+   937 ;; Hardware stack levels required when called:    2
+   938 ;; This function calls:
+   939 ;;		Nothing
+   940 ;; This function is called by:
+   941 ;;		_main
+   942 ;; This function uses a non-reentrant model
+   943 ;;
+   944                           
+   945                           	psect	text4
+   946  00044A                     __ptext4:
+   947                           	opt stack 0
+   948  00044A                     _I2CSetup:
+   949                           	opt stack 28
+   950                           
+   951                           ;I2C.c: 6: SSPADD = 0x54;
+   952                           
+   953                           ; BSR set to: 15
+   954                           ;incstack = 0
+   955  00044A  0E54               	movlw	84
+   956  00044C  6EC8               	movwf	4040,c	;volatile
+   957                           
+   958                           ;I2C.c: 7: SSPCON1 = 0x36;
+   959  00044E  0E36               	movlw	54
+   960  000450  6EC6               	movwf	4038,c	;volatile
+   961                           
+   962                           ;I2C.c: 10: SSPSTAT = 0x00;
+   963  000452  0E00               	movlw	0
+   964  000454  6EC7               	movwf	4039,c	;volatile
+   965                           
+   966                           ;I2C.c: 11: SSPCON2 = 0x01;
+   967  000456  0E01               	movlw	1
+   968  000458  6EC5               	movwf	4037,c	;volatile
+   969                           
+   970                           ;I2C.c: 13: PIR1bits.SSPIF = 0;
+   971  00045A  969E               	bcf	3998,3,c	;volatile
+   972                           
+   973                           ;I2C.c: 14: PIE1bits.SSPIE = 1;
+   974  00045C  869D               	bsf	3997,3,c	;volatile
+   975                           
+   976                           ;I2C.c: 15: INTCONbits.GIE_GIEH = 1;
+   977  00045E  8EF2               	bsf	intcon,7,c	;volatile
    978                           
-   979                           ;ECAN.c: 135: RXM0EIDH = 0x00;
-   980  002C' 0E00               	movlw	0
-   981  002E' 010E               	movlb	14	; () banked
-   982  0030' 6FFA               	movwf	250,b	;volatile
-   983                           
-   984                           ;ECAN.c: 136: RXM0EIDL = 0x00;
-   985  0032' 0E00               	movlw	0
-   986  0034' 010E               	movlb	14	; () banked
-   987  0036' 6FFB               	movwf	251,b	;volatile
-   988                           
-   989                           ; BSR set to: 14
-   990                           ;ECAN.c: 137: RXM0SIDH = 0xFF;
-   991  0038' 010E               	movlb	14	; () banked
-   992  003A' 69F8               	setf	248,b	;volatile
-   993                           
-   994                           ;ECAN.c: 138: RXM0SIDL = 0xE0;
-   995  003C' 0EE0               	movlw	224
-   996  003E' 010E               	movlb	14	; () banked
-   997  0040' 6FF9               	movwf	249,b	;volatile
-   998                           
-   999                           ;ECAN.c: 141: RXM1EIDH = 0x00;
-  1000  0042' 0E00               	movlw	0
-  1001  0044' 010E               	movlb	14	; () banked
-  1002  0046' 6FFE               	movwf	254,b	;volatile
-  1003                           
-  1004                           ;ECAN.c: 142: RXM1EIDL = 0x00;
-  1005  0048' 0E00               	movlw	0
-  1006  004A' 010E               	movlb	14	; () banked
-  1007  004C' 6FFF               	movwf	255,b	;volatile
-  1008                           
-  1009                           ; BSR set to: 14
-  1010                           ;ECAN.c: 143: RXM1SIDH = 0xFF;
-  1011  004E' 010E               	movlb	14	; () banked
-  1012  0050' 69FC               	setf	252,b	;volatile
-  1013                           
-  1014                           ;ECAN.c: 144: RXM1SIDL = 0xE0;
-  1015  0052' 0EE0               	movlw	224
-  1016  0054' 010E               	movlb	14	; () banked
-  1017  0056' 6FFD               	movwf	253,b	;volatile
-  1018                           
-  1019                           ;ECAN.c: 148: RXFCON0 = 0x07;
-  1020  0058' 0E07               	movlw	7
-  1021  005A' 010E               	movlb	14	; () banked
-  1022  005C' 6F46               	movwf	70,b	;volatile
-  1023                           
-  1024                           ;ECAN.c: 149: RXFCON1 = 0x00;
-  1025  005E' 0E00               	movlw	0
-  1026  0060' 010E               	movlb	14	; () banked
-  1027  0062' 6F47               	movwf	71,b	;volatile
-  1028                           
-  1029                           ;ECAN.c: 152: MSEL0 = 0xC0;
-  1030  0064' 0EC0               	movlw	192
-  1031  0066' 010E               	movlb	14	; () banked
-  1032  0068' 6F79               	movwf	121,b	;volatile
-  1033                           
-  1034                           ; BSR set to: 14
-  1035                           ;ECAN.c: 153: MSEL1 = 0xFF;
-  1036  006A' 010E               	movlb	14	; () banked
-  1037  006C' 697A               	setf	122,b	;volatile
+   979                           ;I2C.c: 16: INTCONbits.PEIE_GIEL = 1;
+   980  000460  8CF2               	bsf	intcon,6,c	;volatile
+   981  000462  0012               	return		;funcret
+   982  000464                     __end_of_I2CSetup:
+   983                           	opt stack 0
+   984                           tblptru	equ	0xFF8
+   985                           tblptrh	equ	0xFF7
+   986                           tblptrl	equ	0xFF6
+   987                           tablat	equ	0xFF5
+   988                           intcon	equ	0xFF2
+   989                           postinc0	equ	0xFEE
+   990                           wreg	equ	0xFE8
+   991                           status	equ	0xFD8
+   992                           
+   993 ;; *************** function _ECAN_Transmit *****************
+   994 ;; Defined at:
+   995 ;;		line 305 in file "ECAN.c"
+   996 ;; Parameters:    Size  Location     Type
+   997 ;;  SIDH            1    wreg     unsigned char 
+   998 ;;  SIDL            1   15[COMRAM] unsigned char 
+   999 ;;  DLC             1   16[COMRAM] unsigned char 
+  1000 ;;  TRANSMIT_ID     1   17[COMRAM] unsigned char 
+  1001 ;;  DATA1           1   18[COMRAM] unsigned char 
+  1002 ;;  DATA2           1   19[COMRAM] unsigned char 
+  1003 ;;  DATA3           1   20[COMRAM] unsigned char 
+  1004 ;;  DATA4           1   21[COMRAM] unsigned char 
+  1005 ;;  DATA5           1   22[COMRAM] unsigned char 
+  1006 ;;  DATA6           1   23[COMRAM] unsigned char 
+  1007 ;;  DATA7           1   24[COMRAM] unsigned char 
+  1008 ;; Auto vars:     Size  Location     Type
+  1009 ;;  SIDH            1   25[COMRAM] unsigned char 
+  1010 ;; Return value:  Size  Location     Type
+  1011 ;;		None               void
+  1012 ;; Registers used:
+  1013 ;;		wreg, status,2
+  1014 ;; Tracked objects:
+  1015 ;;		On entry : 0/0
+  1016 ;;		On exit  : 0/0
+  1017 ;;		Unchanged: 0/0
+  1018 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+  1019 ;;      Params:        10       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1020 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1021 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1022 ;;      Totals:        11       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1023 ;;Total ram usage:       11 bytes
+  1024 ;; Hardware stack levels used:    1
+  1025 ;; Hardware stack levels required when called:    2
+  1026 ;; This function calls:
+  1027 ;;		Nothing
+  1028 ;; This function is called by:
+  1029 ;;		_main
+  1030 ;; This function uses a non-reentrant model
+  1031 ;;
+  1032                           
+  1033                           	psect	text5
+  1034  000370                     __ptext5:
+  1035                           	opt stack 0
+  1036  000370                     _ECAN_Transmit:
+  1037                           	opt stack 28
   1038                           
-  1039                           ; BSR set to: 14
-  1040                           ;ECAN.c: 154: MSEL2 = 0xFF;
-  1041  006E' 010E               	movlb	14	; () banked
-  1042  0070' 697B               	setf	123,b	;volatile
-  1043                           
-  1044                           ; BSR set to: 14
-  1045                           ;ECAN.c: 155: MSEL3 = 0xFF;
-  1046  0072' 010E               	movlb	14	; () banked
-  1047  0074' 697C               	setf	124,b	;volatile
-  1048                           
-  1049                           ;ECAN.c: 159: RXFBCON0 = 0x10;
-  1050  0076' 0E10               	movlw	16
-  1051  0078' 010E               	movlb	14	; () banked
-  1052  007A' 6F71               	movwf	113,b	;volatile
-  1053                           
-  1054                           ;ECAN.c: 160: RXFBCON1 = 0xF2;
-  1055  007C' 0EF2               	movlw	242
-  1056  007E' 010E               	movlb	14	; () banked
-  1057  0080' 6F72               	movwf	114,b	;volatile
-  1058                           
-  1059                           ; BSR set to: 14
-  1060                           ;ECAN.c: 162: RXFBCON2 = 0xFF;
-  1061  0082' 010E               	movlb	14	; () banked
-  1062  0084' 6973               	setf	115,b	;volatile
-  1063                           
-  1064                           ; BSR set to: 14
-  1065                           ;ECAN.c: 163: RXFBCON3 = 0xFF;
-  1066  0086' 010E               	movlb	14	; () banked
-  1067  0088' 6974               	setf	116,b	;volatile
+  1039                           ;incstack = 0
+  1040                           ;ECAN_Transmit@SIDH stored from wreg
+  1041  000370  6E3F               	movwf	ECAN_Transmit@SIDH,c
+  1042                           
+  1043                           ;ECAN.c: 317: TXB0EIDH = 0x00;
+  1044  000372  0E00               	movlw	0
+  1045  000374  010F               	movlb	15	; () banked
+  1046  000376  6F23               	movwf	35,b	;volatile
+  1047                           
+  1048                           ;ECAN.c: 318: TXB0EIDL = 0x00;
+  1049  000378  0E00               	movlw	0
+  1050  00037A  010F               	movlb	15	; () banked
+  1051  00037C  6F24               	movwf	36,b	;volatile
+  1052                           
+  1053                           ; BSR set to: 15
+  1054                           ;ECAN.c: 321: TXB0SIDH = SIDH;
+  1055  00037E  C03F  FF21         	movff	ECAN_Transmit@SIDH,3873	;volatile
+  1056                           
+  1057                           ; BSR set to: 15
+  1058                           ;ECAN.c: 322: TXB0SIDL = SIDL;
+  1059  000382  C035  FF22         	movff	ECAN_Transmit@SIDL,3874	;volatile
+  1060                           
+  1061                           ; BSR set to: 15
+  1062                           ;ECAN.c: 323: TXB0DLC = DLC;
+  1063  000386  C036  FF25         	movff	ECAN_Transmit@DLC,3877	;volatile
+  1064                           
+  1065                           ; BSR set to: 15
+  1066                           ;ECAN.c: 332: TXB0D0 = TRANSMIT_ID;
+  1067  00038A  C037  FF26         	movff	ECAN_Transmit@TRANSMIT_ID,3878	;volatile
   1068                           
-  1069                           ; BSR set to: 14
-  1070                           ;ECAN.c: 164: RXFBCON4 = 0xFF;
-  1071  008A' 010E               	movlb	14	; () banked
-  1072  008C' 6975               	setf	117,b	;volatile
-  1073                           
-  1074                           ; BSR set to: 14
-  1075                           ;ECAN.c: 165: RXFBCON5 = 0xFF;
-  1076  008E' 010E               	movlb	14	; () banked
-  1077  0090' 6976               	setf	118,b	;volatile
-  1078                           
-  1079                           ; BSR set to: 14
-  1080                           ;ECAN.c: 166: RXFBCON6 = 0xFF;
-  1081  0092' 010E               	movlb	14	; () banked
-  1082  0094' 6977               	setf	119,b	;volatile
-  1083                           
-  1084                           ; BSR set to: 14
-  1085                           ;ECAN.c: 167: RXFBCON7 = 0xFF;
-  1086  0096' 010E               	movlb	14	; () banked
-  1087  0098' 6978               	setf	120,b	;volatile
+  1069                           ; BSR set to: 15
+  1070                           ;ECAN.c: 333: TXB0D1 = DATA1;
+  1071  00038E  C038  FF27         	movff	ECAN_Transmit@DATA1,3879	;volatile
+  1072                           
+  1073                           ; BSR set to: 15
+  1074                           ;ECAN.c: 334: TXB0D2 = DATA2;
+  1075  000392  C039  FF28         	movff	ECAN_Transmit@DATA2,3880	;volatile
+  1076                           
+  1077                           ; BSR set to: 15
+  1078                           ;ECAN.c: 335: TXB0D3 = DATA3;
+  1079  000396  C03A  FF29         	movff	ECAN_Transmit@DATA3,3881	;volatile
+  1080                           
+  1081                           ; BSR set to: 15
+  1082                           ;ECAN.c: 336: TXB0D4 = DATA4;
+  1083  00039A  C03B  FF2A         	movff	ECAN_Transmit@DATA4,3882	;volatile
+  1084                           
+  1085                           ; BSR set to: 15
+  1086                           ;ECAN.c: 337: TXB0D5 = DATA5;
+  1087  00039E  C03C  FF2B         	movff	ECAN_Transmit@DATA5,3883	;volatile
   1088                           
-  1089                           ;ECAN.c: 173: RXF0EIDH = 0x00;
-  1090  009A' 0E00               	movlw	0
-  1091  009C' 010E               	movlb	14	; () banked
-  1092  009E' 6FE2               	movwf	226,b	;volatile
-  1093                           
-  1094                           ;ECAN.c: 174: RXF0EIDL = 0x00;
-  1095  00A0' 0E00               	movlw	0
-  1096  00A2' 010E               	movlb	14	; () banked
-  1097  00A4' 6FE3               	movwf	227,b	;volatile
-  1098                           
-  1099                           ;ECAN.c: 175: RXF0SIDH = 0x32;
-  1100  00A6' 0E32               	movlw	50
-  1101  00A8' 010E               	movlb	14	; () banked
-  1102  00AA' 6FE0               	movwf	224,b	;volatile
-  1103                           
-  1104                           ;ECAN.c: 176: RXF0SIDL = 0xC0;
-  1105  00AC' 0EC0               	movlw	192
-  1106  00AE' 010E               	movlb	14	; () banked
-  1107  00B0' 6FE1               	movwf	225,b	;volatile
-  1108                           
-  1109                           ;ECAN.c: 177: RXF1EIDH = 0x00;
-  1110  00B2' 0E00               	movlw	0
-  1111  00B4' 010E               	movlb	14	; () banked
-  1112  00B6' 6FE6               	movwf	230,b	;volatile
-  1113                           
-  1114                           ;ECAN.c: 178: RXF1EIDL = 0x00;
-  1115  00B8' 0E00               	movlw	0
-  1116  00BA' 010E               	movlb	14	; () banked
-  1117  00BC' 6FE7               	movwf	231,b	;volatile
-  1118                           
-  1119                           ;ECAN.c: 179: RXF1SIDH = 0x33;
-  1120  00BE' 0E33               	movlw	51
-  1121  00C0' 010E               	movlb	14	; () banked
-  1122  00C2' 6FE4               	movwf	228,b	;volatile
-  1123                           
-  1124                           ;ECAN.c: 180: RXF1SIDL = 0x40;
-  1125  00C4' 0E40               	movlw	64
-  1126  00C6' 010E               	movlb	14	; () banked
-  1127  00C8' 6FE5               	movwf	229,b	;volatile
-  1128                           
-  1129                           ;ECAN.c: 181: RXF2EIDH = 0x00;
-  1130  00CA' 0E00               	movlw	0
-  1131  00CC' 010E               	movlb	14	; () banked
-  1132  00CE' 6FEA               	movwf	234,b	;volatile
-  1133                           
-  1134                           ;ECAN.c: 182: RXF2EIDL = 0x00;
-  1135  00D0' 0E00               	movlw	0
-  1136  00D2' 010E               	movlb	14	; () banked
-  1137  00D4' 6FEB               	movwf	235,b	;volatile
-  1138                           
-  1139                           ;ECAN.c: 183: RXF2SIDH = 0x33;
-  1140  00D6' 0E33               	movlw	51
-  1141  00D8' 010E               	movlb	14	; () banked
-  1142  00DA' 6FE8               	movwf	232,b	;volatile
-  1143                           
-  1144                           ;ECAN.c: 184: RXF2SIDL = 0xC0;
-  1145  00DC' 0EC0               	movlw	192
-  1146  00DE' 010E               	movlb	14	; () banked
-  1147  00E0' 6FE9               	movwf	233,b	;volatile
-  1148                           
-  1149                           ;ECAN.c: 187: if (0 ==1)
-  1150  00E2' D00E               	goto	l1147
-  1151  00E4'                    l1141:
-  1152  00E4' 386E               	swapf	3950,w,c	;volatile
-  1153  00E6' 32E8               	rrcf	wreg,f,c
-  1154  00E8' 0B07               	andlw	7
-  1155  00EA' 0A40               	xorlw	64
-  1156  00EC' A4D8               	btfss	status,2,c
-  1157  00EE' D017               	goto	l1155
-  1158  00F0' D7F9               	goto	l1141
-  1159  00F2'                    l1145:
-  1160  00F2' 386E               	swapf	3950,w,c	;volatile
-  1161  00F4' 32E8               	rrcf	wreg,f,c
-  1162  00F6' 0B07               	andlw	7
-  1163  00F8' 0A60               	xorlw	96
-  1164  00FA' A4D8               	btfss	status,2,c
-  1165  00FC' D010               	goto	l1155
-  1166  00FE' D7F9               	goto	l1145
-  1167  0100'                    l1147:
-  1168                           
-  1169                           ;ECAN.c: 198: CANCON = 0x00;
-  1170  0100' 0E00               	movlw	0
-  1171  0102' 6E6F               	movwf	3951,c	;volatile
-  1172  0104'                    l1149:
-  1173  0104' 386E               	swapf	3950,w,c	;volatile
-  1174  0106' 32E8               	rrcf	wreg,f,c
-  1175  0108' 0B07               	andlw	7
-  1176  010A' 0900               	iorlw	0
-  1177  010C' A4D8               	btfss	status,2,c
-  1178  010E' D007               	goto	l1155
-  1179  0110' D7F9               	goto	l1149
-  1180  0112'                    l1153:
-  1181  0112' 386E               	swapf	3950,w,c	;volatile
-  1182  0114' 32E8               	rrcf	wreg,f,c
-  1183  0116' 0B07               	andlw	7
-  1184  0118' 0A40               	xorlw	64
-  1185  011A' B4D8               	btfsc	status,2,c
-  1186  011C' D7FA               	goto	l1153
-  1187  011E'                    l1155:
-  1188                           
-  1189                           ;ECAN.c: 206: }
-  1190                           ;ECAN.c: 209: RXB0CON = 0x00;
-  1191  011E' 0E00               	movlw	0
-  1192  0120' 6E60               	movwf	3936,c	;volatile
-  1193                           
-  1194                           ;ECAN.c: 210: RXB1CON = 0x00;
-  1195  0122' 0E00               	movlw	0
-  1196  0124' 010F               	movlb	15	; () banked
-  1197  0126' 6F30               	movwf	48,b	;volatile
-  1198                           
-  1199                           ; BSR set to: 15
-  1200  0128' 0012               	return		;funcret
-  1201  012A'                    __end_of_CANSetup:
-  1202                           	opt stack 0
-  1203                           tblptru	equ	0xFF8
-  1204                           tblptrh	equ	0xFF7
-  1205                           tblptrl	equ	0xFF6
-  1206                           tablat	equ	0xFF5
-  1207                           intcon	equ	0xFF2
-  1208                           postinc0	equ	0xFEE
-  1209                           wreg	equ	0xFE8
-  1210                           status	equ	0xFD8
-  1211                           
-  1212 ;; *************** function _ISR *****************
-  1213 ;; Defined at:
-  1214 ;;		line 9 in file "main.c"
-  1215 ;; Parameters:    Size  Location     Type
-  1216 ;;		None
-  1217 ;; Auto vars:     Size  Location     Type
-  1218 ;;		None
-  1219 ;; Return value:  Size  Location     Type
-  1220 ;;		None               void
-  1221 ;; Registers used:
-  1222 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
-  1223 ;; Tracked objects:
-  1224 ;;		On entry : 0/0
-  1225 ;;		On exit  : 0/0
-  1226 ;;		Unchanged: 0/0
-  1227 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1089                           ; BSR set to: 15
+  1090                           ;ECAN.c: 338: TXB0D6 = DATA6;
+  1091  0003A2  C03D  FF2C         	movff	ECAN_Transmit@DATA6,3884	;volatile
+  1092                           
+  1093                           ; BSR set to: 15
+  1094                           ;ECAN.c: 339: TXB0D7 = DATA7;
+  1095  0003A6  C03E  FF2D         	movff	ECAN_Transmit@DATA7,3885	;volatile
+  1096                           
+  1097                           ; BSR set to: 15
+  1098                           ;ECAN.c: 341: TXB0CONbits.TXREQ = 1;
+  1099  0003AA  010F               	movlb	15	; () banked
+  1100  0003AC  8720               	bsf	32,3,b	;volatile
+  1101                           
+  1102                           ; BSR set to: 15
+  1103  0003AE  0012               	return		;funcret
+  1104  0003B0                     __end_of_ECAN_Transmit:
+  1105                           	opt stack 0
+  1106                           tblptru	equ	0xFF8
+  1107                           tblptrh	equ	0xFF7
+  1108                           tblptrl	equ	0xFF6
+  1109                           tablat	equ	0xFF5
+  1110                           intcon	equ	0xFF2
+  1111                           postinc0	equ	0xFEE
+  1112                           wreg	equ	0xFE8
+  1113                           status	equ	0xFD8
+  1114                           
+  1115 ;; *************** function _Delay *****************
+  1116 ;; Defined at:
+  1117 ;;		line 34 in file "Other.c"
+  1118 ;; Parameters:    Size  Location     Type
+  1119 ;;  count           2   15[COMRAM] unsigned int 
+  1120 ;; Auto vars:     Size  Location     Type
+  1121 ;;		None
+  1122 ;; Return value:  Size  Location     Type
+  1123 ;;		None               void
+  1124 ;; Registers used:
+  1125 ;;		wreg, status,2, status,0
+  1126 ;; Tracked objects:
+  1127 ;;		On entry : 0/0
+  1128 ;;		On exit  : 0/0
+  1129 ;;		Unchanged: 0/0
+  1130 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14
-  1228 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1131 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-  1229 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1132 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-  1230 ;;      Temps:         14       0       0       0       0       0       0       0       0       0       0       0       
+  1133 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-  1231 ;;      Totals:        14       0       0       0       0       0       0       0       0       0       0       0       
+  1134 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-  1232 ;;Total ram usage:       14 bytes
-  1233 ;; Hardware stack levels used:    1
-  1234 ;; Hardware stack levels required when called:    1
-  1235 ;; This function calls:
-  1236 ;;		_checkI2C
-  1237 ;; This function is called by:
-  1238 ;;		Interrupt level 2
-  1239 ;; This function uses a non-reentrant model
-  1240 ;;
-  1241                           
-  1242                           	psect	intcode
-  1243  0000'                    __pintcode:
-  1244                           	opt stack 0
-  1245  0000'                    _ISR:
-  1246                           	opt stack 27
-  1247                           
-  1248                           ; BSR set to: 15
-  1249                           ;incstack = 0
-  1250  0000' 8200'              	bsf	btemp,1,c	;set compiler interrupt flag (level 2)
-  1251  0002' CFFA F001'         	movff	pclath,??_ISR
-  1252  0006' CFFB F002'         	movff	pclatu,??_ISR+1
-  1253  000A' CFE9 F003'         	movff	fsr0l,??_ISR+2
-  1254  000E' CFEA F004'         	movff	fsr0h,??_ISR+3
-  1255  0012' CFE1 F005'         	movff	fsr1l,??_ISR+4
-  1256  0016' CFE2 F006'         	movff	fsr1h,??_ISR+5
-  1257  001A' CFD9 F007'         	movff	fsr2l,??_ISR+6
-  1258  001E' CFDA F008'         	movff	fsr2h,??_ISR+7
-  1259  0022' CFF3 F009'         	movff	prodl,??_ISR+8
-  1260  0026' CFF4 F00A'         	movff	prodh,??_ISR+9
-  1261  002A' CFF6 F00B'         	movff	tblptrl,??_ISR+10
-  1262  002E' CFF7 F00C'         	movff	tblptrh,??_ISR+11
-  1263  0032' CFF8 F00D'         	movff	tblptru,??_ISR+12
-  1264  0036' CFF5 F00E'         	movff	tablat,??_ISR+13
-  1265                           
-  1266                           ;main.c: 11: checkI2C();
-  1267  003A' EC00' F000'        	call	_checkI2C	;wreg free
-  1268  003E' C00E' FFF5         	movff	??_ISR+13,tablat
-  1269  0042' C00D' FFF8         	movff	??_ISR+12,tblptru
-  1270  0046' C00C' FFF7         	movff	??_ISR+11,tblptrh
-  1271  004A' C00B' FFF6         	movff	??_ISR+10,tblptrl
-  1272  004E' C00A' FFF4         	movff	??_ISR+9,prodh
-  1273  0052' C009' FFF3         	movff	??_ISR+8,prodl
-  1274  0056' C008' FFDA         	movff	??_ISR+7,fsr2h
-  1275  005A' C007' FFD9         	movff	??_ISR+6,fsr2l
-  1276  005E' C006' FFE2         	movff	??_ISR+5,fsr1h
-  1277  0062' C005' FFE1         	movff	??_ISR+4,fsr1l
-  1278  0066' C004' FFEA         	movff	??_ISR+3,fsr0h
-  1279  006A' C003' FFE9         	movff	??_ISR+2,fsr0l
-  1280  006E' C002' FFFB         	movff	??_ISR+1,pclatu
-  1281  0072' C001' FFFA         	movff	??_ISR,pclath
-  1282  0076' 9200'              	bcf	btemp,1,c	;clear compiler interrupt flag (level 2)
-  1283  0078' 0011               	retfie		f
-  1284  007A'                    __end_of_ISR:
-  1285                           	opt stack 0
-  1286                           pclatu	equ	0xFFB
-  1287                           pclath	equ	0xFFA
-  1288                           tblptru	equ	0xFF8
-  1289                           tblptrh	equ	0xFF7
-  1290                           tblptrl	equ	0xFF6
-  1291                           tablat	equ	0xFF5
-  1292                           prodh	equ	0xFF4
-  1293                           prodl	equ	0xFF3
-  1294                           intcon	equ	0xFF2
-  1295                           postinc0	equ	0xFEE
-  1296                           fsr0h	equ	0xFEA
-  1297                           fsr0l	equ	0xFE9
-  1298                           wreg	equ	0xFE8
-  1299                           fsr1h	equ	0xFE2
-  1300                           fsr1l	equ	0xFE1
-  1301                           fsr2h	equ	0xFDA
-  1302                           fsr2l	equ	0xFD9
-  1303                           status	equ	0xFD8
-  1304                           
-  1305 ;; *************** function _checkI2C *****************
-  1306 ;; Defined at:
-  1307 ;;		line 29 in file "I2C.c"
-  1308 ;; Parameters:    Size  Location     Type
-  1309 ;;		None
-  1310 ;; Auto vars:     Size  Location     Type
-  1311 ;;  sspBuf          1    0[COMRAM] unsigned char 
-  1312 ;; Return value:  Size  Location     Type
-  1313 ;;		None               void
-  1314 ;; Registers used:
-  1315 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
-  1316 ;; Tracked objects:
-  1317 ;;		On entry : 0/0
-  1318 ;;		On exit  : 0/0
-  1319 ;;		Unchanged: 0/0
-  1320 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1135 ;;Total ram usage:        2 bytes
+  1136 ;; Hardware stack levels used:    1
+  1137 ;; Hardware stack levels required when called:    2
+  1138 ;; This function calls:
+  1139 ;;		Nothing
+  1140 ;; This function is called by:
+  1141 ;;		_main
+  1142 ;; This function uses a non-reentrant model
+  1143 ;;
+  1144                           
+  1145                           	psect	text6
+  1146  000464                     __ptext6:
+  1147                           	opt stack 0
+  1148  000464                     _Delay:
+  1149                           	opt stack 28
+  1150  000464                     l1264:
+  1151  000464  0635               	decf	Delay@count,f,c
+  1152  000466  A0D8               	btfss	status,0,c
+  1153  000468  0636               	decf	Delay@count+1,f,c
+  1154  00046A  2835               	incf	Delay@count,w,c
+  1155  00046C  E1FB               	bnz	l1264
+  1156  00046E  2836               	incf	Delay@count+1,w,c
+  1157  000470  B4D8               	btfsc	status,2,c
+  1158  000472  0012               	return	
+  1159  000474  D7F7               	goto	l1264
+  1160  000476                     __end_of_Delay:
+  1161                           	opt stack 0
+  1162                           tblptru	equ	0xFF8
+  1163                           tblptrh	equ	0xFF7
+  1164                           tblptrl	equ	0xFF6
+  1165                           tablat	equ	0xFF5
+  1166                           intcon	equ	0xFF2
+  1167                           postinc0	equ	0xFEE
+  1168                           wreg	equ	0xFE8
+  1169                           status	equ	0xFD8
+  1170                           
+  1171 ;; *************** function _CANSetup *****************
+  1172 ;; Defined at:
+  1173 ;;		line 113 in file "ECAN.c"
+  1174 ;; Parameters:    Size  Location     Type
+  1175 ;;		None
+  1176 ;; Auto vars:     Size  Location     Type
+  1177 ;;		None
+  1178 ;; Return value:  Size  Location     Type
+  1179 ;;		None               void
+  1180 ;; Registers used:
+  1181 ;;		wreg, status,2, status,0
+  1182 ;; Tracked objects:
+  1183 ;;		On entry : 0/0
+  1184 ;;		On exit  : 0/0
+  1185 ;;		Unchanged: 0/0
+  1186 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14
-  1321 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1187 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-  1322 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+  1188 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-  1323 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1189 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-  1324 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+  1190 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0
-  1325 ;;Total ram usage:        1 bytes
-  1326 ;; Hardware stack levels used:    1
-  1327 ;; This function calls:
-  1328 ;;		Nothing
-  1329 ;; This function is called by:
-  1330 ;;		_ISR
-  1331 ;; This function uses a non-reentrant model
-  1332 ;;
+  1191 ;;Total ram usage:        0 bytes
+  1192 ;; Hardware stack levels used:    1
+  1193 ;; Hardware stack levels required when called:    2
+  1194 ;; This function calls:
+  1195 ;;		Nothing
+  1196 ;; This function is called by:
+  1197 ;;		_main
+  1198 ;; This function uses a non-reentrant model
+  1199 ;;
+  1200                           
+  1201                           	psect	text7
+  1202  000086                     __ptext7:
+  1203                           	opt stack 0
+  1204  000086                     _CANSetup:
+  1205                           	opt stack 28
+  1206                           
+  1207                           ;ECAN.c: 116: CANCON = 0x80;
+  1208                           
+  1209                           ;incstack = 0
+  1210  000086  0E80               	movlw	128
+  1211  000088  6E6F               	movwf	3951,c	;volatile
+  1212  00008A                     l1130:
+  1213  00008A  386E               	swapf	3950,w,c	;volatile
+  1214  00008C  32E8               	rrcf	wreg,f,c
+  1215  00008E  0B07               	andlw	7
+  1216  000090  0A04               	xorlw	4
+  1217  000092  A4D8               	btfss	status,2,c
+  1218  000094  D7FA               	goto	l1130
+  1219                           
+  1220                           ;ECAN.c: 120: ECANCON = 0x40;
+  1221  000096  0E40               	movlw	64
+  1222  000098  6E72               	movwf	3954,c	;volatile
+  1223                           
+  1224                           ;ECAN.c: 124: BRGCON1 = 0x81;
+  1225  00009A  0E81               	movlw	129
+  1226  00009C  010E               	movlb	14	; () banked
+  1227  00009E  6F43               	movwf	67,b	;volatile
+  1228                           
+  1229                           ;ECAN.c: 125: BRGCON2 = 0xB8;
+  1230  0000A0  0EB8               	movlw	184
+  1231  0000A2  010E               	movlb	14	; () banked
+  1232  0000A4  6F44               	movwf	68,b	;volatile
+  1233                           
+  1234                           ;ECAN.c: 126: BRGCON3 = 0x05;
+  1235  0000A6  0E05               	movlw	5
+  1236  0000A8  010E               	movlb	14	; () banked
+  1237  0000AA  6F45               	movwf	69,b	;volatile
+  1238                           
+  1239                           ;ECAN.c: 131: BSEL0 = 0xF8;
+  1240  0000AC  0EF8               	movlw	248
+  1241  0000AE  010E               	movlb	14	; () banked
+  1242  0000B0  6F7D               	movwf	125,b	;volatile
+  1243                           
+  1244                           ;ECAN.c: 135: RXM0EIDH = 0x00;
+  1245  0000B2  0E00               	movlw	0
+  1246  0000B4  010E               	movlb	14	; () banked
+  1247  0000B6  6FFA               	movwf	250,b	;volatile
+  1248                           
+  1249                           ;ECAN.c: 136: RXM0EIDL = 0x00;
+  1250  0000B8  0E00               	movlw	0
+  1251  0000BA  010E               	movlb	14	; () banked
+  1252  0000BC  6FFB               	movwf	251,b	;volatile
+  1253                           
+  1254                           ; BSR set to: 14
+  1255                           ;ECAN.c: 137: RXM0SIDH = 0xFF;
+  1256  0000BE  010E               	movlb	14	; () banked
+  1257  0000C0  69F8               	setf	248,b	;volatile
+  1258                           
+  1259                           ;ECAN.c: 138: RXM0SIDL = 0xE0;
+  1260  0000C2  0EE0               	movlw	224
+  1261  0000C4  010E               	movlb	14	; () banked
+  1262  0000C6  6FF9               	movwf	249,b	;volatile
+  1263                           
+  1264                           ;ECAN.c: 141: RXM1EIDH = 0x00;
+  1265  0000C8  0E00               	movlw	0
+  1266  0000CA  010E               	movlb	14	; () banked
+  1267  0000CC  6FFE               	movwf	254,b	;volatile
+  1268                           
+  1269                           ;ECAN.c: 142: RXM1EIDL = 0x00;
+  1270  0000CE  0E00               	movlw	0
+  1271  0000D0  010E               	movlb	14	; () banked
+  1272  0000D2  6FFF               	movwf	255,b	;volatile
+  1273                           
+  1274                           ; BSR set to: 14
+  1275                           ;ECAN.c: 143: RXM1SIDH = 0xFF;
+  1276  0000D4  010E               	movlb	14	; () banked
+  1277  0000D6  69FC               	setf	252,b	;volatile
+  1278                           
+  1279                           ;ECAN.c: 144: RXM1SIDL = 0xE0;
+  1280  0000D8  0EE0               	movlw	224
+  1281  0000DA  010E               	movlb	14	; () banked
+  1282  0000DC  6FFD               	movwf	253,b	;volatile
+  1283                           
+  1284                           ;ECAN.c: 148: RXFCON0 = 0x07;
+  1285  0000DE  0E07               	movlw	7
+  1286  0000E0  010E               	movlb	14	; () banked
+  1287  0000E2  6F46               	movwf	70,b	;volatile
+  1288                           
+  1289                           ;ECAN.c: 149: RXFCON1 = 0x00;
+  1290  0000E4  0E00               	movlw	0
+  1291  0000E6  010E               	movlb	14	; () banked
+  1292  0000E8  6F47               	movwf	71,b	;volatile
+  1293                           
+  1294                           ;ECAN.c: 152: MSEL0 = 0xC0;
+  1295  0000EA  0EC0               	movlw	192
+  1296  0000EC  010E               	movlb	14	; () banked
+  1297  0000EE  6F79               	movwf	121,b	;volatile
+  1298                           
+  1299                           ; BSR set to: 14
+  1300                           ;ECAN.c: 153: MSEL1 = 0xFF;
+  1301  0000F0  010E               	movlb	14	; () banked
+  1302  0000F2  697A               	setf	122,b	;volatile
+  1303                           
+  1304                           ; BSR set to: 14
+  1305                           ;ECAN.c: 154: MSEL2 = 0xFF;
+  1306  0000F4  010E               	movlb	14	; () banked
+  1307  0000F6  697B               	setf	123,b	;volatile
+  1308                           
+  1309                           ; BSR set to: 14
+  1310                           ;ECAN.c: 155: MSEL3 = 0xFF;
+  1311  0000F8  010E               	movlb	14	; () banked
+  1312  0000FA  697C               	setf	124,b	;volatile
+  1313                           
+  1314                           ;ECAN.c: 159: RXFBCON0 = 0x10;
+  1315  0000FC  0E10               	movlw	16
+  1316  0000FE  010E               	movlb	14	; () banked
+  1317  000100  6F71               	movwf	113,b	;volatile
+  1318                           
+  1319                           ;ECAN.c: 160: RXFBCON1 = 0xF2;
+  1320  000102  0EF2               	movlw	242
+  1321  000104  010E               	movlb	14	; () banked
+  1322  000106  6F72               	movwf	114,b	;volatile
+  1323                           
+  1324                           ; BSR set to: 14
+  1325                           ;ECAN.c: 162: RXFBCON2 = 0xFF;
+  1326  000108  010E               	movlb	14	; () banked
+  1327  00010A  6973               	setf	115,b	;volatile
+  1328                           
+  1329                           ; BSR set to: 14
+  1330                           ;ECAN.c: 163: RXFBCON3 = 0xFF;
+  1331  00010C  010E               	movlb	14	; () banked
+  1332  00010E  6974               	setf	116,b	;volatile
   1333                           
-  1334                           	psect	text7
-  1335  0000'                    __ptext7:
-  1336                           	opt stack 0
-  1337  0000'                    _checkI2C:
-  1338                           	opt stack 27
-  1339                           
-  1340                           ;I2C.c: 31: byte sspBuf;
-  1341                           ;I2C.c: 33: if (PIR1bits.SSPIF) {
-  1342                           
-  1343                           ;incstack = 0
-  1344  0000' A69E               	btfss	3998,3,c	;volatile
-  1345  0002' 0012               	return	
-  1346                           
-  1347                           ;I2C.c: 35: if (!SSPSTATbits.D_NOT_A) {
-  1348  0004' BAC7               	btfsc	4039,5,c	;volatile
-  1349  0006' D013               	goto	i2l1071
-  1350                           
-  1351                           ;I2C.c: 39: i2c_byte_count = 0;
-  1352  0008' 0E00               	movlw	0
-  1353  000A' 6E15'              	movwf	_i2c_byte_count,c	;volatile
-  1354                           
-  1355                           ;I2C.c: 41: if (SSPSTATbits.BF) {
-  1356  000C' B0C7               	btfsc	4039,0,c	;volatile
-  1357                           
-  1358                           ;I2C.c: 43: sspBuf = SSPBUF;
-  1359  000E' CFC9 F000'         	movff	4041,checkI2C@sspBuf	;volatile
-  1360                           
-  1361                           ;I2C.c: 44: }
-  1362                           ;I2C.c: 46: if (SSPSTATbits.R_NOT_W) {
-  1363  0012' A4C7               	btfss	4039,2,c	;volatile
-  1364  0014' D031               	goto	i2l1093
-  1365                           
-  1366                           ;I2C.c: 48: SSPCON1bits.WCOL = 0;
-  1367  0016' 9EC6               	bcf	4038,7,c	;volatile
+  1334                           ; BSR set to: 14
+  1335                           ;ECAN.c: 164: RXFBCON4 = 0xFF;
+  1336  000110  010E               	movlb	14	; () banked
+  1337  000112  6975               	setf	117,b	;volatile
+  1338                           
+  1339                           ; BSR set to: 14
+  1340                           ;ECAN.c: 165: RXFBCON5 = 0xFF;
+  1341  000114  010E               	movlb	14	; () banked
+  1342  000116  6976               	setf	118,b	;volatile
+  1343                           
+  1344                           ; BSR set to: 14
+  1345                           ;ECAN.c: 166: RXFBCON6 = 0xFF;
+  1346  000118  010E               	movlb	14	; () banked
+  1347  00011A  6977               	setf	119,b	;volatile
+  1348                           
+  1349                           ; BSR set to: 14
+  1350                           ;ECAN.c: 167: RXFBCON7 = 0xFF;
+  1351  00011C  010E               	movlb	14	; () banked
+  1352  00011E  6978               	setf	120,b	;volatile
+  1353                           
+  1354                           ;ECAN.c: 173: RXF0EIDH = 0x00;
+  1355  000120  0E00               	movlw	0
+  1356  000122  010E               	movlb	14	; () banked
+  1357  000124  6FE2               	movwf	226,b	;volatile
+  1358                           
+  1359                           ;ECAN.c: 174: RXF0EIDL = 0x00;
+  1360  000126  0E00               	movlw	0
+  1361  000128  010E               	movlb	14	; () banked
+  1362  00012A  6FE3               	movwf	227,b	;volatile
+  1363                           
+  1364                           ;ECAN.c: 175: RXF0SIDH = 0x32;
+  1365  00012C  0E32               	movlw	50
+  1366  00012E  010E               	movlb	14	; () banked
+  1367  000130  6FE0               	movwf	224,b	;volatile
   1368                           
-  1369                           ;I2C.c: 49: SSPBUF = i2c_reg_map[i2c_reg_addr++];
-  1370  0018' 5016'              	movf	_i2c_reg_addr,w,c	;volatile
-  1371  001A' 0D01               	mullw	1
-  1372  001C' 0E00'              	movlw	low _i2c_reg_map
-  1373  001E' 24F3               	addwf	prodl,w,c
-  1374  0020' 6ED9               	movwf	fsr2l,c
-  1375  0022' 0E00'              	movlw	high _i2c_reg_map
-  1376  0024' 20F4               	addwfc	prodh,w,c
-  1377  0026' 6EDA               	movwf	fsr2h,c
-  1378  0028' 50DF               	movf	indf2,w,c
-  1379  002A' 6EC9               	movwf	4041,c	;volatile
-  1380  002C' D024               	goto	i2l1091
-  1381  002E'                    i2l1071:
-  1382                           
-  1383                           ;I2C.c: 52: else {
-  1384                           ;I2C.c: 56: i2c_byte_count++;
-  1385  002E' 2A15'              	incf	_i2c_byte_count,f,c	;volatile
-  1386                           
-  1387                           ;I2C.c: 58: if (SSPSTATbits.BF) {
-  1388  0030' B0C7               	btfsc	4039,0,c	;volatile
-  1389                           
-  1390                           ;I2C.c: 59: sspBuf = SSPBUF;
-  1391  0032' CFC9 F000'         	movff	4041,checkI2C@sspBuf	;volatile
-  1392                           
-  1393                           ;I2C.c: 60: }
-  1394                           ;I2C.c: 62: if (SSPSTATbits.R_NOT_W) {
-  1395  0036' A4C7               	btfss	4039,2,c	;volatile
-  1396  0038' D00E               	goto	i2l1085
-  1397                           
-  1398                           ;I2C.c: 65: SSPCON1bits.WCOL = 0;
-  1399  003A' 9EC6               	bcf	4038,7,c	;volatile
-  1400                           
-  1401                           ;I2C.c: 66: SSPBUF = i2c_reg_map[i2c_reg_addr++];
-  1402  003C' 5016'              	movf	_i2c_reg_addr,w,c	;volatile
-  1403  003E' 0D01               	mullw	1
-  1404  0040' 0E00'              	movlw	low _i2c_reg_map
-  1405  0042' 24F3               	addwf	prodl,w,c
-  1406  0044' 6ED9               	movwf	fsr2l,c
-  1407  0046' 0E00'              	movlw	high _i2c_reg_map
-  1408  0048' 20F4               	addwfc	prodh,w,c
-  1409  004A' 6EDA               	movwf	fsr2h,c
-  1410  004C' 50DF               	movf	indf2,w,c
-  1411  004E' 6EC9               	movwf	4041,c	;volatile
-  1412  0050' 2A16'              	incf	_i2c_reg_addr,f,c	;volatile
+  1369                           ;ECAN.c: 176: RXF0SIDL = 0xC0;
+  1370  000132  0EC0               	movlw	192
+  1371  000134  010E               	movlb	14	; () banked
+  1372  000136  6FE1               	movwf	225,b	;volatile
+  1373                           
+  1374                           ;ECAN.c: 177: RXF1EIDH = 0x00;
+  1375  000138  0E00               	movlw	0
+  1376  00013A  010E               	movlb	14	; () banked
+  1377  00013C  6FE6               	movwf	230,b	;volatile
+  1378                           
+  1379                           ;ECAN.c: 178: RXF1EIDL = 0x00;
+  1380  00013E  0E00               	movlw	0
+  1381  000140  010E               	movlb	14	; () banked
+  1382  000142  6FE7               	movwf	231,b	;volatile
+  1383                           
+  1384                           ;ECAN.c: 179: RXF1SIDH = 0x33;
+  1385  000144  0E33               	movlw	51
+  1386  000146  010E               	movlb	14	; () banked
+  1387  000148  6FE4               	movwf	228,b	;volatile
+  1388                           
+  1389                           ;ECAN.c: 180: RXF1SIDL = 0x40;
+  1390  00014A  0E40               	movlw	64
+  1391  00014C  010E               	movlb	14	; () banked
+  1392  00014E  6FE5               	movwf	229,b	;volatile
+  1393                           
+  1394                           ;ECAN.c: 181: RXF2EIDH = 0x00;
+  1395  000150  0E00               	movlw	0
+  1396  000152  010E               	movlb	14	; () banked
+  1397  000154  6FEA               	movwf	234,b	;volatile
+  1398                           
+  1399                           ;ECAN.c: 182: RXF2EIDL = 0x00;
+  1400  000156  0E00               	movlw	0
+  1401  000158  010E               	movlb	14	; () banked
+  1402  00015A  6FEB               	movwf	235,b	;volatile
+  1403                           
+  1404                           ;ECAN.c: 183: RXF2SIDH = 0x33;
+  1405  00015C  0E33               	movlw	51
+  1406  00015E  010E               	movlb	14	; () banked
+  1407  000160  6FE8               	movwf	232,b	;volatile
+  1408                           
+  1409                           ;ECAN.c: 184: RXF2SIDL = 0xC0;
+  1410  000162  0EC0               	movlw	192
+  1411  000164  010E               	movlb	14	; () banked
+  1412  000166  6FE9               	movwf	233,b	;volatile
   1413                           
-  1414                           ;I2C.c: 67: LATAbits.LATA6 = 1;
-  1415  0052' 8C89               	bsf	3977,6,c	;volatile
-  1416                           
-  1417                           ;I2C.c: 69: }
-  1418  0054' D011               	goto	i2l1093
-  1419  0056'                    i2l1085:
-  1420                           
-  1421                           ;I2C.c: 70: else {
-  1422                           ;I2C.c: 72: if (i2c_byte_count == 1) {
-  1423  0056' 0415'              	decf	_i2c_byte_count,w,c	;volatile
-  1424  0058' A4D8               	btfss	status,2,c
-  1425  005A' D003               	goto	i2l1089
-  1426                           
-  1427                           ;I2C.c: 74: i2c_reg_addr = sspBuf;
-  1428  005C' C000' F016'        	movff	checkI2C@sspBuf,_i2c_reg_addr	;volatile
-  1429                           
-  1430                           ;I2C.c: 76: }
-  1431  0060' D00B               	goto	i2l1093
-  1432  0062'                    i2l1089:
+  1414                           ;ECAN.c: 187: if (0 ==1)
+  1415  000168  D00E               	goto	l1164
+  1416  00016A                     l1158:
+  1417  00016A  386E               	swapf	3950,w,c	;volatile
+  1418  00016C  32E8               	rrcf	wreg,f,c
+  1419  00016E  0B07               	andlw	7
+  1420  000170  0A40               	xorlw	64
+  1421  000172  A4D8               	btfss	status,2,c
+  1422  000174  D017               	goto	l1172
+  1423  000176  D7F9               	goto	l1158
+  1424  000178                     l1162:
+  1425  000178  386E               	swapf	3950,w,c	;volatile
+  1426  00017A  32E8               	rrcf	wreg,f,c
+  1427  00017C  0B07               	andlw	7
+  1428  00017E  0A60               	xorlw	96
+  1429  000180  A4D8               	btfss	status,2,c
+  1430  000182  D010               	goto	l1172
+  1431  000184  D7F9               	goto	l1162
+  1432  000186                     l1164:
   1433                           
-  1434                           ;I2C.c: 77: else {
-  1435                           ;I2C.c: 80: i2c_reg_map[i2c_reg_addr++] = sspBuf;
-  1436  0062' 5016'              	movf	_i2c_reg_addr,w,c	;volatile
-  1437  0064' 0D01               	mullw	1
-  1438  0066' 0E00'              	movlw	low _i2c_reg_map
-  1439  0068' 24F3               	addwf	prodl,w,c
-  1440  006A' 6ED9               	movwf	fsr2l,c
-  1441  006C' 0E00'              	movlw	high _i2c_reg_map
-  1442  006E' 20F4               	addwfc	prodh,w,c
-  1443  0070' 6EDA               	movwf	fsr2h,c
-  1444  0072' C000' FFDF         	movff	checkI2C@sspBuf,indf2
-  1445  0076'                    i2l1091:
-  1446  0076' 2A16'              	incf	_i2c_reg_addr,f,c	;volatile
-  1447  0078'                    i2l1093:
-  1448                           
-  1449                           ;I2C.c: 81: }
-  1450                           ;I2C.c: 82: }
-  1451                           ;I2C.c: 83: }
-  1452                           ;I2C.c: 85: i2c_reg_addr %= sizeof(i2c_reg_map);
-  1453  0078' 0E0F               	movlw	15
-  1454  007A' 1616'              	andwf	_i2c_reg_addr,f,c	;volatile
-  1455                           
-  1456                           ;I2C.c: 88: PIR1bits.SSPIF = 0;
-  1457  007C' 969E               	bcf	3998,3,c	;volatile
+  1434                           ;ECAN.c: 198: CANCON = 0x00;
+  1435  000186  0E00               	movlw	0
+  1436  000188  6E6F               	movwf	3951,c	;volatile
+  1437  00018A                     l1166:
+  1438  00018A  386E               	swapf	3950,w,c	;volatile
+  1439  00018C  32E8               	rrcf	wreg,f,c
+  1440  00018E  0B07               	andlw	7
+  1441  000190  0900               	iorlw	0
+  1442  000192  A4D8               	btfss	status,2,c
+  1443  000194  D007               	goto	l1172
+  1444  000196  D7F9               	goto	l1166
+  1445  000198                     l1170:
+  1446  000198  386E               	swapf	3950,w,c	;volatile
+  1447  00019A  32E8               	rrcf	wreg,f,c
+  1448  00019C  0B07               	andlw	7
+  1449  00019E  0A40               	xorlw	64
+  1450  0001A0  B4D8               	btfsc	status,2,c
+  1451  0001A2  D7FA               	goto	l1170
+  1452  0001A4                     l1172:
+  1453                           
+  1454                           ;ECAN.c: 206: }
+  1455                           ;ECAN.c: 209: RXB0CON = 0x00;
+  1456  0001A4  0E00               	movlw	0
+  1457  0001A6  6E60               	movwf	3936,c	;volatile
   1458                           
-  1459                           ;I2C.c: 89: SSPCON1bits.CKP = 1;
-  1460  007E' 88C6               	bsf	4038,4,c	;volatile
-  1461  0080' 0012               	return	
-  1462  0082'                    __end_of_checkI2C:
-  1463                           	opt stack 0
-  1464  0000                     pclatu	equ	0xFFB
-  1465                           pclath	equ	0xFFA
-  1466                           tblptru	equ	0xFF8
-  1467                           tblptrh	equ	0xFF7
-  1468                           tblptrl	equ	0xFF6
-  1469                           tablat	equ	0xFF5
-  1470                           prodh	equ	0xFF4
-  1471                           prodl	equ	0xFF3
+  1459                           ;ECAN.c: 210: RXB1CON = 0x00;
+  1460  0001A8  0E00               	movlw	0
+  1461  0001AA  010F               	movlb	15	; () banked
+  1462  0001AC  6F30               	movwf	48,b	;volatile
+  1463                           
+  1464                           ; BSR set to: 15
+  1465  0001AE  0012               	return		;funcret
+  1466  0001B0                     __end_of_CANSetup:
+  1467                           	opt stack 0
+  1468                           tblptru	equ	0xFF8
+  1469                           tblptrh	equ	0xFF7
+  1470                           tblptrl	equ	0xFF6
+  1471                           tablat	equ	0xFF5
   1472                           intcon	equ	0xFF2
   1473                           postinc0	equ	0xFEE
-  1474                           fsr0h	equ	0xFEA
-  1475                           fsr0l	equ	0xFE9
-  1476                           wreg	equ	0xFE8
-  1477                           fsr1h	equ	0xFE2
-  1478                           fsr1l	equ	0xFE1
-  1479                           indf2	equ	0xFDF
-  1480                           fsr2h	equ	0xFDA
-  1481                           fsr2l	equ	0xFD9
-  1482                           status	equ	0xFD8
-  1483                           pclatu	equ	0xFFB
-  1484                           pclath	equ	0xFFA
-  1485                           tblptru	equ	0xFF8
-  1486                           tblptrh	equ	0xFF7
-  1487                           tblptrl	equ	0xFF6
-  1488                           tablat	equ	0xFF5
-  1489                           prodh	equ	0xFF4
-  1490                           prodl	equ	0xFF3
-  1491                           intcon	equ	0xFF2
-  1492                           postinc0	equ	0xFEE
-  1493                           fsr0h	equ	0xFEA
-  1494                           fsr0l	equ	0xFE9
-  1495                           wreg	equ	0xFE8
-  1496                           fsr1h	equ	0xFE2
-  1497                           fsr1l	equ	0xFE1
-  1498                           indf2	equ	0xFDF
-  1499                           fsr2h	equ	0xFDA
-  1500                           fsr2l	equ	0xFD9
-  1501                           status	equ	0xFD8
-  1502                           
-  1503                           	psect	rparam
-  1504  0000                     pclatu	equ	0xFFB
-  1505                           pclath	equ	0xFFA
-  1506                           tblptru	equ	0xFF8
-  1507                           tblptrh	equ	0xFF7
-  1508                           tblptrl	equ	0xFF6
-  1509                           tablat	equ	0xFF5
-  1510                           prodh	equ	0xFF4
-  1511                           prodl	equ	0xFF3
-  1512                           intcon	equ	0xFF2
-  1513                           postinc0	equ	0xFEE
-  1514                           fsr0h	equ	0xFEA
-  1515                           fsr0l	equ	0xFE9
-  1516                           wreg	equ	0xFE8
-  1517                           fsr1h	equ	0xFE2
-  1518                           fsr1l	equ	0xFE1
-  1519                           indf2	equ	0xFDF
-  1520                           fsr2h	equ	0xFDA
-  1521                           fsr2l	equ	0xFD9
-  1522                           status	equ	0xFD8
-  1523                           
-  1524                           	psect	temp
-  1525  0000'                    btemp:
-  1526                           	opt stack 0
-  1527  0000'                    	ds	1
-  1528  0000                     int$flags	set	btemp
-  1529                           pclatu	equ	0xFFB
-  1530                           pclath	equ	0xFFA
-  1531                           tblptru	equ	0xFF8
-  1532                           tblptrh	equ	0xFF7
-  1533                           tblptrl	equ	0xFF6
-  1534                           tablat	equ	0xFF5
-  1535                           prodh	equ	0xFF4
-  1536                           prodl	equ	0xFF3
-  1537                           intcon	equ	0xFF2
-  1538                           postinc0	equ	0xFEE
-  1539                           fsr0h	equ	0xFEA
-  1540                           fsr0l	equ	0xFE9
-  1541                           wreg	equ	0xFE8
-  1542                           fsr1h	equ	0xFE2
-  1543                           fsr1l	equ	0xFE1
-  1544                           indf2	equ	0xFDF
-  1545                           fsr2h	equ	0xFDA
-  1546                           fsr2l	equ	0xFD9
-  1547                           status	equ	0xFD8
+  1474                           wreg	equ	0xFE8
+  1475                           status	equ	0xFD8
+  1476                           
+  1477 ;; *************** function _ISR *****************
+  1478 ;; Defined at:
+  1479 ;;		line 9 in file "main.c"
+  1480 ;; Parameters:    Size  Location     Type
+  1481 ;;		None
+  1482 ;; Auto vars:     Size  Location     Type
+  1483 ;;		None
+  1484 ;; Return value:  Size  Location     Type
+  1485 ;;		None               void
+  1486 ;; Registers used:
+  1487 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+  1488 ;; Tracked objects:
+  1489 ;;		On entry : 0/0
+  1490 ;;		On exit  : 0/0
+  1491 ;;		Unchanged: 0/0
+  1492 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+  1493 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1494 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1495 ;;      Temps:         14       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1496 ;;      Totals:        14       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1497 ;;Total ram usage:       14 bytes
+  1498 ;; Hardware stack levels used:    1
+  1499 ;; Hardware stack levels required when called:    1
+  1500 ;; This function calls:
+  1501 ;;		_checkI2C
+  1502 ;; This function is called by:
+  1503 ;;		Interrupt level 2
+  1504 ;; This function uses a non-reentrant model
+  1505 ;;
+  1506                           
+  1507                           	psect	intcode
+  1508  000008                     __pintcode:
+  1509                           	opt stack 0
+  1510  000008                     _ISR:
+  1511                           	opt stack 27
+  1512                           
+  1513                           ; BSR set to: 15
+  1514                           ;incstack = 0
+  1515  000008  8243               	bsf	btemp,1,c	;set compiler interrupt flag (level 2)
+  1516  00000A  CFFA F027          	movff	pclath,??_ISR
+  1517  00000E  CFFB F028          	movff	pclatu,??_ISR+1
+  1518  000012  CFE9 F029          	movff	fsr0l,??_ISR+2
+  1519  000016  CFEA F02A          	movff	fsr0h,??_ISR+3
+  1520  00001A  CFE1 F02B          	movff	fsr1l,??_ISR+4
+  1521  00001E  CFE2 F02C          	movff	fsr1h,??_ISR+5
+  1522  000022  CFD9 F02D          	movff	fsr2l,??_ISR+6
+  1523  000026  CFDA F02E          	movff	fsr2h,??_ISR+7
+  1524  00002A  CFF3 F02F          	movff	prodl,??_ISR+8
+  1525  00002E  CFF4 F030          	movff	prodh,??_ISR+9
+  1526  000032  CFF6 F031          	movff	tblptrl,??_ISR+10
+  1527  000036  CFF7 F032          	movff	tblptrh,??_ISR+11
+  1528  00003A  CFF8 F033          	movff	tblptru,??_ISR+12
+  1529  00003E  CFF5 F034          	movff	tablat,??_ISR+13
+  1530                           
+  1531                           ;main.c: 11: checkI2C();
+  1532  000042  EC43  F001         	call	_checkI2C	;wreg free
+  1533  000046  C034  FFF5         	movff	??_ISR+13,tablat
+  1534  00004A  C033  FFF8         	movff	??_ISR+12,tblptru
+  1535  00004E  C032  FFF7         	movff	??_ISR+11,tblptrh
+  1536  000052  C031  FFF6         	movff	??_ISR+10,tblptrl
+  1537  000056  C030  FFF4         	movff	??_ISR+9,prodh
+  1538  00005A  C02F  FFF3         	movff	??_ISR+8,prodl
+  1539  00005E  C02E  FFDA         	movff	??_ISR+7,fsr2h
+  1540  000062  C02D  FFD9         	movff	??_ISR+6,fsr2l
+  1541  000066  C02C  FFE2         	movff	??_ISR+5,fsr1h
+  1542  00006A  C02B  FFE1         	movff	??_ISR+4,fsr1l
+  1543  00006E  C02A  FFEA         	movff	??_ISR+3,fsr0h
+  1544  000072  C029  FFE9         	movff	??_ISR+2,fsr0l
+  1545  000076  C028  FFFB         	movff	??_ISR+1,pclatu
+  1546  00007A  C027  FFFA         	movff	??_ISR,pclath
+  1547  00007E  9243               	bcf	btemp,1,c	;clear compiler interrupt flag (level 2)
+  1548  000080  0011               	retfie		f
+  1549  000082                     __end_of_ISR:
+  1550                           	opt stack 0
+  1551                           pclatu	equ	0xFFB
+  1552                           pclath	equ	0xFFA
+  1553                           tblptru	equ	0xFF8
+  1554                           tblptrh	equ	0xFF7
+  1555                           tblptrl	equ	0xFF6
+  1556                           tablat	equ	0xFF5
+  1557                           prodh	equ	0xFF4
+  1558                           prodl	equ	0xFF3
+  1559                           intcon	equ	0xFF2
+  1560                           postinc0	equ	0xFEE
+  1561                           fsr0h	equ	0xFEA
+  1562                           fsr0l	equ	0xFE9
+  1563                           wreg	equ	0xFE8
+  1564                           fsr1h	equ	0xFE2
+  1565                           fsr1l	equ	0xFE1
+  1566                           fsr2h	equ	0xFDA
+  1567                           fsr2l	equ	0xFD9
+  1568                           status	equ	0xFD8
+  1569                           
+  1570 ;; *************** function _checkI2C *****************
+  1571 ;; Defined at:
+  1572 ;;		line 21 in file "I2C.c"
+  1573 ;; Parameters:    Size  Location     Type
+  1574 ;;		None
+  1575 ;; Auto vars:     Size  Location     Type
+  1576 ;;  sspBuf          1    0[COMRAM] unsigned char 
+  1577 ;; Return value:  Size  Location     Type
+  1578 ;;		None               void
+  1579 ;; Registers used:
+  1580 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+  1581 ;; Tracked objects:
+  1582 ;;		On entry : 0/0
+  1583 ;;		On exit  : 0/0
+  1584 ;;		Unchanged: 0/0
+  1585 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+  1586 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1587 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1588 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1589 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1590 ;;Total ram usage:        1 bytes
+  1591 ;; Hardware stack levels used:    1
+  1592 ;; This function calls:
+  1593 ;;		Nothing
+  1594 ;; This function is called by:
+  1595 ;;		_ISR
+  1596 ;; This function uses a non-reentrant model
+  1597 ;;
+  1598                           
+  1599                           	psect	text9
+  1600  000286                     __ptext9:
+  1601                           	opt stack 0
+  1602  000286                     _checkI2C:
+  1603                           	opt stack 27
+  1604                           
+  1605                           ;I2C.c: 23: byte sspBuf;
+  1606                           ;I2C.c: 25: if (PIR1bits.SSPIF) {
+  1607                           
+  1608                           ;incstack = 0
+  1609  000286  A69E               	btfss	3998,3,c	;volatile
+  1610  000288  0012               	return	
+  1611                           
+  1612                           ;I2C.c: 27: if (!SSPSTATbits.D_NOT_A) {
+  1613  00028A  BAC7               	btfsc	4039,5,c	;volatile
+  1614  00028C  D014               	goto	i2l1086
+  1615                           
+  1616                           ;I2C.c: 31: i2c_byte_count = 0;
+  1617  00028E  0E00               	movlw	0
+  1618  000290  6E17               	movwf	_i2c_byte_count,c	;volatile
+  1619                           
+  1620                           ;I2C.c: 33: if (SSPSTATbits.BF) {
+  1621  000292  B0C7               	btfsc	4039,0,c	;volatile
+  1622                           
+  1623                           ;I2C.c: 35: sspBuf = SSPBUF;
+  1624  000294  CFC9 F026          	movff	4041,checkI2C@sspBuf	;volatile
+  1625                           
+  1626                           ;I2C.c: 36: }
+  1627                           ;I2C.c: 38: if (SSPSTATbits.R_NOT_W) {
+  1628  000298  A4C7               	btfss	4039,2,c	;volatile
+  1629  00029A  D036               	goto	i2l1110
+  1630                           
+  1631                           ;I2C.c: 40: SSPCON1bits.WCOL = 0;
+  1632  00029C  9EC6               	bcf	4038,7,c	;volatile
+  1633                           
+  1634                           ;I2C.c: 41: SSPBUF = i2c_reg_map[i2c_reg_addr++];
+  1635  00029E  5018               	movf	_i2c_reg_addr,w,c	;volatile
+  1636  0002A0  0D01               	mullw	1
+  1637  0002A2  0E01               	movlw	low _i2c_reg_map
+  1638  0002A4  24F3               	addwf	prodl,w,c
+  1639  0002A6  6ED9               	movwf	fsr2l,c
+  1640  0002A8  0E00               	movlw	high _i2c_reg_map
+  1641  0002AA  20F4               	addwfc	prodh,w,c
+  1642  0002AC  6EDA               	movwf	fsr2h,c
+  1643  0002AE  50DF               	movf	indf2,w,c
+  1644  0002B0  6EC9               	movwf	4041,c	;volatile
+  1645  0002B2  2A18               	incf	_i2c_reg_addr,f,c	;volatile
+  1646                           
+  1647                           ;I2C.c: 42: }
+  1648                           ;I2C.c: 43: }
+  1649  0002B4  D029               	goto	i2l1110
+  1650  0002B6                     i2l1086:
+  1651                           
+  1652                           ;I2C.c: 44: else {
+  1653                           ;I2C.c: 48: i2c_byte_count++;
+  1654  0002B6  2A17               	incf	_i2c_byte_count,f,c	;volatile
+  1655                           
+  1656                           ;I2C.c: 50: if (SSPSTATbits.BF) {
+  1657  0002B8  B0C7               	btfsc	4039,0,c	;volatile
+  1658                           
+  1659                           ;I2C.c: 51: sspBuf = SSPBUF;
+  1660  0002BA  CFC9 F026          	movff	4041,checkI2C@sspBuf	;volatile
+  1661                           
+  1662                           ;I2C.c: 52: }
+  1663                           ;I2C.c: 54: if (SSPSTATbits.R_NOT_W) {
+  1664  0002BE  A4C7               	btfss	4039,2,c	;volatile
+  1665  0002C0  D00E               	goto	i2l1100
+  1666                           
+  1667                           ;I2C.c: 57: SSPCON1bits.WCOL = 0;
+  1668  0002C2  9EC6               	bcf	4038,7,c	;volatile
+  1669                           
+  1670                           ;I2C.c: 58: SSPBUF = i2c_reg_map[i2c_reg_addr++];
+  1671  0002C4  5018               	movf	_i2c_reg_addr,w,c	;volatile
+  1672  0002C6  0D01               	mullw	1
+  1673  0002C8  0E01               	movlw	low _i2c_reg_map
+  1674  0002CA  24F3               	addwf	prodl,w,c
+  1675  0002CC  6ED9               	movwf	fsr2l,c
+  1676  0002CE  0E00               	movlw	high _i2c_reg_map
+  1677  0002D0  20F4               	addwfc	prodh,w,c
+  1678  0002D2  6EDA               	movwf	fsr2h,c
+  1679  0002D4  50DF               	movf	indf2,w,c
+  1680  0002D6  6EC9               	movwf	4041,c	;volatile
+  1681  0002D8  2A18               	incf	_i2c_reg_addr,f,c	;volatile
+  1682                           
+  1683                           ;I2C.c: 59: LATAbits.LATA6 = 1;
+  1684  0002DA  8C89               	bsf	3977,6,c	;volatile
+  1685                           
+  1686                           ;I2C.c: 61: }
+  1687  0002DC  D015               	goto	i2l1110
+  1688  0002DE                     i2l1100:
+  1689                           
+  1690                           ;I2C.c: 62: else {
+  1691                           ;I2C.c: 64: if (i2c_byte_count == 1) {
+  1692  0002DE  0417               	decf	_i2c_byte_count,w,c	;volatile
+  1693  0002E0  A4D8               	btfss	status,2,c
+  1694  0002E2  D003               	goto	i2l1104
+  1695                           
+  1696                           ;I2C.c: 66: i2c_reg_addr = sspBuf;
+  1697  0002E4  C026  F018         	movff	checkI2C@sspBuf,_i2c_reg_addr	;volatile
+  1698                           
+  1699                           ;I2C.c: 68: }
+  1700  0002E8  D00F               	goto	i2l1110
+  1701  0002EA                     i2l1104:
+  1702                           
+  1703                           ;I2C.c: 69: else {
+  1704                           ;I2C.c: 72: i2c_reg_map[i2c_reg_addr++] = sspBuf;
+  1705  0002EA  5018               	movf	_i2c_reg_addr,w,c	;volatile
+  1706  0002EC  0D01               	mullw	1
+  1707  0002EE  0E01               	movlw	low _i2c_reg_map
+  1708  0002F0  24F3               	addwf	prodl,w,c
+  1709  0002F2  6ED9               	movwf	fsr2l,c
+  1710  0002F4  0E00               	movlw	high _i2c_reg_map
+  1711  0002F6  20F4               	addwfc	prodh,w,c
+  1712  0002F8  6EDA               	movwf	fsr2h,c
+  1713  0002FA  C026  FFDF         	movff	checkI2C@sspBuf,indf2
+  1714  0002FE  2A18               	incf	_i2c_reg_addr,f,c	;volatile
+  1715                           
+  1716                           ;I2C.c: 73: I2C_FLAG = 1;
+  1717  000300  0E00               	movlw	0
+  1718  000302  6E12               	movwf	_I2C_FLAG+1,c
+  1719  000304  0E01               	movlw	1
+  1720  000306  6E11               	movwf	_I2C_FLAG,c
+  1721  000308                     i2l1110:
+  1722                           
+  1723                           ;I2C.c: 74: }
+  1724                           ;I2C.c: 75: }
+  1725                           ;I2C.c: 76: }
+  1726                           ;I2C.c: 78: i2c_reg_addr %= sizeof(i2c_reg_map);
+  1727  000308  0E0F               	movlw	15
+  1728  00030A  1618               	andwf	_i2c_reg_addr,f,c	;volatile
+  1729                           
+  1730                           ;I2C.c: 81: PIR1bits.SSPIF = 0;
+  1731  00030C  969E               	bcf	3998,3,c	;volatile
+  1732                           
+  1733                           ;I2C.c: 82: SSPCON1bits.CKP = 1;
+  1734  00030E  88C6               	bsf	4038,4,c	;volatile
+  1735  000310  0012               	return	
+  1736  000312                     __end_of_checkI2C:
+  1737                           	opt stack 0
+  1738  0000                     pclatu	equ	0xFFB
+  1739                           pclath	equ	0xFFA
+  1740                           tblptru	equ	0xFF8
+  1741                           tblptrh	equ	0xFF7
+  1742                           tblptrl	equ	0xFF6
+  1743                           tablat	equ	0xFF5
+  1744                           prodh	equ	0xFF4
+  1745                           prodl	equ	0xFF3
+  1746                           intcon	equ	0xFF2
+  1747                           postinc0	equ	0xFEE
+  1748                           fsr0h	equ	0xFEA
+  1749                           fsr0l	equ	0xFE9
+  1750                           wreg	equ	0xFE8
+  1751                           fsr1h	equ	0xFE2
+  1752                           fsr1l	equ	0xFE1
+  1753                           indf2	equ	0xFDF
+  1754                           fsr2h	equ	0xFDA
+  1755                           fsr2l	equ	0xFD9
+  1756                           status	equ	0xFD8
+  1757                           pclatu	equ	0xFFB
+  1758                           pclath	equ	0xFFA
+  1759                           tblptru	equ	0xFF8
+  1760                           tblptrh	equ	0xFF7
+  1761                           tblptrl	equ	0xFF6
+  1762                           tablat	equ	0xFF5
+  1763                           prodh	equ	0xFF4
+  1764                           prodl	equ	0xFF3
+  1765                           intcon	equ	0xFF2
+  1766                           postinc0	equ	0xFEE
+  1767                           fsr0h	equ	0xFEA
+  1768                           fsr0l	equ	0xFE9
+  1769                           wreg	equ	0xFE8
+  1770                           fsr1h	equ	0xFE2
+  1771                           fsr1l	equ	0xFE1
+  1772                           indf2	equ	0xFDF
+  1773                           fsr2h	equ	0xFDA
+  1774                           fsr2l	equ	0xFD9
+  1775                           status	equ	0xFD8
+  1776                           
+  1777                           	psect	rparam
+  1778  0000                     pclatu	equ	0xFFB
+  1779                           pclath	equ	0xFFA
+  1780                           tblptru	equ	0xFF8
+  1781                           tblptrh	equ	0xFF7
+  1782                           tblptrl	equ	0xFF6
+  1783                           tablat	equ	0xFF5
+  1784                           prodh	equ	0xFF4
+  1785                           prodl	equ	0xFF3
+  1786                           intcon	equ	0xFF2
+  1787                           postinc0	equ	0xFEE
+  1788                           fsr0h	equ	0xFEA
+  1789                           fsr0l	equ	0xFE9
+  1790                           wreg	equ	0xFE8
+  1791                           fsr1h	equ	0xFE2
+  1792                           fsr1l	equ	0xFE1
+  1793                           indf2	equ	0xFDF
+  1794                           fsr2h	equ	0xFDA
+  1795                           fsr2l	equ	0xFD9
+  1796                           status	equ	0xFD8
+  1797                           
+  1798                           	psect	temp
+  1799  000043                     btemp:
+  1800                           	opt stack 0
+  1801  000043                     	ds	1
+  1802  0000                     int$flags	set	btemp
+  1803                           pclatu	equ	0xFFB
+  1804                           pclath	equ	0xFFA
+  1805                           tblptru	equ	0xFF8
+  1806                           tblptrh	equ	0xFF7
+  1807                           tblptrl	equ	0xFF6
+  1808                           tablat	equ	0xFF5
+  1809                           prodh	equ	0xFF4
+  1810                           prodl	equ	0xFF3
+  1811                           intcon	equ	0xFF2
+  1812                           postinc0	equ	0xFEE
+  1813                           fsr0h	equ	0xFEA
+  1814                           fsr0l	equ	0xFE9
+  1815                           wreg	equ	0xFE8
+  1816                           fsr1h	equ	0xFE2
+  1817                           fsr1l	equ	0xFE1
+  1818                           indf2	equ	0xFDF
+  1819                           fsr2h	equ	0xFDA
+  1820                           fsr2l	equ	0xFD9
+  1821                           status	equ	0xFD8
 
 
 Data Sizes:
     Strings     0
     Constant    0
     Data        2
-    BSS         35
+    BSS         37
     Persistent  1
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMRAM           94     17      55
+    COMRAM           94     26      66
     BANK0           160      0       0
     BANK1           256      0       0
     BANK2           256      0       0
@@ -1628,7 +1910,7 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMRAM
 
-    _main->_Delay
+    _main->_ECAN_Transmit
     _checkCAN->_ECAN_Receive
 
 Critical Paths under _ISR in COMRAM
@@ -1760,9 +2042,10 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 0     0      0      24
+ (0) _main                                                 0     0      0     752
                            _CANSetup
                               _Delay
+                      _ECAN_Transmit
                            _I2CSetup
                          _InitDevice
                            _checkCAN
@@ -1777,7 +2060,10 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (1) _I2CSetup                                             0     0      0       0
  ---------------------------------------------------------------------------------
- (1) _Delay                                                2     0      2       9
+ (1) _ECAN_Transmit                                       11     1     10     672
+                                             15 COMRAM    11     1     10
+ ---------------------------------------------------------------------------------
+ (1) _Delay                                                2     0      2      65
                                              15 COMRAM     2     0      2
  ---------------------------------------------------------------------------------
  (1) _CANSetup                                             0     0      0       0
@@ -1801,6 +2087,7 @@ Call Graph Tables:
  _main (ROOT)
    _CANSetup
    _Delay
+   _ECAN_Transmit
    _I2CSetup
    _InitDevice
    _checkCAN
@@ -1842,7 +2129,7 @@ BANK1              100      0       0       8        0.0%
 BITBANK0            A0      0       0       4        0.0%
 BANK0               A0      0       0       5        0.0%
 BITCOMRAM           5E      0       0       0        0.0%
-COMRAM              5E     11      37       1       58.5%
+COMRAM              5E     1A      42       1       70.2%
 BITBANK14           41      0       0      33        0.0%
 BANK14              41      0       0      34        0.0%
 BITSFR_2             0      0       0      40        0.0%
@@ -1853,110 +2140,117 @@ BITSFR               0      0       0      40        0.0%
 SFR                  0      0       0      40        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      37       6        0.0%
-DATA                 0      0      37       3        0.0%
+ABS                  0      0      42       6        0.0%
+DATA                 0      0      42       3        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
-Symbol Table                                                                                   Thu Nov 26 17:05:55 2015
+Symbol Table                                                                                   Mon Nov 30 16:19:45 2015
 
-            _SSPSTATbits 000FC7                       l42 00000C              __CFG_BORV$3 000000  
-           __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000  
-           __CFG_CP3$OFF 000000                      l331 00000C                      l316 000040  
-                    l318 000080             __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000  
-                    _ISR 000000                      prod 000FF3                      wreg 000FE8  
-                   ?_ISR 000000                     _B0D0 000E86                     _B0D1 000E87  
-                   _B0D2 000E88                     _B0D3 000E89                     _B0D4 000E8A  
-                   _B0D5 000E8B                     _B0D6 000E8C                     _B0D7 000E8D  
-                   l1113 000004                     l1051 0000D2                     l1141 0000E4  
-                   l1037 0000BE                     l1039 0000C2                     l1153 000112  
-                   l1145 0000F2                     l1155 00011E                     l1147 000100  
-                   l1149 000104                     l1175 000012                     _main 000000  
-                   fsr0h 000FEA                     fsr1h 000FE2                     fsr0l 000FE9  
-                   fsr2h 000FDA                     fsr1l 000FE1                     indf2 000FDF  
-                   fsr2l 000FD9                     btemp 000000           checkI2C@sspBuf 000000  
-       __end_of_I2CSetup 00002C                     pclat 000FFA                     prodh 000FF4  
-                   prodl 000FF3                     start 000000*           __CFG_IESO$OFF 000000  
-       __end_of_CANSetup 00012A            __CFG_MCLRE$ON 000000             ___param_bank 000010  
-                  ??_ISR 000001                    _B0DLC 000E85                    ?_main 000000  
-                  _BSEL0 000E7D                    _MSEL0 000E79                    _MSEL1 000E7A  
-                  _MSEL2 000E7B                    _MSEL3 000E7C                    _TRISA 000F92  
-                  _TRISB 000F93                    _TRISC 000F94           _i2c_byte_count 000015  
-                  _Delay 000000*           __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000  
-          __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000           __CFG_EBTR0$OFF 000000  
-         __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000  
-         __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000  
-          __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000                    _count 000000  
-                  tablat 000FF5                    status 000FD8               _InitDevice 000000  
-  __size_of_ECAN_Receive 000000          __initialization 000000             __end_of_main 00001E  
-                 ??_main 000011            __activetblptr 000002           __CFG_RETEN$OFF 000000  
-                 ?_Delay 00000F                   _B0EIDH 000E83                   _B0EIDL 000E84  
-                 _B0SIDH 000E81                   _B0SIDL 000E82                   _CANCON 000F6F  
-                 _ANCON0 000F5D                   _ANCON1 000F5C             _ECAN_Receive 000000  
-                 i2l1071 00002E          __CFG_BBSIZ$BB2K 000000                   i2l1091 000076  
-                 i2l1085 000056                   i2l1093 000078                   i2l1089 000062  
-                 _OSCCON 000FD3                   _RXB0D0 000F66                   _RXB0D1 000F67  
-                 _RXB0D2 000F68                   _RXB0D3 000F69                   _RXB0D4 000F6A  
-                 _RXB1D0 000F36                   _RXB0D5 000F6B                   _RXB1D1 000F37  
-                 _RXB0D6 000F6C                   _RXB1D2 000F38                   _RXB0D7 000F6D  
-                 _RXB1D3 000F39                   _RXB1D4 000F3A                   _RXB1D5 000F3B  
-                 _RXB1D6 000F3C                   _RXB1D7 000F3D                   _TXB0D0 000F26  
-       __end_of_checkI2C 000082                   _TXB0D1 000F27                   _TXB0D2 000F28  
-                 _TXB0D3 000F29                   _TXB0D4 000F2A                   _TXB0D5 000F2B  
-                 _TXB0D6 000F2C                   _TXB0D7 000F2D         __end_of_checkCAN 00001E  
-                 _SSPADD 000FC8                   _SSPBUF 000FC9           __CFG_XINST$OFF 000000  
-         __CFG_STVREN$ON 000000                   clear_0 000006             __pdataCOMRAM 000000  
-              ?_I2CSetup 000000                   tblptrh 000FF7                   tblptrl 000FF6  
-                 tblptru 000FF8                ?_CANSetup 000000               __accesstop 000000* 
-__end_of__initialization 000024            ___rparam_used 000001              ?_InitDevice 000000  
-            _i2c_reg_map 000000           __pcstackCOMRAM 000000               ??_I2CSetup 00000F  
-                ??_Delay 000011               ??_CANSetup 00000F          __CFG_PLLCFG$OFF 000000  
-             __pnvCOMRAM 000000                _B0CONbits 000E80                  _ECANCON 000F72  
-                _BRGCON1 000E43                  _BRGCON2 000E44                  _BRGCON3 000E45  
-              ?_checkI2C 000000                ?_checkCAN 000000         __CFG_CANMX$PORTB 000000  
-    __size_of_InitDevice 000000         _BATTERISTATUS_ID 000000                  _RXB0DLC 000F65  
-                _RXB1DLC 000F35                  _RXB0CON 000F60                  _RXB1CON 000F30  
-                _TXB0DLC 000F25                  _RXFCON0 000E46                  _RXFCON1 000E47  
-                _SSPCON1 000FC6                  _SSPCON2 000FC5                  _SSPSTAT 000FC7  
-                _Delay$0 00000F          __CFG_PWRTEN$OFF 000000                  __Hparam 000000  
-                __Lparam 000000                  __pcinit 000000                  __ramtop 000000* 
-                __ptext0 000000                  __ptext1 000000                  __ptext2 000000  
-                __ptext3 000000                  __ptext4 000000                  __ptext5 000000  
-                __ptext7 000000             __size_of_ISR 000000               ??_checkI2C 000000  
-             ??_checkCAN 000010        __CFG_MSSPMSK$MSK7 000000                  _temp_D0 000017  
-                _temp_D2 000018                  _temp_D3 000019                  _temp_D4 00001A  
-                _temp_D5 00001B                  _temp_D6 00001C                  _temp_D7 00001D  
-   end_of_initialization 000024            __Lmediumconst 000000*        _buttonWasPressed 000014  
-              _MOTOR_REG 000012                  postinc0 000FEE         __CFG_FOSC$INTIO2 000000  
-      __size_of_I2CSetup 000000        __CFG_SOSCSEL$HIGH 000000        __size_of_CANSetup 000000  
-           ??_InitDevice 00000F             _i2c_reg_addr 000016            __pidataCOMRAM 000000  
-    start_initialization 000000              __end_of_ISR 00007A       __end_of_InitDevice 000032  
-            _CANSTATbits 000F6E              __pbssCOMRAM 000000        __size_of_checkI2C 000000  
-      __size_of_checkCAN 000000                __pintcode 000000           _heartbeatCount 000010  
-               _I2CSetup 000000                 _CANSetup 000000            ?_ECAN_Receive 000000  
-               _LATAbits 000F89                 _PIE1bits 000F9D                _temp_EIDH 00001F  
-              _temp_EIDL 000020                _temp_SIDH 000021                _temp_SIDL 000022  
-               _PIR1bits 000F9E                 _PIR5bits 000F77                 _RXB0EIDH 000F63  
-               _RXB0EIDL 000F64                 _RXB1EIDH 000F33                 _RXB1EIDL 000F34  
-               _MOTOR_ID 000001                 _RXB0SIDH 000F61                 _RXB0SIDL 000F62  
-               _RXB1SIDH 000F31                 _RXF0EIDH 000EE2                 _RXB1SIDL 000F32  
-               _RXF0EIDL 000EE3                 _RXF1EIDH 000EE6                 _RXF1EIDL 000EE7  
-               _RXF2EIDH 000EEA                 _RXF2EIDL 000EEB                 _RXF0SIDH 000EE0  
-               _RXF0SIDL 000EE1                 _TXB0EIDH 000F23                 _RXF1SIDH 000EE4  
-               _TXB0EIDL 000F24                 _RXF1SIDL 000EE5                 _RXF2SIDH 000EE8  
-               _RXF2SIDL 000EE9                 _RXM0EIDH 000EFA                 _RXM0EIDL 000EFB  
-               _TXB0SIDH 000F21                 _RXM1EIDH 000EFE                 _TXB0SIDL 000F22  
-               _RXM1EIDL 000EFF                 _RXFBCON0 000E71                 _RXFBCON1 000E72  
-               _RXFBCON2 000E73                 _RXFBCON3 000E74                 _RXFBCON4 000E75  
-               _RXFBCON5 000E76                 _RXFBCON6 000E77                 _RXFBCON7 000E78  
-               _RXM0SIDH 000EF8                 _RXM0SIDL 000EF9                 _RXM1SIDH 000EFC  
-               _RXM1SIDL 000EFD    ECAN_Receive@RXMsgFlag 00000F           ??_ECAN_Receive 00000F  
-               __Hrparam 000000*                __Lrparam 000000*      __CFG_BOREN$SBORDIS 000000  
-               _checkI2C 000000                 _checkCAN 000000            __size_of_main 000000  
-               _temp_DLC 00001E                 int$flags 000000      __CFG_INTOSCSEL$HIGH 000000  
-            _RXB0CONbits 000F60               _RECEIVE_ID 000013              _RXB1CONbits 000F30  
-     __CFG_WDTEN$SWDTDIS 000000              _OSCTUNEbits 000F9B               _INTCONbits 000FF2  
-               intlevel2 000000*             _TXB0CONbits 000F20               _OSCCONbits 000FD3  
-     __CFG_WDTPS$1048576 000000     __end_of_ECAN_Receive 0000D6              _SSPCON1bits 000FC6  
-    __CFG_BORPWR$ZPBORMV 000000  
+             _SSPSTATbits 000FC7                        l48 0320               __CFG_BORV$3 000000  
+            __CFG_CP0$OFF 000000              __CFG_CP1$OFF 000000              __CFG_CP2$OFF 000000  
+            __CFG_CP3$OFF 000000                       l327 01F0                       l329 0230  
+            __CFG_CPB$OFF 000000                       u185 03E2                       u186 03E4  
+            __CFG_CPD$OFF 000000                       _ISR 0008                       prod 000FF3  
+                     wreg 000FE8                      ?_ISR 0026                      _B0D0 000E86  
+                    _B0D1 000E87                      _B0D2 000E88                      _B0D3 000E89  
+                    _B0D4 000E8A                      _B0D5 000E8B                      _B0D6 000E8C  
+                    _B0D7 000E8D                      l1130 008A                      l1052 026E  
+                    l1054 0272                      l1170 0198                      l1162 0178  
+                    l1066 0282                      l1172 01A4                      l1164 0186  
+                    l1166 018A                      l1158 016A                      l1264 0464  
+                    l1280 0362                      _main 0312                      fsr0h 000FEA  
+                    fsr1h 000FE2                      fsr0l 000FE9                      fsr2h 000FDA  
+                    fsr1l 000FE1                      indf2 000FDF                      fsr2l 000FD9  
+                    btemp 0043            checkI2C@sspBuf 0026          __end_of_I2CSetup 0464  
+                    pclat 000FFA                      prodh 000FF4                      prodl 000FF3  
+                    start 0082             __CFG_IESO$OFF 000000          __end_of_CANSetup 01B0  
+           __CFG_MCLRE$ON 000000              ___param_bank 000010                     ??_ISR 0027  
+                   _B0DLC 000E85                     ?_main 0026                     _BSEL0 000E7D  
+                   _MSEL0 000E79                     _MSEL1 000E7A                     _MSEL2 000E7B  
+                   _MSEL3 000E7C                     _TRISA 000F92                     _TRISB 000F93  
+                   _TRISC 000F94            _i2c_byte_count 0017                     _Delay 0464  
+           __CFG_WRT0$OFF 000000             __CFG_WRT1$OFF 000000             __CFG_WRT2$OFF 000000  
+           __CFG_WRT3$OFF 000000            __CFG_EBTR0$OFF 000000            __CFG_FCMEN$OFF 000000  
+          __CFG_EBTR1$OFF 000000            __CFG_EBTR2$OFF 000000            __CFG_EBTR3$OFF 000000  
+           __CFG_WRTB$OFF 000000             __CFG_WRTC$OFF 000000             __CFG_WRTD$OFF 000000  
+          __CFG_EBTRB$OFF 000000                     _count 0042                     tablat 000FF5  
+                   status 000FD8                _InitDevice 03E6     __size_of_ECAN_Receive 00D6  
+         __initialization 041C              __end_of_main 0370                    ??_main 0040  
+           __activetblptr 000000            __CFG_RETEN$OFF 000000                    ?_Delay 0035  
+                  _B0EIDH 000E83                    _B0EIDL 000E84          ECAN_Transmit@DLC 0036  
+                  _B0SIDH 000E81                    _B0SIDL 000E82                    _CANCON 000F6F  
+                  _ANCON0 000F5D                    _ANCON1 000F5C              _ECAN_Receive 01B0  
+                  i2l1100 02DE                    i2l1110 0308                    i2l1104 02EA  
+         __CFG_BBSIZ$BB2K 000000                    i2l1086 02B6                    _OSCCON 000FD3  
+                  _RXB0D0 000F66                    _RXB0D1 000F67                    _RXB0D2 000F68  
+                  _RXB0D3 000F69                    _RXB0D4 000F6A                    _RXB1D0 000F36  
+                  _RXB0D5 000F6B                    _RXB1D1 000F37                    _RXB0D6 000F6C  
+                  _RXB1D2 000F38                    _RXB0D7 000F6D                    _RXB1D3 000F39  
+                  _RXB1D4 000F3A                    _RXB1D5 000F3B                    _RXB1D6 000F3C  
+                  _RXB1D7 000F3D                    _TXB0D0 000F26          __end_of_checkI2C 0312  
+                  _TXB0D1 000F27                    _TXB0D2 000F28                    _TXB0D3 000F29  
+                  _TXB0D4 000F2A                    _TXB0D5 000F2B                    _TXB0D6 000F2C  
+                  _TXB0D7 000F2D          __end_of_checkCAN 03E6                    _SSPADD 000FC8  
+                  _SSPBUF 000FC9            __CFG_XINST$OFF 000000            __CFG_STVREN$ON 000000  
+                  clear_0 0422              __pdataCOMRAM 0040                 ?_I2CSetup 0026  
+                  tblptrh 000FF7                    tblptrl 000FF6                    tblptru 000FF8  
+               ?_CANSetup 0026                __accesstop 0060   __end_of__initialization 0440  
+ECAN_Transmit@TRANSMIT_ID 0037             ___rparam_used 000001               ?_InitDevice 0026  
+             _i2c_reg_map 0001             __end_of_Delay 0476            __pcstackCOMRAM 0026  
+  __size_of_ECAN_Transmit 0040                ??_I2CSetup 0035                   ??_Delay 0037  
+              ??_CANSetup 0035           __CFG_PLLCFG$OFF 000000                __pnvCOMRAM 0042  
+       ECAN_Transmit@SIDH 003F         ECAN_Transmit@SIDL 0035                 _B0CONbits 000E80  
+                 _ECANCON 000F72                   _BRGCON1 000E43                   _BRGCON2 000E44  
+                 _BRGCON3 000E45                 ?_checkI2C 0026                 ?_checkCAN 0026  
+        __CFG_CANMX$PORTB 000000       __size_of_InitDevice 0036          _BATTERISTATUS_ID 0040  
+                 _RXB0DLC 000F65                   _RXB1DLC 000F35                   _RXB0CON 000F60  
+                 _RXB1CON 000F30                   _TXB0DLC 000F25                   _RXFCON0 000E46  
+                 _RXFCON1 000E47                   _SSPCON1 000FC6                   _SSPCON2 000FC5  
+                 _SSPSTAT 000FC7             _ECAN_Transmit 0370           __CFG_PWRTEN$OFF 000000  
+                 __Hparam 0000                   __Lparam 0000                   __pcinit 041C  
+                 __ramtop 0F00                   __ptext0 0312                   __ptext1 03B0  
+                 __ptext2 01B0                   __ptext3 03E6                   __ptext4 044A  
+                 __ptext5 0370                   __ptext6 0464                   __ptext7 0086  
+                 __ptext9 0286              __size_of_ISR 007A                ??_checkI2C 0026  
+              ??_checkCAN 0036         __CFG_MSSPMSK$MSK7 000000                   _temp_D0 0019  
+                 _temp_D1 001A                   _temp_D2 001B                   _temp_D3 001C  
+                 _temp_D4 001D                   _temp_D5 001E                   _temp_D6 001F  
+                 _temp_D7 0020            ?_ECAN_Transmit 0035      end_of_initialization 0440  
+        _buttonWasPressed 0016                   postinc0 000FEE          __CFG_FOSC$INTIO2 000000  
+       __size_of_I2CSetup 001A         __CFG_SOSCSEL$HIGH 000000         __size_of_CANSetup 012A  
+            ??_InitDevice 0035              _i2c_reg_addr 0018             __pidataCOMRAM 0476  
+     start_initialization 041C           ??_ECAN_Transmit 003F               __end_of_ISR 0082  
+      __end_of_InitDevice 041C               _CANSTATbits 000F6E               __pbssCOMRAM 0001  
+       __size_of_checkI2C 008C         __size_of_checkCAN 0036        ECAN_Transmit@DATA1 0038  
+      ECAN_Transmit@DATA2 0039        ECAN_Transmit@DATA3 003A        ECAN_Transmit@DATA4 003B  
+      ECAN_Transmit@DATA5 003C        ECAN_Transmit@DATA6 003D        ECAN_Transmit@DATA7 003E  
+               __pintcode 0008            _heartbeatCount 0013                  _I2C_FLAG 0011  
+                _I2CSetup 044A            __size_of_Delay 0012                  _CANSetup 0086  
+           ?_ECAN_Receive 0026                  _LATAbits 000F89                  _LATCbits 000F8B  
+                _PIE1bits 000F9D                 _temp_EIDH 0022                 _temp_EIDL 0023  
+               _temp_SIDH 0024                 _temp_SIDL 0025                  _PIR1bits 000F9E  
+                _PIR5bits 000F77                  _RXB0EIDH 000F63                  _RXB0EIDL 000F64  
+                _RXB1EIDH 000F33                  _RXB1EIDL 000F34                  _MOTOR_ID 0041  
+                _RXB0SIDH 000F61                  _RXB0SIDL 000F62                  _RXB1SIDH 000F31  
+                _RXF0EIDH 000EE2                  _RXB1SIDL 000F32                  _RXF0EIDL 000EE3  
+                _RXF1EIDH 000EE6                  _RXF1EIDL 000EE7                  _RXF2EIDH 000EEA  
+                _RXF2EIDL 000EEB                  _RXF0SIDH 000EE0                  _RXF0SIDL 000EE1  
+                _TXB0EIDH 000F23                  _RXF1SIDH 000EE4                  _TXB0EIDL 000F24  
+                _RXF1SIDL 000EE5                  _RXF2SIDH 000EE8                  _RXF2SIDL 000EE9  
+                _RXM0EIDH 000EFA                  _RXM0EIDL 000EFB                  _TXB0SIDH 000F21  
+                _RXM1EIDH 000EFE                  _TXB0SIDL 000F22                  _RXM1EIDL 000EFF  
+                _RXFBCON0 000E71                  _RXFBCON1 000E72                  _RXFBCON2 000E73  
+                _RXFBCON3 000E74                  _RXFBCON4 000E75                  _RXFBCON5 000E76  
+                _RXFBCON6 000E77                  _RXFBCON7 000E78                  _RXM0SIDH 000EF8  
+                _RXM0SIDL 000EF9                  _RXM1SIDH 000EFC                  _RXM1SIDL 000EFD  
+   ECAN_Receive@RXMsgFlag 0035            ??_ECAN_Receive 0035                  __Hrparam 0000  
+                __Lrparam 0000        __CFG_BOREN$SBORDIS 000000                  _checkI2C 0286  
+                _checkCAN 03B0             __size_of_main 005E                  _temp_DLC 0021  
+                int$flags 0043       __CFG_INTOSCSEL$HIGH 000000                Delay@count 0035  
+             _RXB0CONbits 000F60                _RECEIVE_ID 0015               _RXB1CONbits 000F30  
+      __CFG_WDTEN$SWDTDIS 000000               _OSCTUNEbits 000F9B                _INTCONbits 000FF2  
+   __end_of_ECAN_Transmit 03B0                  intlevel2 0000               _TXB0CONbits 000F20  
+              _OSCCONbits 000FD3        __CFG_WDTPS$1048576 000000      __end_of_ECAN_Receive 0286  
+             _SSPCON1bits 000FC6       __CFG_BORPWR$ZPBORMV 000000  

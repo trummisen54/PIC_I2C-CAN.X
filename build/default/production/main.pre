@@ -20957,6 +20957,8 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 extern char * ftoa(float f, int * status);
 
 # 79 "ECAN.h"
+void checkCAN(void);
+
 void CANSetup(void);
 
 unsigned char ECAN_Receive(void);
@@ -20976,9 +20978,11 @@ unsigned char DATA7);
 
 unsigned char count;
 unsigned char RECEIVE_ID;
-unsigned char temp_D7;
-unsigned char MOTOR_REG;
+
+unsigned char temp_D1;
 unsigned char temp_D2;
+unsigned char temp_D7;
+
 
 unsigned char MOTOR_ID = 0x01;
 unsigned char BATTERISTATUS_ID = 0x02;
@@ -20988,7 +20992,7 @@ unsigned char buttonWasPressed;
 
 # 19 "I2C.h"
 typedef unsigned char byte;
-
+extern int I2C_FLAG = 0;
 
 extern void checkI2C();
 extern void I2CSetup();
@@ -21002,6 +21006,7 @@ volatile byte i2c_byte_count = 0;
 
 # 15 "Other.h"
 void InitDevice(void);
+void Delay(unsigned int count);
 
 # 9 "main.c"
 void interrupt ISR(){
@@ -21012,13 +21017,31 @@ checkI2C();
 
 int main(void){
 
+
+
 InitDevice();
 CANSetup();
 I2CSetup();
 
+LATAbits.LA7 = 1;
 
 while(1){
 checkCAN();
+
+if(I2C_FLAG){
+I2C_FLAG = 0;
+ECAN_Transmit(0x32,0xC0, 0x08,
+i2c_reg_map[0],
+i2c_reg_map[1],
+i2c_reg_map[2],
+i2c_reg_map[3],
+i2c_reg_map[4],
+i2c_reg_map[5],
+i2c_reg_map[6],
+i2c_reg_map[7]);
+
+}
+
 Delay(100);
 }
 

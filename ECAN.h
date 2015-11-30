@@ -76,6 +76,8 @@
 *                        Function Prototypes 
 *
 *********************************************************************/
+void checkCAN(void);
+
 void CANSetup(void);
 
 unsigned char ECAN_Receive(void);
@@ -95,9 +97,11 @@ void ECAN_Transmit(unsigned char SIDH,
 
 unsigned char count;
 unsigned char RECEIVE_ID;
-unsigned char temp_D7;
-unsigned char MOTOR_REG;
+
+unsigned char temp_D1;
 unsigned char temp_D2;
+unsigned char temp_D7;
+
 
 unsigned char MOTOR_ID = 0x01;
 unsigned char BATTERISTATUS_ID = 0x02;

@@ -17,7 +17,7 @@
 
 
 typedef unsigned char   byte;
-
+extern int I2C_FLAG = 0;
 
 extern void checkI2C();
 extern void I2CSetup();

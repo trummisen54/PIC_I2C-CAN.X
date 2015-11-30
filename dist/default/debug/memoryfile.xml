@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\PIC_I2C-CAN.X.production.hex">
+  <executable name="dist/default/debug\PIC_I2C-CAN.X.debug.hex">
     <memory name="program">
       <units>bytes</units>
       <length>65536</length>
-      <used>1140</used>
-      <free>64396</free>
+      <used>1134</used>
+      <free>64402</free>
     </memory>
     <memory name="data">
       <units>bytes</units>

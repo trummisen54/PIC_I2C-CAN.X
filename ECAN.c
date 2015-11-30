@@ -235,7 +235,7 @@ unsigned char ECAN_Receive(void)
         temp_SIDL = RXB0SIDL;
         temp_DLC = RXB0DLC;
         RECEIVE_ID = RXB0D0;
-        MOTOR_REG = RXB0D1; 
+        temp_D1 = RXB0D1; 
         temp_D2 = RXB0D2;
         temp_D3 = RXB0D3;
         temp_D4 = RXB0D4;
@@ -253,7 +253,7 @@ unsigned char ECAN_Receive(void)
         temp_SIDL = RXB1SIDL;
         temp_DLC = RXB1DLC;
         temp_D0 = RXB1D0;
-        MOTOR_REG = RXB1D1;
+        temp_D1 = RXB1D1;
         temp_D2 = RXB1D2;
         temp_D3 = RXB1D3;
         temp_D4 = RXB1D4;
@@ -271,7 +271,7 @@ unsigned char ECAN_Receive(void)
         temp_SIDL = B0SIDL;
         temp_DLC = B0DLC;
         temp_D0 = B0D0;
-        MOTOR_REG = B0D1;
+        temp_D1 = B0D1;
         temp_D2 = B0D2;
         temp_D3 = B0D3;
         temp_D4 = B0D4;
@@ -343,21 +343,17 @@ void ECAN_Transmit(unsigned char SIDH,
 
 void checkCAN(){
     if(ECAN_Receive()){
-
-        switch(RECEIVE_ID){
-            case 1 :
-
-                i2c_reg_map[0] = MOTOR_REG;
-
-               break;
-
-            case 2 :
-
-               // batteristatus();
-
-                break;
-
-        }
+        
+        i2c_reg_map[0] = RECEIVE_ID;
+        i2c_reg_map[1] = temp_D1;
+        i2c_reg_map[2] = temp_D2;
+        i2c_reg_map[3] = temp_D3;
+        i2c_reg_map[4] = temp_D4;
+        i2c_reg_map[5] = temp_D5;
+        i2c_reg_map[6] = temp_D6;
+        i2c_reg_map[7] = temp_D7;
+        
+        LATCbits.LATC7 = temp_D1;
 
     }
 }
