@@ -65,6 +65,98 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATAbits `VS2160 ~T0 @X0 0 e@3977 ]
 "33613
 [v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"33278
+[s S2181 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2181 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"33288
+[s S2182 :1 `uc 1 ]
+[n S2182 . LC0 ]
+"33291
+[s S2183 :1 `uc 1 :1 `uc 1 ]
+[n S2183 . . LC1 ]
+"33295
+[s S2184 :2 `uc 1 :1 `uc 1 ]
+[n S2184 . . LC2 ]
+"33299
+[s S2185 :3 `uc 1 :1 `uc 1 ]
+[n S2185 . . LC3 ]
+"33303
+[s S2186 :4 `uc 1 :1 `uc 1 ]
+[n S2186 . . LC4 ]
+"33307
+[s S2187 :5 `uc 1 :1 `uc 1 ]
+[n S2187 . . LC5 ]
+"33311
+[s S2188 :6 `uc 1 :1 `uc 1 ]
+[n S2188 . . LC6 ]
+"33315
+[s S2189 :7 `uc 1 :1 `uc 1 ]
+[n S2189 . . LC7 ]
+"33277
+[u S2180 `S2181 1 `S2182 1 `S2183 1 `S2184 1 `S2185 1 `S2186 1 `S2187 1 `S2188 1 `S2189 1 ]
+[n S2180 . . . . . . . . . . ]
+"33320
+[v _LATCbits `VS2180 ~T0 @X0 0 e@3979 ]
+"38659
+[s S2492 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2492 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"38667
+[s S2493 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2493 . T0PS0 T0PS1 T0PS2 ]
+"38658
+[u S2491 `S2492 1 `S2493 1 ]
+[n S2491 . . . ]
+"38673
+[v _T0CONbits `VS2491 ~T0 @X0 0 e@4053 ]
+"38301
+[s S2474 :1 `uc 1 ]
+[n S2474 . NOT_BOR ]
+"38304
+[s S2475 :1 `uc 1 :1 `uc 1 ]
+[n S2475 . . NOT_POR ]
+"38308
+[s S2476 :2 `uc 1 :1 `uc 1 ]
+[n S2476 . . NOT_PD ]
+"38312
+[s S2477 :3 `uc 1 :1 `uc 1 ]
+[n S2477 . . NOT_TO ]
+"38316
+[s S2478 :4 `uc 1 :1 `uc 1 ]
+[n S2478 . . NOT_RI ]
+"38320
+[s S2479 :5 `uc 1 :1 `uc 1 ]
+[n S2479 . . NOT_CM ]
+"38324
+[s S2480 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2480 . nBOR nPOR nPD nTO nRI nCM SBOREN IPEN ]
+"38334
+[s S2481 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2481 . BOR POR PD TO RI CM ]
+"38300
+[u S2473 `S2474 1 `S2475 1 `S2476 1 `S2477 1 `S2478 1 `S2479 1 `S2480 1 `S2481 1 ]
+[n S2473 . . . . . . . . . ]
+"38343
+[v _RCONbits `VS2473 ~T0 @X0 0 e@4048 ]
+"39513
+[s S2558 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2558 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"39523
+[s S2559 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2559 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"39533
+[s S2560 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2560 . . GIEL GIEH ]
+"39538
+[s S2561 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2561 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"39548
+[s S2562 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2562 . . GIEL GIEH ]
+"39512
+[u S2557 `S2558 1 `S2559 1 `S2560 1 `S2561 1 `S2562 1 ]
+[n S2557 . . . . . . ]
+"39554
+[v _INTCONbits `VS2557 ~T0 @X0 0 e@4082 ]
 [; ;ECAN.h: 79: void checkCAN(void);
 [; ;ECAN.h: 81: void CANSetup(void);
 [; ;ECAN.h: 83: unsigned char ECAN_Receive(void);
@@ -16723,143 +16815,218 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 152: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 154: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 156: extern __nonreentrant void _delay3(unsigned char);
-"22 config.h
+"21 config.h
 [p x RETEN=OFF ]
-"23
+"22
 [p x INTOSCSEL=HIGH ]
-"24
+"23
 [p x SOSCSEL=HIGH ]
-"25
+"24
 [p x XINST=OFF ]
-"28
+"27
 [p x FOSC=INTIO2 ]
-"29
+"28
 [p x PLLCFG=OFF ]
-"30
+"29
 [p x FCMEN=OFF ]
-"31
+"30
 [p x IESO=OFF ]
-"34
+"33
 [p x PWRTEN=OFF ]
-"35
+"34
 [p x BOREN=SBORDIS ]
-"36
+"35
 [p x BORV=3 ]
-"37
+"36
 [p x BORPWR=ZPBORMV ]
-"40
+"39
 [p x WDTEN=SWDTDIS ]
-"41
+"40
 [p x WDTPS=1048576 ]
-"44
+"43
 [p x CANMX=PORTB ]
-"45
+"44
 [p x MSSPMSK=MSK7 ]
-"46
+"45
 [p x MCLRE=ON ]
-"49
+"48
 [p x STVREN=ON ]
-"50
+"49
 [p x BBSIZ=BB2K ]
-"53
+"52
 [p x CP0=OFF ]
-"54
+"53
 [p x CP1=OFF ]
-"55
+"54
 [p x CP2=OFF ]
-"56
+"55
 [p x CP3=OFF ]
-"59
+"58
 [p x CPB=OFF ]
-"60
+"59
 [p x CPD=OFF ]
-"63
+"62
 [p x WRT0=OFF ]
-"64
+"63
 [p x WRT1=OFF ]
-"65
+"64
 [p x WRT2=OFF ]
-"66
+"65
 [p x WRT3=OFF ]
-"69
+"68
 [p x WRTC=OFF ]
-"70
+"69
 [p x WRTB=OFF ]
-"71
+"70
 [p x WRTD=OFF ]
-"74
+"73
 [p x EBTR0=OFF ]
-"75
+"74
 [p x EBTR1=OFF ]
-"76
+"75
 [p x EBTR2=OFF ]
-"77
+"76
 [p x EBTR3=OFF ]
-"80
+"79
 [p x EBTRB=OFF ]
-"5 Other.c
+[; ;Other.h: 15: void InitDevice(void);
+[; ;Other.h: 16: void Delay(unsigned int count);
+"19 Other.h
+[v _Interrupt_counter `i ~T0 @X0 1 e ]
+[; ;Other.h: 19: int Interrupt_counter;
+"22
+[v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
+[; ;Other.h: 22: int MAP_HEARTBEAT;
+"6 Other.c
 [v _InitDevice `(v ~T0 @X0 1 ef ]
 {
-[; ;Other.c: 5: void InitDevice(void){
+[; ;Other.c: 6: void InitDevice(void){
 [e :U _InitDevice ]
 [f ]
-[; ;Other.c: 7: count = 0x01;
-"7
-[e = _count -> -> 1 `i `uc ]
-[; ;Other.c: 10: OSCCON = 0x60;
-"10
-[e = _OSCCON -> -> 96 `i `uc ]
-[; ;Other.c: 11: OSCCONbits.IRCF = 7;
+[; ;Other.c: 8: Interrupt_counter = 0;
+"8
+[e = _Interrupt_counter -> 0 `i ]
+[; ;Other.c: 11: OSCCON = 0x60;
 "11
-[e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
-[; ;Other.c: 12: OSCTUNEbits.PLLEN = 1;
+[e = _OSCCON -> -> 96 `i `uc ]
+[; ;Other.c: 12: OSCCONbits.IRCF = 7;
 "12
+[e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
+[; ;Other.c: 13: OSCTUNEbits.PLLEN = 1;
+"13
 [e = . . _OSCTUNEbits 0 1 -> -> 1 `i `uc ]
-[; ;Other.c: 15: heartbeatCount = 0;
-"15
-[e = _heartbeatCount -> -> 0 `i `ui ]
-[; ;Other.c: 16: buttonWasPressed = 0;
+[; ;Other.c: 16: heartbeatCount = 0;
 "16
+[e = _heartbeatCount -> -> 0 `i `ui ]
+[; ;Other.c: 17: buttonWasPressed = 0;
+"17
 [e = _buttonWasPressed -> -> 0 `i `uc ]
-[; ;Other.c: 19: ANCON0 = ANCON1 = 0x00;
-"19
-[e = _ANCON0 = _ANCON1 -> -> 0 `i `uc ]
-[; ;Other.c: 20: TRISB = 0xFF;
+[; ;Other.c: 20: ANCON0 = ANCON1 = 0x00;
 "20
+[e = _ANCON0 = _ANCON1 -> -> 0 `i `uc ]
+[; ;Other.c: 21: TRISB = 0xFF;
+"21
 [e = _TRISB -> -> 255 `i `uc ]
-[; ;Other.c: 23: TRISA = 0b00111111;
-"23
-[e = _TRISA -> -> 63 `i `uc ]
-[; ;Other.c: 24: LATAbits.LATA7 = 0;
+[; ;Other.c: 24: TRISA = 0b00111111;
 "24
-[e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
-[; ;Other.c: 25: LATAbits.LATA6 = 0;
+[e = _TRISA -> -> 63 `i `uc ]
+[; ;Other.c: 25: LATAbits.LATA7 = 0;
 "25
-[e = . . _LATAbits 0 6 -> -> 0 `i `uc ]
+[e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 [; ;Other.c: 28: TRISC = 0b00011000;
 "28
 [e = _TRISC -> -> 24 `i `uc ]
-[; ;Other.c: 31: }
+[; ;Other.c: 29: LATCbits.LATC5 = 0;
+"29
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;Other.c: 30: LATCbits.LATC6 = 0;
+"30
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;Other.c: 31: LATCbits.LATC7 = 0;
 "31
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;Other.c: 33: MAP_HEARTBEAT = 0;
+"33
+[e = _MAP_HEARTBEAT -> 0 `i ]
+[; ;Other.c: 38: T0CONbits.TMR0ON = 1;
+"38
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;Other.c: 39: T0CONbits.T08BIT = 0;
+"39
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
+[; ;Other.c: 40: T0CONbits.T0CS = 0;
+"40
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[; ;Other.c: 42: T0CONbits.PSA = 0;
+"42
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+[; ;Other.c: 43: T0CONbits.T0PS = 7;
+"43
+[e = . . _T0CONbits 0 0 -> -> 7 `i `uc ]
+[; ;Other.c: 46: }
+"46
 [e :UE 2596 ]
 }
-"34
-[v _Delay `(v ~T0 @X0 1 ef1`ui ]
-"35
+"48
+[v _checkHeartbeat `(v ~T0 @X0 1 ef ]
 {
-[; ;Other.c: 34: void Delay(unsigned int count)
-[; ;Other.c: 35: {
+[; ;Other.c: 48: void checkHeartbeat(){
+[e :U _checkHeartbeat ]
+[f ]
+[; ;Other.c: 49: if(i2c_reg_map[5] != MAP_HEARTBEAT){
+"49
+[e $ ! != -> *U + &U _i2c_reg_map * -> -> -> 5 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i _MAP_HEARTBEAT 2598  ]
+{
+[; ;Other.c: 50: MAP_HEARTBEAT = i2c_reg_map[5];
+"50
+[e = _MAP_HEARTBEAT -> *U + &U _i2c_reg_map * -> -> -> 5 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"52
+}
+[e :U 2598 ]
+[; ;Other.c: 52: }
+[; ;Other.c: 53: }
+"53
+[e :UE 2597 ]
+}
+"55
+[v _setup_Interrupt `(v ~T0 @X0 1 ef ]
+{
+[; ;Other.c: 55: void setup_Interrupt(){
+[e :U _setup_Interrupt ]
+[f ]
+[; ;Other.c: 56: RCONbits.IPEN = 1;
+"56
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+[; ;Other.c: 57: INTCONbits.GIEH = 1;
+"57
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+[; ;Other.c: 58: INTCONbits.GIEL = 1;
+"58
+[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
+[; ;Other.c: 59: INTCONbits.TMR0IE = 1;
+"59
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;Other.c: 62: }
+"62
+[e :UE 2599 ]
+}
+"65
+[v _Delay `(v ~T0 @X0 1 ef1`ui ]
+"66
+{
+[; ;Other.c: 65: void Delay(unsigned int count)
+[; ;Other.c: 66: {
 [e :U _Delay ]
 [v _count `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;Other.c: 37: while(count--);
-"37
-[e $U 2598  ]
-[e :U 2599 ]
-[e :U 2598 ]
-[e $ != -- _count -> -> 1 `i `ui -> -> 0 `i `ui 2599  ]
-[e :U 2600 ]
-[; ;Other.c: 38: }
-"38
-[e :UE 2597 ]
+[; ;Other.c: 68: while(count--);
+"68
+[e $U 2601  ]
+[e :U 2602 ]
+[e :U 2601 ]
+[e $ != -- _count -> -> 1 `i `ui -> -> 0 `i `ui 2602  ]
+[e :U 2603 ]
+[; ;Other.c: 69: }
+"69
+[e :UE 2600 ]
 }

@@ -15,6 +15,13 @@ extern "C" {
 void InitDevice(void);
 void Delay(unsigned int count);
 
+
+int Interrupt_counter;
+
+
+int MAP_HEARTBEAT;
+
+
 #ifdef	__cplusplus
 }
 #endif

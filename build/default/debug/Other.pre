@@ -20811,7 +20811,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 
-# 22 "config.h"
+# 21 "config.h"
 #pragma config RETEN = OFF
 #pragma config INTOSCSEL = HIGH
 #pragma config SOSCSEL = HIGH
@@ -20872,10 +20872,20 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 5 "Other.c"
+# 15 "Other.h"
+void InitDevice(void);
+void Delay(unsigned int count);
+
+
+int Interrupt_counter;
+
+
+int MAP_HEARTBEAT;
+
+# 6 "Other.c"
 void InitDevice(void){
 
-count = 0x01;
+Interrupt_counter = 0;
 
 
 OSCCON = 0x60;
@@ -20893,10 +20903,40 @@ TRISB = 0xFF;
 
 TRISA = 0b00111111;
 LATAbits.LATA7 = 0;
-LATAbits.LATA6 = 0;
 
 
 TRISC = 0b00011000;
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+
+MAP_HEARTBEAT = 0;
+
+
+
+
+T0CONbits.TMR0ON = 1;
+T0CONbits.T08BIT = 0;
+T0CONbits.T0CS = 0;
+
+T0CONbits.PSA = 0;
+T0CONbits.T0PS = 7;
+
+
+}
+
+void checkHeartbeat(){
+if(i2c_reg_map[5] != MAP_HEARTBEAT){
+MAP_HEARTBEAT = i2c_reg_map[5];
+
+}
+}
+
+void setup_Interrupt(){
+RCONbits.IPEN = 1;
+INTCONbits.GIEH = 1;
+INTCONbits.GIEL = 1;
+INTCONbits.TMR0IE = 1;
 
 
 }

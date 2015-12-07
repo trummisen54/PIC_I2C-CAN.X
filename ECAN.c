@@ -353,7 +353,19 @@ void checkCAN(){
         i2c_reg_map[6] = temp_D6;
         i2c_reg_map[7] = temp_D7;
         
-        LATCbits.LATC7 = temp_D1;
+        
+        
+        if(i2c_reg_map[0] == 0x27){
+            while(1){
+                LATCbits.LATC7 = 1;
+                Delay(ONE_MS * 500);
+                LATCbits.LATC7 = 0;
+                Delay(ONE_MS * 500);
+                
+            }
+        }
+        
+        LATCbits.LATC6 = 1; //receive diode
 
     }
 }

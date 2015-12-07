@@ -20777,7 +20777,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 
-# 22 "config.h"
+# 21 "config.h"
 #pragma config RETEN = OFF
 #pragma config INTOSCSEL = HIGH
 #pragma config SOSCSEL = HIGH

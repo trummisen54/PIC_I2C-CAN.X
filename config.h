@@ -7,7 +7,6 @@
 
 #ifndef CONFIG_H
 #define	CONFIG_H
-//#define ONE_MS      (unsigned int)(DEVICE_OSC/4)*80
 
 // PIC18F26K80 Configuration Bit Settings
 

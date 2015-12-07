@@ -20763,7 +20763,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 
-# 22 "config.h"
+# 21 "config.h"
 #pragma config RETEN = OFF
 #pragma config INTOSCSEL = HIGH
 #pragma config SOSCSEL = HIGH
@@ -21008,10 +21008,28 @@ volatile byte i2c_byte_count = 0;
 void InitDevice(void);
 void Delay(unsigned int count);
 
-# 9 "main.c"
-void interrupt ISR(){
 
-checkI2C();
+int Interrupt_counter;
+
+
+int MAP_HEARTBEAT;
+
+# 16 "RFID.h"
+void checkRFID();
+void callback();
+void process_buf(int start);
+void setupRFID();
+
+# 11 "main.c"
+void interrupt ISR(){
+Interrupt_counter++;
+
+if(Interrupt_counter == 2){
+
+callback();
+Interrupt_counter = 0;
+}
+
 
 }
 
@@ -21020,29 +21038,25 @@ int main(void){
 
 
 InitDevice();
+setup_Interrupt();
 CANSetup();
 I2CSetup();
 
 LATAbits.LA7 = 1;
 
 while(1){
-checkCAN();
 
-if(I2C_FLAG){
-I2C_FLAG = 0;
-ECAN_Transmit(0x32,0xC0, 0x08,
-i2c_reg_map[0],
-i2c_reg_map[1],
-i2c_reg_map[2],
-i2c_reg_map[3],
-i2c_reg_map[4],
-i2c_reg_map[5],
-i2c_reg_map[6],
-i2c_reg_map[7]);
+# 56
+Delay((unsigned int)(64/4)*80 * 5);
 
-}
+checkRFID();
 
-Delay(100);
+# 64
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+
+
+
 }
 
 

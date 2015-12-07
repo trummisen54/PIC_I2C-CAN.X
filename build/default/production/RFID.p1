@@ -1,400 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"31608 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
-[v _CANCON `Vuc ~T0 @X0 0 e@3951 ]
-"31504
-[s S2062 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 ]
-[n S2062 . EICODE0 EICODE1_ICODE0 EICODE2_ICODE1 EICODE3_ICODE2 EICODE4 OPMODE ]
-"31512
-[s S2063 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2063 . . EICODE1 EICODE2 EICODE3 . OPMODE0 OPMODE1 OPMODE2 ]
-"31522
-[s S2064 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2064 . . ICODE0 ICODE1 ICODE2 ]
-"31503
-[u S2061 `S2062 1 `S2063 1 `S2064 1 ]
-[n S2061 . . . . ]
-"31529
-[v _CANSTATbits `VS2061 ~T0 @X0 0 e@3950 ]
-"31849
-[v _ECANCON `Vuc ~T0 @X0 0 e@3954 ]
-"187
-[v _BRGCON1 `Vuc ~T0 @X0 0 e@3651 ]
-"262
-[v _BRGCON2 `Vuc ~T0 @X0 0 e@3652 ]
-"346
-[v _BRGCON3 `Vuc ~T0 @X0 0 e@3653 ]
-"6973
-[v _BSEL0 `Vuc ~T0 @X0 0 e@3709 ]
-"21219
-[v _RXM0EIDH `Vuc ~T0 @X0 0 e@3834 ]
-"21359
-[v _RXM0EIDL `Vuc ~T0 @X0 0 e@3835 ]
-"20960
-[v _RXM0SIDH `Vuc ~T0 @X0 0 e@3832 ]
-"21100
-[v _RXM0SIDL `Vuc ~T0 @X0 0 e@3833 ]
-"21758
-[v _RXM1EIDH `Vuc ~T0 @X0 0 e@3838 ]
-"21898
-[v _RXM1EIDL `Vuc ~T0 @X0 0 e@3839 ]
-"21499
-[v _RXM1SIDH `Vuc ~T0 @X0 0 e@3836 ]
-"21639
-[v _RXM1SIDL `Vuc ~T0 @X0 0 e@3837 ]
-"398
-[v _RXFCON0 `Vuc ~T0 @X0 0 e@3654 ]
-"459
-[v _RXFCON1 `Vuc ~T0 @X0 0 e@3655 ]
-"6625
-[v _MSEL0 `Vuc ~T0 @X0 0 e@3705 ]
-"6712
-[v _MSEL1 `Vuc ~T0 @X0 0 e@3706 ]
-"6799
-[v _MSEL2 `Vuc ~T0 @X0 0 e@3707 ]
-"6886
-[v _MSEL3 `Vuc ~T0 @X0 0 e@3708 ]
-"5961
-[v _RXFBCON0 `Vuc ~T0 @X0 0 e@3697 ]
-"6044
-[v _RXFBCON1 `Vuc ~T0 @X0 0 e@3698 ]
-"6127
-[v _RXFBCON2 `Vuc ~T0 @X0 0 e@3699 ]
-"6210
-[v _RXFBCON3 `Vuc ~T0 @X0 0 e@3700 ]
-"6293
-[v _RXFBCON4 `Vuc ~T0 @X0 0 e@3701 ]
-"6376
-[v _RXFBCON5 `Vuc ~T0 @X0 0 e@3702 ]
-"6459
-[v _RXFBCON6 `Vuc ~T0 @X0 0 e@3703 ]
-"6542
-[v _RXFBCON7 `Vuc ~T0 @X0 0 e@3704 ]
-"17985
-[v _RXF0EIDH `Vuc ~T0 @X0 0 e@3810 ]
-"18125
-[v _RXF0EIDL `Vuc ~T0 @X0 0 e@3811 ]
-"17726
-[v _RXF0SIDH `Vuc ~T0 @X0 0 e@3808 ]
-"17866
-[v _RXF0SIDL `Vuc ~T0 @X0 0 e@3809 ]
-"18524
-[v _RXF1EIDH `Vuc ~T0 @X0 0 e@3814 ]
-"18664
-[v _RXF1EIDL `Vuc ~T0 @X0 0 e@3815 ]
-"18265
-[v _RXF1SIDH `Vuc ~T0 @X0 0 e@3812 ]
-"18405
-[v _RXF1SIDL `Vuc ~T0 @X0 0 e@3813 ]
-"19063
-[v _RXF2EIDH `Vuc ~T0 @X0 0 e@3818 ]
-"19203
-[v _RXF2EIDL `Vuc ~T0 @X0 0 e@3819 ]
-"18804
-[v _RXF2SIDH `Vuc ~T0 @X0 0 e@3816 ]
-"18944
-[v _RXF2SIDL `Vuc ~T0 @X0 0 e@3817 ]
-"30056
-[v _RXB0CON `Vuc ~T0 @X0 0 e@3936 ]
-"26595
-[v _RXB1CON `Vuc ~T0 @X0 0 e@3888 ]
-"30062
-[s S1971 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1971 . FILHIT0 JTOFF_FILHIT1 RB0DBEN_FILHIT2 RXRTRRO_FILHIT3 FILHIT4 RXM0_RTRRO RXM1 RXFUL ]
-"30072
-[s S1972 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1972 . . JTOFF RB0DBEN RXRTRRO . RTRRO ]
-"30080
-[s S1973 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1973 . . FILHIT1 FILHIT2 FILHIT3 . RXM0 ]
-"30088
-[s S1974 :1 `uc 1 ]
-[n S1974 . RXB0FILHIT0 ]
-"30091
-[s S1975 :1 `uc 1 :1 `uc 1 ]
-[n S1975 . . RXB0FILHIT1 ]
-"30095
-[s S1976 :2 `uc 1 :1 `uc 1 ]
-[n S1976 . . RXB0FILHIT2 ]
-"30099
-[s S1977 :3 `uc 1 :1 `uc 1 ]
-[n S1977 . . RXB0FILHIT3 ]
-"30103
-[s S1978 :4 `uc 1 :1 `uc 1 ]
-[n S1978 . . RXB0FILHIT4 ]
-"30107
-[s S1979 :7 `uc 1 :1 `uc 1 ]
-[n S1979 . . RXB0FUL ]
-"30111
-[s S1980 :5 `uc 1 :1 `uc 1 ]
-[n S1980 . . RXB0M0 ]
-"30115
-[s S1981 :6 `uc 1 :1 `uc 1 ]
-[n S1981 . . RXB0M1 ]
-"30119
-[s S1982 :3 `uc 1 :1 `uc 1 ]
-[n S1982 . . RXB0RTRR0 ]
-"30123
-[s S1983 :5 `uc 1 :1 `uc 1 ]
-[n S1983 . . RXB0RTRRO ]
-"30061
-[u S1970 `S1971 1 `S1972 1 `S1973 1 `S1974 1 `S1975 1 `S1976 1 `S1977 1 `S1978 1 `S1979 1 `S1980 1 `S1981 1 `S1982 1 `S1983 1 ]
-[n S1970 . . . . . . . . . . . . . . ]
-"30128
-[v _RXB0CONbits `VS1970 ~T0 @X0 0 e@3936 ]
-"30535
-[v _RXB0EIDH `Vuc ~T0 @X0 0 e@3939 ]
-"30675
-[v _RXB0EIDL `Vuc ~T0 @X0 0 e@3940 ]
-"30262
-[v _RXB0SIDH `Vuc ~T0 @X0 0 e@3937 ]
-"30402
-[v _RXB0SIDL `Vuc ~T0 @X0 0 e@3938 ]
-"30815
-[v _RXB0DLC `Vuc ~T0 @X0 0 e@3941 ]
-"30946
-[v _RXB0D0 `Vuc ~T0 @X0 0 e@3942 ]
-"31015
-[v _RXB0D1 `Vuc ~T0 @X0 0 e@3943 ]
-"31084
-[v _RXB0D2 `Vuc ~T0 @X0 0 e@3944 ]
-"31153
-[v _RXB0D3 `Vuc ~T0 @X0 0 e@3945 ]
-"31222
-[v _RXB0D4 `Vuc ~T0 @X0 0 e@3946 ]
-"31291
-[v _RXB0D5 `Vuc ~T0 @X0 0 e@3947 ]
-"31360
-[v _RXB0D6 `Vuc ~T0 @X0 0 e@3948 ]
-"31429
-[v _RXB0D7 `Vuc ~T0 @X0 0 e@3949 ]
-"26601
-[s S1752 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1752 . FILHIT0 FILHIT1 FILHIT2 RXRTRRO_FILHIT3 FILHIT4 RXM0_RTRRO RXM1 RXFUL ]
-"26611
-[s S1753 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1753 . . RXRTRRO . RXM0 ]
-"26617
-[s S1754 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1754 . . FILHIT3 . RTRRO ]
-"26623
-[s S1755 :1 `uc 1 ]
-[n S1755 . RXB1FILHIT0 ]
-"26626
-[s S1756 :1 `uc 1 :1 `uc 1 ]
-[n S1756 . . RXB1FILHIT1 ]
-"26630
-[s S1757 :2 `uc 1 :1 `uc 1 ]
-[n S1757 . . RXB1FILHIT2 ]
-"26634
-[s S1758 :3 `uc 1 :1 `uc 1 ]
-[n S1758 . . RXB1FILHIT3 ]
-"26638
-[s S1759 :4 `uc 1 :1 `uc 1 ]
-[n S1759 . . RXB1FILHIT4 ]
-"26642
-[s S1760 :7 `uc 1 :1 `uc 1 ]
-[n S1760 . . RXB1FUL ]
-"26646
-[s S1761 :5 `uc 1 :1 `uc 1 ]
-[n S1761 . . RXB1M0 ]
-"26650
-[s S1762 :6 `uc 1 :1 `uc 1 ]
-[n S1762 . . RXB1M1 ]
-"26654
-[s S1763 :3 `uc 1 :1 `uc 1 ]
-[n S1763 . . RXB1RTRR0 ]
-"26658
-[s S1764 :5 `uc 1 :1 `uc 1 ]
-[n S1764 . . RXB1RTRRO ]
-"26600
-[u S1751 `S1752 1 `S1753 1 `S1754 1 `S1755 1 `S1756 1 `S1757 1 `S1758 1 `S1759 1 `S1760 1 `S1761 1 `S1762 1 `S1763 1 `S1764 1 ]
-[n S1751 . . . . . . . . . . . . . . ]
-"26663
-[v _RXB1CONbits `VS1751 ~T0 @X0 0 e@3888 ]
-"27050
-[v _RXB1EIDH `Vuc ~T0 @X0 0 e@3891 ]
-"27190
-[v _RXB1EIDL `Vuc ~T0 @X0 0 e@3892 ]
-"26777
-[v _RXB1SIDH `Vuc ~T0 @X0 0 e@3889 ]
-"26917
-[v _RXB1SIDL `Vuc ~T0 @X0 0 e@3890 ]
-"27330
-[v _RXB1DLC `Vuc ~T0 @X0 0 e@3893 ]
-"27461
-[v _RXB1D0 `Vuc ~T0 @X0 0 e@3894 ]
-"27530
-[v _RXB1D1 `Vuc ~T0 @X0 0 e@3895 ]
-"27599
-[v _RXB1D2 `Vuc ~T0 @X0 0 e@3896 ]
-"27668
-[v _RXB1D3 `Vuc ~T0 @X0 0 e@3897 ]
-"27737
-[v _RXB1D4 `Vuc ~T0 @X0 0 e@3898 ]
-"27806
-[v _RXB1D5 `Vuc ~T0 @X0 0 e@3899 ]
-"27875
-[v _RXB1D6 `Vuc ~T0 @X0 0 e@3900 ]
-"27944
-[v _RXB1D7 `Vuc ~T0 @X0 0 e@3901 ]
-"7166
-[s S500 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S500 . FILHIT0_TXPRI0 FILHIT1_TXPRI1 FILHIT2_RTREN FILHIT3_TXREQ FILHIT4_TXERR RXRTRRO_TXLARB RXM1_TXABT RXFUL_TXBIF ]
-"7176
-[s S501 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S501 . FILHIT0 FILHIT1 FILHIT2 FILHIT3 FILHIT4 RXRTRRO RXM1 RXFUL ]
-"7186
-[s S502 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S502 . TXPRI0 TXPRI1 RTREN TXREQ TXERR TXLARB TXABT TXBIF ]
-"7196
-[s S503 :1 `uc 1 ]
-[n S503 . B0FILHIT0 ]
-"7199
-[s S504 :1 `uc 1 :1 `uc 1 ]
-[n S504 . . B0FILHIT1 ]
-"7203
-[s S505 :2 `uc 1 :1 `uc 1 ]
-[n S505 . . B0FILHIT2 ]
-"7207
-[s S506 :3 `uc 1 :1 `uc 1 ]
-[n S506 . . B0FILHIT3 ]
-"7211
-[s S507 :4 `uc 1 :1 `uc 1 ]
-[n S507 . . B0FILHIT4 ]
-"7215
-[s S508 :2 `uc 1 :1 `uc 1 ]
-[n S508 . . B0RTREN ]
-"7219
-[s S509 :5 `uc 1 :1 `uc 1 ]
-[n S509 . . B0RTRRO ]
-"7223
-[s S510 :7 `uc 1 :1 `uc 1 ]
-[n S510 . . B0RXFUL ]
-"7227
-[s S511 :6 `uc 1 :1 `uc 1 ]
-[n S511 . . B0RXM1 ]
-"7231
-[s S512 :6 `uc 1 :1 `uc 1 ]
-[n S512 . . B0TXABT ]
-"7235
-[s S513 :7 `uc 1 :1 `uc 1 ]
-[n S513 . . B0TXB3IF ]
-"7239
-[s S514 :4 `uc 1 :1 `uc 1 ]
-[n S514 . . B0TXERR ]
-"7243
-[s S515 :5 `uc 1 :1 `uc 1 ]
-[n S515 . . B0TXLARB ]
-"7247
-[s S516 :1 `uc 1 ]
-[n S516 . B0TXPRI0 ]
-"7250
-[s S517 :1 `uc 1 :1 `uc 1 ]
-[n S517 . . B0TXPRI1 ]
-"7254
-[s S518 :3 `uc 1 :1 `uc 1 ]
-[n S518 . . B0TXREQ ]
-"7165
-[u S499 `S500 1 `S501 1 `S502 1 `S503 1 `S504 1 `S505 1 `S506 1 `S507 1 `S508 1 `S509 1 `S510 1 `S511 1 `S512 1 `S513 1 `S514 1 `S515 1 `S516 1 `S517 1 `S518 1 ]
-[n S499 . . . . . . . . . . . . . . . . . . . . ]
-"7259
-[v _B0CONbits `VS499 ~T0 @X0 0 e@3712 ]
-"7736
-[v _B0EIDH `Vuc ~T0 @X0 0 e@3715 ]
-"7876
-[v _B0EIDL `Vuc ~T0 @X0 0 e@3716 ]
-"7463
-[v _B0SIDH `Vuc ~T0 @X0 0 e@3713 ]
-"7603
-[v _B0SIDL `Vuc ~T0 @X0 0 e@3714 ]
-"8016
-[v _B0DLC `Vuc ~T0 @X0 0 e@3717 ]
-"8162
-[v _B0D0 `Vuc ~T0 @X0 0 e@3718 ]
-"8231
-[v _B0D1 `Vuc ~T0 @X0 0 e@3719 ]
-"8300
-[v _B0D2 `Vuc ~T0 @X0 0 e@3720 ]
-"8369
-[v _B0D3 `Vuc ~T0 @X0 0 e@3721 ]
-"8438
-[v _B0D4 `Vuc ~T0 @X0 0 e@3722 ]
-"8507
-[v _B0D5 `Vuc ~T0 @X0 0 e@3723 ]
-"8576
-[v _B0D6 `Vuc ~T0 @X0 0 e@3724 ]
-"8645
-[v _B0D7 `Vuc ~T0 @X0 0 e@3725 ]
-"32070
-[s S2091 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2091 . RXB0IF RXB1IF TXB0IF TXB1IF TXB2IF ERRIF WAKIF IRXIF ]
-"32080
-[s S2092 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S2092 . FIFOWMIF RXBnIF . TXBnIF ]
-"32069
-[u S2090 `S2091 1 `S2092 1 ]
-[n S2090 . . . ]
-"32087
-[v _PIR5bits `VS2090 ~T0 @X0 0 e@3959 ]
-"25466
-[v _TXB0EIDH `Vuc ~T0 @X0 0 e@3875 ]
-"25606
-[v _TXB0EIDL `Vuc ~T0 @X0 0 e@3876 ]
-"25202
-[v _TXB0SIDH `Vuc ~T0 @X0 0 e@3873 ]
-"25342
-[v _TXB0SIDL `Vuc ~T0 @X0 0 e@3874 ]
-"25746
-[v _TXB0DLC `Vuc ~T0 @X0 0 e@3877 ]
-"25842
-[v _TXB0D0 `Vuc ~T0 @X0 0 e@3878 ]
-"25911
-[v _TXB0D1 `Vuc ~T0 @X0 0 e@3879 ]
-"25980
-[v _TXB0D2 `Vuc ~T0 @X0 0 e@3880 ]
-"26049
-[v _TXB0D3 `Vuc ~T0 @X0 0 e@3881 ]
-"26118
-[v _TXB0D4 `Vuc ~T0 @X0 0 e@3882 ]
-"26187
-[v _TXB0D5 `Vuc ~T0 @X0 0 e@3883 ]
-"26256
-[v _TXB0D6 `Vuc ~T0 @X0 0 e@3884 ]
-"26325
-[v _TXB0D7 `Vuc ~T0 @X0 0 e@3885 ]
-"25082
-[s S1660 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1660 . TXPRI . TXREQ TXERR TXLARB TXABT TXBIF ]
-"25091
-[s S1661 :1 `uc 1 :1 `uc 1 ]
-[n S1661 . TXPRI0 TXPRI1 ]
-"25095
-[s S1662 :7 `uc 1 :1 `uc 1 ]
-[n S1662 . . TX0IF ]
-"25099
-[s S1663 :6 `uc 1 :1 `uc 1 ]
-[n S1663 . . TXB0ABT ]
-"25103
-[s S1664 :4 `uc 1 :1 `uc 1 ]
-[n S1664 . . TXB0ERR ]
-"25107
-[s S1665 :5 `uc 1 :1 `uc 1 ]
-[n S1665 . . TXB0LARB ]
-"25111
-[s S1666 :1 `uc 1 ]
-[n S1666 . TXB0PRI0 ]
-"25114
-[s S1667 :1 `uc 1 :1 `uc 1 ]
-[n S1667 . . TXB0PRI1 ]
-"25118
-[s S1668 :3 `uc 1 :1 `uc 1 ]
-[n S1668 . . TXB0REQ ]
-"25081
-[u S1659 `S1660 1 `S1661 1 `S1662 1 `S1663 1 `S1664 1 `S1665 1 `S1666 1 `S1667 1 `S1668 1 ]
-[n S1659 . . . . . . . . . . ]
-"25123
-[v _TXB0CONbits `VS1659 ~T0 @X0 0 e@3872 ]
-"33278
+"33278 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
 [s S2181 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2181 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
 "33288
@@ -426,8 +31,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2180 . . . . . . . . . . ]
 "33320
 [v _LATCbits `VS2180 ~T0 @X0 0 e@3979 ]
-"24 I2C.h
+"16 Other.h
 [v _Delay `(v ~T0 @X0 0 ef1`ui ]
+"18 RFID.h
+[v _process_buf `(v ~T0 @X0 0 ef1`i ]
+[; ;RFID.h: 16: void checkRFID();
+[; ;RFID.h: 17: void callback();
+[; ;RFID.h: 18: void process_buf(int start);
+[; ;RFID.h: 19: void setupRFID();
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -17083,721 +16694,589 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "79
 [p x EBTRB=OFF ]
-[; ;ECAN.h: 79: void checkCAN(void);
-[; ;ECAN.h: 81: void CANSetup(void);
-[; ;ECAN.h: 83: unsigned char ECAN_Receive(void);
-[; ;ECAN.h: 85: void ECAN_Transmit(unsigned char SIDH,
-[; ;ECAN.h: 86: unsigned char SIDL,
-[; ;ECAN.h: 87: unsigned char DLC,
-[; ;ECAN.h: 88: unsigned char TRANSMIT_ID,
-[; ;ECAN.h: 89: unsigned char DATA1,
-[; ;ECAN.h: 90: unsigned char DATA2,
-[; ;ECAN.h: 91: unsigned char DATA3,
-[; ;ECAN.h: 92: unsigned char DATA4,
-[; ;ECAN.h: 93: unsigned char DATA5,
-[; ;ECAN.h: 94: unsigned char DATA6,
-[; ;ECAN.h: 95: unsigned char DATA7);
-"98 ECAN.h
-[v _count `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 98: unsigned char count;
-"99
-[v _RECEIVE_ID `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 99: unsigned char RECEIVE_ID;
-"101
-[v _temp_D1 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 101: unsigned char temp_D1;
-"102
-[v _temp_D2 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char temp_D2;
-"103
-[v _temp_D7 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 103: unsigned char temp_D7;
-"106
-[v _MOTOR_ID `uc ~T0 @X0 1 e ]
-[i _MOTOR_ID
--> -> 1 `i `uc
+[; ;Other.h: 15: void InitDevice(void);
+[; ;Other.h: 16: void Delay(unsigned int count);
+"19 Other.h
+[v _Interrupt_counter `i ~T0 @X0 1 e ]
+[; ;Other.h: 19: int Interrupt_counter;
+"22
+[v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
+[; ;Other.h: 22: int MAP_HEARTBEAT;
+"32 RFID.c
+[v _ledPin `i ~T0 @X0 1 e ]
+[i _ledPin
+-> 13 `i
 ]
-[; ;ECAN.h: 106: unsigned char MOTOR_ID = 0x01;
-"107
-[v _BATTERISTATUS_ID `uc ~T0 @X0 1 e ]
-[i _BATTERISTATUS_ID
--> -> 2 `i `uc
+[; ;RFID.c: 32: int ledPin = 13;
+"33
+[v _inPin `i ~T0 @X0 1 e ]
+[i _inPin
+-> 7 `i
 ]
-[; ;ECAN.h: 107: unsigned char BATTERISTATUS_ID = 0x02;
-"109
-[v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 109: unsigned int heartbeatCount;
-"110
-[v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 110: unsigned char buttonWasPressed;
-[; ;I2C.h: 19: typedef unsigned char byte;
-"20 I2C.h
-[v _I2C_FLAG `i ~T0 @X0 1 e ]
-[i _I2C_FLAG
+[; ;RFID.c: 33: int inPin = 7;
+"34
+[v _val `i ~T0 @X0 1 e ]
+[; ;RFID.c: 34: int val;
+"35
+[v _bitlenctr `i ~T0 @X0 1 e ]
+[i _bitlenctr
 -> 0 `i
 ]
-[; ;I2C.h: 20: extern int I2C_FLAG = 0;
-[; ;I2C.h: 22: extern void checkI2C();
-[; ;I2C.h: 23: extern void I2CSetup();
-[; ;I2C.h: 24: void Delay(unsigned int count);
-"28
-[v _i2c_reg_addr `Vuc ~T0 @X0 1 e ]
-[i _i2c_reg_addr
--> -> 0 `i `uc
+[; ;RFID.c: 35: int bitlenctr = 0;
+"36
+[v _curState `i ~T0 @X0 1 e ]
+[i _curState
+-> 0 `i
 ]
-[; ;I2C.h: 28: volatile byte i2c_reg_addr = 0;
-"29
-[v _i2c_reg_map `Vuc ~T0 @X0 -> 16 `i e ]
-[i _i2c_reg_map
-:U ..
--> -> 0 `i `uc
-..
+[; ;RFID.c: 36: int curState = 0;
+"41
+[v _raw `uc ~T0 @X0 -> 1000 `i e ]
+[; ;RFID.c: 41: char raw[1000];
+"43
+[v _index `i ~T0 @X0 1 e ]
+[i _index
+-> 0 `i
 ]
-[; ;I2C.h: 29: volatile byte i2c_reg_map[16] = {0,};
-"30
-[v _i2c_byte_count `Vuc ~T0 @X0 1 e ]
-[i _i2c_byte_count
--> -> 0 `i `uc
+[; ;RFID.c: 43: int index = 0;
+"44
+[v _bufnum `i ~T0 @X0 1 e ]
+[i _bufnum
+-> 0 `i
 ]
-[; ;I2C.h: 30: volatile byte i2c_byte_count = 0;
-"90 ECAN.c
-[v _temp_EIDH `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 90: unsigned char temp_EIDH;
-"91
-[v _temp_EIDL `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 91: unsigned char temp_EIDL;
-"92
-[v _temp_SIDH `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 92: unsigned char temp_SIDH;
-"93
-[v _temp_SIDL `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 93: unsigned char temp_SIDL;
-"94
-[v _temp_DLC `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 94: unsigned char temp_DLC;
-"95
-[v _temp_D0 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 95: unsigned char temp_D0;
-"98
-[v _temp_D3 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 98: unsigned char temp_D3;
-"99
-[v _temp_D4 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 99: unsigned char temp_D4;
-"100
-[v _temp_D5 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 100: unsigned char temp_D5;
-"101
-[v _temp_D6 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 101: unsigned char temp_D6;
-"113
-[v _CANSetup `(v ~T0 @X0 1 ef ]
-"114
+[; ;RFID.c: 44: int bufnum = 0;
+"48
+[v _setupRFID `(v ~T0 @X0 1 ef ]
+"49
 {
-[; ;ECAN.c: 113: void CANSetup(void)
-[; ;ECAN.c: 114: {
-[e :U _CANSetup ]
+[; ;RFID.c: 48: void setupRFID()
+[; ;RFID.c: 49: {
+[e :U _setupRFID ]
 [f ]
-[; ;ECAN.c: 116: CANCON = 0x80;
-"116
-[e = _CANCON -> -> 128 `i `uc ]
-[; ;ECAN.c: 117: while(!(CANSTATbits.OPMODE ==0x04));
-"117
-[e $U 2597  ]
-[e :U 2598 ]
-[e :U 2597 ]
-[e $ ! == -> . . _CANSTATbits 0 5 `i -> 4 `i 2598  ]
-[e :U 2599 ]
-[; ;ECAN.c: 120: ECANCON = 0x40;
-"120
-[e = _ECANCON -> -> 64 `i `uc ]
-[; ;ECAN.c: 124: BRGCON1 = 0x81;
-"124
-[e = _BRGCON1 -> -> 129 `i `uc ]
-[; ;ECAN.c: 125: BRGCON2 = 0xB8;
-"125
-[e = _BRGCON2 -> -> 184 `i `uc ]
-[; ;ECAN.c: 126: BRGCON3 = 0x05;
-"126
-[e = _BRGCON3 -> -> 5 `i `uc ]
-[; ;ECAN.c: 131: BSEL0 = 0xF8;
-"131
-[e = _BSEL0 -> -> 248 `i `uc ]
-[; ;ECAN.c: 135: RXM0EIDH = 0x00;
-"135
-[e = _RXM0EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 136: RXM0EIDL = 0x00;
-"136
-[e = _RXM0EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 137: RXM0SIDH = 0xFF;
-"137
-[e = _RXM0SIDH -> -> 255 `i `uc ]
-[; ;ECAN.c: 138: RXM0SIDL = 0xE0;
-"138
-[e = _RXM0SIDL -> -> 224 `i `uc ]
-[; ;ECAN.c: 141: RXM1EIDH = 0x00;
-"141
-[e = _RXM1EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 142: RXM1EIDL = 0x00;
-"142
-[e = _RXM1EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 143: RXM1SIDH = 0xFF;
-"143
-[e = _RXM1SIDH -> -> 255 `i `uc ]
-[; ;ECAN.c: 144: RXM1SIDL = 0xE0;
-"144
-[e = _RXM1SIDL -> -> 224 `i `uc ]
-[; ;ECAN.c: 148: RXFCON0 = 0x07;
-"148
-[e = _RXFCON0 -> -> 7 `i `uc ]
-[; ;ECAN.c: 149: RXFCON1 = 0x00;
-"149
-[e = _RXFCON1 -> -> 0 `i `uc ]
-[; ;ECAN.c: 152: MSEL0 = 0xC0;
-"152
-[e = _MSEL0 -> -> 192 `i `uc ]
-[; ;ECAN.c: 153: MSEL1 = 0xFF;
-"153
-[e = _MSEL1 -> -> 255 `i `uc ]
-[; ;ECAN.c: 154: MSEL2 = 0xFF;
-"154
-[e = _MSEL2 -> -> 255 `i `uc ]
-[; ;ECAN.c: 155: MSEL3 = 0xFF;
-"155
-[e = _MSEL3 -> -> 255 `i `uc ]
-[; ;ECAN.c: 159: RXFBCON0 = 0x10;
-"159
-[e = _RXFBCON0 -> -> 16 `i `uc ]
-[; ;ECAN.c: 160: RXFBCON1 = 0xF2;
-"160
-[e = _RXFBCON1 -> -> 242 `i `uc ]
-[; ;ECAN.c: 162: RXFBCON2 = 0xFF;
-"162
-[e = _RXFBCON2 -> -> 255 `i `uc ]
-[; ;ECAN.c: 163: RXFBCON3 = 0xFF;
-"163
-[e = _RXFBCON3 -> -> 255 `i `uc ]
-[; ;ECAN.c: 164: RXFBCON4 = 0xFF;
-"164
-[e = _RXFBCON4 -> -> 255 `i `uc ]
-[; ;ECAN.c: 165: RXFBCON5 = 0xFF;
-"165
-[e = _RXFBCON5 -> -> 255 `i `uc ]
-[; ;ECAN.c: 166: RXFBCON6 = 0xFF;
-"166
-[e = _RXFBCON6 -> -> 255 `i `uc ]
-[; ;ECAN.c: 167: RXFBCON7 = 0xFF;
-"167
-[e = _RXFBCON7 -> -> 255 `i `uc ]
-[; ;ECAN.c: 173: RXF0EIDH = 0x00;
-"173
-[e = _RXF0EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 174: RXF0EIDL = 0x00;
-"174
-[e = _RXF0EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 175: RXF0SIDH = 0x32;
-"175
-[e = _RXF0SIDH -> -> 50 `i `uc ]
-[; ;ECAN.c: 176: RXF0SIDL = 0xC0;
-"176
-[e = _RXF0SIDL -> -> 192 `i `uc ]
-[; ;ECAN.c: 177: RXF1EIDH = 0x00;
-"177
-[e = _RXF1EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 178: RXF1EIDL = 0x00;
-"178
-[e = _RXF1EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 179: RXF1SIDH = 0x33;
-"179
-[e = _RXF1SIDH -> -> 51 `i `uc ]
-[; ;ECAN.c: 180: RXF1SIDL = 0x40;
-"180
-[e = _RXF1SIDL -> -> 64 `i `uc ]
-[; ;ECAN.c: 181: RXF2EIDH = 0x00;
-"181
-[e = _RXF2EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 182: RXF2EIDL = 0x00;
-"182
-[e = _RXF2EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 183: RXF2SIDH = 0x33;
-"183
-[e = _RXF2SIDH -> -> 51 `i `uc ]
-[; ;ECAN.c: 184: RXF2SIDL = 0xC0;
-"184
-[e = _RXF2SIDL -> -> 192 `i `uc ]
-[; ;ECAN.c: 187: if (0 ==1)
-"187
-[e $ ! == -> 0 `i -> 1 `i 2600  ]
-[; ;ECAN.c: 188: {
-"188
-{
-[; ;ECAN.c: 189: CANCON = 0x40;
-"189
-[e = _CANCON -> -> 64 `i `uc ]
-[; ;ECAN.c: 190: while(CANSTATbits.OPMODE==0x40);
-"190
-[e $U 2601  ]
-[e :U 2602 ]
-[e :U 2601 ]
-[e $ == -> . . _CANSTATbits 0 5 `i -> 64 `i 2602  ]
-[e :U 2603 ]
-"191
-}
-[; ;ECAN.c: 191: }
-[e $U 2604  ]
-"192
-[e :U 2600 ]
-[; ;ECAN.c: 192: else if (0==1)
-[e $ ! == -> 0 `i -> 1 `i 2605  ]
-[; ;ECAN.c: 193: {
-"193
-{
-[; ;ECAN.c: 194: CANCON = 0x60;
-"194
-[e = _CANCON -> -> 96 `i `uc ]
-[; ;ECAN.c: 195: while(CANSTATbits.OPMODE==0x60);
-"195
-[e $U 2606  ]
-[e :U 2607 ]
-[e :U 2606 ]
-[e $ == -> . . _CANSTATbits 0 5 `i -> 96 `i 2607  ]
-[e :U 2608 ]
-"196
-}
-[; ;ECAN.c: 196: }
-[e $U 2609  ]
-"197
-[e :U 2605 ]
-[; ;ECAN.c: 197: else if (1 == 1){
-[e $ ! == -> 1 `i -> 1 `i 2610  ]
-{
-[; ;ECAN.c: 198: CANCON = 0x00;
-"198
-[e = _CANCON -> -> 0 `i `uc ]
-[; ;ECAN.c: 199: while(CANSTATbits.OPMODE==0x00);
-"199
-[e $U 2611  ]
-[e :U 2612 ]
-[e :U 2611 ]
-[e $ == -> . . _CANSTATbits 0 5 `i -> 0 `i 2612  ]
-[e :U 2613 ]
-"200
-}
-[; ;ECAN.c: 200: }
-[e $U 2614  ]
-"202
-[e :U 2610 ]
-[; ;ECAN.c: 202: else
-[; ;ECAN.c: 203: {
-"203
-{
-[; ;ECAN.c: 204: CANCON = 0x40;
-"204
-[e = _CANCON -> -> 64 `i `uc ]
-[; ;ECAN.c: 205: while(CANSTATbits.OPMODE==0x40);
-"205
-[e $U 2615  ]
-[e :U 2616 ]
-[e :U 2615 ]
-[e $ == -> . . _CANSTATbits 0 5 `i -> 64 `i 2616  ]
-[e :U 2617 ]
-"206
-}
-[e :U 2614 ]
-[e :U 2609 ]
-[e :U 2604 ]
-[; ;ECAN.c: 206: }
-[; ;ECAN.c: 209: RXB0CON = 0x00;
-"209
-[e = _RXB0CON -> -> 0 `i `uc ]
-[; ;ECAN.c: 210: RXB1CON = 0x00;
-"210
-[e = _RXB1CON -> -> 0 `i `uc ]
-[; ;ECAN.c: 212: }
-"212
+[; ;RFID.c: 59: }
+"59
 [e :UE 2596 ]
 }
-"224
-[v _ECAN_Receive `(uc ~T0 @X0 1 ef ]
-"225
+"61
+[v _callback `(v ~T0 @X0 1 ef ]
+"62
 {
-[; ;ECAN.c: 224: unsigned char ECAN_Receive(void)
-[; ;ECAN.c: 225: {
-[e :U _ECAN_Receive ]
+[; ;RFID.c: 61: void callback()
+[; ;RFID.c: 62: {
+[e :U _callback ]
 [f ]
-"226
-[v _RXMsgFlag `uc ~T0 @X0 1 a ]
-[; ;ECAN.c: 226: unsigned char RXMsgFlag;
-[; ;ECAN.c: 228: RXMsgFlag = 0x00;
-"228
-[e = _RXMsgFlag -> -> 0 `i `uc ]
-[; ;ECAN.c: 230: if (RXB0CONbits.RXFUL)
-"230
-[e $ ! != -> . . _RXB0CONbits 0 7 `i -> -> -> 0 `i `Vuc `i 2619  ]
-[; ;ECAN.c: 231: {
-"231
-{
-[; ;ECAN.c: 232: temp_EIDH = RXB0EIDH;
-"232
-[e = _temp_EIDH _RXB0EIDH ]
-[; ;ECAN.c: 233: temp_EIDL = RXB0EIDL;
-"233
-[e = _temp_EIDL _RXB0EIDL ]
-[; ;ECAN.c: 234: temp_SIDH = RXB0SIDH;
-"234
-[e = _temp_SIDH _RXB0SIDH ]
-[; ;ECAN.c: 235: temp_SIDL = RXB0SIDL;
-"235
-[e = _temp_SIDL _RXB0SIDL ]
-[; ;ECAN.c: 236: temp_DLC = RXB0DLC;
-"236
-[e = _temp_DLC _RXB0DLC ]
-[; ;ECAN.c: 237: RECEIVE_ID = RXB0D0;
-"237
-[e = _RECEIVE_ID _RXB0D0 ]
-[; ;ECAN.c: 238: temp_D1 = RXB0D1;
-"238
-[e = _temp_D1 _RXB0D1 ]
-[; ;ECAN.c: 239: temp_D2 = RXB0D2;
-"239
-[e = _temp_D2 _RXB0D2 ]
-[; ;ECAN.c: 240: temp_D3 = RXB0D3;
-"240
-[e = _temp_D3 _RXB0D3 ]
-[; ;ECAN.c: 241: temp_D4 = RXB0D4;
-"241
-[e = _temp_D4 _RXB0D4 ]
-[; ;ECAN.c: 242: temp_D5 = RXB0D5;
-"242
-[e = _temp_D5 _RXB0D5 ]
-[; ;ECAN.c: 243: temp_D6 = RXB0D6;
-"243
-[e = _temp_D6 _RXB0D6 ]
-[; ;ECAN.c: 244: temp_D7 = RXB0D7;
-"244
-[e = _temp_D7 _RXB0D7 ]
-[; ;ECAN.c: 245: RXB0CONbits.RXFUL = 0;
-"245
-[e = . . _RXB0CONbits 0 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 246: RXMsgFlag = 0x01;
-"246
-[e = _RXMsgFlag -> -> 1 `i `uc ]
-"247
+[; ;RFID.c: 65: LATCbits.LATC7 ^= 1;
+"65
+[e =^ . . _LATCbits 0 7 -> -> 1 `i `uc ]
+[; ;RFID.c: 86: }
+"86
+[e :UE 2597 ]
 }
-[; ;ECAN.c: 247: }
+"92
+[v _checkRFID `(v ~T0 @X0 1 ef ]
+{
+[; ;RFID.c: 92: void checkRFID(){
+[e :U _checkRFID ]
+[f ]
+[; ;RFID.c: 95: if(index >= 1000) {
+"95
+[e $ ! >= _index -> 1000 `i 2599  ]
+{
+[; ;RFID.c: 100: if(0) {
+"100
+[e $ ! != -> 0 `i -> 0 `i 2600  ]
+{
+[; ;RFID.c: 101: for(int i = 0; i < 1000;
+"101
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[; ;RFID.c: 102: i++) {
+[e $ < _i -> 1000 `i 2601  ]
+[e $U 2602  ]
+"102
+[e :U 2601 ]
+{
+"105
+}
+"102
+[e ++ _i -> 1 `i ]
+"101
+[e $ < _i -> 1000 `i 2601  ]
+[e :U 2602 ]
+"105
+}
+[; ;RFID.c: 105: }
+[; ;RFID.c: 107: Delay((unsigned int)(64/4)*80 * 2000);
+"107
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 2000 `i `ui ]
+"108
+}
+[e :U 2600 ]
+"112
+[v _tot1 `i ~T0 @X0 1 a ]
+[; ;RFID.c: 108: }
+[; ;RFID.c: 112: int tot1 = 0;
+[e = _tot1 -> 0 `i ]
+"113
+[v _tot0 `i ~T0 @X0 1 a ]
+[; ;RFID.c: 113: int tot0 = 0;
+[e = _tot0 -> 0 `i ]
+"114
+[v _tote `i ~T0 @X0 1 a ]
+[; ;RFID.c: 114: int tote = 0;
+[e = _tote -> 0 `i ]
+"115
+[v _totp `i ~T0 @X0 1 a ]
+[; ;RFID.c: 115: int totp = 0;
+[e = _totp -> 0 `i ]
+[; ;RFID.c: 116: raw[0] = 0;
+"116
+[e = *U + &U _raw * -> -> -> 0 `i `ui `ux -> -> # *U &U _raw `ui `ux -> -> 0 `i `uc ]
+[; ;RFID.c: 117: for(int i = 1; i < 1000; i++) {
+"117
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 1 `i ]
+[e $ < _i -> 1000 `i 2604  ]
+[e $U 2605  ]
+[e :U 2604 ]
+{
+"118
+[v _v `i ~T0 @X0 1 a ]
+[; ;RFID.c: 118: int v = raw[i];
+[e = _v -> *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux `i ]
+[; ;RFID.c: 119: if(v == 4) {
+"119
+[e $ ! == _v -> 4 `i 2607  ]
+{
+[; ;RFID.c: 120: raw[i] = 0;
+"120
+[e = *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux -> -> 0 `i `uc ]
+[; ;RFID.c: 121: tot0++;
+"121
+[e ++ _tot0 -> 1 `i ]
+"122
+}
+[; ;RFID.c: 122: }
+[e $U 2608  ]
+"123
+[e :U 2607 ]
+[; ;RFID.c: 123: else if(v == 5) {
+[e $ ! == _v -> 5 `i 2609  ]
+{
+[; ;RFID.c: 124: raw[i] = raw[i - 1];
+"124
+[e = *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux *U + &U _raw * -> -> - _i -> 1 `i `ui `ux -> -> # *U &U _raw `ui `ux ]
+[; ;RFID.c: 125: totp++;
+"125
+[e ++ _totp -> 1 `i ]
+"126
+}
+[; ;RFID.c: 126: }
+[e $U 2610  ]
+"127
+[e :U 2609 ]
+[; ;RFID.c: 127: else if(v == 6 || v == 7) {
+[e $ ! || == _v -> 6 `i == _v -> 7 `i 2611  ]
+{
+[; ;RFID.c: 128: raw[i] = 1;
+"128
+[e = *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux -> -> 1 `i `uc ]
+[; ;RFID.c: 129: tot1++;
+"129
+[e ++ _tot1 -> 1 `i ]
+"130
+}
+[; ;RFID.c: 130: }
+[e $U 2612  ]
+"131
+[e :U 2611 ]
+[; ;RFID.c: 131: else {
+{
+[; ;RFID.c: 132: raw[i] = 101;
+"132
+[e = *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux -> -> 101 `i `uc ]
+[; ;RFID.c: 133: tote++;
+"133
+[e ++ _tote -> 1 `i ]
+"134
+}
+[e :U 2612 ]
+[e :U 2610 ]
+[e :U 2608 ]
+"135
+}
+"117
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 1000 `i 2604  ]
+[e :U 2605 ]
+"135
+}
+"142
+[v _samecnt `i ~T0 @X0 1 a ]
+[; ;RFID.c: 134: }
+[; ;RFID.c: 135: }
+[; ;RFID.c: 142: int samecnt = 0;
+[e = _samecnt -> 0 `i ]
+"143
+[v _start `i ~T0 @X0 1 a ]
+[; ;RFID.c: 143: int start = -1;
+[e = _start -U -> 1 `i ]
+"144
+[v _lastv `i ~T0 @X0 1 a ]
+[; ;RFID.c: 144: int lastv = 0;
+[e = _lastv -> 0 `i ]
+[; ;RFID.c: 145: for(int i = 0; i < 1000; i++) {
+"145
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 1000 `i 2613  ]
+[e $U 2614  ]
+[e :U 2613 ]
+{
+[; ;RFID.c: 146: if(raw[i] == lastv) {
+"146
+[e $ ! == -> *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux `i _lastv 2616  ]
+{
+[; ;RFID.c: 148: samecnt++;
+"148
+[e ++ _samecnt -> 1 `i ]
+"149
+}
+[; ;RFID.c: 149: }
+[e $U 2617  ]
+"150
+[e :U 2616 ]
+[; ;RFID.c: 150: else {
+{
+[; ;RFID.c: 152: if(samecnt >= 15 && lastv == 1) {
+"152
+[e $ ! && >= _samecnt -> 15 `i == _lastv -> 1 `i 2618  ]
+{
+[; ;RFID.c: 154: start = i;
+"154
+[e = _start _i ]
+[; ;RFID.c: 155: break;
+"155
+[e $U 2614  ]
+"156
+}
+[e :U 2618 ]
+[; ;RFID.c: 156: }
+[; ;RFID.c: 158: samecnt = 1;
+"158
+[e = _samecnt -> 1 `i ]
+[; ;RFID.c: 159: lastv = raw[i];
+"159
+[e = _lastv -> *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux `i ]
+"160
+}
+[e :U 2617 ]
+"161
+}
+"145
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 1000 `i 2613  ]
+[e :U 2614 ]
+"161
+}
+[; ;RFID.c: 160: }
+[; ;RFID.c: 161: }
+[; ;RFID.c: 164: if(start > 0 && start < (1000 - 5*90)) {
+"164
+[e $ ! && > _start -> 0 `i < _start - -> 1000 `i * -> 5 `i -> 90 `i 2619  ]
+{
+[; ;RFID.c: 165: process_buf(start);
+"165
+[e ( _process_buf (1 _start ]
+"166
+}
+[; ;RFID.c: 166: }
 [e $U 2620  ]
-"248
+"167
 [e :U 2619 ]
-[; ;ECAN.c: 248: else if (RXB1CONbits.RXFUL)
-[e $ ! != -> . . _RXB1CONbits 0 7 `i -> -> -> 0 `i `Vuc `i 2621  ]
-[; ;ECAN.c: 249: {
-"249
+[; ;RFID.c: 167: else {
 {
-[; ;ECAN.c: 250: temp_EIDH = RXB1EIDH;
-"250
-[e = _temp_EIDH _RXB1EIDH ]
-[; ;ECAN.c: 251: temp_EIDL = RXB1EIDL;
-"251
-[e = _temp_EIDL _RXB1EIDL ]
-[; ;ECAN.c: 252: temp_SIDH = RXB1SIDH;
-"252
-[e = _temp_SIDH _RXB1SIDH ]
-[; ;ECAN.c: 253: temp_SIDL = RXB1SIDL;
-"253
-[e = _temp_SIDL _RXB1SIDL ]
-[; ;ECAN.c: 254: temp_DLC = RXB1DLC;
-"254
-[e = _temp_DLC _RXB1DLC ]
-[; ;ECAN.c: 255: temp_D0 = RXB1D0;
-"255
-[e = _temp_D0 _RXB1D0 ]
-[; ;ECAN.c: 256: temp_D1 = RXB1D1;
-"256
-[e = _temp_D1 _RXB1D1 ]
-[; ;ECAN.c: 257: temp_D2 = RXB1D2;
-"257
-[e = _temp_D2 _RXB1D2 ]
-[; ;ECAN.c: 258: temp_D3 = RXB1D3;
-"258
-[e = _temp_D3 _RXB1D3 ]
-[; ;ECAN.c: 259: temp_D4 = RXB1D4;
-"259
-[e = _temp_D4 _RXB1D4 ]
-[; ;ECAN.c: 260: temp_D5 = RXB1D5;
-"260
-[e = _temp_D5 _RXB1D5 ]
-[; ;ECAN.c: 261: temp_D6 = RXB1D6;
-"261
-[e = _temp_D6 _RXB1D6 ]
-[; ;ECAN.c: 262: temp_D7 = RXB1D7;
-"262
-[e = _temp_D7 _RXB1D7 ]
-[; ;ECAN.c: 263: RXB1CONbits.RXFUL = 0;
-"263
-[e = . . _RXB1CONbits 0 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 264: RXMsgFlag = 0x01;
-"264
-[e = _RXMsgFlag -> -> 1 `i `uc ]
-"265
+"169
 }
-[; ;ECAN.c: 265: }
-[e $U 2622  ]
-"266
-[e :U 2621 ]
-[; ;ECAN.c: 266: else if (B0CONbits.RXFUL)
-[e $ ! != -> . . _B0CONbits 1 7 `i -> -> -> 0 `i `Vuc `i 2623  ]
-[; ;ECAN.c: 267: {
-"267
-{
-[; ;ECAN.c: 268: temp_EIDH = B0EIDH;
-"268
-[e = _temp_EIDH _B0EIDH ]
-[; ;ECAN.c: 269: temp_EIDL = B0EIDL;
-"269
-[e = _temp_EIDL _B0EIDL ]
-[; ;ECAN.c: 270: temp_SIDH = B0SIDH;
-"270
-[e = _temp_SIDH _B0SIDH ]
-[; ;ECAN.c: 271: temp_SIDL = B0SIDL;
-"271
-[e = _temp_SIDL _B0SIDL ]
-[; ;ECAN.c: 272: temp_DLC = B0DLC;
-"272
-[e = _temp_DLC _B0DLC ]
-[; ;ECAN.c: 273: temp_D0 = B0D0;
-"273
-[e = _temp_D0 _B0D0 ]
-[; ;ECAN.c: 274: temp_D1 = B0D1;
-"274
-[e = _temp_D1 _B0D1 ]
-[; ;ECAN.c: 275: temp_D2 = B0D2;
-"275
-[e = _temp_D2 _B0D2 ]
-[; ;ECAN.c: 276: temp_D3 = B0D3;
-"276
-[e = _temp_D3 _B0D3 ]
-[; ;ECAN.c: 277: temp_D4 = B0D4;
-"277
-[e = _temp_D4 _B0D4 ]
-[; ;ECAN.c: 278: temp_D5 = B0D5;
-"278
-[e = _temp_D5 _B0D5 ]
-[; ;ECAN.c: 279: temp_D6 = B0D6;
-"279
-[e = _temp_D6 _B0D6 ]
-[; ;ECAN.c: 280: temp_D7 = B0D7;
-"280
-[e = _temp_D7 _B0D7 ]
-[; ;ECAN.c: 282: B0CONbits.RXFUL = 0;
-"282
-[e = . . _B0CONbits 1 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 283: RXMsgFlag = 0x01;
-"283
-[e = _RXMsgFlag -> -> 1 `i `uc ]
-"284
-}
-[e :U 2623 ]
-"286
-[e :U 2622 ]
 [e :U 2620 ]
-[; ;ECAN.c: 284: }
-[; ;ECAN.c: 286: if (RXMsgFlag == 0x01)
-[e $ ! == -> _RXMsgFlag `i -> 1 `i 2624  ]
-[; ;ECAN.c: 287: {
-"287
-{
-[; ;ECAN.c: 288: RXMsgFlag = 0x00;
-"288
-[e = _RXMsgFlag -> -> 0 `i `uc ]
-[; ;ECAN.c: 289: PIR5bits.RXB1IF = 0;
-"289
-[e = . . _PIR5bits 0 1 -> -> 0 `i `uc ]
-[; ;ECAN.c: 290: return 1;
-"290
-[e ) -> -> 1 `i `uc ]
-[e $UE 2618  ]
-"291
+[; ;RFID.c: 169: }
+[; ;RFID.c: 194: bufnum++;
+"194
+[e ++ _bufnum -> 1 `i ]
+[; ;RFID.c: 195: curState = 0;
+"195
+[e = _curState -> 0 `i ]
+[; ;RFID.c: 196: index = 0;
+"196
+[e = _index -> 0 `i ]
+"197
 }
-[; ;ECAN.c: 291: }
-[e $U 2625  ]
-"292
-[e :U 2624 ]
-[; ;ECAN.c: 292: else
-[; ;ECAN.c: 293: {
-"293
+[; ;RFID.c: 197: }
+[e $U 2621  ]
+"198
+[e :U 2599 ]
+[; ;RFID.c: 198: else {
 {
-[; ;ECAN.c: 294: return 0;
-"294
-[e ) -> -> 0 `i `uc ]
-[e $UE 2618  ]
-"295
+[; ;RFID.c: 199: Delay(5 * (unsigned int)(64/4)*80);
+"199
+[e ( _Delay (1 * * -> -> 5 `i `ui -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui ]
+"200
 }
-[e :U 2625 ]
-[; ;ECAN.c: 295: }
-[; ;ECAN.c: 296: }
-"296
-[e :UE 2618 ]
+[e :U 2621 ]
+[; ;RFID.c: 200: }
+[; ;RFID.c: 202: }
+"202
+[e :UE 2598 ]
 }
-"305
-[v _ECAN_Transmit `(v ~T0 @X0 1 ef11`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc ]
-"316
+"210
+[v _process_buf `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;ECAN.c: 305: void ECAN_Transmit(unsigned char SIDH,
-[; ;ECAN.c: 306: unsigned char SIDL,
-[; ;ECAN.c: 307: unsigned char DLC,
-[; ;ECAN.c: 308: unsigned char TRANSMIT_ID,
-[; ;ECAN.c: 309: unsigned char DATA1,
-[; ;ECAN.c: 310: unsigned char DATA2,
-[; ;ECAN.c: 311: unsigned char DATA3,
-[; ;ECAN.c: 312: unsigned char DATA4,
-[; ;ECAN.c: 313: unsigned char DATA5,
-[; ;ECAN.c: 314: unsigned char DATA6,
-[; ;ECAN.c: 315: unsigned char DATA7)
-[; ;ECAN.c: 316: {
-[e :U _ECAN_Transmit ]
-"305
-[v _SIDH `uc ~T0 @X0 1 r1 ]
-"306
-[v _SIDL `uc ~T0 @X0 1 r2 ]
-"307
-[v _DLC `uc ~T0 @X0 1 r3 ]
-"308
-[v _TRANSMIT_ID `uc ~T0 @X0 1 r4 ]
-"309
-[v _DATA1 `uc ~T0 @X0 1 r5 ]
-"310
-[v _DATA2 `uc ~T0 @X0 1 r6 ]
-"311
-[v _DATA3 `uc ~T0 @X0 1 r7 ]
-"312
-[v _DATA4 `uc ~T0 @X0 1 r8 ]
-"313
-[v _DATA5 `uc ~T0 @X0 1 r9 ]
-"314
-[v _DATA6 `uc ~T0 @X0 1 r10 ]
-"315
-[v _DATA7 `uc ~T0 @X0 1 r11 ]
-"316
+[; ;RFID.c: 210: void process_buf(int start) {
+[e :U _process_buf ]
+[v _start `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;ECAN.c: 317: TXB0EIDH = 0x00;
-"317
-[e = _TXB0EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 318: TXB0EIDL = 0x00;
-"318
-[e = _TXB0EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 321: TXB0SIDH = SIDH;
-"321
-[e = _TXB0SIDH _SIDH ]
-[; ;ECAN.c: 322: TXB0SIDL = SIDL;
-"322
-[e = _TXB0SIDL _SIDL ]
-[; ;ECAN.c: 323: TXB0DLC = DLC;
-"323
-[e = _TXB0DLC _DLC ]
-[; ;ECAN.c: 332: TXB0D0 = TRANSMIT_ID;
-"332
-[e = _TXB0D0 _TRANSMIT_ID ]
-[; ;ECAN.c: 333: TXB0D1 = DATA1;
-"333
-[e = _TXB0D1 _DATA1 ]
-[; ;ECAN.c: 334: TXB0D2 = DATA2;
-"334
-[e = _TXB0D2 _DATA2 ]
-[; ;ECAN.c: 335: TXB0D3 = DATA3;
-"335
-[e = _TXB0D3 _DATA3 ]
-[; ;ECAN.c: 336: TXB0D4 = DATA4;
-"336
-[e = _TXB0D4 _DATA4 ]
-[; ;ECAN.c: 337: TXB0D5 = DATA5;
-"337
-[e = _TXB0D5 _DATA5 ]
-[; ;ECAN.c: 338: TXB0D6 = DATA6;
-"338
-[e = _TXB0D6 _DATA6 ]
-[; ;ECAN.c: 339: TXB0D7 = DATA7;
-"339
-[e = _TXB0D7 _DATA7 ]
-[; ;ECAN.c: 341: TXB0CONbits.TXREQ = 1;
-"341
-[e = . . _TXB0CONbits 0 2 -> -> 1 `i `uc ]
-[; ;ECAN.c: 342: }
-"342
-[e :UE 2626 ]
+"215
+[v _lastv `i ~T0 @X0 1 a ]
+[; ;RFID.c: 215: int lastv = 0;
+[e = _lastv -> 0 `i ]
+"216
+[v _samecnt `i ~T0 @X0 1 a ]
+[; ;RFID.c: 216: int samecnt = 0;
+[e = _samecnt -> 0 `i ]
+"217
+[v _manch `uc ~T0 @X0 -> 91 `i a ]
+"218
+[v _final `uc ~T0 @X0 -> 45 `i a ]
+"219
+[v _manchindex `i ~T0 @X0 1 a ]
+[; ;RFID.c: 217: char manch[91];
+[; ;RFID.c: 218: char final[45];
+[; ;RFID.c: 219: int manchindex = 0;
+[e = _manchindex -> 0 `i ]
+[; ;RFID.c: 222: for(int i = start + 1; i < 1000 && manchindex < 90; i++) {
+"222
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i + _start -> 1 `i ]
+[e $U 2626  ]
+[e :U 2623 ]
+{
+[; ;RFID.c: 223: if(raw[i] == lastv) {
+"223
+[e $ ! == -> *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux `i _lastv 2627  ]
+{
+[; ;RFID.c: 224: samecnt++;
+"224
+[e ++ _samecnt -> 1 `i ]
+"225
 }
-"344
-[v _checkCAN `(v ~T0 @X0 1 ef ]
+[; ;RFID.c: 225: }
+[e $U 2628  ]
+"226
+[e :U 2627 ]
+[; ;RFID.c: 226: else {
 {
-[; ;ECAN.c: 344: void checkCAN(){
-[e :U _checkCAN ]
-[f ]
-[; ;ECAN.c: 345: if(ECAN_Receive()){
-"345
-[e $ ! != -> ( _ECAN_Receive ..  `i -> -> -> 0 `i `uc `i 2628  ]
+[; ;RFID.c: 228: if(samecnt >= 3 && samecnt <= 8) {
+"228
+[e $ ! && >= _samecnt -> 3 `i <= _samecnt -> 8 `i 2629  ]
 {
-[; ;ECAN.c: 347: i2c_reg_map[0] = RECEIVE_ID;
-"347
-[e = *U + &U _i2c_reg_map * -> -> -> 0 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _RECEIVE_ID ]
-[; ;ECAN.c: 348: i2c_reg_map[1] = temp_D1;
-"348
-[e = *U + &U _i2c_reg_map * -> -> -> 1 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D1 ]
-[; ;ECAN.c: 349: i2c_reg_map[2] = temp_D2;
-"349
-[e = *U + &U _i2c_reg_map * -> -> -> 2 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D2 ]
-[; ;ECAN.c: 350: i2c_reg_map[3] = temp_D3;
-"350
-[e = *U + &U _i2c_reg_map * -> -> -> 3 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D3 ]
-[; ;ECAN.c: 351: i2c_reg_map[4] = temp_D4;
-"351
-[e = *U + &U _i2c_reg_map * -> -> -> 4 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D4 ]
-[; ;ECAN.c: 352: i2c_reg_map[5] = temp_D5;
-"352
-[e = *U + &U _i2c_reg_map * -> -> -> 5 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D5 ]
-[; ;ECAN.c: 353: i2c_reg_map[6] = temp_D6;
-"353
-[e = *U + &U _i2c_reg_map * -> -> -> 6 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D6 ]
-[; ;ECAN.c: 354: i2c_reg_map[7] = temp_D7;
-"354
-[e = *U + &U _i2c_reg_map * -> -> -> 7 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D7 ]
-[; ;ECAN.c: 358: if(i2c_reg_map[0] == 0x27){
-"358
-[e $ ! == -> *U + &U _i2c_reg_map * -> -> -> 0 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i -> 39 `i 2629  ]
-{
-[; ;ECAN.c: 359: while(1){
-"359
-[e :U 2631 ]
-{
-[; ;ECAN.c: 360: LATCbits.LATC7 = 1;
-"360
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-[; ;ECAN.c: 361: Delay((unsigned int)(64/4)*80 * 500);
-"361
-[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 500 `i `ui ]
-[; ;ECAN.c: 362: LATCbits.LATC7 = 0;
-"362
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 363: Delay((unsigned int)(64/4)*80 * 500);
-"363
-[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 500 `i `ui ]
-"365
+[; ;RFID.c: 229: manch[manchindex++] = lastv;
+"229
+[e = *U + &U _manch * -> -> ++ _manchindex -> 1 `i `ui `ux -> -> # *U &U _manch `ui `ux -> _lastv `uc ]
+"230
 }
-[e :U 2630 ]
-"359
-[e $U 2631  ]
-[e :U 2632 ]
-"366
-}
+[; ;RFID.c: 230: }
+[e $U 2630  ]
+"231
 [e :U 2629 ]
-[; ;ECAN.c: 365: }
-[; ;ECAN.c: 366: }
-[; ;ECAN.c: 368: LATCbits.LATC6 = 1;
-"368
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-"370
+[; ;RFID.c: 231: else if(samecnt >= 9 && samecnt <= 14) {
+[e $ ! && >= _samecnt -> 9 `i <= _samecnt -> 14 `i 2631  ]
+{
+[; ;RFID.c: 233: manch[manchindex++] = lastv;
+"233
+[e = *U + &U _manch * -> -> ++ _manchindex -> 1 `i `ui `ux -> -> # *U &U _manch `ui `ux -> _lastv `uc ]
+[; ;RFID.c: 234: manch[manchindex++] = lastv;
+"234
+[e = *U + &U _manch * -> -> ++ _manchindex -> 1 `i `ui `ux -> -> # *U &U _manch `ui `ux -> _lastv `uc ]
+"235
+}
+[; ;RFID.c: 235: }
+[e $U 2632  ]
+"236
+[e :U 2631 ]
+[; ;RFID.c: 236: else if(samecnt >= 15 && lastv == 0) {
+[e $ ! && >= _samecnt -> 15 `i == _lastv -> 0 `i 2633  ]
+{
+[; ;RFID.c: 239: break;
+"239
+[e $U 2624  ]
+"240
+}
+[; ;RFID.c: 240: }
+[e $U 2634  ]
+"241
+[e :U 2633 ]
+[; ;RFID.c: 241: else {
+{
+[; ;RFID.c: 248: return;
+"248
+[e $UE 2622  ]
+"249
+}
+[e :U 2634 ]
+[e :U 2632 ]
+[e :U 2630 ]
+[; ;RFID.c: 249: }
+[; ;RFID.c: 250: samecnt = 1;
+"250
+[e = _samecnt -> 1 `i ]
+[; ;RFID.c: 251: lastv = raw[i];
+"251
+[e = _lastv -> *U + &U _raw * -> -> _i `ui `ux -> -> # *U &U _raw `ui `ux `i ]
+"252
 }
 [e :U 2628 ]
-[; ;ECAN.c: 370: }
-[; ;ECAN.c: 371: }
-"371
-[e :UE 2627 ]
+"253
+}
+"222
+[e ++ _i -> 1 `i ]
+[e :U 2626 ]
+[e $ && < _i -> 1000 `i < _manchindex -> 90 `i 2623  ]
+[e :U 2624 ]
+"253
+}
+[; ;RFID.c: 252: }
+[; ;RFID.c: 253: }
+[; ;RFID.c: 257: for(int i = 0, findex = 0; i < 90; i += 2, findex++) {
+"257
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[v _findex `i ~T0 @X0 1 a ]
+[e = _findex -> 0 `i ]
+[e $ < _i -> 90 `i 2635  ]
+[e $U 2636  ]
+[e :U 2635 ]
+{
+[; ;RFID.c: 258: if(manch[i] == 1 && manch[i+1] == 0) {
+"258
+[e $ ! && == -> *U + &U _manch * -> -> _i `ui `ux -> -> # *U &U _manch `ui `ux `i -> 1 `i == -> *U + &U _manch * -> -> + _i -> 1 `i `ui `ux -> -> # *U &U _manch `ui `ux `i -> 0 `i 2638  ]
+{
+[; ;RFID.c: 259: final[findex] = 1;
+"259
+[e = *U + &U _final * -> -> _findex `ui `ux -> -> # *U &U _final `ui `ux -> -> 1 `i `uc ]
+"260
+}
+[; ;RFID.c: 260: }
+[e $U 2639  ]
+"261
+[e :U 2638 ]
+[; ;RFID.c: 261: else if(manch[i] == 0 && manch[i+1] == 1) {
+[e $ ! && == -> *U + &U _manch * -> -> _i `ui `ux -> -> # *U &U _manch `ui `ux `i -> 0 `i == -> *U + &U _manch * -> -> + _i -> 1 `i `ui `ux -> -> # *U &U _manch `ui `ux `i -> 1 `i 2640  ]
+{
+[; ;RFID.c: 262: final[findex] = 0;
+"262
+[e = *U + &U _final * -> -> _findex `ui `ux -> -> # *U &U _final `ui `ux -> -> 0 `i `uc ]
+"263
+}
+[; ;RFID.c: 263: }
+[e $U 2641  ]
+"264
+[e :U 2640 ]
+[; ;RFID.c: 264: else {
+{
+[; ;RFID.c: 268: return;
+"268
+[e $UE 2622  ]
+"269
+}
+[e :U 2641 ]
+[e :U 2639 ]
+"270
+}
+"257
+[e ; =+ _i -> 2 `i ++ _findex -> 1 `i ]
+[e $ < _i -> 90 `i 2635  ]
+[e :U 2636 ]
+"270
+}
+"273
+[v _code `i ~T0 @X0 1 a ]
+[; ;RFID.c: 269: }
+[; ;RFID.c: 270: }
+[; ;RFID.c: 273: int code = 0;
+[e = _code -> 0 `i ]
+"274
+[v _par `i ~T0 @X0 1 a ]
+[; ;RFID.c: 274: int par = 0;
+[e = _par -> 0 `i ]
+[; ;RFID.c: 275: for(int i = 28, k = 15; i < 28+16; i++, k--) {
+"275
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 28 `i ]
+[v _k `i ~T0 @X0 1 a ]
+[e = _k -> 15 `i ]
+[e $ < _i + -> 28 `i -> 16 `i 2642  ]
+[e $U 2643  ]
+[e :U 2642 ]
+{
+[; ;RFID.c: 276: code |= (int)final[i] << k;
+"276
+[e =| _code << -> *U + &U _final * -> -> _i `ui `ux -> -> # *U &U _final `ui `ux `i _k ]
+"277
+}
+"275
+[e ; ++ _i -> 1 `i -- _k -> 1 `i ]
+[e $ < _i + -> 28 `i -> 16 `i 2642  ]
+[e :U 2643 ]
+"277
+}
+"278
+[v _paritybit `i ~T0 @X0 1 a ]
+[; ;RFID.c: 277: }
+[; ;RFID.c: 278: int paritybit = final[28+16];
+[e = _paritybit -> *U + &U _final * -> -> + -> 28 `i -> 16 `i `ui `ux -> -> # *U &U _final `ui `ux `i ]
+[; ;RFID.c: 279: for(int i = 0; i < 45; i++) {
+"279
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 45 `i 2645  ]
+[e $U 2646  ]
+[e :U 2645 ]
+{
+[; ;RFID.c: 280: par ^= final[i];
+"280
+[e =^ _par -> *U + &U _final * -> -> _i `ui `ux -> -> # *U &U _final `ui `ux `i ]
+"281
+}
+"279
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 45 `i 2645  ]
+[e :U 2646 ]
+"281
+}
+[; ;RFID.c: 281: }
+[; ;RFID.c: 283: if(par) {
+"283
+[e $ ! != _par -> 0 `i 2648  ]
+{
+"294
+}
+[; ;RFID.c: 294: }
+[e $U 2649  ]
+"295
+[e :U 2648 ]
+[; ;RFID.c: 295: else {
+{
+"298
+}
+[e :U 2649 ]
+[; ;RFID.c: 298: }
+[; ;RFID.c: 299: }
+"299
+[e :UE 2622 ]
 }

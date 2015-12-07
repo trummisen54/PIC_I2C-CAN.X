@@ -20763,7 +20763,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 
-# 22 "config.h"
+# 21 "config.h"
 #pragma config RETEN = OFF
 #pragma config INTOSCSEL = HIGH
 #pragma config SOSCSEL = HIGH
@@ -21106,7 +21106,19 @@ i2c_reg_map[5] = temp_D5;
 i2c_reg_map[6] = temp_D6;
 i2c_reg_map[7] = temp_D7;
 
-LATCbits.LATC7 = temp_D1;
+
+
+if(i2c_reg_map[0] == 0x27){
+while(1){
+LATCbits.LATC7 = 1;
+Delay((unsigned int)(64/4)*80 * 500);
+LATCbits.LATC7 = 0;
+Delay((unsigned int)(64/4)*80 * 500);
+
+}
+}
+
+LATCbits.LATC6 = 1;
 
 }
 }

@@ -3,4 +3,5 @@
  Other.c  \
 I2C.h  \
 config.h  \
-ECAN.h 
+ECAN.h  \
+Other.h 
