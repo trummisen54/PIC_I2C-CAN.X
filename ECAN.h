@@ -77,8 +77,9 @@
 *
 *********************************************************************/
 void checkCAN(void);
-
 void CANSetup(void);
+void setBit(int shift, int value);
+void zipCAN();
 
 unsigned char ECAN_Receive(void);
 
@@ -94,20 +95,37 @@ void ECAN_Transmit(unsigned char SIDH,
         unsigned char DATA6,
         unsigned char DATA7);
 
-
+//RECEIVE FROM SLAVE DATA
 unsigned char count;
-unsigned char RECEIVE_ID;
-
-unsigned char temp_D1;
-unsigned char temp_D2;
+unsigned char MAP_REC_BATTERYSTATUS;
+unsigned char MAP_REC_VELOCITY;
+unsigned char MAP_REC_HEARTBEAT;
+unsigned char temp_D3;
+unsigned char temp_D4;
+unsigned char temp_D5;
+unsigned char temp_D6;
 unsigned char temp_D7;
 
+//SEND TO SLAVE DATA
+unsigned char MAP_BITDATA;
+unsigned char MAP_ACCELERATOR;
 
-unsigned char MOTOR_ID = 0x01;
-unsigned char BATTERISTATUS_ID = 0x02;
+
 
 unsigned int heartbeatCount;
 unsigned char buttonWasPressed;
+
+
+
+#define HEARTBEAT_BIT   0
+#define BRAKE_BIT       1
+#define BACKLIGHT_BIT   2
+#define V_BLINK_BIT     3
+#define H_BLINK_BIT     4
+#define DIRECTION_BIT   5
+#define SAFETYPIN_BIT   6
+
+
 
 
 

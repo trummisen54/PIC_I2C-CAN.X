@@ -9,6 +9,7 @@
       <itemPath>I2C.h</itemPath>
       <itemPath>Other.h</itemPath>
       <itemPath>RFID.h</itemPath>
+      <itemPath>init.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,6 +23,7 @@
       <itemPath>I2C.c</itemPath>
       <itemPath>Other.c</itemPath>
       <itemPath>RFID.c</itemPath>
+      <itemPath>init.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

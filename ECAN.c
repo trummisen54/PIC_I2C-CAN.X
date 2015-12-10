@@ -92,16 +92,7 @@ unsigned char temp_EIDL;
 unsigned char temp_SIDH;
 unsigned char temp_SIDL;
 unsigned char temp_DLC;
-unsigned char temp_D0;
 
-//unsigned char temp_D2; ligger i h filen
-unsigned char temp_D3;
-unsigned char temp_D4;
-unsigned char temp_D5;
-unsigned char temp_D6;
-//unsigned char temp_D7; ligger i h filen.
-
-//unsigned char count;
 
 
 
@@ -234,9 +225,9 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = RXB0SIDH;
         temp_SIDL = RXB0SIDL;
         temp_DLC = RXB0DLC;
-        RECEIVE_ID = RXB0D0;
-        temp_D1 = RXB0D1; 
-        temp_D2 = RXB0D2;
+        MAP_REC_BATTERYSTATUS = RXB0D0;
+        MAP_REC_VELOCITY = RXB0D1; 
+        MAP_REC_HEARTBEAT = RXB0D2;
         temp_D3 = RXB0D3;
         temp_D4 = RXB0D4;
         temp_D5 = RXB0D5;
@@ -252,9 +243,9 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = RXB1SIDH;
         temp_SIDL = RXB1SIDL;
         temp_DLC = RXB1DLC;
-        temp_D0 = RXB1D0;
-        temp_D1 = RXB1D1;
-        temp_D2 = RXB1D2;
+        MAP_REC_BATTERYSTATUS = RXB1D0;
+        MAP_REC_VELOCITY = RXB1D1;
+        MAP_REC_HEARTBEAT = RXB1D2;
         temp_D3 = RXB1D3;
         temp_D4 = RXB1D4;
         temp_D5 = RXB1D5;
@@ -270,9 +261,9 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = B0SIDH;
         temp_SIDL = B0SIDL;
         temp_DLC = B0DLC;
-        temp_D0 = B0D0;
-        temp_D1 = B0D1;
-        temp_D2 = B0D2;
+        MAP_REC_BATTERYSTATUS = B0D0;
+        MAP_REC_VELOCITY = B0D1;
+        MAP_REC_HEARTBEAT = B0D2;
         temp_D3 = B0D3;
         temp_D4 = B0D4;
         temp_D5 = B0D5;
@@ -341,31 +332,39 @@ void ECAN_Transmit(unsigned char SIDH,
     TXB0CONbits.TXREQ = 1; //Set the buffer to transmit
 }
 
-void checkCAN(){
-    if(ECAN_Receive()){
-        
-        i2c_reg_map[0] = RECEIVE_ID;
-        i2c_reg_map[1] = temp_D1;
-        i2c_reg_map[2] = temp_D2;
-        i2c_reg_map[3] = temp_D3;
-        i2c_reg_map[4] = temp_D4;
-        i2c_reg_map[5] = temp_D5;
-        i2c_reg_map[6] = temp_D6;
-        i2c_reg_map[7] = temp_D7;
-        
-        
-        
-        if(i2c_reg_map[0] == 0x27){
-            while(1){
-                LATCbits.LATC7 = 1;
-                Delay(ONE_MS * 500);
-                LATCbits.LATC7 = 0;
-                Delay(ONE_MS * 500);
-                
-            }
-        }
-        
-        LATCbits.LATC6 = 1; //receive diode
 
+//converts i2c_reg_map to the can message
+void zipCAN(){
+    if(i2c_reg_map[SEND_HEARTBEAT] != MAP_HEARTBEAT){
+        setBit(HEARTBEAT_BIT, i2c_reg_map[SEND_HEARTBEAT]);
+        MAP_HEARTBEAT = i2c_reg_map[SEND_HEARTBEAT];
     }
+    else if(i2c_reg_map[SEND_BRAKE] != MAP_BRAKE){
+        setBit(BRAKE_BIT, i2c_reg_map[SEND_BRAKE]);
+        MAP_BRAKE = i2c_reg_map[SEND_BRAKE];
+    }
+    else if(i2c_reg_map[SEND_BACKLIGHT] != MAP_BACKLIGHT){
+        setBit(BACKLIGHT_BIT, i2c_reg_map[SEND_BACKLIGHT]);
+        MAP_BACKLIGHT = i2c_reg_map[SEND_BACKLIGHT];
+    }
+    else if(i2c_reg_map[SEND_V_BLINK] != MAP_V_BLINK){
+        setBit(V_BLINK_BIT, i2c_reg_map[SEND_V_BLINK]);
+        MAP_V_BLINK = i2c_reg_map[SEND_V_BLINK];
+    }
+    else if(i2c_reg_map[SEND_H_BLINK] != MAP_H_BLINK){
+        setBit(H_BLINK_BIT, i2c_reg_map[SEND_H_BLINK]);
+        MAP_H_BLINK = i2c_reg_map[SEND_H_BLINK];
+    }
+    else if(i2c_reg_map[SEND_DIRECTION] != MAP_DIRECTION){
+        setBit(DIRECTION_BIT, i2c_reg_map[SEND_DIRECTION]);
+        MAP_DIRECTION = i2c_reg_map[SEND_DIRECTION];
+    }
+    else if(i2c_reg_map[SEND_SAFETYPIN] != MAP_SAFETYPIN){
+        setBit(SAFETYPIN_BIT, i2c_reg_map[SEND_SAFETYPIN]);
+        MAP_SAFETYPIN = i2c_reg_map[SEND_SAFETYPIN];
+    }
+}
+
+void setBit(int shift, int value){
+    MAP_BITDATA = MAP_BITDATA ^ (1 << shift);
 }

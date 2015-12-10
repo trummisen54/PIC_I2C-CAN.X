@@ -62,7 +62,7 @@ void callback()
 {
     
     
-    LATCbits.LATC7 ^= 1; //Measure with oscilloscope to se actual freq
+    //LATCbits.LATC7 ^= 1; //Measure with oscilloscope to se actual freq
     
     
   val = PORTBbits.RB0;
