@@ -1,54 +1,6 @@
 
 # 1 "Other.c"
 
-# 79 "ECAN.h"
-void checkCAN(void);
-
-void CANSetup(void);
-
-unsigned char ECAN_Receive(void);
-
-void ECAN_Transmit(unsigned char SIDH,
-unsigned char SIDL,
-unsigned char DLC,
-unsigned char TRANSMIT_ID,
-unsigned char DATA1,
-unsigned char DATA2,
-unsigned char DATA3,
-unsigned char DATA4,
-unsigned char DATA5,
-unsigned char DATA6,
-unsigned char DATA7);
-
-
-unsigned char count;
-unsigned char RECEIVE_ID;
-
-unsigned char temp_D1;
-unsigned char temp_D2;
-unsigned char temp_D7;
-
-
-unsigned char MOTOR_ID = 0x01;
-unsigned char BATTERISTATUS_ID = 0x02;
-
-unsigned int heartbeatCount;
-unsigned char buttonWasPressed;
-
-# 19 "I2C.h"
-typedef unsigned char byte;
-extern int I2C_FLAG = 0;
-
-extern void checkI2C();
-extern void I2CSetup();
-void Delay(unsigned int count);
-
-
-
-volatile byte i2c_reg_addr = 0;
-volatile byte i2c_reg_map[16] = {0,};
-volatile byte i2c_byte_count = 0;
-
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -20872,78 +20824,50 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 15 "Other.h"
+# 11 "Other.h"
+void Delay(unsigned int count);
+
+# 12 "init.h"
 void InitDevice(void);
+
+int MAP_HEARTBEAT;
+int Interrupt_counter;
+int heartBeatCounter;
+
+# 19 "I2C.h"
+typedef unsigned char byte;
+int I2C_FLAG;
+int FIRST_SEND;
+
+extern void checkI2C();
+extern void I2CSetup();
 void Delay(unsigned int count);
 
 
-int Interrupt_counter;
 
+volatile byte i2c_reg_addr = 0;
+volatile byte i2c_reg_map[16] = {0,};
+volatile byte i2c_byte_count = 0;
 
+# 56
 int MAP_HEARTBEAT;
+int MAP_BRAKE;
+int MAP_BACKLIGHT;
+int MAP_V_BLINK;
+int MAP_H_BLINK;
+int MAP_DIRECTION;
+int MAP_SAFETYPIN;
 
-# 6 "Other.c"
-void InitDevice(void){
-
-Interrupt_counter = 0;
-
-
-OSCCON = 0x60;
-OSCCONbits.IRCF = 7;
-OSCTUNEbits.PLLEN = 1;
-
-
-heartbeatCount = 0;
-buttonWasPressed = 0;
-
-
-ANCON0 = ANCON1 = 0x00;
-TRISB = 0xFF;
-
-
-TRISA = 0b00111111;
-LATAbits.LATA7 = 0;
-
-
-TRISC = 0b00011000;
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-
-MAP_HEARTBEAT = 0;
-
-
-
-
-T0CONbits.TMR0ON = 1;
-T0CONbits.T08BIT = 0;
-T0CONbits.T0CS = 0;
-
-T0CONbits.PSA = 0;
-T0CONbits.T0PS = 7;
-
-
-}
-
-void checkHeartbeat(){
-if(i2c_reg_map[5] != MAP_HEARTBEAT){
-MAP_HEARTBEAT = i2c_reg_map[5];
-
-}
-}
-
-void setup_Interrupt(){
-RCONbits.IPEN = 1;
-INTCONbits.GIEH = 1;
-INTCONbits.GIEL = 1;
-INTCONbits.TMR0IE = 1;
-
-
-}
-
-
+# 7 "Other.c"
 void Delay(unsigned int count)
 {
 
 while(count--);
+}
+
+
+
+void error(){
+LATCbits.LATC7 = 1;
+
 }

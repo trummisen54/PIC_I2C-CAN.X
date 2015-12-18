@@ -20830,15 +20830,8 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 15 "Other.h"
-void InitDevice(void);
+# 11 "Other.h"
 void Delay(unsigned int count);
-
-
-int Interrupt_counter;
-
-
-int MAP_HEARTBEAT;
 
 # 32 "RFID.c"
 int ledPin = 13;
@@ -20866,13 +20859,26 @@ void setupRFID()
 void callback()
 {
 
+# 68
+val = PORTBbits.RB0;
 
-LATCbits.LATC7 ^= 1;
 
-# 86
+
+bitlenctr++;
+if(val != curState) {
+
+curState = val;
+if(val == 1) {
+
+if(index < 1000) {
+raw[index++] = bitlenctr;
+}
+bitlenctr = 1;
+}
+}
 }
 
-# 92
+# 90
 void checkRFID(){
 
 
@@ -20918,7 +20924,7 @@ tote++;
 }
 }
 
-# 142
+# 140
 int samecnt = 0;
 int start = -1;
 int lastv = 0;
@@ -20948,7 +20954,7 @@ else {
 
 }
 
-# 194
+# 192
 bufnum++;
 curState = 0;
 index = 0;
@@ -20959,7 +20965,7 @@ Delay(5 * (unsigned int)(64/4)*80);
 
 }
 
-# 210
+# 208
 void process_buf(int start) {
 
 
@@ -20993,7 +20999,7 @@ break;
 }
 else {
 
-# 248
+# 246
 return;
 }
 samecnt = 1;
@@ -21031,7 +21037,7 @@ par ^= final[i];
 
 if(par) {
 
-# 294
+# 292
 }
 else {
 

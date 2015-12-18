@@ -9,17 +9,7 @@
 
 
 
-void interrupt ISR(){
-    Interrupt_counter++;
-    
-    if(Interrupt_counter == 2){
-        //checkI2C();
-        callback();//rfid
-        Interrupt_counter = 0;
-    }
-    
-    
-}
+
 
 int main(void){
     
@@ -28,30 +18,43 @@ int main(void){
     CANSetup();
     I2CSetup();
     
+    heartBeatCounter = 0;
+    FIRST_SEND = 1;
+    I2C_FLAG = 0;
+    
     CHIP_ALIVE_DIODE = 1;
     HEARTBEAT_DIODE = 0;
     ERROR_DIODE = 0;
     
     
+    
     while(1){
         
         if(ECAN_Receive()){
-        
+            FIRST_SEND = 0;
+            HEARTBEAT_DIODE = 1;
             i2c_reg_map[REC_BATTERYSTATUS] = MAP_REC_BATTERYSTATUS;
             i2c_reg_map[REC_VELOCITY] = MAP_REC_VELOCITY;
-            i2c_reg_map[REC_HEARTBEAT] = MAP_REC_HEARTBEAT;
+            i2c_reg_map[2] = temp_D2;
             i2c_reg_map[3] = temp_D3;
             i2c_reg_map[4] = temp_D4;
             i2c_reg_map[5] = temp_D5;
             i2c_reg_map[6] = temp_D6;
             i2c_reg_map[7] = temp_D7;
+            
+            heartBeatCounter = 0;
 
         }
         
-        zipCAN();
+        if(heartBeatCounter > 25){
+            //danger
+            i2c_reg_map[2] = 0;
+        }
+
         
         if(I2C_FLAG){
             I2C_FLAG = 0;
+            zipCAN();
             ECAN_Transmit(0x32,0xC0, 0x02,
                     MAP_BITDATA,//zipped data
                     MAP_ACCELERATOR,
@@ -64,6 +67,7 @@ int main(void){
             
 
         }
+        
       
 
       //checkRFID();
@@ -73,4 +77,28 @@ int main(void){
     
 
     return 0;
+}
+
+void interrupt ISR(){   
+    checkI2C(); 
+    
+    
+    
+    if(TMR0IF == 1){
+        if(!FIRST_SEND){
+            heartBeatCounter++;
+        }
+        TMR0IF = 0;
+    }
+    
+    
+    //Interrupt_counter++;
+  
+    //if(Interrupt_counter == 2){
+        
+        //callback();//rfid
+     //   Interrupt_counter = 0;
+    //}
+    
+    
 }

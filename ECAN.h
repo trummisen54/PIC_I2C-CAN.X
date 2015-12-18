@@ -99,7 +99,7 @@ void ECAN_Transmit(unsigned char SIDH,
 unsigned char count;
 unsigned char MAP_REC_BATTERYSTATUS;
 unsigned char MAP_REC_VELOCITY;
-unsigned char MAP_REC_HEARTBEAT;
+unsigned char temp_D2;
 unsigned char temp_D3;
 unsigned char temp_D4;
 unsigned char temp_D5;

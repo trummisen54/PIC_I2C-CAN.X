@@ -1,5 +1,9 @@
  build/default/debug/I2C.d  \
  build/default/debug/I2C.p1:  \
  I2C.c  \
+init.h  \
 I2C.h  \
-config.h 
+RFID.h  \
+config.h  \
+ECAN.h  \
+Other.h 

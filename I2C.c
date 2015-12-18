@@ -1,5 +1,11 @@
-#include "I2C.h"
 #include "config.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "ECAN.h"
+#include "I2C.h"
+#include "Other.h"
+#include "RFID.h"
+#include "init.h"
 
 void I2CSetup(){
     
@@ -14,6 +20,15 @@ void I2CSetup(){
     PIE1bits.SSPIE = 1;             // Enable MSSP interrupt enable bit
     INTCONbits.GIE_GIEH  = 1;       // GIE/GIEH: Global Interrupt Enable bit
     INTCONbits.PEIE_GIEL = 1;       // PEIE/GIEL: Peripheral Interrupt Enable bit
+    
+    
+    for(int i = 0; i<16; i++){
+        i2c_reg_map[i] = 0;
+    }
+    
+    
+    i2c_reg_map[SEND_HEARTBEAT] = 1; //always one
+    i2c_reg_map[temp_D2] = 1; //always one
     
 
 }

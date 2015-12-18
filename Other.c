@@ -1,6 +1,7 @@
 #include "config.h"
 #include "Other.h"
 #include "init.h"
+#include "I2C.h"
 
 
 void Delay(unsigned int count)

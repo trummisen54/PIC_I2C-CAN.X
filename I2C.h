@@ -11,13 +11,14 @@
 
 
 
-#define I2C_ADDR    0x54    // 8 bit address
+#define I2C_ADDR    0x55    // 8 bit address
 #define DEVICE_OSC  64
 #define ONE_MS      (unsigned int)(DEVICE_OSC/4)*80
 
 
 typedef unsigned char   byte;
-extern int I2C_FLAG = 0;
+int I2C_FLAG;
+int FIRST_SEND;
 
 extern void checkI2C();
 extern void I2CSetup();
@@ -28,6 +29,7 @@ void Delay(unsigned int count);
 volatile byte           i2c_reg_addr     = 0;
 volatile byte           i2c_reg_map[16] = {0,};
 volatile byte           i2c_byte_count   = 0;
+
 /*
  * 0 = motor
  * 1 = batteristatus
@@ -35,7 +37,7 @@ volatile byte           i2c_byte_count   = 0;
 
 #define REC_BATTERYSTATUS   0
 #define REC_VELOCITY        1
-#define REC_HEARTBEAT       2
+//#define REC_HEARTBEAT       2
 //#define RAC_BATTERYSTATUS   3
 //#define REC_HEARTBEAT       4
 //#define RAC_BATTERYSTATUS   5
@@ -51,9 +53,13 @@ volatile byte           i2c_byte_count   = 0;
 #define SEND_ACCELERATOR    15
 
 
-int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-        MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
-
+int MAP_HEARTBEAT;
+int MAP_BRAKE;
+int MAP_BACKLIGHT;
+int MAP_V_BLINK;
+int MAP_H_BLINK;
+int MAP_DIRECTION;
+int MAP_SAFETYPIN;
 
 
 #endif	/* I2C_H */

@@ -20958,8 +20958,9 @@ extern char * ftoa(float f, int * status);
 
 # 79 "ECAN.h"
 void checkCAN(void);
-
 void CANSetup(void);
+void setBit(int shift, int value);
+void zipCAN();
 
 unsigned char ECAN_Receive(void);
 
@@ -20977,22 +20978,28 @@ unsigned char DATA7);
 
 
 unsigned char count;
-unsigned char RECEIVE_ID;
-
-unsigned char temp_D1;
+unsigned char MAP_REC_BATTERYSTATUS;
+unsigned char MAP_REC_VELOCITY;
 unsigned char temp_D2;
+unsigned char temp_D3;
+unsigned char temp_D4;
+unsigned char temp_D5;
+unsigned char temp_D6;
 unsigned char temp_D7;
 
 
-unsigned char MOTOR_ID = 0x01;
-unsigned char BATTERISTATUS_ID = 0x02;
+unsigned char MAP_BITDATA;
+unsigned char MAP_ACCELERATOR;
+
+
 
 unsigned int heartbeatCount;
 unsigned char buttonWasPressed;
 
 # 19 "I2C.h"
 typedef unsigned char byte;
-extern int I2C_FLAG = 0;
+int I2C_FLAG;
+int FIRST_SEND;
 
 extern void checkI2C();
 extern void I2CSetup();
@@ -21004,15 +21011,17 @@ volatile byte i2c_reg_addr = 0;
 volatile byte i2c_reg_map[16] = {0,};
 volatile byte i2c_byte_count = 0;
 
-# 15 "Other.h"
-void InitDevice(void);
-void Delay(unsigned int count);
-
-
-int Interrupt_counter;
-
-
+# 56
 int MAP_HEARTBEAT;
+int MAP_BRAKE;
+int MAP_BACKLIGHT;
+int MAP_V_BLINK;
+int MAP_H_BLINK;
+int MAP_DIRECTION;
+int MAP_SAFETYPIN;
+
+# 11 "Other.h"
+void Delay(unsigned int count);
 
 # 16 "RFID.h"
 void checkRFID();
@@ -21020,45 +21029,90 @@ void callback();
 void process_buf(int start);
 void setupRFID();
 
-# 11 "main.c"
-void interrupt ISR(){
-Interrupt_counter++;
+# 12 "init.h"
+void InitDevice(void);
 
-if(Interrupt_counter == 2){
+int MAP_HEARTBEAT;
+int Interrupt_counter;
+int heartBeatCounter;
 
-callback();
-Interrupt_counter = 0;
-}
-
-
-}
-
+# 14 "main.c"
 int main(void){
-
-
 
 InitDevice();
 setup_Interrupt();
 CANSetup();
 I2CSetup();
 
-LATAbits.LA7 = 1;
+heartBeatCounter = 0;
+FIRST_SEND = 1;
+I2C_FLAG = 0;
 
-while(1){
-
-# 56
-Delay((unsigned int)(64/4)*80 * 5);
-
-checkRFID();
-
-# 64
+LATAbits.LATA7 = 1;
 LATCbits.LATC6 = 0;
 LATCbits.LATC7 = 0;
 
 
 
+while(1){
+
+if(ECAN_Receive()){
+FIRST_SEND = 0;
+LATCbits.LATC6 = 1;
+i2c_reg_map[0] = MAP_REC_BATTERYSTATUS;
+i2c_reg_map[1] = MAP_REC_VELOCITY;
+i2c_reg_map[2] = temp_D2;
+i2c_reg_map[3] = temp_D3;
+i2c_reg_map[4] = temp_D4;
+i2c_reg_map[5] = temp_D5;
+i2c_reg_map[6] = temp_D6;
+i2c_reg_map[7] = temp_D7;
+
+heartBeatCounter = 0;
+
+}
+
+if(heartBeatCounter > 25){
+
+i2c_reg_map[2] = 0;
+}
+
+
+if(I2C_FLAG){
+I2C_FLAG = 0;
+zipCAN();
+ECAN_Transmit(0x32,0xC0, 0x02,
+MAP_BITDATA,
+MAP_ACCELERATOR,
+i2c_reg_map[10],
+i2c_reg_map[11],
+i2c_reg_map[12],
+i2c_reg_map[13],
+i2c_reg_map[14],
+i2c_reg_map[15]);
+
+
+}
+
+# 75
+Delay((unsigned int)(64/4)*80 * 5);
 }
 
 
 return 0;
+}
+
+void interrupt ISR(){
+checkI2C();
+
+
+
+if(TMR0IF == 1){
+if(!FIRST_SEND){
+heartBeatCounter++;
+}
+TMR0IF = 0;
+}
+
+# 104
 }

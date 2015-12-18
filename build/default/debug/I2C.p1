@@ -147,36 +147,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2160 . . . . . . . . . . ]
 "33061
 [v _LATAbits `VS2160 ~T0 @X0 0 e@3977 ]
-[; ;I2C.h: 19: typedef unsigned char byte;
-"20 I2C.h
-[v _I2C_FLAG `i ~T0 @X0 1 e ]
-[i _I2C_FLAG
--> 0 `i
-]
-[; ;I2C.h: 20: extern int I2C_FLAG = 0;
-[; ;I2C.h: 22: extern void checkI2C();
-[; ;I2C.h: 23: extern void I2CSetup();
-[; ;I2C.h: 24: void Delay(unsigned int count);
-"28
-[v _i2c_reg_addr `Vuc ~T0 @X0 1 e ]
-[i _i2c_reg_addr
--> -> 0 `i `uc
-]
-[; ;I2C.h: 28: volatile byte i2c_reg_addr = 0;
-"29
-[v _i2c_reg_map `Vuc ~T0 @X0 -> 16 `i e ]
-[i _i2c_reg_map
-:U ..
--> -> 0 `i `uc
-..
-]
-[; ;I2C.h: 29: volatile byte i2c_reg_map[16] = {0,};
-"30
-[v _i2c_byte_count `Vuc ~T0 @X0 1 e ]
-[i _i2c_byte_count
--> -> 0 `i `uc
-]
-[; ;I2C.h: 30: volatile byte i2c_byte_count = 0;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16832,175 +16802,392 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "79
 [p x EBTRB=OFF ]
-"4 I2C.c
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 25: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;stdlib.h: 7: typedef unsigned short wchar_t;
+[; ;stdlib.h: 15: typedef struct {
+[; ;stdlib.h: 16: int rem;
+[; ;stdlib.h: 17: int quot;
+[; ;stdlib.h: 18: } div_t;
+[; ;stdlib.h: 19: typedef struct {
+[; ;stdlib.h: 20: unsigned rem;
+[; ;stdlib.h: 21: unsigned quot;
+[; ;stdlib.h: 22: } udiv_t;
+[; ;stdlib.h: 23: typedef struct {
+[; ;stdlib.h: 24: long quot;
+[; ;stdlib.h: 25: long rem;
+[; ;stdlib.h: 26: } ldiv_t;
+[; ;stdlib.h: 27: typedef struct {
+[; ;stdlib.h: 28: unsigned long quot;
+[; ;stdlib.h: 29: unsigned long rem;
+[; ;stdlib.h: 30: } uldiv_t;
+[; ;stdlib.h: 53: extern double atof(const char *);
+[; ;stdlib.h: 54: extern double strtod(const char *, const char **);
+[; ;stdlib.h: 55: extern int atoi(const char *);
+[; ;stdlib.h: 56: extern unsigned xtoi(const char *);
+[; ;stdlib.h: 57: extern long atol(const char *);
+[; ;stdlib.h: 58: extern long strtol(const char *, char **, int);
+[; ;stdlib.h: 60: extern int rand(void);
+[; ;stdlib.h: 61: extern void srand(unsigned int);
+[; ;stdlib.h: 62: extern void * calloc(size_t, size_t);
+[; ;stdlib.h: 63: extern div_t div(int numer, int denom);
+[; ;stdlib.h: 64: extern udiv_t udiv(unsigned numer, unsigned denom);
+[; ;stdlib.h: 65: extern ldiv_t ldiv(long numer, long denom);
+[; ;stdlib.h: 66: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+[; ;stdlib.h: 67: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 68: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 69: extern unsigned int _rotl(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 70: extern unsigned int _rotr(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 75: extern void * malloc(size_t);
+[; ;stdlib.h: 76: extern void free(void *);
+[; ;stdlib.h: 77: extern void * realloc(void *, size_t);
+[; ;stdlib.h: 86: extern int atexit(void (*)(void));
+[; ;stdlib.h: 87: extern char * getenv(const char *);
+[; ;stdlib.h: 88: extern char ** environ;
+[; ;stdlib.h: 89: extern int system(char *);
+[; ;stdlib.h: 90: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+[; ;stdlib.h: 91: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+[; ;stdlib.h: 92: extern int abs(int);
+[; ;stdlib.h: 93: extern long labs(long);
+[; ;stdlib.h: 95: extern char * itoa(char * buf, int val, int base);
+[; ;stdlib.h: 96: extern char * utoa(char * buf, unsigned val, int base);
+[; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
+[; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
+[; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
+[; ;ECAN.h: 79: void checkCAN(void);
+[; ;ECAN.h: 80: void CANSetup(void);
+[; ;ECAN.h: 81: void setBit(int shift, int value);
+[; ;ECAN.h: 82: void zipCAN();
+[; ;ECAN.h: 84: unsigned char ECAN_Receive(void);
+[; ;ECAN.h: 86: void ECAN_Transmit(unsigned char SIDH,
+[; ;ECAN.h: 87: unsigned char SIDL,
+[; ;ECAN.h: 88: unsigned char DLC,
+[; ;ECAN.h: 89: unsigned char TRANSMIT_ID,
+[; ;ECAN.h: 90: unsigned char DATA1,
+[; ;ECAN.h: 91: unsigned char DATA2,
+[; ;ECAN.h: 92: unsigned char DATA3,
+[; ;ECAN.h: 93: unsigned char DATA4,
+[; ;ECAN.h: 94: unsigned char DATA5,
+[; ;ECAN.h: 95: unsigned char DATA6,
+[; ;ECAN.h: 96: unsigned char DATA7);
+"99 ECAN.h
+[v _count `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 99: unsigned char count;
+"100
+[v _MAP_REC_BATTERYSTATUS `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 100: unsigned char MAP_REC_BATTERYSTATUS;
+"101
+[v _MAP_REC_VELOCITY `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 101: unsigned char MAP_REC_VELOCITY;
+"102
+[v _MAP_REC_HEARTBEAT `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char MAP_REC_HEARTBEAT;
+"103
+[v _temp_D3 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 103: unsigned char temp_D3;
+"104
+[v _temp_D4 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 104: unsigned char temp_D4;
+"105
+[v _temp_D5 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 105: unsigned char temp_D5;
+"106
+[v _temp_D6 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 106: unsigned char temp_D6;
+"107
+[v _temp_D7 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 107: unsigned char temp_D7;
+"110
+[v _MAP_BITDATA `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 110: unsigned char MAP_BITDATA;
+"111
+[v _MAP_ACCELERATOR `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 111: unsigned char MAP_ACCELERATOR;
+"115
+[v _heartbeatCount `ui ~T0 @X0 1 e ]
+[; ;ECAN.h: 115: unsigned int heartbeatCount;
+"116
+[v _buttonWasPressed `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 116: unsigned char buttonWasPressed;
+[; ;I2C.h: 19: typedef unsigned char byte;
+"20 I2C.h
+[v _I2C_FLAG `i ~T0 @X0 1 e ]
+[i _I2C_FLAG
+-> 0 `i
+]
+[; ;I2C.h: 20: extern int I2C_FLAG = 0;
+[; ;I2C.h: 22: extern void checkI2C();
+[; ;I2C.h: 23: extern void I2CSetup();
+[; ;I2C.h: 24: void Delay(unsigned int count);
+"28
+[v _i2c_reg_addr `Vuc ~T0 @X0 1 e ]
+[i _i2c_reg_addr
+-> -> 0 `i `uc
+]
+[; ;I2C.h: 28: volatile byte i2c_reg_addr = 0;
+"29
+[v _i2c_reg_map `Vuc ~T0 @X0 -> 16 `i e ]
+[i _i2c_reg_map
+:U ..
+-> -> 0 `i `uc
+..
+]
+[; ;I2C.h: 29: volatile byte i2c_reg_map[16] = {0,};
+"30
+[v _i2c_byte_count `Vuc ~T0 @X0 1 e ]
+[i _i2c_byte_count
+-> -> 0 `i `uc
+]
+[; ;I2C.h: 30: volatile byte i2c_byte_count = 0;
+"55
+[v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
+[; ;I2C.h: 55: int MAP_HEARTBEAT;
+"56
+[v _MAP_BRAKE `i ~T0 @X0 1 e ]
+[; ;I2C.h: 56: int MAP_BRAKE;
+"57
+[v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
+[; ;I2C.h: 57: int MAP_BACKLIGHT;
+"58
+[v _MAP_V_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 58: int MAP_V_BLINK;
+"59
+[v _MAP_H_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 59: int MAP_H_BLINK;
+"60
+[v _MAP_DIRECTION `i ~T0 @X0 1 e ]
+[; ;I2C.h: 60: int MAP_DIRECTION;
+"61
+[v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[; ;I2C.h: 61: int MAP_SAFETYPIN;
+[; ;Other.h: 11: void Delay(unsigned int count);
+[; ;RFID.h: 16: void checkRFID();
+[; ;RFID.h: 17: void callback();
+[; ;RFID.h: 18: void process_buf(int start);
+[; ;RFID.h: 19: void setupRFID();
+[; ;init.h: 12: void InitDevice(void);
+[; ;init.h: 14: int MAP_HEARTBEAT;
+"15 init.h
+[v _Interrupt_counter `i ~T0 @X0 1 e ]
+[; ;init.h: 15: int Interrupt_counter;
+"10 I2C.c
 [v _I2CSetup `(v ~T0 @X0 1 ef ]
 {
-[; ;I2C.c: 4: void I2CSetup(){
+[; ;I2C.c: 10: void I2CSetup(){
 [e :U _I2CSetup ]
 [f ]
-[; ;I2C.c: 6: SSPADD = 0x54;
-"6
-[e = _SSPADD -> -> 84 `i `uc ]
-[; ;I2C.c: 7: SSPCON1 = 0x36;
-"7
-[e = _SSPCON1 -> -> 54 `i `uc ]
-[; ;I2C.c: 10: SSPSTAT = 0x00;
-"10
-[e = _SSPSTAT -> -> 0 `i `uc ]
-[; ;I2C.c: 11: SSPCON2 = 0x01;
-"11
-[e = _SSPCON2 -> -> 1 `i `uc ]
-[; ;I2C.c: 13: PIR1bits.SSPIF = 0;
+[; ;I2C.c: 12: SSPADD = 0x55;
+"12
+[e = _SSPADD -> -> 85 `i `uc ]
+[; ;I2C.c: 13: SSPCON1 = 0x36;
 "13
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;I2C.c: 14: PIE1bits.SSPIE = 1;
-"14
-[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-[; ;I2C.c: 15: INTCONbits.GIE_GIEH = 1;
-"15
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;I2C.c: 16: INTCONbits.PEIE_GIEL = 1;
+[e = _SSPCON1 -> -> 54 `i `uc ]
+[; ;I2C.c: 16: SSPSTAT = 0x00;
 "16
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;I2C.c: 19: }
+[e = _SSPSTAT -> -> 0 `i `uc ]
+[; ;I2C.c: 17: SSPCON2 = 0x01;
+"17
+[e = _SSPCON2 -> -> 1 `i `uc ]
+[; ;I2C.c: 19: PIR1bits.SSPIF = 0;
 "19
-[e :UE 2596 ]
-}
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;I2C.c: 20: PIE1bits.SSPIE = 1;
+"20
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+[; ;I2C.c: 21: INTCONbits.GIE_GIEH = 1;
 "21
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;I2C.c: 22: INTCONbits.PEIE_GIEL = 1;
+"22
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;I2C.c: 25: for(int i = 0; i<16; i++){
+"25
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 16 `i 2602  ]
+[e $U 2603  ]
+[e :U 2602 ]
+{
+[; ;I2C.c: 26: i2c_reg_map[i] = 0;
+"26
+[e = *U + &U _i2c_reg_map * -> -> _i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux -> -> 0 `i `uc ]
+"27
+}
+"25
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 16 `i 2602  ]
+[e :U 2603 ]
+"27
+}
+[; ;I2C.c: 27: }
+[; ;I2C.c: 30: }
+"30
+[e :UE 2601 ]
+}
+"32
 [v _checkI2C `(v ~T0 @X0 1 ef ]
 {
-[; ;I2C.c: 21: void checkI2C(){
+[; ;I2C.c: 32: void checkI2C(){
 [e :U _checkI2C ]
 [f ]
-"23
+"34
 [v _sspBuf `uc ~T0 @X0 1 a ]
-[; ;I2C.c: 23: byte sspBuf;
-[; ;I2C.c: 25: if (PIR1bits.SSPIF) {
-"25
-[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 2598  ]
-{
-[; ;I2C.c: 27: if (!SSPSTATbits.D_NOT_A) {
-"27
-[e $ ! ! != -> . . _SSPSTATbits 1 1 `i -> -> -> 0 `i `Vuc `i 2599  ]
-{
-[; ;I2C.c: 31: i2c_byte_count = 0;
-"31
-[e = _i2c_byte_count -> -> 0 `i `uc ]
-[; ;I2C.c: 33: if (SSPSTATbits.BF) {
-"33
-[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 2600  ]
-{
-[; ;I2C.c: 35: sspBuf = SSPBUF;
-"35
-[e = _sspBuf _SSPBUF ]
+[; ;I2C.c: 34: byte sspBuf;
+[; ;I2C.c: 36: if (PIR1bits.SSPIF) {
 "36
-}
-[e :U 2600 ]
-[; ;I2C.c: 36: }
-[; ;I2C.c: 38: if (SSPSTATbits.R_NOT_W) {
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 2606  ]
+{
+[; ;I2C.c: 38: if (!SSPSTATbits.D_NOT_A) {
 "38
-[e $ ! != -> . . _SSPSTATbits 0 1 `i -> -> -> 0 `i `Vuc `i 2601  ]
+[e $ ! ! != -> . . _SSPSTATbits 1 1 `i -> -> -> 0 `i `Vuc `i 2607  ]
 {
-[; ;I2C.c: 40: SSPCON1bits.WCOL = 0;
-"40
-[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
-[; ;I2C.c: 41: SSPBUF = i2c_reg_map[i2c_reg_addr++];
-"41
-[e = _SSPBUF *U + &U _i2c_reg_map * -> ++ _i2c_reg_addr -> -> 1 `i `uc `ux -> -> # *U &U _i2c_reg_map `ui `ux ]
+[; ;I2C.c: 42: i2c_byte_count = 0;
 "42
-}
-[e :U 2601 ]
-"43
-}
-[; ;I2C.c: 42: }
-[; ;I2C.c: 43: }
-[e $U 2602  ]
+[e = _i2c_byte_count -> -> 0 `i `uc ]
+[; ;I2C.c: 44: if (SSPSTATbits.BF) {
 "44
-[e :U 2599 ]
-[; ;I2C.c: 44: else {
+[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 2608  ]
 {
-[; ;I2C.c: 48: i2c_byte_count++;
-"48
-[e ++ _i2c_byte_count -> -> 1 `i `uc ]
-[; ;I2C.c: 50: if (SSPSTATbits.BF) {
-"50
-[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 2603  ]
-{
-[; ;I2C.c: 51: sspBuf = SSPBUF;
-"51
+[; ;I2C.c: 46: sspBuf = SSPBUF;
+"46
 [e = _sspBuf _SSPBUF ]
-"52
+"47
 }
-[e :U 2603 ]
-[; ;I2C.c: 52: }
-[; ;I2C.c: 54: if (SSPSTATbits.R_NOT_W) {
-"54
-[e $ ! != -> . . _SSPSTATbits 0 1 `i -> -> -> 0 `i `Vuc `i 2604  ]
+[e :U 2608 ]
+[; ;I2C.c: 47: }
+[; ;I2C.c: 49: if (SSPSTATbits.R_NOT_W) {
+"49
+[e $ ! != -> . . _SSPSTATbits 0 1 `i -> -> -> 0 `i `Vuc `i 2609  ]
 {
-[; ;I2C.c: 57: SSPCON1bits.WCOL = 0;
-"57
+[; ;I2C.c: 51: SSPCON1bits.WCOL = 0;
+"51
 [e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
-[; ;I2C.c: 58: SSPBUF = i2c_reg_map[i2c_reg_addr++];
-"58
+[; ;I2C.c: 52: SSPBUF = i2c_reg_map[i2c_reg_addr++];
+"52
 [e = _SSPBUF *U + &U _i2c_reg_map * -> ++ _i2c_reg_addr -> -> 1 `i `uc `ux -> -> # *U &U _i2c_reg_map `ui `ux ]
-[; ;I2C.c: 59: LATAbits.LATA6 = 1;
-"59
-[e = . . _LATAbits 0 6 -> -> 1 `i `uc ]
-"61
+"53
 }
-[; ;I2C.c: 61: }
-[e $U 2605  ]
-"62
-[e :U 2604 ]
-[; ;I2C.c: 62: else {
-{
-[; ;I2C.c: 64: if (i2c_byte_count == 1) {
-"64
-[e $ ! == -> _i2c_byte_count `i -> 1 `i 2606  ]
-{
-[; ;I2C.c: 66: i2c_reg_addr = sspBuf;
-"66
-[e = _i2c_reg_addr _sspBuf ]
-"68
+[e :U 2609 ]
+"54
 }
-[; ;I2C.c: 68: }
-[e $U 2607  ]
-"69
-[e :U 2606 ]
-[; ;I2C.c: 69: else {
-{
-[; ;I2C.c: 72: i2c_reg_map[i2c_reg_addr++] = sspBuf;
-"72
-[e = *U + &U _i2c_reg_map * -> ++ _i2c_reg_addr -> -> 1 `i `uc `ux -> -> # *U &U _i2c_reg_map `ui `ux _sspBuf ]
-[; ;I2C.c: 73: I2C_FLAG = 1;
-"73
-[e = _I2C_FLAG -> 1 `i ]
-"74
-}
+[; ;I2C.c: 53: }
+[; ;I2C.c: 54: }
+[e $U 2610  ]
+"55
 [e :U 2607 ]
+[; ;I2C.c: 55: else {
+{
+[; ;I2C.c: 59: i2c_byte_count++;
+"59
+[e ++ _i2c_byte_count -> -> 1 `i `uc ]
+[; ;I2C.c: 61: if (SSPSTATbits.BF) {
+"61
+[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 2611  ]
+{
+[; ;I2C.c: 62: sspBuf = SSPBUF;
+"62
+[e = _sspBuf _SSPBUF ]
+"63
+}
+[e :U 2611 ]
+[; ;I2C.c: 63: }
+[; ;I2C.c: 65: if (SSPSTATbits.R_NOT_W) {
+"65
+[e $ ! != -> . . _SSPSTATbits 0 1 `i -> -> -> 0 `i `Vuc `i 2612  ]
+{
+[; ;I2C.c: 68: SSPCON1bits.WCOL = 0;
+"68
+[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
+[; ;I2C.c: 69: SSPBUF = i2c_reg_map[i2c_reg_addr++];
+"69
+[e = _SSPBUF *U + &U _i2c_reg_map * -> ++ _i2c_reg_addr -> -> 1 `i `uc `ux -> -> # *U &U _i2c_reg_map `ui `ux ]
+[; ;I2C.c: 70: LATAbits.LATA6 = 1;
+"70
+[e = . . _LATAbits 0 6 -> -> 1 `i `uc ]
+"72
+}
+[; ;I2C.c: 72: }
+[e $U 2613  ]
+"73
+[e :U 2612 ]
+[; ;I2C.c: 73: else {
+{
+[; ;I2C.c: 75: if (i2c_byte_count == 1) {
 "75
+[e $ ! == -> _i2c_byte_count `i -> 1 `i 2614  ]
+{
+[; ;I2C.c: 77: i2c_reg_addr = sspBuf;
+"77
+[e = _i2c_reg_addr _sspBuf ]
+"79
 }
-[e :U 2605 ]
-"76
-}
-[e :U 2602 ]
-[; ;I2C.c: 74: }
-[; ;I2C.c: 75: }
-[; ;I2C.c: 76: }
-[; ;I2C.c: 78: i2c_reg_addr %= sizeof(i2c_reg_map);
-"78
-[e =% _i2c_reg_addr -> # _i2c_reg_map `ui ]
-[; ;I2C.c: 81: PIR1bits.SSPIF = 0;
-"81
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;I2C.c: 82: SSPCON1bits.CKP = 1;
-"82
-[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
+[; ;I2C.c: 79: }
+[e $U 2615  ]
+"80
+[e :U 2614 ]
+[; ;I2C.c: 80: else {
+{
+[; ;I2C.c: 83: i2c_reg_map[i2c_reg_addr++] = sspBuf;
 "83
-}
-[e :U 2598 ]
-[; ;I2C.c: 83: }
-[; ;I2C.c: 84: }
+[e = *U + &U _i2c_reg_map * -> ++ _i2c_reg_addr -> -> 1 `i `uc `ux -> -> # *U &U _i2c_reg_map `ui `ux _sspBuf ]
+[; ;I2C.c: 84: I2C_FLAG = 1;
 "84
-[e :UE 2597 ]
+[e = _I2C_FLAG -> 1 `i ]
+"85
+}
+[e :U 2615 ]
+"86
+}
+[e :U 2613 ]
+"87
+}
+[e :U 2610 ]
+[; ;I2C.c: 85: }
+[; ;I2C.c: 86: }
+[; ;I2C.c: 87: }
+[; ;I2C.c: 89: i2c_reg_addr %= sizeof(i2c_reg_map);
+"89
+[e =% _i2c_reg_addr -> # _i2c_reg_map `ui ]
+[; ;I2C.c: 92: PIR1bits.SSPIF = 0;
+"92
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;I2C.c: 93: SSPCON1bits.CKP = 1;
+"93
+[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
+"94
+}
+[e :U 2606 ]
+[; ;I2C.c: 94: }
+[; ;I2C.c: 95: }
+"95
+[e :UE 2605 ]
 }

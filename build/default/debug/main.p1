@@ -1,12 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"17 RFID.h
-[v _callback `(v ~T0 @X0 0 ef ]
+"22 I2C.h
+[v _checkI2C `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"15 Other.h
+"12 init.h
 [v _InitDevice `(v ~T0 @X0 0 ef ]
-"28 main.c
+"30 main.c
 [v _setup_Interrupt `(i ~T0 @X0 0 ef ]
-"81 ECAN.h
+"80 ECAN.h
 [v _CANSetup `(v ~T0 @X0 0 ef ]
 "23 I2C.h
 [v _I2CSetup `(v ~T0 @X0 0 ef ]
@@ -42,11 +42,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2160 . . . . . . . . . . ]
 "33061
 [v _LATAbits `VS2160 ~T0 @X0 0 e@3977 ]
-"24 I2C.h
-[v _Delay `(v ~T0 @X0 0 ef1`ui ]
-"16 RFID.h
-[v _checkRFID `(v ~T0 @X0 0 ef ]
-"33278 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
+"33278
 [s S2181 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2181 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
 "33288
@@ -78,6 +74,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2180 . . . . . . . . . . ]
 "33320
 [v _LATCbits `VS2180 ~T0 @X0 0 e@3979 ]
+"84 ECAN.h
+[v _ECAN_Receive `(uc ~T0 @X0 0 ef ]
+"82
+[v _zipCAN `(v ~T0 @X0 0 ef ]
+"86
+[v _ECAN_Transmit `(v ~T0 @X0 0 ef11`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc ]
+"24 I2C.h
+[v _Delay `(v ~T0 @X0 0 ef1`ui ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16814,52 +16818,60 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
 [; ;ECAN.h: 79: void checkCAN(void);
-[; ;ECAN.h: 81: void CANSetup(void);
-[; ;ECAN.h: 83: unsigned char ECAN_Receive(void);
-[; ;ECAN.h: 85: void ECAN_Transmit(unsigned char SIDH,
-[; ;ECAN.h: 86: unsigned char SIDL,
-[; ;ECAN.h: 87: unsigned char DLC,
-[; ;ECAN.h: 88: unsigned char TRANSMIT_ID,
-[; ;ECAN.h: 89: unsigned char DATA1,
-[; ;ECAN.h: 90: unsigned char DATA2,
-[; ;ECAN.h: 91: unsigned char DATA3,
-[; ;ECAN.h: 92: unsigned char DATA4,
-[; ;ECAN.h: 93: unsigned char DATA5,
-[; ;ECAN.h: 94: unsigned char DATA6,
-[; ;ECAN.h: 95: unsigned char DATA7);
-"98 ECAN.h
+[; ;ECAN.h: 80: void CANSetup(void);
+[; ;ECAN.h: 81: void setBit(int shift, int value);
+[; ;ECAN.h: 82: void zipCAN();
+[; ;ECAN.h: 84: unsigned char ECAN_Receive(void);
+[; ;ECAN.h: 86: void ECAN_Transmit(unsigned char SIDH,
+[; ;ECAN.h: 87: unsigned char SIDL,
+[; ;ECAN.h: 88: unsigned char DLC,
+[; ;ECAN.h: 89: unsigned char TRANSMIT_ID,
+[; ;ECAN.h: 90: unsigned char DATA1,
+[; ;ECAN.h: 91: unsigned char DATA2,
+[; ;ECAN.h: 92: unsigned char DATA3,
+[; ;ECAN.h: 93: unsigned char DATA4,
+[; ;ECAN.h: 94: unsigned char DATA5,
+[; ;ECAN.h: 95: unsigned char DATA6,
+[; ;ECAN.h: 96: unsigned char DATA7);
+"99 ECAN.h
 [v _count `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 98: unsigned char count;
-"99
-[v _RECEIVE_ID `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 99: unsigned char RECEIVE_ID;
+[; ;ECAN.h: 99: unsigned char count;
+"100
+[v _MAP_REC_BATTERYSTATUS `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 100: unsigned char MAP_REC_BATTERYSTATUS;
 "101
-[v _temp_D1 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 101: unsigned char temp_D1;
+[v _MAP_REC_VELOCITY `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 101: unsigned char MAP_REC_VELOCITY;
 "102
-[v _temp_D2 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char temp_D2;
+[v _MAP_REC_HEARTBEAT `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char MAP_REC_HEARTBEAT;
 "103
-[v _temp_D7 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 103: unsigned char temp_D7;
+[v _temp_D3 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 103: unsigned char temp_D3;
+"104
+[v _temp_D4 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 104: unsigned char temp_D4;
+"105
+[v _temp_D5 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 105: unsigned char temp_D5;
 "106
-[v _MOTOR_ID `uc ~T0 @X0 1 e ]
-[i _MOTOR_ID
--> -> 1 `i `uc
-]
-[; ;ECAN.h: 106: unsigned char MOTOR_ID = 0x01;
+[v _temp_D6 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 106: unsigned char temp_D6;
 "107
-[v _BATTERISTATUS_ID `uc ~T0 @X0 1 e ]
-[i _BATTERISTATUS_ID
--> -> 2 `i `uc
-]
-[; ;ECAN.h: 107: unsigned char BATTERISTATUS_ID = 0x02;
-"109
-[v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 109: unsigned int heartbeatCount;
+[v _temp_D7 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 107: unsigned char temp_D7;
 "110
+[v _MAP_BITDATA `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 110: unsigned char MAP_BITDATA;
+"111
+[v _MAP_ACCELERATOR `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 111: unsigned char MAP_ACCELERATOR;
+"115
+[v _heartbeatCount `ui ~T0 @X0 1 e ]
+[; ;ECAN.h: 115: unsigned int heartbeatCount;
+"116
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 110: unsigned char buttonWasPressed;
+[; ;ECAN.h: 116: unsigned char buttonWasPressed;
 [; ;I2C.h: 19: typedef unsigned char byte;
 "20 I2C.h
 [v _I2C_FLAG `i ~T0 @X0 1 e ]
@@ -16890,95 +16902,165 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;I2C.h: 30: volatile byte i2c_byte_count = 0;
-[; ;Other.h: 15: void InitDevice(void);
-[; ;Other.h: 16: void Delay(unsigned int count);
-"19 Other.h
-[v _Interrupt_counter `i ~T0 @X0 1 e ]
-[; ;Other.h: 19: int Interrupt_counter;
-"22
+"55
 [v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
-[; ;Other.h: 22: int MAP_HEARTBEAT;
+[; ;I2C.h: 55: int MAP_HEARTBEAT;
+"56
+[v _MAP_BRAKE `i ~T0 @X0 1 e ]
+[; ;I2C.h: 56: int MAP_BRAKE;
+"57
+[v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
+[; ;I2C.h: 57: int MAP_BACKLIGHT;
+"58
+[v _MAP_V_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 58: int MAP_V_BLINK;
+"59
+[v _MAP_H_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 59: int MAP_H_BLINK;
+"60
+[v _MAP_DIRECTION `i ~T0 @X0 1 e ]
+[; ;I2C.h: 60: int MAP_DIRECTION;
+"61
+[v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[; ;I2C.h: 61: int MAP_SAFETYPIN;
+[; ;Other.h: 11: void Delay(unsigned int count);
 [; ;RFID.h: 16: void checkRFID();
 [; ;RFID.h: 17: void callback();
 [; ;RFID.h: 18: void process_buf(int start);
 [; ;RFID.h: 19: void setupRFID();
-[v F18249 `(v ~T0 @X0 1 tf ]
-"11 main.c
-[v _ISR `IF18249 ~T0 @X0 1 e ]
+[; ;init.h: 12: void InitDevice(void);
+[; ;init.h: 14: int MAP_HEARTBEAT;
+"15 init.h
+[v _Interrupt_counter `i ~T0 @X0 1 e ]
+[; ;init.h: 15: int Interrupt_counter;
+[v F18263 `(v ~T0 @X0 1 tf ]
+"12 main.c
+[v _ISR `IF18263 ~T0 @X0 1 e ]
 {
-[; ;main.c: 11: void interrupt ISR(){
+[; ;main.c: 12: void interrupt ISR(){
 [e :U _ISR ]
 [f ]
-[; ;main.c: 12: Interrupt_counter++;
-"12
-[e ++ _Interrupt_counter -> 1 `i ]
-[; ;main.c: 14: if(Interrupt_counter == 2){
-"14
-[e $ ! == _Interrupt_counter -> 2 `i 2602  ]
-{
-[; ;main.c: 16: callback();
-"16
-[e ( _callback ..  ]
-[; ;main.c: 17: Interrupt_counter = 0;
-"17
-[e = _Interrupt_counter -> 0 `i ]
-"18
-}
-[e :U 2602 ]
-[; ;main.c: 18: }
-[; ;main.c: 21: }
-"21
+[; ;main.c: 13: checkI2C();
+"13
+[e ( _checkI2C ..  ]
+[; ;main.c: 25: }
+"25
 [e :UE 2601 ]
 }
-"23
+"27
 [v _main `(i ~T0 @X0 1 ef ]
 {
-[; ;main.c: 23: int main(void){
+[; ;main.c: 27: int main(void){
 [e :U _main ]
 [f ]
-[; ;main.c: 27: InitDevice();
-"27
-[e ( _InitDevice ..  ]
-[; ;main.c: 28: setup_Interrupt();
-"28
-[e ( _setup_Interrupt ..  ]
-[; ;main.c: 29: CANSetup();
+[; ;main.c: 29: InitDevice();
 "29
-[e ( _CANSetup ..  ]
-[; ;main.c: 30: I2CSetup();
+[e ( _InitDevice ..  ]
+[; ;main.c: 30: setup_Interrupt();
 "30
-[e ( _I2CSetup ..  ]
-[; ;main.c: 32: LATAbits.LA7 = 1;
+[e ( _setup_Interrupt ..  ]
+[; ;main.c: 31: CANSetup();
+"31
+[e ( _CANSetup ..  ]
+[; ;main.c: 32: I2CSetup();
 "32
-[e = . . _LATAbits 8 1 -> -> 1 `i `uc ]
-[; ;main.c: 34: while(1){
-"34
-[e :U 2605 ]
-{
-[; ;main.c: 56: Delay((unsigned int)(64/4)*80 * 5);
-"56
-[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 5 `i `ui ]
-[; ;main.c: 58: checkRFID();
-"58
-[e ( _checkRFID ..  ]
-[; ;main.c: 64: LATCbits.LATC6 = 0;
-"64
+[e ( _I2CSetup ..  ]
+[; ;main.c: 35: LATAbits.LATA7 = 1;
+"35
+[e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
+[; ;main.c: 36: LATCbits.LATC6 = 0;
+"36
 [e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;main.c: 65: LATCbits.LATC7 = 0;
-"65
+[; ;main.c: 37: LATCbits.LATC7 = 0;
+"37
 [e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-"69
-}
+[; ;main.c: 41: while(1){
+"41
 [e :U 2604 ]
-"34
-[e $U 2605  ]
+{
+[; ;main.c: 43: if(ECAN_Receive()){
+"43
+[e $ ! != -> ( _ECAN_Receive ..  `i -> -> -> 0 `i `uc `i 2606  ]
+{
+[; ;main.c: 44: i2c_reg_map[0] = MAP_REC_BATTERYSTATUS;
+"44
+[e = *U + &U _i2c_reg_map * -> -> -> 0 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _MAP_REC_BATTERYSTATUS ]
+[; ;main.c: 45: i2c_reg_map[1] = MAP_REC_VELOCITY;
+"45
+[e = *U + &U _i2c_reg_map * -> -> -> 1 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _MAP_REC_VELOCITY ]
+[; ;main.c: 46: i2c_reg_map[2] = MAP_REC_HEARTBEAT;
+"46
+[e = *U + &U _i2c_reg_map * -> -> -> 2 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _MAP_REC_HEARTBEAT ]
+[; ;main.c: 47: i2c_reg_map[3] = temp_D3;
+"47
+[e = *U + &U _i2c_reg_map * -> -> -> 3 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D3 ]
+[; ;main.c: 48: i2c_reg_map[4] = temp_D4;
+"48
+[e = *U + &U _i2c_reg_map * -> -> -> 4 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D4 ]
+[; ;main.c: 49: i2c_reg_map[5] = temp_D5;
+"49
+[e = *U + &U _i2c_reg_map * -> -> -> 5 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D5 ]
+[; ;main.c: 50: i2c_reg_map[6] = temp_D6;
+"50
+[e = *U + &U _i2c_reg_map * -> -> -> 6 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D6 ]
+[; ;main.c: 51: i2c_reg_map[7] = temp_D7;
+"51
+[e = *U + &U _i2c_reg_map * -> -> -> 7 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D7 ]
+"53
+}
+[; ;main.c: 53: }
+[e $U 2607  ]
+"54
 [e :U 2606 ]
-[; ;main.c: 69: }
-[; ;main.c: 72: return 0;
-"72
+[; ;main.c: 54: else{
+{
+[; ;main.c: 55: i2c_reg_map[2] = 0;
+"55
+[e = *U + &U _i2c_reg_map * -> -> -> 2 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux -> -> 0 `i `uc ]
+"56
+}
+[e :U 2607 ]
+[; ;main.c: 56: }
+[; ;main.c: 60: if(I2C_FLAG){
+"60
+[e $ ! != _I2C_FLAG -> 0 `i 2608  ]
+{
+[; ;main.c: 61: I2C_FLAG = 0;
+"61
+[e = _I2C_FLAG -> 0 `i ]
+[; ;main.c: 62: zipCAN();
+"62
+[e ( _zipCAN ..  ]
+[; ;main.c: 63: ECAN_Transmit(0x32,0xC0, 0x02,
+[; ;main.c: 64: MAP_BITDATA,
+[; ;main.c: 65: MAP_ACCELERATOR,
+[; ;main.c: 66: i2c_reg_map[10],
+[; ;main.c: 67: i2c_reg_map[11],
+[; ;main.c: 68: i2c_reg_map[12],
+[; ;main.c: 69: i2c_reg_map[13],
+[; ;main.c: 70: i2c_reg_map[14],
+[; ;main.c: 71: i2c_reg_map[15]);
+"71
+[e ( _ECAN_Transmit (4 , , , , , , , , , , -> -> 50 `i `uc -> -> 192 `i `uc -> -> 2 `i `uc _MAP_BITDATA _MAP_ACCELERATOR *U + &U _i2c_reg_map * -> -> -> 10 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux *U + &U _i2c_reg_map * -> -> -> 11 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux *U + &U _i2c_reg_map * -> -> -> 12 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux *U + &U _i2c_reg_map * -> -> -> 13 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux *U + &U _i2c_reg_map * -> -> -> 14 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux *U + &U _i2c_reg_map * -> -> -> 15 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux ]
+"74
+}
+[e :U 2608 ]
+[; ;main.c: 74: }
+[; ;main.c: 80: Delay((unsigned int)(64/4)*80 * 5);
+"80
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 5 `i `ui ]
+"81
+}
+[e :U 2603 ]
+"41
+[e $U 2604  ]
+[e :U 2605 ]
+[; ;main.c: 81: }
+[; ;main.c: 84: return 0;
+"84
 [e ) -> 0 `i ]
-[e $UE 2603  ]
-[; ;main.c: 73: }
-"73
-[e :UE 2603 ]
+[e $UE 2602  ]
+[; ;main.c: 85: }
+"85
+[e :UE 2602 ]
 }

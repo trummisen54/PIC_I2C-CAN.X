@@ -2,6 +2,7 @@
 #include "I2C.h"
 #include "config.h"
 #include "Other.h"
+#include "init.h"
 
 
 
@@ -23,7 +24,7 @@ void InitDevice(void){
     TRISB = 0xFF;//B0 = RFID input
     
     // Port A used for diagnostic LEDs
-    TRISA      = 0b00111111;     // PORTA bit 7 to output (0) ; bits 6:0 are inputs (1)
+    TRISA      = 0b01111111;     // PORTA bit 7 to output (0) ; bits 6:0 are inputs (1)
     LATAbits.LATA7 = 0;             // Chip alive diode (Green Led)
         
     // Setup MSSP in 7 bit I2C Slave mode
@@ -31,25 +32,22 @@ void InitDevice(void){
     LATCbits.LATC6 = 0; //Heartbeat diode (white diode)
     LATCbits.LATC7 = 0; //Error diode (Red diode)
     
-
-    //SYSTEM TIMER
+    
+   
+    //SYSTEM TIMER heartbeat
+    //T0CON
     T0CONbits.TMR0ON = 1; // Enable timer
     T0CONbits.T08BIT = 0; //16 bit
     T0CONbits.T0CS = 0; //not counter
     //T0CONbits.T0SE = 0;
-    T0CONbits.PSA = 0;
-    T0CONbits.T0PS = 7; //111 -> 1000 0111
+    T0CONbits.PSA = 0; //enable prescaler
+    T0CONbits.T0PS = 3; //011 = 1:16
+    
+    //T0CON = 1000 0011
     
     
-    //SYSTEM TIMER heartbeat
-    T1CONbits.TMR1ON = 1; // Enable timer
-    T1CONbits.RD16 = 1; //16 bit
-    //T0CONbits.T0SE = 0;
-    T1CONbits.PSA = 0;
-    T1CONbits.T0PS = 7; //111 -> 1000 0111
+
     
-    
-    MAP_HEARTBEAT = 0;
     MAP_BRAKE = 0;
     MAP_BACKLIGHT = 0;
     MAP_V_BLINK = 0;
@@ -66,6 +64,5 @@ void setup_Interrupt(){
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
     INTCONbits.TMR0IE = 1; //Enables the TMR0 overflow interrupt
-    INTCONbits.TMR1IE = 1; //Enables the TMR1 overflow interrupt
     
 }

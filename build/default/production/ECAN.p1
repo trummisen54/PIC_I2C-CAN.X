@@ -394,40 +394,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1659 . . . . . . . . . . ]
 "25123
 [v _TXB0CONbits `VS1659 ~T0 @X0 0 e@3872 ]
-"33278
-[s S2181 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2181 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"33288
-[s S2182 :1 `uc 1 ]
-[n S2182 . LC0 ]
-"33291
-[s S2183 :1 `uc 1 :1 `uc 1 ]
-[n S2183 . . LC1 ]
-"33295
-[s S2184 :2 `uc 1 :1 `uc 1 ]
-[n S2184 . . LC2 ]
-"33299
-[s S2185 :3 `uc 1 :1 `uc 1 ]
-[n S2185 . . LC3 ]
-"33303
-[s S2186 :4 `uc 1 :1 `uc 1 ]
-[n S2186 . . LC4 ]
-"33307
-[s S2187 :5 `uc 1 :1 `uc 1 ]
-[n S2187 . . LC5 ]
-"33311
-[s S2188 :6 `uc 1 :1 `uc 1 ]
-[n S2188 . . LC6 ]
-"33315
-[s S2189 :7 `uc 1 :1 `uc 1 ]
-[n S2189 . . LC7 ]
-"33277
-[u S2180 `S2181 1 `S2182 1 `S2183 1 `S2184 1 `S2185 1 `S2186 1 `S2187 1 `S2188 1 `S2189 1 ]
-[n S2180 . . . . . . . . . . ]
-"33320
-[v _LATCbits `VS2180 ~T0 @X0 0 e@3979 ]
-"24 I2C.h
-[v _Delay `(v ~T0 @X0 0 ef1`ui ]
+"81 ECAN.h
+[v _setBit `(v ~T0 @X0 0 ef2`i`i ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -17084,82 +17052,111 @@ Version 3.2 HI-TECH Software Intermediate Code
 "79
 [p x EBTRB=OFF ]
 [; ;ECAN.h: 79: void checkCAN(void);
-[; ;ECAN.h: 81: void CANSetup(void);
-[; ;ECAN.h: 83: unsigned char ECAN_Receive(void);
-[; ;ECAN.h: 85: void ECAN_Transmit(unsigned char SIDH,
-[; ;ECAN.h: 86: unsigned char SIDL,
-[; ;ECAN.h: 87: unsigned char DLC,
-[; ;ECAN.h: 88: unsigned char TRANSMIT_ID,
-[; ;ECAN.h: 89: unsigned char DATA1,
-[; ;ECAN.h: 90: unsigned char DATA2,
-[; ;ECAN.h: 91: unsigned char DATA3,
-[; ;ECAN.h: 92: unsigned char DATA4,
-[; ;ECAN.h: 93: unsigned char DATA5,
-[; ;ECAN.h: 94: unsigned char DATA6,
-[; ;ECAN.h: 95: unsigned char DATA7);
-"98 ECAN.h
+[; ;ECAN.h: 80: void CANSetup(void);
+[; ;ECAN.h: 81: void setBit(int shift, int value);
+[; ;ECAN.h: 82: void zipCAN();
+[; ;ECAN.h: 84: unsigned char ECAN_Receive(void);
+[; ;ECAN.h: 86: void ECAN_Transmit(unsigned char SIDH,
+[; ;ECAN.h: 87: unsigned char SIDL,
+[; ;ECAN.h: 88: unsigned char DLC,
+[; ;ECAN.h: 89: unsigned char TRANSMIT_ID,
+[; ;ECAN.h: 90: unsigned char DATA1,
+[; ;ECAN.h: 91: unsigned char DATA2,
+[; ;ECAN.h: 92: unsigned char DATA3,
+[; ;ECAN.h: 93: unsigned char DATA4,
+[; ;ECAN.h: 94: unsigned char DATA5,
+[; ;ECAN.h: 95: unsigned char DATA6,
+[; ;ECAN.h: 96: unsigned char DATA7);
+"99 ECAN.h
 [v _count `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 98: unsigned char count;
-"99
-[v _RECEIVE_ID `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 99: unsigned char RECEIVE_ID;
+[; ;ECAN.h: 99: unsigned char count;
+"100
+[v _MAP_REC_BATTERYSTATUS `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 100: unsigned char MAP_REC_BATTERYSTATUS;
 "101
-[v _temp_D1 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 101: unsigned char temp_D1;
+[v _MAP_REC_VELOCITY `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 101: unsigned char MAP_REC_VELOCITY;
 "102
 [v _temp_D2 `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 102: unsigned char temp_D2;
 "103
-[v _temp_D7 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 103: unsigned char temp_D7;
+[v _temp_D3 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 103: unsigned char temp_D3;
+"104
+[v _temp_D4 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 104: unsigned char temp_D4;
+"105
+[v _temp_D5 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 105: unsigned char temp_D5;
 "106
-[v _MOTOR_ID `uc ~T0 @X0 1 e ]
-[i _MOTOR_ID
--> -> 1 `i `uc
-]
-[; ;ECAN.h: 106: unsigned char MOTOR_ID = 0x01;
+[v _temp_D6 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 106: unsigned char temp_D6;
 "107
-[v _BATTERISTATUS_ID `uc ~T0 @X0 1 e ]
-[i _BATTERISTATUS_ID
--> -> 2 `i `uc
-]
-[; ;ECAN.h: 107: unsigned char BATTERISTATUS_ID = 0x02;
-"109
-[v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 109: unsigned int heartbeatCount;
+[v _temp_D7 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 107: unsigned char temp_D7;
 "110
+[v _MAP_BITDATA `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 110: unsigned char MAP_BITDATA;
+"111
+[v _MAP_ACCELERATOR `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 111: unsigned char MAP_ACCELERATOR;
+"115
+[v _heartbeatCount `ui ~T0 @X0 1 e ]
+[; ;ECAN.h: 115: unsigned int heartbeatCount;
+"116
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 110: unsigned char buttonWasPressed;
+[; ;ECAN.h: 116: unsigned char buttonWasPressed;
 [; ;I2C.h: 19: typedef unsigned char byte;
 "20 I2C.h
 [v _I2C_FLAG `i ~T0 @X0 1 e ]
-[i _I2C_FLAG
--> 0 `i
-]
-[; ;I2C.h: 20: extern int I2C_FLAG = 0;
-[; ;I2C.h: 22: extern void checkI2C();
-[; ;I2C.h: 23: extern void I2CSetup();
-[; ;I2C.h: 24: void Delay(unsigned int count);
-"28
+[; ;I2C.h: 20: int I2C_FLAG;
+"21
+[v _FIRST_SEND `i ~T0 @X0 1 e ]
+[; ;I2C.h: 21: int FIRST_SEND;
+[; ;I2C.h: 23: extern void checkI2C();
+[; ;I2C.h: 24: extern void I2CSetup();
+[; ;I2C.h: 25: void Delay(unsigned int count);
+"29
 [v _i2c_reg_addr `Vuc ~T0 @X0 1 e ]
 [i _i2c_reg_addr
 -> -> 0 `i `uc
 ]
-[; ;I2C.h: 28: volatile byte i2c_reg_addr = 0;
-"29
+[; ;I2C.h: 29: volatile byte i2c_reg_addr = 0;
+"30
 [v _i2c_reg_map `Vuc ~T0 @X0 -> 16 `i e ]
 [i _i2c_reg_map
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-[; ;I2C.h: 29: volatile byte i2c_reg_map[16] = {0,};
-"30
+[; ;I2C.h: 30: volatile byte i2c_reg_map[16] = {0,};
+"31
 [v _i2c_byte_count `Vuc ~T0 @X0 1 e ]
 [i _i2c_byte_count
 -> -> 0 `i `uc
 ]
-[; ;I2C.h: 30: volatile byte i2c_byte_count = 0;
+[; ;I2C.h: 31: volatile byte i2c_byte_count = 0;
+"56
+[v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
+[; ;I2C.h: 56: int MAP_HEARTBEAT;
+"57
+[v _MAP_BRAKE `i ~T0 @X0 1 e ]
+[; ;I2C.h: 57: int MAP_BRAKE;
+"58
+[v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
+[; ;I2C.h: 58: int MAP_BACKLIGHT;
+"59
+[v _MAP_V_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 59: int MAP_V_BLINK;
+"60
+[v _MAP_H_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 60: int MAP_H_BLINK;
+"61
+[v _MAP_DIRECTION `i ~T0 @X0 1 e ]
+[; ;I2C.h: 61: int MAP_DIRECTION;
+"62
+[v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[; ;I2C.h: 62: int MAP_SAFETYPIN;
 "90 ECAN.c
 [v _temp_EIDH `uc ~T0 @X0 1 e ]
 [; ;ECAN.c: 90: unsigned char temp_EIDH;
@@ -17175,629 +17172,658 @@ Version 3.2 HI-TECH Software Intermediate Code
 "94
 [v _temp_DLC `uc ~T0 @X0 1 e ]
 [; ;ECAN.c: 94: unsigned char temp_DLC;
-"95
-[v _temp_D0 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 95: unsigned char temp_D0;
-"98
-[v _temp_D3 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 98: unsigned char temp_D3;
-"99
-[v _temp_D4 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 99: unsigned char temp_D4;
-"100
-[v _temp_D5 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 100: unsigned char temp_D5;
-"101
-[v _temp_D6 `uc ~T0 @X0 1 e ]
-[; ;ECAN.c: 101: unsigned char temp_D6;
-"113
+"104
 [v _CANSetup `(v ~T0 @X0 1 ef ]
-"114
+"105
 {
-[; ;ECAN.c: 113: void CANSetup(void)
-[; ;ECAN.c: 114: {
+[; ;ECAN.c: 104: void CANSetup(void)
+[; ;ECAN.c: 105: {
 [e :U _CANSetup ]
 [f ]
-[; ;ECAN.c: 116: CANCON = 0x80;
-"116
+[; ;ECAN.c: 107: CANCON = 0x80;
+"107
 [e = _CANCON -> -> 128 `i `uc ]
-[; ;ECAN.c: 117: while(!(CANSTATbits.OPMODE ==0x04));
-"117
+[; ;ECAN.c: 108: while(!(CANSTATbits.OPMODE ==0x04));
+"108
 [e $U 2597  ]
 [e :U 2598 ]
 [e :U 2597 ]
 [e $ ! == -> . . _CANSTATbits 0 5 `i -> 4 `i 2598  ]
 [e :U 2599 ]
-[; ;ECAN.c: 120: ECANCON = 0x40;
-"120
+[; ;ECAN.c: 111: ECANCON = 0x40;
+"111
 [e = _ECANCON -> -> 64 `i `uc ]
-[; ;ECAN.c: 124: BRGCON1 = 0x81;
-"124
+[; ;ECAN.c: 115: BRGCON1 = 0x81;
+"115
 [e = _BRGCON1 -> -> 129 `i `uc ]
-[; ;ECAN.c: 125: BRGCON2 = 0xB8;
-"125
+[; ;ECAN.c: 116: BRGCON2 = 0xB8;
+"116
 [e = _BRGCON2 -> -> 184 `i `uc ]
-[; ;ECAN.c: 126: BRGCON3 = 0x05;
-"126
+[; ;ECAN.c: 117: BRGCON3 = 0x05;
+"117
 [e = _BRGCON3 -> -> 5 `i `uc ]
-[; ;ECAN.c: 131: BSEL0 = 0xF8;
-"131
+[; ;ECAN.c: 122: BSEL0 = 0xF8;
+"122
 [e = _BSEL0 -> -> 248 `i `uc ]
-[; ;ECAN.c: 135: RXM0EIDH = 0x00;
-"135
+[; ;ECAN.c: 126: RXM0EIDH = 0x00;
+"126
 [e = _RXM0EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 136: RXM0EIDL = 0x00;
-"136
+[; ;ECAN.c: 127: RXM0EIDL = 0x00;
+"127
 [e = _RXM0EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 137: RXM0SIDH = 0xFF;
-"137
+[; ;ECAN.c: 128: RXM0SIDH = 0xFF;
+"128
 [e = _RXM0SIDH -> -> 255 `i `uc ]
-[; ;ECAN.c: 138: RXM0SIDL = 0xE0;
-"138
+[; ;ECAN.c: 129: RXM0SIDL = 0xE0;
+"129
 [e = _RXM0SIDL -> -> 224 `i `uc ]
-[; ;ECAN.c: 141: RXM1EIDH = 0x00;
-"141
+[; ;ECAN.c: 132: RXM1EIDH = 0x00;
+"132
 [e = _RXM1EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 142: RXM1EIDL = 0x00;
-"142
+[; ;ECAN.c: 133: RXM1EIDL = 0x00;
+"133
 [e = _RXM1EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 143: RXM1SIDH = 0xFF;
-"143
+[; ;ECAN.c: 134: RXM1SIDH = 0xFF;
+"134
 [e = _RXM1SIDH -> -> 255 `i `uc ]
-[; ;ECAN.c: 144: RXM1SIDL = 0xE0;
-"144
+[; ;ECAN.c: 135: RXM1SIDL = 0xE0;
+"135
 [e = _RXM1SIDL -> -> 224 `i `uc ]
-[; ;ECAN.c: 148: RXFCON0 = 0x07;
-"148
+[; ;ECAN.c: 139: RXFCON0 = 0x07;
+"139
 [e = _RXFCON0 -> -> 7 `i `uc ]
-[; ;ECAN.c: 149: RXFCON1 = 0x00;
-"149
+[; ;ECAN.c: 140: RXFCON1 = 0x00;
+"140
 [e = _RXFCON1 -> -> 0 `i `uc ]
-[; ;ECAN.c: 152: MSEL0 = 0xC0;
-"152
+[; ;ECAN.c: 143: MSEL0 = 0xC0;
+"143
 [e = _MSEL0 -> -> 192 `i `uc ]
-[; ;ECAN.c: 153: MSEL1 = 0xFF;
-"153
+[; ;ECAN.c: 144: MSEL1 = 0xFF;
+"144
 [e = _MSEL1 -> -> 255 `i `uc ]
-[; ;ECAN.c: 154: MSEL2 = 0xFF;
-"154
+[; ;ECAN.c: 145: MSEL2 = 0xFF;
+"145
 [e = _MSEL2 -> -> 255 `i `uc ]
-[; ;ECAN.c: 155: MSEL3 = 0xFF;
-"155
+[; ;ECAN.c: 146: MSEL3 = 0xFF;
+"146
 [e = _MSEL3 -> -> 255 `i `uc ]
-[; ;ECAN.c: 159: RXFBCON0 = 0x10;
-"159
+[; ;ECAN.c: 150: RXFBCON0 = 0x10;
+"150
 [e = _RXFBCON0 -> -> 16 `i `uc ]
-[; ;ECAN.c: 160: RXFBCON1 = 0xF2;
-"160
+[; ;ECAN.c: 151: RXFBCON1 = 0xF2;
+"151
 [e = _RXFBCON1 -> -> 242 `i `uc ]
-[; ;ECAN.c: 162: RXFBCON2 = 0xFF;
-"162
+[; ;ECAN.c: 153: RXFBCON2 = 0xFF;
+"153
 [e = _RXFBCON2 -> -> 255 `i `uc ]
-[; ;ECAN.c: 163: RXFBCON3 = 0xFF;
-"163
+[; ;ECAN.c: 154: RXFBCON3 = 0xFF;
+"154
 [e = _RXFBCON3 -> -> 255 `i `uc ]
-[; ;ECAN.c: 164: RXFBCON4 = 0xFF;
-"164
+[; ;ECAN.c: 155: RXFBCON4 = 0xFF;
+"155
 [e = _RXFBCON4 -> -> 255 `i `uc ]
-[; ;ECAN.c: 165: RXFBCON5 = 0xFF;
-"165
+[; ;ECAN.c: 156: RXFBCON5 = 0xFF;
+"156
 [e = _RXFBCON5 -> -> 255 `i `uc ]
-[; ;ECAN.c: 166: RXFBCON6 = 0xFF;
-"166
+[; ;ECAN.c: 157: RXFBCON6 = 0xFF;
+"157
 [e = _RXFBCON6 -> -> 255 `i `uc ]
-[; ;ECAN.c: 167: RXFBCON7 = 0xFF;
-"167
+[; ;ECAN.c: 158: RXFBCON7 = 0xFF;
+"158
 [e = _RXFBCON7 -> -> 255 `i `uc ]
-[; ;ECAN.c: 173: RXF0EIDH = 0x00;
-"173
+[; ;ECAN.c: 164: RXF0EIDH = 0x00;
+"164
 [e = _RXF0EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 174: RXF0EIDL = 0x00;
-"174
+[; ;ECAN.c: 165: RXF0EIDL = 0x00;
+"165
 [e = _RXF0EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 175: RXF0SIDH = 0x32;
-"175
+[; ;ECAN.c: 166: RXF0SIDH = 0x32;
+"166
 [e = _RXF0SIDH -> -> 50 `i `uc ]
-[; ;ECAN.c: 176: RXF0SIDL = 0xC0;
-"176
+[; ;ECAN.c: 167: RXF0SIDL = 0xC0;
+"167
 [e = _RXF0SIDL -> -> 192 `i `uc ]
-[; ;ECAN.c: 177: RXF1EIDH = 0x00;
-"177
+[; ;ECAN.c: 168: RXF1EIDH = 0x00;
+"168
 [e = _RXF1EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 178: RXF1EIDL = 0x00;
-"178
+[; ;ECAN.c: 169: RXF1EIDL = 0x00;
+"169
 [e = _RXF1EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 179: RXF1SIDH = 0x33;
-"179
+[; ;ECAN.c: 170: RXF1SIDH = 0x33;
+"170
 [e = _RXF1SIDH -> -> 51 `i `uc ]
-[; ;ECAN.c: 180: RXF1SIDL = 0x40;
-"180
+[; ;ECAN.c: 171: RXF1SIDL = 0x40;
+"171
 [e = _RXF1SIDL -> -> 64 `i `uc ]
-[; ;ECAN.c: 181: RXF2EIDH = 0x00;
-"181
+[; ;ECAN.c: 172: RXF2EIDH = 0x00;
+"172
 [e = _RXF2EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 182: RXF2EIDL = 0x00;
-"182
+[; ;ECAN.c: 173: RXF2EIDL = 0x00;
+"173
 [e = _RXF2EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 183: RXF2SIDH = 0x33;
-"183
+[; ;ECAN.c: 174: RXF2SIDH = 0x33;
+"174
 [e = _RXF2SIDH -> -> 51 `i `uc ]
-[; ;ECAN.c: 184: RXF2SIDL = 0xC0;
-"184
+[; ;ECAN.c: 175: RXF2SIDL = 0xC0;
+"175
 [e = _RXF2SIDL -> -> 192 `i `uc ]
-[; ;ECAN.c: 187: if (0 ==1)
-"187
+[; ;ECAN.c: 178: if (0 ==1)
+"178
 [e $ ! == -> 0 `i -> 1 `i 2600  ]
-[; ;ECAN.c: 188: {
-"188
+[; ;ECAN.c: 179: {
+"179
 {
-[; ;ECAN.c: 189: CANCON = 0x40;
-"189
+[; ;ECAN.c: 180: CANCON = 0x40;
+"180
 [e = _CANCON -> -> 64 `i `uc ]
-[; ;ECAN.c: 190: while(CANSTATbits.OPMODE==0x40);
-"190
+[; ;ECAN.c: 181: while(CANSTATbits.OPMODE==0x40);
+"181
 [e $U 2601  ]
 [e :U 2602 ]
 [e :U 2601 ]
 [e $ == -> . . _CANSTATbits 0 5 `i -> 64 `i 2602  ]
 [e :U 2603 ]
-"191
+"182
 }
-[; ;ECAN.c: 191: }
+[; ;ECAN.c: 182: }
 [e $U 2604  ]
-"192
+"183
 [e :U 2600 ]
-[; ;ECAN.c: 192: else if (0==1)
+[; ;ECAN.c: 183: else if (0==1)
 [e $ ! == -> 0 `i -> 1 `i 2605  ]
-[; ;ECAN.c: 193: {
-"193
+[; ;ECAN.c: 184: {
+"184
 {
-[; ;ECAN.c: 194: CANCON = 0x60;
-"194
+[; ;ECAN.c: 185: CANCON = 0x60;
+"185
 [e = _CANCON -> -> 96 `i `uc ]
-[; ;ECAN.c: 195: while(CANSTATbits.OPMODE==0x60);
-"195
+[; ;ECAN.c: 186: while(CANSTATbits.OPMODE==0x60);
+"186
 [e $U 2606  ]
 [e :U 2607 ]
 [e :U 2606 ]
 [e $ == -> . . _CANSTATbits 0 5 `i -> 96 `i 2607  ]
 [e :U 2608 ]
-"196
+"187
 }
-[; ;ECAN.c: 196: }
+[; ;ECAN.c: 187: }
 [e $U 2609  ]
-"197
+"188
 [e :U 2605 ]
-[; ;ECAN.c: 197: else if (1 == 1){
+[; ;ECAN.c: 188: else if (1 == 1){
 [e $ ! == -> 1 `i -> 1 `i 2610  ]
 {
-[; ;ECAN.c: 198: CANCON = 0x00;
-"198
+[; ;ECAN.c: 189: CANCON = 0x00;
+"189
 [e = _CANCON -> -> 0 `i `uc ]
-[; ;ECAN.c: 199: while(CANSTATbits.OPMODE==0x00);
-"199
+[; ;ECAN.c: 190: while(CANSTATbits.OPMODE==0x00);
+"190
 [e $U 2611  ]
 [e :U 2612 ]
 [e :U 2611 ]
 [e $ == -> . . _CANSTATbits 0 5 `i -> 0 `i 2612  ]
 [e :U 2613 ]
-"200
+"191
 }
-[; ;ECAN.c: 200: }
+[; ;ECAN.c: 191: }
 [e $U 2614  ]
-"202
+"193
 [e :U 2610 ]
-[; ;ECAN.c: 202: else
-[; ;ECAN.c: 203: {
-"203
+[; ;ECAN.c: 193: else
+[; ;ECAN.c: 194: {
+"194
 {
-[; ;ECAN.c: 204: CANCON = 0x40;
-"204
+[; ;ECAN.c: 195: CANCON = 0x40;
+"195
 [e = _CANCON -> -> 64 `i `uc ]
-[; ;ECAN.c: 205: while(CANSTATbits.OPMODE==0x40);
-"205
+[; ;ECAN.c: 196: while(CANSTATbits.OPMODE==0x40);
+"196
 [e $U 2615  ]
 [e :U 2616 ]
 [e :U 2615 ]
 [e $ == -> . . _CANSTATbits 0 5 `i -> 64 `i 2616  ]
 [e :U 2617 ]
-"206
+"197
 }
 [e :U 2614 ]
 [e :U 2609 ]
 [e :U 2604 ]
-[; ;ECAN.c: 206: }
-[; ;ECAN.c: 209: RXB0CON = 0x00;
-"209
+[; ;ECAN.c: 197: }
+[; ;ECAN.c: 200: RXB0CON = 0x00;
+"200
 [e = _RXB0CON -> -> 0 `i `uc ]
-[; ;ECAN.c: 210: RXB1CON = 0x00;
-"210
+[; ;ECAN.c: 201: RXB1CON = 0x00;
+"201
 [e = _RXB1CON -> -> 0 `i `uc ]
-[; ;ECAN.c: 212: }
-"212
+[; ;ECAN.c: 203: }
+"203
 [e :UE 2596 ]
 }
-"224
+"215
 [v _ECAN_Receive `(uc ~T0 @X0 1 ef ]
-"225
+"216
 {
-[; ;ECAN.c: 224: unsigned char ECAN_Receive(void)
-[; ;ECAN.c: 225: {
+[; ;ECAN.c: 215: unsigned char ECAN_Receive(void)
+[; ;ECAN.c: 216: {
 [e :U _ECAN_Receive ]
 [f ]
-"226
+"217
 [v _RXMsgFlag `uc ~T0 @X0 1 a ]
-[; ;ECAN.c: 226: unsigned char RXMsgFlag;
-[; ;ECAN.c: 228: RXMsgFlag = 0x00;
-"228
+[; ;ECAN.c: 217: unsigned char RXMsgFlag;
+[; ;ECAN.c: 219: RXMsgFlag = 0x00;
+"219
 [e = _RXMsgFlag -> -> 0 `i `uc ]
-[; ;ECAN.c: 230: if (RXB0CONbits.RXFUL)
-"230
+[; ;ECAN.c: 221: if (RXB0CONbits.RXFUL)
+"221
 [e $ ! != -> . . _RXB0CONbits 0 7 `i -> -> -> 0 `i `Vuc `i 2619  ]
-[; ;ECAN.c: 231: {
-"231
+[; ;ECAN.c: 222: {
+"222
 {
-[; ;ECAN.c: 232: temp_EIDH = RXB0EIDH;
-"232
+[; ;ECAN.c: 223: temp_EIDH = RXB0EIDH;
+"223
 [e = _temp_EIDH _RXB0EIDH ]
-[; ;ECAN.c: 233: temp_EIDL = RXB0EIDL;
-"233
+[; ;ECAN.c: 224: temp_EIDL = RXB0EIDL;
+"224
 [e = _temp_EIDL _RXB0EIDL ]
-[; ;ECAN.c: 234: temp_SIDH = RXB0SIDH;
-"234
+[; ;ECAN.c: 225: temp_SIDH = RXB0SIDH;
+"225
 [e = _temp_SIDH _RXB0SIDH ]
-[; ;ECAN.c: 235: temp_SIDL = RXB0SIDL;
-"235
+[; ;ECAN.c: 226: temp_SIDL = RXB0SIDL;
+"226
 [e = _temp_SIDL _RXB0SIDL ]
-[; ;ECAN.c: 236: temp_DLC = RXB0DLC;
-"236
+[; ;ECAN.c: 227: temp_DLC = RXB0DLC;
+"227
 [e = _temp_DLC _RXB0DLC ]
-[; ;ECAN.c: 237: RECEIVE_ID = RXB0D0;
-"237
-[e = _RECEIVE_ID _RXB0D0 ]
-[; ;ECAN.c: 238: temp_D1 = RXB0D1;
-"238
-[e = _temp_D1 _RXB0D1 ]
-[; ;ECAN.c: 239: temp_D2 = RXB0D2;
-"239
+[; ;ECAN.c: 228: MAP_REC_BATTERYSTATUS = RXB0D0;
+"228
+[e = _MAP_REC_BATTERYSTATUS _RXB0D0 ]
+[; ;ECAN.c: 229: MAP_REC_VELOCITY = RXB0D1;
+"229
+[e = _MAP_REC_VELOCITY _RXB0D1 ]
+[; ;ECAN.c: 230: temp_D2 = RXB0D2;
+"230
 [e = _temp_D2 _RXB0D2 ]
-[; ;ECAN.c: 240: temp_D3 = RXB0D3;
-"240
+[; ;ECAN.c: 231: temp_D3 = RXB0D3;
+"231
 [e = _temp_D3 _RXB0D3 ]
-[; ;ECAN.c: 241: temp_D4 = RXB0D4;
-"241
+[; ;ECAN.c: 232: temp_D4 = RXB0D4;
+"232
 [e = _temp_D4 _RXB0D4 ]
-[; ;ECAN.c: 242: temp_D5 = RXB0D5;
-"242
+[; ;ECAN.c: 233: temp_D5 = RXB0D5;
+"233
 [e = _temp_D5 _RXB0D5 ]
-[; ;ECAN.c: 243: temp_D6 = RXB0D6;
-"243
+[; ;ECAN.c: 234: temp_D6 = RXB0D6;
+"234
 [e = _temp_D6 _RXB0D6 ]
-[; ;ECAN.c: 244: temp_D7 = RXB0D7;
-"244
+[; ;ECAN.c: 235: temp_D7 = RXB0D7;
+"235
 [e = _temp_D7 _RXB0D7 ]
-[; ;ECAN.c: 245: RXB0CONbits.RXFUL = 0;
-"245
+[; ;ECAN.c: 236: RXB0CONbits.RXFUL = 0;
+"236
 [e = . . _RXB0CONbits 0 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 246: RXMsgFlag = 0x01;
-"246
+[; ;ECAN.c: 237: RXMsgFlag = 0x01;
+"237
 [e = _RXMsgFlag -> -> 1 `i `uc ]
-"247
+"238
 }
-[; ;ECAN.c: 247: }
+[; ;ECAN.c: 238: }
 [e $U 2620  ]
-"248
+"239
 [e :U 2619 ]
-[; ;ECAN.c: 248: else if (RXB1CONbits.RXFUL)
+[; ;ECAN.c: 239: else if (RXB1CONbits.RXFUL)
 [e $ ! != -> . . _RXB1CONbits 0 7 `i -> -> -> 0 `i `Vuc `i 2621  ]
-[; ;ECAN.c: 249: {
-"249
+[; ;ECAN.c: 240: {
+"240
 {
-[; ;ECAN.c: 250: temp_EIDH = RXB1EIDH;
-"250
+[; ;ECAN.c: 241: temp_EIDH = RXB1EIDH;
+"241
 [e = _temp_EIDH _RXB1EIDH ]
-[; ;ECAN.c: 251: temp_EIDL = RXB1EIDL;
-"251
+[; ;ECAN.c: 242: temp_EIDL = RXB1EIDL;
+"242
 [e = _temp_EIDL _RXB1EIDL ]
-[; ;ECAN.c: 252: temp_SIDH = RXB1SIDH;
-"252
+[; ;ECAN.c: 243: temp_SIDH = RXB1SIDH;
+"243
 [e = _temp_SIDH _RXB1SIDH ]
-[; ;ECAN.c: 253: temp_SIDL = RXB1SIDL;
-"253
+[; ;ECAN.c: 244: temp_SIDL = RXB1SIDL;
+"244
 [e = _temp_SIDL _RXB1SIDL ]
-[; ;ECAN.c: 254: temp_DLC = RXB1DLC;
-"254
+[; ;ECAN.c: 245: temp_DLC = RXB1DLC;
+"245
 [e = _temp_DLC _RXB1DLC ]
-[; ;ECAN.c: 255: temp_D0 = RXB1D0;
-"255
-[e = _temp_D0 _RXB1D0 ]
-[; ;ECAN.c: 256: temp_D1 = RXB1D1;
-"256
-[e = _temp_D1 _RXB1D1 ]
-[; ;ECAN.c: 257: temp_D2 = RXB1D2;
-"257
+[; ;ECAN.c: 246: MAP_REC_BATTERYSTATUS = RXB1D0;
+"246
+[e = _MAP_REC_BATTERYSTATUS _RXB1D0 ]
+[; ;ECAN.c: 247: MAP_REC_VELOCITY = RXB1D1;
+"247
+[e = _MAP_REC_VELOCITY _RXB1D1 ]
+[; ;ECAN.c: 248: temp_D2 = RXB1D2;
+"248
 [e = _temp_D2 _RXB1D2 ]
-[; ;ECAN.c: 258: temp_D3 = RXB1D3;
-"258
+[; ;ECAN.c: 249: temp_D3 = RXB1D3;
+"249
 [e = _temp_D3 _RXB1D3 ]
-[; ;ECAN.c: 259: temp_D4 = RXB1D4;
-"259
+[; ;ECAN.c: 250: temp_D4 = RXB1D4;
+"250
 [e = _temp_D4 _RXB1D4 ]
-[; ;ECAN.c: 260: temp_D5 = RXB1D5;
-"260
+[; ;ECAN.c: 251: temp_D5 = RXB1D5;
+"251
 [e = _temp_D5 _RXB1D5 ]
-[; ;ECAN.c: 261: temp_D6 = RXB1D6;
-"261
+[; ;ECAN.c: 252: temp_D6 = RXB1D6;
+"252
 [e = _temp_D6 _RXB1D6 ]
-[; ;ECAN.c: 262: temp_D7 = RXB1D7;
-"262
+[; ;ECAN.c: 253: temp_D7 = RXB1D7;
+"253
 [e = _temp_D7 _RXB1D7 ]
-[; ;ECAN.c: 263: RXB1CONbits.RXFUL = 0;
-"263
+[; ;ECAN.c: 254: RXB1CONbits.RXFUL = 0;
+"254
 [e = . . _RXB1CONbits 0 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 264: RXMsgFlag = 0x01;
-"264
+[; ;ECAN.c: 255: RXMsgFlag = 0x01;
+"255
 [e = _RXMsgFlag -> -> 1 `i `uc ]
-"265
+"256
 }
-[; ;ECAN.c: 265: }
+[; ;ECAN.c: 256: }
 [e $U 2622  ]
-"266
+"257
 [e :U 2621 ]
-[; ;ECAN.c: 266: else if (B0CONbits.RXFUL)
+[; ;ECAN.c: 257: else if (B0CONbits.RXFUL)
 [e $ ! != -> . . _B0CONbits 1 7 `i -> -> -> 0 `i `Vuc `i 2623  ]
-[; ;ECAN.c: 267: {
-"267
+[; ;ECAN.c: 258: {
+"258
 {
-[; ;ECAN.c: 268: temp_EIDH = B0EIDH;
-"268
+[; ;ECAN.c: 259: temp_EIDH = B0EIDH;
+"259
 [e = _temp_EIDH _B0EIDH ]
-[; ;ECAN.c: 269: temp_EIDL = B0EIDL;
-"269
+[; ;ECAN.c: 260: temp_EIDL = B0EIDL;
+"260
 [e = _temp_EIDL _B0EIDL ]
-[; ;ECAN.c: 270: temp_SIDH = B0SIDH;
-"270
+[; ;ECAN.c: 261: temp_SIDH = B0SIDH;
+"261
 [e = _temp_SIDH _B0SIDH ]
-[; ;ECAN.c: 271: temp_SIDL = B0SIDL;
-"271
+[; ;ECAN.c: 262: temp_SIDL = B0SIDL;
+"262
 [e = _temp_SIDL _B0SIDL ]
-[; ;ECAN.c: 272: temp_DLC = B0DLC;
-"272
+[; ;ECAN.c: 263: temp_DLC = B0DLC;
+"263
 [e = _temp_DLC _B0DLC ]
-[; ;ECAN.c: 273: temp_D0 = B0D0;
-"273
-[e = _temp_D0 _B0D0 ]
-[; ;ECAN.c: 274: temp_D1 = B0D1;
-"274
-[e = _temp_D1 _B0D1 ]
-[; ;ECAN.c: 275: temp_D2 = B0D2;
-"275
+[; ;ECAN.c: 264: MAP_REC_BATTERYSTATUS = B0D0;
+"264
+[e = _MAP_REC_BATTERYSTATUS _B0D0 ]
+[; ;ECAN.c: 265: MAP_REC_VELOCITY = B0D1;
+"265
+[e = _MAP_REC_VELOCITY _B0D1 ]
+[; ;ECAN.c: 266: temp_D2 = B0D2;
+"266
 [e = _temp_D2 _B0D2 ]
-[; ;ECAN.c: 276: temp_D3 = B0D3;
-"276
+[; ;ECAN.c: 267: temp_D3 = B0D3;
+"267
 [e = _temp_D3 _B0D3 ]
-[; ;ECAN.c: 277: temp_D4 = B0D4;
-"277
+[; ;ECAN.c: 268: temp_D4 = B0D4;
+"268
 [e = _temp_D4 _B0D4 ]
-[; ;ECAN.c: 278: temp_D5 = B0D5;
-"278
+[; ;ECAN.c: 269: temp_D5 = B0D5;
+"269
 [e = _temp_D5 _B0D5 ]
-[; ;ECAN.c: 279: temp_D6 = B0D6;
-"279
+[; ;ECAN.c: 270: temp_D6 = B0D6;
+"270
 [e = _temp_D6 _B0D6 ]
-[; ;ECAN.c: 280: temp_D7 = B0D7;
-"280
+[; ;ECAN.c: 271: temp_D7 = B0D7;
+"271
 [e = _temp_D7 _B0D7 ]
-[; ;ECAN.c: 282: B0CONbits.RXFUL = 0;
-"282
+[; ;ECAN.c: 273: B0CONbits.RXFUL = 0;
+"273
 [e = . . _B0CONbits 1 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 283: RXMsgFlag = 0x01;
-"283
+[; ;ECAN.c: 274: RXMsgFlag = 0x01;
+"274
 [e = _RXMsgFlag -> -> 1 `i `uc ]
-"284
+"275
 }
 [e :U 2623 ]
-"286
+"277
 [e :U 2622 ]
 [e :U 2620 ]
-[; ;ECAN.c: 284: }
-[; ;ECAN.c: 286: if (RXMsgFlag == 0x01)
+[; ;ECAN.c: 275: }
+[; ;ECAN.c: 277: if (RXMsgFlag == 0x01)
 [e $ ! == -> _RXMsgFlag `i -> 1 `i 2624  ]
-[; ;ECAN.c: 287: {
-"287
+[; ;ECAN.c: 278: {
+"278
 {
-[; ;ECAN.c: 288: RXMsgFlag = 0x00;
-"288
+[; ;ECAN.c: 279: RXMsgFlag = 0x00;
+"279
 [e = _RXMsgFlag -> -> 0 `i `uc ]
-[; ;ECAN.c: 289: PIR5bits.RXB1IF = 0;
-"289
+[; ;ECAN.c: 280: PIR5bits.RXB1IF = 0;
+"280
 [e = . . _PIR5bits 0 1 -> -> 0 `i `uc ]
-[; ;ECAN.c: 290: return 1;
-"290
+[; ;ECAN.c: 281: return 1;
+"281
 [e ) -> -> 1 `i `uc ]
 [e $UE 2618  ]
-"291
+"282
 }
-[; ;ECAN.c: 291: }
+[; ;ECAN.c: 282: }
 [e $U 2625  ]
-"292
+"283
 [e :U 2624 ]
-[; ;ECAN.c: 292: else
-[; ;ECAN.c: 293: {
-"293
+[; ;ECAN.c: 283: else
+[; ;ECAN.c: 284: {
+"284
 {
-[; ;ECAN.c: 294: return 0;
-"294
+[; ;ECAN.c: 285: return 0;
+"285
 [e ) -> -> 0 `i `uc ]
 [e $UE 2618  ]
-"295
+"286
 }
 [e :U 2625 ]
-[; ;ECAN.c: 295: }
-[; ;ECAN.c: 296: }
-"296
+[; ;ECAN.c: 286: }
+[; ;ECAN.c: 287: }
+"287
 [e :UE 2618 ]
 }
-"305
+"296
 [v _ECAN_Transmit `(v ~T0 @X0 1 ef11`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc ]
-"316
-{
-[; ;ECAN.c: 305: void ECAN_Transmit(unsigned char SIDH,
-[; ;ECAN.c: 306: unsigned char SIDL,
-[; ;ECAN.c: 307: unsigned char DLC,
-[; ;ECAN.c: 308: unsigned char TRANSMIT_ID,
-[; ;ECAN.c: 309: unsigned char DATA1,
-[; ;ECAN.c: 310: unsigned char DATA2,
-[; ;ECAN.c: 311: unsigned char DATA3,
-[; ;ECAN.c: 312: unsigned char DATA4,
-[; ;ECAN.c: 313: unsigned char DATA5,
-[; ;ECAN.c: 314: unsigned char DATA6,
-[; ;ECAN.c: 315: unsigned char DATA7)
-[; ;ECAN.c: 316: {
-[e :U _ECAN_Transmit ]
-"305
-[v _SIDH `uc ~T0 @X0 1 r1 ]
-"306
-[v _SIDL `uc ~T0 @X0 1 r2 ]
 "307
+{
+[; ;ECAN.c: 296: void ECAN_Transmit(unsigned char SIDH,
+[; ;ECAN.c: 297: unsigned char SIDL,
+[; ;ECAN.c: 298: unsigned char DLC,
+[; ;ECAN.c: 299: unsigned char TRANSMIT_ID,
+[; ;ECAN.c: 300: unsigned char DATA1,
+[; ;ECAN.c: 301: unsigned char DATA2,
+[; ;ECAN.c: 302: unsigned char DATA3,
+[; ;ECAN.c: 303: unsigned char DATA4,
+[; ;ECAN.c: 304: unsigned char DATA5,
+[; ;ECAN.c: 305: unsigned char DATA6,
+[; ;ECAN.c: 306: unsigned char DATA7)
+[; ;ECAN.c: 307: {
+[e :U _ECAN_Transmit ]
+"296
+[v _SIDH `uc ~T0 @X0 1 r1 ]
+"297
+[v _SIDL `uc ~T0 @X0 1 r2 ]
+"298
 [v _DLC `uc ~T0 @X0 1 r3 ]
-"308
+"299
 [v _TRANSMIT_ID `uc ~T0 @X0 1 r4 ]
-"309
+"300
 [v _DATA1 `uc ~T0 @X0 1 r5 ]
-"310
+"301
 [v _DATA2 `uc ~T0 @X0 1 r6 ]
-"311
+"302
 [v _DATA3 `uc ~T0 @X0 1 r7 ]
-"312
+"303
 [v _DATA4 `uc ~T0 @X0 1 r8 ]
-"313
+"304
 [v _DATA5 `uc ~T0 @X0 1 r9 ]
-"314
+"305
 [v _DATA6 `uc ~T0 @X0 1 r10 ]
-"315
+"306
 [v _DATA7 `uc ~T0 @X0 1 r11 ]
-"316
+"307
 [f ]
-[; ;ECAN.c: 317: TXB0EIDH = 0x00;
-"317
+[; ;ECAN.c: 308: TXB0EIDH = 0x00;
+"308
 [e = _TXB0EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 318: TXB0EIDL = 0x00;
-"318
+[; ;ECAN.c: 309: TXB0EIDL = 0x00;
+"309
 [e = _TXB0EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 321: TXB0SIDH = SIDH;
-"321
+[; ;ECAN.c: 312: TXB0SIDH = SIDH;
+"312
 [e = _TXB0SIDH _SIDH ]
-[; ;ECAN.c: 322: TXB0SIDL = SIDL;
-"322
+[; ;ECAN.c: 313: TXB0SIDL = SIDL;
+"313
 [e = _TXB0SIDL _SIDL ]
-[; ;ECAN.c: 323: TXB0DLC = DLC;
-"323
+[; ;ECAN.c: 314: TXB0DLC = DLC;
+"314
 [e = _TXB0DLC _DLC ]
-[; ;ECAN.c: 332: TXB0D0 = TRANSMIT_ID;
-"332
+[; ;ECAN.c: 323: TXB0D0 = TRANSMIT_ID;
+"323
 [e = _TXB0D0 _TRANSMIT_ID ]
-[; ;ECAN.c: 333: TXB0D1 = DATA1;
-"333
+[; ;ECAN.c: 324: TXB0D1 = DATA1;
+"324
 [e = _TXB0D1 _DATA1 ]
-[; ;ECAN.c: 334: TXB0D2 = DATA2;
-"334
+[; ;ECAN.c: 325: TXB0D2 = DATA2;
+"325
 [e = _TXB0D2 _DATA2 ]
-[; ;ECAN.c: 335: TXB0D3 = DATA3;
-"335
+[; ;ECAN.c: 326: TXB0D3 = DATA3;
+"326
 [e = _TXB0D3 _DATA3 ]
-[; ;ECAN.c: 336: TXB0D4 = DATA4;
-"336
+[; ;ECAN.c: 327: TXB0D4 = DATA4;
+"327
 [e = _TXB0D4 _DATA4 ]
-[; ;ECAN.c: 337: TXB0D5 = DATA5;
-"337
+[; ;ECAN.c: 328: TXB0D5 = DATA5;
+"328
 [e = _TXB0D5 _DATA5 ]
-[; ;ECAN.c: 338: TXB0D6 = DATA6;
-"338
+[; ;ECAN.c: 329: TXB0D6 = DATA6;
+"329
 [e = _TXB0D6 _DATA6 ]
-[; ;ECAN.c: 339: TXB0D7 = DATA7;
-"339
+[; ;ECAN.c: 330: TXB0D7 = DATA7;
+"330
 [e = _TXB0D7 _DATA7 ]
-[; ;ECAN.c: 341: TXB0CONbits.TXREQ = 1;
-"341
+[; ;ECAN.c: 332: TXB0CONbits.TXREQ = 1;
+"332
 [e = . . _TXB0CONbits 0 2 -> -> 1 `i `uc ]
-[; ;ECAN.c: 342: }
-"342
+[; ;ECAN.c: 333: }
+"333
 [e :UE 2626 ]
 }
-"344
-[v _checkCAN `(v ~T0 @X0 1 ef ]
+"337
+[v _zipCAN `(v ~T0 @X0 1 ef ]
 {
-[; ;ECAN.c: 344: void checkCAN(){
-[e :U _checkCAN ]
+[; ;ECAN.c: 337: void zipCAN(){
+[e :U _zipCAN ]
 [f ]
-[; ;ECAN.c: 345: if(ECAN_Receive()){
-"345
-[e $ ! != -> ( _ECAN_Receive ..  `i -> -> -> 0 `i `uc `i 2628  ]
+[; ;ECAN.c: 338: if(i2c_reg_map[8] == 1){
+"338
+[e $ ! == -> *U + &U _i2c_reg_map * -> -> -> 8 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i -> 1 `i 2628  ]
 {
-[; ;ECAN.c: 347: i2c_reg_map[0] = RECEIVE_ID;
-"347
-[e = *U + &U _i2c_reg_map * -> -> -> 0 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _RECEIVE_ID ]
-[; ;ECAN.c: 348: i2c_reg_map[1] = temp_D1;
-"348
-[e = *U + &U _i2c_reg_map * -> -> -> 1 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D1 ]
-[; ;ECAN.c: 349: i2c_reg_map[2] = temp_D2;
-"349
-[e = *U + &U _i2c_reg_map * -> -> -> 2 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D2 ]
-[; ;ECAN.c: 350: i2c_reg_map[3] = temp_D3;
-"350
-[e = *U + &U _i2c_reg_map * -> -> -> 3 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D3 ]
-[; ;ECAN.c: 351: i2c_reg_map[4] = temp_D4;
-"351
-[e = *U + &U _i2c_reg_map * -> -> -> 4 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D4 ]
-[; ;ECAN.c: 352: i2c_reg_map[5] = temp_D5;
-"352
-[e = *U + &U _i2c_reg_map * -> -> -> 5 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D5 ]
-[; ;ECAN.c: 353: i2c_reg_map[6] = temp_D6;
-"353
-[e = *U + &U _i2c_reg_map * -> -> -> 6 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D6 ]
-[; ;ECAN.c: 354: i2c_reg_map[7] = temp_D7;
-"354
-[e = *U + &U _i2c_reg_map * -> -> -> 7 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux _temp_D7 ]
-[; ;ECAN.c: 358: if(i2c_reg_map[0] == 0x27){
-"358
-[e $ ! == -> *U + &U _i2c_reg_map * -> -> -> 0 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i -> 39 `i 2629  ]
-{
-[; ;ECAN.c: 359: while(1){
-"359
-[e :U 2631 ]
-{
-[; ;ECAN.c: 360: LATCbits.LATC7 = 1;
-"360
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-[; ;ECAN.c: 361: Delay((unsigned int)(64/4)*80 * 500);
-"361
-[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 500 `i `ui ]
-[; ;ECAN.c: 362: LATCbits.LATC7 = 0;
-"362
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 363: Delay((unsigned int)(64/4)*80 * 500);
-"363
-[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 500 `i `ui ]
-"365
-}
-[e :U 2630 ]
-"359
-[e $U 2631  ]
-[e :U 2632 ]
-"366
-}
-[e :U 2629 ]
-[; ;ECAN.c: 365: }
-[; ;ECAN.c: 366: }
-[; ;ECAN.c: 368: LATCbits.LATC6 = 1;
-"368
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-"370
+[; ;ECAN.c: 339: setBit(0, i2c_reg_map[8]);
+"339
+[e ( _setBit (2 , -> 0 `i -> *U + &U _i2c_reg_map * -> -> -> 8 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"340
 }
 [e :U 2628 ]
-[; ;ECAN.c: 370: }
-[; ;ECAN.c: 371: }
-"371
+[; ;ECAN.c: 340: }
+[; ;ECAN.c: 341: if(i2c_reg_map[9] != MAP_BRAKE){
+"341
+[e $ ! != -> *U + &U _i2c_reg_map * -> -> -> 9 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i _MAP_BRAKE 2629  ]
+{
+[; ;ECAN.c: 342: setBit(1, i2c_reg_map[9]);
+"342
+[e ( _setBit (2 , -> 1 `i -> *U + &U _i2c_reg_map * -> -> -> 9 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+[; ;ECAN.c: 343: MAP_BRAKE = i2c_reg_map[9];
+"343
+[e = _MAP_BRAKE -> *U + &U _i2c_reg_map * -> -> -> 9 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"344
+}
+[e :U 2629 ]
+[; ;ECAN.c: 344: }
+[; ;ECAN.c: 345: if(i2c_reg_map[10] != MAP_BACKLIGHT){
+"345
+[e $ ! != -> *U + &U _i2c_reg_map * -> -> -> 10 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i _MAP_BACKLIGHT 2630  ]
+{
+[; ;ECAN.c: 346: setBit(2, i2c_reg_map[10]);
+"346
+[e ( _setBit (2 , -> 2 `i -> *U + &U _i2c_reg_map * -> -> -> 10 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+[; ;ECAN.c: 347: MAP_BACKLIGHT = i2c_reg_map[10];
+"347
+[e = _MAP_BACKLIGHT -> *U + &U _i2c_reg_map * -> -> -> 10 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"348
+}
+[e :U 2630 ]
+[; ;ECAN.c: 348: }
+[; ;ECAN.c: 349: if(i2c_reg_map[11] != MAP_V_BLINK){
+"349
+[e $ ! != -> *U + &U _i2c_reg_map * -> -> -> 11 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i _MAP_V_BLINK 2631  ]
+{
+[; ;ECAN.c: 350: setBit(3, i2c_reg_map[11]);
+"350
+[e ( _setBit (2 , -> 3 `i -> *U + &U _i2c_reg_map * -> -> -> 11 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+[; ;ECAN.c: 351: MAP_V_BLINK = i2c_reg_map[11];
+"351
+[e = _MAP_V_BLINK -> *U + &U _i2c_reg_map * -> -> -> 11 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"352
+}
+[e :U 2631 ]
+[; ;ECAN.c: 352: }
+[; ;ECAN.c: 353: if(i2c_reg_map[12] != MAP_H_BLINK){
+"353
+[e $ ! != -> *U + &U _i2c_reg_map * -> -> -> 12 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i _MAP_H_BLINK 2632  ]
+{
+[; ;ECAN.c: 354: setBit(4, i2c_reg_map[12]);
+"354
+[e ( _setBit (2 , -> 4 `i -> *U + &U _i2c_reg_map * -> -> -> 12 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+[; ;ECAN.c: 355: MAP_H_BLINK = i2c_reg_map[12];
+"355
+[e = _MAP_H_BLINK -> *U + &U _i2c_reg_map * -> -> -> 12 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"356
+}
+[e :U 2632 ]
+[; ;ECAN.c: 356: }
+[; ;ECAN.c: 357: if(i2c_reg_map[13] != MAP_DIRECTION){
+"357
+[e $ ! != -> *U + &U _i2c_reg_map * -> -> -> 13 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i _MAP_DIRECTION 2633  ]
+{
+[; ;ECAN.c: 358: setBit(5, i2c_reg_map[13]);
+"358
+[e ( _setBit (2 , -> 5 `i -> *U + &U _i2c_reg_map * -> -> -> 13 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+[; ;ECAN.c: 359: MAP_DIRECTION = i2c_reg_map[13];
+"359
+[e = _MAP_DIRECTION -> *U + &U _i2c_reg_map * -> -> -> 13 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"360
+}
+[e :U 2633 ]
+[; ;ECAN.c: 360: }
+[; ;ECAN.c: 361: if(i2c_reg_map[14] != MAP_SAFETYPIN){
+"361
+[e $ ! != -> *U + &U _i2c_reg_map * -> -> -> 14 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i _MAP_SAFETYPIN 2634  ]
+{
+[; ;ECAN.c: 362: setBit(6, i2c_reg_map[14]);
+"362
+[e ( _setBit (2 , -> 6 `i -> *U + &U _i2c_reg_map * -> -> -> 14 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+[; ;ECAN.c: 363: MAP_SAFETYPIN = i2c_reg_map[14];
+"363
+[e = _MAP_SAFETYPIN -> *U + &U _i2c_reg_map * -> -> -> 14 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"364
+}
+[e :U 2634 ]
+[; ;ECAN.c: 364: }
+[; ;ECAN.c: 365: }
+"365
 [e :UE 2627 ]
+}
+"367
+[v _setBit `(v ~T0 @X0 1 ef2`i`i ]
+{
+[; ;ECAN.c: 367: void setBit(int shift, int value){
+[e :U _setBit ]
+[v _shift `i ~T0 @X0 1 r1 ]
+[v _value `i ~T0 @X0 1 r2 ]
+[f ]
+[; ;ECAN.c: 368: MAP_BITDATA = MAP_BITDATA ^ (1 << shift);
+"368
+[e = _MAP_BITDATA -> ^ -> _MAP_BITDATA `i << -> 1 `i _shift `uc ]
+[; ;ECAN.c: 369: }
+"369
+[e :UE 2635 ]
 }

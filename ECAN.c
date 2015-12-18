@@ -227,7 +227,7 @@ unsigned char ECAN_Receive(void)
         temp_DLC = RXB0DLC;
         MAP_REC_BATTERYSTATUS = RXB0D0;
         MAP_REC_VELOCITY = RXB0D1; 
-        MAP_REC_HEARTBEAT = RXB0D2;
+        temp_D2 = RXB0D2;
         temp_D3 = RXB0D3;
         temp_D4 = RXB0D4;
         temp_D5 = RXB0D5;
@@ -245,7 +245,7 @@ unsigned char ECAN_Receive(void)
         temp_DLC = RXB1DLC;
         MAP_REC_BATTERYSTATUS = RXB1D0;
         MAP_REC_VELOCITY = RXB1D1;
-        MAP_REC_HEARTBEAT = RXB1D2;
+        temp_D2 = RXB1D2;
         temp_D3 = RXB1D3;
         temp_D4 = RXB1D4;
         temp_D5 = RXB1D5;
@@ -263,7 +263,7 @@ unsigned char ECAN_Receive(void)
         temp_DLC = B0DLC;
         MAP_REC_BATTERYSTATUS = B0D0;
         MAP_REC_VELOCITY = B0D1;
-        MAP_REC_HEARTBEAT = B0D2;
+        temp_D2 = B0D2;
         temp_D3 = B0D3;
         temp_D4 = B0D4;
         temp_D5 = B0D5;
@@ -335,31 +335,30 @@ void ECAN_Transmit(unsigned char SIDH,
 
 //converts i2c_reg_map to the can message
 void zipCAN(){
-    if(i2c_reg_map[SEND_HEARTBEAT] != MAP_HEARTBEAT){
+    if(i2c_reg_map[SEND_HEARTBEAT] == 1){
         setBit(HEARTBEAT_BIT, i2c_reg_map[SEND_HEARTBEAT]);
-        MAP_HEARTBEAT = i2c_reg_map[SEND_HEARTBEAT];
     }
-    else if(i2c_reg_map[SEND_BRAKE] != MAP_BRAKE){
+    if(i2c_reg_map[SEND_BRAKE] != MAP_BRAKE){
         setBit(BRAKE_BIT, i2c_reg_map[SEND_BRAKE]);
         MAP_BRAKE = i2c_reg_map[SEND_BRAKE];
     }
-    else if(i2c_reg_map[SEND_BACKLIGHT] != MAP_BACKLIGHT){
+    if(i2c_reg_map[SEND_BACKLIGHT] != MAP_BACKLIGHT){
         setBit(BACKLIGHT_BIT, i2c_reg_map[SEND_BACKLIGHT]);
         MAP_BACKLIGHT = i2c_reg_map[SEND_BACKLIGHT];
     }
-    else if(i2c_reg_map[SEND_V_BLINK] != MAP_V_BLINK){
+    if(i2c_reg_map[SEND_V_BLINK] != MAP_V_BLINK){
         setBit(V_BLINK_BIT, i2c_reg_map[SEND_V_BLINK]);
         MAP_V_BLINK = i2c_reg_map[SEND_V_BLINK];
     }
-    else if(i2c_reg_map[SEND_H_BLINK] != MAP_H_BLINK){
+    if(i2c_reg_map[SEND_H_BLINK] != MAP_H_BLINK){
         setBit(H_BLINK_BIT, i2c_reg_map[SEND_H_BLINK]);
         MAP_H_BLINK = i2c_reg_map[SEND_H_BLINK];
     }
-    else if(i2c_reg_map[SEND_DIRECTION] != MAP_DIRECTION){
+    if(i2c_reg_map[SEND_DIRECTION] != MAP_DIRECTION){
         setBit(DIRECTION_BIT, i2c_reg_map[SEND_DIRECTION]);
         MAP_DIRECTION = i2c_reg_map[SEND_DIRECTION];
     }
-    else if(i2c_reg_map[SEND_SAFETYPIN] != MAP_SAFETYPIN){
+    if(i2c_reg_map[SEND_SAFETYPIN] != MAP_SAFETYPIN){
         setBit(SAFETYPIN_BIT, i2c_reg_map[SEND_SAFETYPIN]);
         MAP_SAFETYPIN = i2c_reg_map[SEND_SAFETYPIN];
     }
