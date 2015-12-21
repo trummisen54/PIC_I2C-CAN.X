@@ -97,6 +97,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2180 . . . . . . . . . . ]
 "33320
 [v _LATCbits `VS2180 ~T0 @X0 0 e@3979 ]
+"38659
+[s S2492 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2492 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"38667
+[s S2493 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2493 . T0PS0 T0PS1 T0PS2 ]
+"38658
+[u S2491 `S2492 1 `S2493 1 ]
+[n S2491 . . . ]
+"38673
+[v _T0CONbits `VS2491 ~T0 @X0 0 e@4053 ]
 "38301
 [s S2474 :1 `uc 1 ]
 [n S2474 . NOT_BOR ]
@@ -172,8 +183,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MAP_REC_VELOCITY `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 101: unsigned char MAP_REC_VELOCITY;
 "102
-[v _MAP_REC_HEARTBEAT `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char MAP_REC_HEARTBEAT;
+[v _temp_D2 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char temp_D2;
 "103
 [v _temp_D3 `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 103: unsigned char temp_D3;
@@ -192,66 +203,63 @@ Version 3.2 HI-TECH Software Intermediate Code
 "110
 [v _MAP_BITDATA `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 110: unsigned char MAP_BITDATA;
-"111
-[v _MAP_ACCELERATOR `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 111: unsigned char MAP_ACCELERATOR;
-"115
+"114
 [v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 115: unsigned int heartbeatCount;
-"116
+[; ;ECAN.h: 114: unsigned int heartbeatCount;
+"115
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 116: unsigned char buttonWasPressed;
+[; ;ECAN.h: 115: unsigned char buttonWasPressed;
 [; ;I2C.h: 19: typedef unsigned char byte;
 "20 I2C.h
 [v _I2C_FLAG `i ~T0 @X0 1 e ]
-[i _I2C_FLAG
--> 0 `i
-]
-[; ;I2C.h: 20: extern int I2C_FLAG = 0;
-[; ;I2C.h: 22: extern void checkI2C();
-[; ;I2C.h: 23: extern void I2CSetup();
-[; ;I2C.h: 24: void Delay(unsigned int count);
-"28
+[; ;I2C.h: 20: int I2C_FLAG;
+"21
+[v _FIRST_SEND `i ~T0 @X0 1 e ]
+[; ;I2C.h: 21: int FIRST_SEND;
+[; ;I2C.h: 23: extern void checkI2C();
+[; ;I2C.h: 24: extern void I2CSetup();
+[; ;I2C.h: 25: void Delay(unsigned int count);
+"29
 [v _i2c_reg_addr `Vuc ~T0 @X0 1 e ]
 [i _i2c_reg_addr
 -> -> 0 `i `uc
 ]
-[; ;I2C.h: 28: volatile byte i2c_reg_addr = 0;
-"29
+[; ;I2C.h: 29: volatile byte i2c_reg_addr = 0;
+"30
 [v _i2c_reg_map `Vuc ~T0 @X0 -> 16 `i e ]
 [i _i2c_reg_map
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-[; ;I2C.h: 29: volatile byte i2c_reg_map[16] = {0,};
-"30
+[; ;I2C.h: 30: volatile byte i2c_reg_map[16] = {0,};
+"31
 [v _i2c_byte_count `Vuc ~T0 @X0 1 e ]
 [i _i2c_byte_count
 -> -> 0 `i `uc
 ]
-[; ;I2C.h: 30: volatile byte i2c_byte_count = 0;
-"55
-[v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
-[; ;I2C.h: 55: int MAP_HEARTBEAT;
+[; ;I2C.h: 31: volatile byte i2c_byte_count = 0;
 "56
-[v _MAP_BRAKE `i ~T0 @X0 1 e ]
-[; ;I2C.h: 56: int MAP_BRAKE;
+[v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
+[; ;I2C.h: 56: int MAP_HEARTBEAT;
 "57
-[v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
-[; ;I2C.h: 57: int MAP_BACKLIGHT;
+[v _MAP_BRAKE `i ~T0 @X0 1 e ]
+[; ;I2C.h: 57: int MAP_BRAKE;
 "58
-[v _MAP_V_BLINK `i ~T0 @X0 1 e ]
-[; ;I2C.h: 58: int MAP_V_BLINK;
+[v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
+[; ;I2C.h: 58: int MAP_BACKLIGHT;
 "59
-[v _MAP_H_BLINK `i ~T0 @X0 1 e ]
-[; ;I2C.h: 59: int MAP_H_BLINK;
+[v _MAP_V_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 59: int MAP_V_BLINK;
 "60
-[v _MAP_DIRECTION `i ~T0 @X0 1 e ]
-[; ;I2C.h: 60: int MAP_DIRECTION;
+[v _MAP_H_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 60: int MAP_H_BLINK;
 "61
+[v _MAP_DIRECTION `i ~T0 @X0 1 e ]
+[; ;I2C.h: 61: int MAP_DIRECTION;
+"62
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
-[; ;I2C.h: 61: int MAP_SAFETYPIN;
+[; ;I2C.h: 62: int MAP_SAFETYPIN;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16913,6 +16921,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "15 init.h
 [v _Interrupt_counter `i ~T0 @X0 1 e ]
 [; ;init.h: 15: int Interrupt_counter;
+"16
+[v _heartBeatCounter `i ~T0 @X0 1 e ]
+[; ;init.h: 16: int heartBeatCounter;
 "9 init.c
 [v _InitDevice `(v ~T0 @X0 1 ef ]
 {
@@ -16958,50 +16969,62 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.c: 33: LATCbits.LATC7 = 0;
 "33
 [e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;init.c: 51: MAP_HEARTBEAT = 0;
+[; ;init.c: 39: T0CONbits.TMR0ON = 1;
+"39
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;init.c: 40: T0CONbits.T08BIT = 0;
+"40
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
+[; ;init.c: 41: T0CONbits.T0CS = 0;
+"41
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[; ;init.c: 43: T0CONbits.PSA = 0;
+"43
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+[; ;init.c: 44: T0CONbits.T0PS = 7;
+"44
+[e = . . _T0CONbits 0 0 -> -> 7 `i `uc ]
+[; ;init.c: 51: MAP_BRAKE = 0;
 "51
-[e = _MAP_HEARTBEAT -> 0 `i ]
-[; ;init.c: 52: MAP_BRAKE = 0;
-"52
 [e = _MAP_BRAKE -> 0 `i ]
-[; ;init.c: 53: MAP_BACKLIGHT = 0;
-"53
+[; ;init.c: 52: MAP_BACKLIGHT = 0;
+"52
 [e = _MAP_BACKLIGHT -> 0 `i ]
-[; ;init.c: 54: MAP_V_BLINK = 0;
-"54
+[; ;init.c: 53: MAP_V_BLINK = 0;
+"53
 [e = _MAP_V_BLINK -> 0 `i ]
-[; ;init.c: 55: MAP_H_BLINK = 0;
-"55
+[; ;init.c: 54: MAP_H_BLINK = 0;
+"54
 [e = _MAP_H_BLINK -> 0 `i ]
-[; ;init.c: 56: MAP_DIRECTION = 0;
-"56
+[; ;init.c: 55: MAP_DIRECTION = 0;
+"55
 [e = _MAP_DIRECTION -> 0 `i ]
-[; ;init.c: 57: MAP_SAFETYPIN = 0;
-"57
+[; ;init.c: 56: MAP_SAFETYPIN = 0;
+"56
 [e = _MAP_SAFETYPIN -> 0 `i ]
-[; ;init.c: 58: MAP_ACCELERATOR = 0;
+[; ;init.c: 58: }
 "58
-[e = _MAP_ACCELERATOR -> -> 0 `i `uc ]
-[; ;init.c: 60: }
-"60
 [e :UE 2596 ]
 }
-"63
+"61
 [v _setup_Interrupt `(v ~T0 @X0 1 ef ]
 {
-[; ;init.c: 63: void setup_Interrupt(){
+[; ;init.c: 61: void setup_Interrupt(){
 [e :U _setup_Interrupt ]
 [f ]
-[; ;init.c: 64: RCONbits.IPEN = 1;
-"64
+[; ;init.c: 62: RCONbits.IPEN = 1;
+"62
 [e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-[; ;init.c: 65: INTCONbits.GIEH = 1;
-"65
+[; ;init.c: 63: INTCONbits.GIEH = 1;
+"63
 [e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
-[; ;init.c: 66: INTCONbits.GIEL = 1;
-"66
+[; ;init.c: 64: INTCONbits.GIEL = 1;
+"64
 [e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
-[; ;init.c: 71: }
-"71
+[; ;init.c: 65: INTCONbits.TMR0IE = 1;
+"65
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;init.c: 67: }
+"67
 [e :UE 2597 ]
 }

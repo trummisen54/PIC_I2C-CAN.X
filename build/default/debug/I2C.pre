@@ -20980,7 +20980,7 @@ unsigned char DATA7);
 unsigned char count;
 unsigned char MAP_REC_BATTERYSTATUS;
 unsigned char MAP_REC_VELOCITY;
-unsigned char MAP_REC_HEARTBEAT;
+unsigned char temp_D2;
 unsigned char temp_D3;
 unsigned char temp_D4;
 unsigned char temp_D5;
@@ -20989,7 +20989,6 @@ unsigned char temp_D7;
 
 
 unsigned char MAP_BITDATA;
-unsigned char MAP_ACCELERATOR;
 
 
 
@@ -20998,7 +20997,8 @@ unsigned char buttonWasPressed;
 
 # 19 "I2C.h"
 typedef unsigned char byte;
-extern int I2C_FLAG = 0;
+int I2C_FLAG;
+int FIRST_SEND;
 
 extern void checkI2C();
 extern void I2CSetup();
@@ -21010,7 +21010,7 @@ volatile byte i2c_reg_addr = 0;
 volatile byte i2c_reg_map[16] = {0,};
 volatile byte i2c_byte_count = 0;
 
-# 55
+# 56
 int MAP_HEARTBEAT;
 int MAP_BRAKE;
 int MAP_BACKLIGHT;
@@ -21028,11 +21028,17 @@ void callback();
 void process_buf(int start);
 void setupRFID();
 
+
+void collectManch();
+void parseMultiBitToSingleBit (int startOffset);
+void decodeManchester(int finalArray[]);
+
 # 12 "init.h"
 void InitDevice(void);
 
 int MAP_HEARTBEAT;
 int Interrupt_counter;
+int heartBeatCounter;
 
 # 10 "I2C.c"
 void I2CSetup(){
@@ -21053,6 +21059,10 @@ INTCONbits.PEIE_GIEL = 1;
 for(int i = 0; i<16; i++){
 i2c_reg_map[i] = 0;
 }
+
+
+i2c_reg_map[8] = 1;
+i2c_reg_map[temp_D2] = 1;
 
 
 }

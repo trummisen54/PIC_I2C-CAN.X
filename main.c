@@ -30,6 +30,12 @@ int main(void){
     
     while(1){
         
+        while(1){
+            
+            Delay(1);
+            //checkRFID();
+        }
+        
         if(ECAN_Receive()){
             FIRST_SEND = 0;
             HEARTBEAT_DIODE = 1;
@@ -57,7 +63,7 @@ int main(void){
             zipCAN();
             ECAN_Transmit(0x32,0xC0, 0x02,
                     MAP_BITDATA,//zipped data
-                    MAP_ACCELERATOR,
+                    i2c_reg_map[SEND_ACCELERATOR],
                     i2c_reg_map[10],//dummy values
                     i2c_reg_map[11],//dummy values
                     i2c_reg_map[12],//dummy values
@@ -80,25 +86,27 @@ int main(void){
 }
 
 void interrupt ISR(){   
-    checkI2C(); 
+    //checkI2C(); 
     
     
     
-    if(TMR0IF == 1){
+    /*if(TMR0IF == 1){
         if(!FIRST_SEND){
             heartBeatCounter++;
         }
         TMR0IF = 0;
     }
+    */
     
     
-    //Interrupt_counter++;
+    Interrupt_counter++;
   
-    //if(Interrupt_counter == 2){
+    if(Interrupt_counter == 10){//2
         
         //callback();//rfid
-     //   Interrupt_counter = 0;
-    //}
+        collectManch();
+        Interrupt_counter = 0;
+    }
     
     
 }

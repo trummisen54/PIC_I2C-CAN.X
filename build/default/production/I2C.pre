@@ -20989,7 +20989,6 @@ unsigned char temp_D7;
 
 
 unsigned char MAP_BITDATA;
-unsigned char MAP_ACCELERATOR;
 
 
 
@@ -21028,6 +21027,11 @@ void checkRFID();
 void callback();
 void process_buf(int start);
 void setupRFID();
+
+
+void collectManch();
+void parseMultiBitToSingleBit (char * buffer, int startOffset, int outputBuffer[]);
+void decodeManchester(int finalArray[], int resultArray[]);
 
 # 12 "init.h"
 void InitDevice(void);

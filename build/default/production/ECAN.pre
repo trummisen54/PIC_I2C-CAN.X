@@ -20857,7 +20857,6 @@ unsigned char temp_D7;
 
 
 unsigned char MAP_BITDATA;
-unsigned char MAP_ACCELERATOR;
 
 
 

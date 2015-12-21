@@ -19,5 +19,9 @@ void process_buf(int start);
 void setupRFID();
 
 
+void collectManch();
+void parseMultiBitToSingleBit (int startOffset);
+void decodeManchester(int finalArray[]);
+
 #endif	/* RFID_H */
 

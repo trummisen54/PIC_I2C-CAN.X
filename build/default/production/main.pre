@@ -20989,7 +20989,6 @@ unsigned char temp_D7;
 
 
 unsigned char MAP_BITDATA;
-unsigned char MAP_ACCELERATOR;
 
 
 
@@ -21029,6 +21028,11 @@ void callback();
 void process_buf(int start);
 void setupRFID();
 
+
+void collectManch();
+void parseMultiBitToSingleBit (char * buffer, int startOffset, int outputBuffer[]);
+void decodeManchester(int finalArray[], int resultArray[]);
+
 # 12 "init.h"
 void InitDevice(void);
 
@@ -21055,6 +21059,12 @@ LATCbits.LATC7 = 0;
 
 
 while(1){
+
+while(1){
+
+Delay(1);
+
+}
 
 if(ECAN_Receive()){
 FIRST_SEND = 0;
@@ -21083,7 +21093,7 @@ I2C_FLAG = 0;
 zipCAN();
 ECAN_Transmit(0x32,0xC0, 0x02,
 MAP_BITDATA,
-MAP_ACCELERATOR,
+i2c_reg_map[15],
 i2c_reg_map[10],
 i2c_reg_map[11],
 i2c_reg_map[12],
@@ -21094,7 +21104,7 @@ i2c_reg_map[15]);
 
 }
 
-# 75
+# 81
 Delay((unsigned int)(64/4)*80 * 5);
 }
 
@@ -21103,16 +21113,16 @@ return 0;
 }
 
 void interrupt ISR(){
-checkI2C();
+
+# 102
+Interrupt_counter++;
+
+if(Interrupt_counter == 10){
 
 
-
-if(TMR0IF == 1){
-if(!FIRST_SEND){
-heartBeatCounter++;
+collectManch();
+Interrupt_counter = 0;
 }
-TMR0IF = 0;
-}
 
-# 104
+
 }

@@ -108,7 +108,6 @@ unsigned char temp_D7;
 
 //SEND TO SLAVE DATA
 unsigned char MAP_BITDATA;
-unsigned char MAP_ACCELERATOR;
 
 
 

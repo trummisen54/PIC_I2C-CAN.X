@@ -16928,15 +16928,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "110
 [v _MAP_BITDATA `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 110: unsigned char MAP_BITDATA;
-"111
-[v _MAP_ACCELERATOR `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 111: unsigned char MAP_ACCELERATOR;
-"115
+"114
 [v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 115: unsigned int heartbeatCount;
-"116
+[; ;ECAN.h: 114: unsigned int heartbeatCount;
+"115
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 116: unsigned char buttonWasPressed;
+[; ;ECAN.h: 115: unsigned char buttonWasPressed;
 [; ;I2C.h: 19: typedef unsigned char byte;
 "20 I2C.h
 [v _I2C_FLAG `i ~T0 @X0 1 e ]
@@ -16993,6 +16990,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.h: 17: void callback();
 [; ;RFID.h: 18: void process_buf(int start);
 [; ;RFID.h: 19: void setupRFID();
+[; ;RFID.h: 22: void collectManch();
+[; ;RFID.h: 23: void parseMultiBitToSingleBit (char * buffer, int startOffset, int outputBuffer[]);
+[; ;RFID.h: 24: void decodeManchester(int finalArray[], int resultArray[]);
 [; ;init.h: 12: void InitDevice(void);
 [; ;init.h: 14: int MAP_HEARTBEAT;
 "15 init.h

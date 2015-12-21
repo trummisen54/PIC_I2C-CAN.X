@@ -203,15 +203,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "110
 [v _MAP_BITDATA `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 110: unsigned char MAP_BITDATA;
-"111
-[v _MAP_ACCELERATOR `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 111: unsigned char MAP_ACCELERATOR;
-"115
+"114
 [v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 115: unsigned int heartbeatCount;
-"116
+[; ;ECAN.h: 114: unsigned int heartbeatCount;
+"115
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 116: unsigned char buttonWasPressed;
+[; ;ECAN.h: 115: unsigned char buttonWasPressed;
 [; ;I2C.h: 19: typedef unsigned char byte;
 "20 I2C.h
 [v _I2C_FLAG `i ~T0 @X0 1 e ]
@@ -16984,9 +16981,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.c: 43: T0CONbits.PSA = 0;
 "43
 [e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
-[; ;init.c: 44: T0CONbits.T0PS = 3;
+[; ;init.c: 44: T0CONbits.T0PS = 7;
 "44
-[e = . . _T0CONbits 0 0 -> -> 3 `i `uc ]
+[e = . . _T0CONbits 0 0 -> -> 7 `i `uc ]
 [; ;init.c: 51: MAP_BRAKE = 0;
 "51
 [e = _MAP_BRAKE -> 0 `i ]
@@ -17005,32 +17002,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.c: 56: MAP_SAFETYPIN = 0;
 "56
 [e = _MAP_SAFETYPIN -> 0 `i ]
-[; ;init.c: 57: MAP_ACCELERATOR = 0;
-"57
-[e = _MAP_ACCELERATOR -> -> 0 `i `uc ]
-[; ;init.c: 59: }
-"59
+[; ;init.c: 58: }
+"58
 [e :UE 2596 ]
 }
-"62
+"61
 [v _setup_Interrupt `(v ~T0 @X0 1 ef ]
 {
-[; ;init.c: 62: void setup_Interrupt(){
+[; ;init.c: 61: void setup_Interrupt(){
 [e :U _setup_Interrupt ]
 [f ]
-[; ;init.c: 63: RCONbits.IPEN = 1;
-"63
+[; ;init.c: 62: RCONbits.IPEN = 1;
+"62
 [e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-[; ;init.c: 64: INTCONbits.GIEH = 1;
-"64
+[; ;init.c: 63: INTCONbits.GIEH = 1;
+"63
 [e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
-[; ;init.c: 65: INTCONbits.GIEL = 1;
-"65
+[; ;init.c: 64: INTCONbits.GIEL = 1;
+"64
 [e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
-[; ;init.c: 66: INTCONbits.TMR0IE = 1;
-"66
+[; ;init.c: 65: INTCONbits.TMR0IE = 1;
+"65
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-[; ;init.c: 68: }
-"68
+[; ;init.c: 67: }
+"67
 [e :UE 2597 ]
 }

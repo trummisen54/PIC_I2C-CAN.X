@@ -20832,10 +20832,12 @@ void InitDevice(void);
 
 int MAP_HEARTBEAT;
 int Interrupt_counter;
+int heartBeatCounter;
 
 # 19 "I2C.h"
 typedef unsigned char byte;
-extern int I2C_FLAG = 0;
+int I2C_FLAG;
+int FIRST_SEND;
 
 extern void checkI2C();
 extern void I2CSetup();
@@ -20847,7 +20849,7 @@ volatile byte i2c_reg_addr = 0;
 volatile byte i2c_reg_map[16] = {0,};
 volatile byte i2c_byte_count = 0;
 
-# 55
+# 56
 int MAP_HEARTBEAT;
 int MAP_BRAKE;
 int MAP_BACKLIGHT;

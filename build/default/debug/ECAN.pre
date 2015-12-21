@@ -20848,7 +20848,7 @@ unsigned char DATA7);
 unsigned char count;
 unsigned char MAP_REC_BATTERYSTATUS;
 unsigned char MAP_REC_VELOCITY;
-unsigned char MAP_REC_HEARTBEAT;
+unsigned char temp_D2;
 unsigned char temp_D3;
 unsigned char temp_D4;
 unsigned char temp_D5;
@@ -20857,7 +20857,6 @@ unsigned char temp_D7;
 
 
 unsigned char MAP_BITDATA;
-unsigned char MAP_ACCELERATOR;
 
 
 
@@ -20866,7 +20865,8 @@ unsigned char buttonWasPressed;
 
 # 19 "I2C.h"
 typedef unsigned char byte;
-extern int I2C_FLAG = 0;
+int I2C_FLAG;
+int FIRST_SEND;
 
 extern void checkI2C();
 extern void I2CSetup();
@@ -20878,7 +20878,7 @@ volatile byte i2c_reg_addr = 0;
 volatile byte i2c_reg_map[16] = {0,};
 volatile byte i2c_byte_count = 0;
 
-# 55
+# 56
 int MAP_HEARTBEAT;
 int MAP_BRAKE;
 int MAP_BACKLIGHT;
@@ -21009,7 +21009,7 @@ temp_SIDL = RXB0SIDL;
 temp_DLC = RXB0DLC;
 MAP_REC_BATTERYSTATUS = RXB0D0;
 MAP_REC_VELOCITY = RXB0D1;
-MAP_REC_HEARTBEAT = RXB0D2;
+temp_D2 = RXB0D2;
 temp_D3 = RXB0D3;
 temp_D4 = RXB0D4;
 temp_D5 = RXB0D5;
@@ -21027,7 +21027,7 @@ temp_SIDL = RXB1SIDL;
 temp_DLC = RXB1DLC;
 MAP_REC_BATTERYSTATUS = RXB1D0;
 MAP_REC_VELOCITY = RXB1D1;
-MAP_REC_HEARTBEAT = RXB1D2;
+temp_D2 = RXB1D2;
 temp_D3 = RXB1D3;
 temp_D4 = RXB1D4;
 temp_D5 = RXB1D5;
@@ -21045,7 +21045,7 @@ temp_SIDL = B0SIDL;
 temp_DLC = B0DLC;
 MAP_REC_BATTERYSTATUS = B0D0;
 MAP_REC_VELOCITY = B0D1;
-MAP_REC_HEARTBEAT = B0D2;
+temp_D2 = B0D2;
 temp_D3 = B0D3;
 temp_D4 = B0D4;
 temp_D5 = B0D5;
@@ -21105,9 +21105,8 @@ TXB0CONbits.TXREQ = 1;
 
 
 void zipCAN(){
-if(i2c_reg_map[8] != MAP_HEARTBEAT){
+if(i2c_reg_map[8] == 1){
 setBit(0, i2c_reg_map[8]);
-MAP_HEARTBEAT = i2c_reg_map[8];
 }
 if(i2c_reg_map[9] != MAP_BRAKE){
 setBit(1, i2c_reg_map[9]);

@@ -28,6 +28,7 @@
 #include "RFID.h"
 #include "config.h"
 #include "Other.h"
+#include <stdio.h>
  
 int ledPin = 13; // LED connected to digital pin 13
 int inPin = 7;   // sensing digital pin 7
@@ -44,6 +45,18 @@ int index = 0;
 int bufnum = 0;
 #define   redLED 12
 #define   grnLED 11
+
+
+//testcode
+
+#define bitl 700
+
+int bitArray[bitl];
+int point = 0;
+int resultArray[150];
+int finalArray[150];
+
+
  
 void setupRFID()
 {
@@ -70,6 +83,8 @@ void callback()
   //digitalWrite(ledPin, val); // for monitoring
   
   bitlenctr++;
+  
+  printf("%d", bitlenctr);
   if(val != curState) {
     // got a transition
     curState = val;
@@ -78,12 +93,98 @@ void callback()
       if(index < maxBuf) {
         raw[index++] = bitlenctr;
       }
+      else{
+        INTCONbits.TMR0IE = 0; //Disables the TMR0 overflow interrupt
+      }
       bitlenctr = 1;
     }
   }  
+  
 }
 
 
+
+void collectManch(){
+  val = PORTBbits.RB0;
+  
+  bitArray[point] = val;
+  point++;
+  
+  if(point >= bitl){
+      INTCONbits.TMR0IE = 0; //Disables the TMR0 overflow interrupt
+      parseMultiBitToSingleBit(0);
+      decodeManchester(finalArray);
+  }
+}
+
+void parseMultiBitToSingleBit (int startOffset) {
+  int i = startOffset; // the offset value of the start tag
+  int lastVal = 0; // what was the value of the last bit
+  int inARow = 0; // how many identical bits are in a row// this may need to be 1 but seems to work fine
+  int resultArray_index = 0;
+  for (;i < 500; i++) {
+    if (bitArray [i] == lastVal) {
+      inARow++;
+    }
+    else {
+      // End of the group of bits with the same value
+      if (inARow >= 4 && inARow <= 8) {
+        // there are between 4 and 8 bits of the same value in a row
+        // Add one bit to the resulting array
+        resultArray[resultArray_index] = lastVal;
+        resultArray_index += 1;
+      }
+      else if (inARow >= 9 && inARow <= 14) {
+        // there are between 9 and 14 bits of the same value in a row
+        // Add two bits to the resulting array
+        resultArray[resultArray_index] = lastVal;
+        resultArray[resultArray_index+1] = lastVal;
+        resultArray_index += 2;
+      }
+      else if (inARow >= 15 && lastVal == 0) {
+        // there are more then 15 identical bits in a row, and they are 0s
+        // this is an end tag
+        break;
+      }
+      // group of bits was not the end tag, continue parsing data
+      inARow = 1;
+      lastVal = bitArray[i];
+      if (resultArray_index >= 90) {
+        //return;
+      }
+    }
+  }
+  
+  
+}
+
+//------------------------------------------
+  // MANCHESTER DECODING
+  //------------------------------------------
+
+
+void decodeManchester(int finalArray[]){
+    
+    
+    int finalArray_index = 0;
+    for (int i = 0; i < 88; i+=2) { // ignore the parody bit ([88][89])
+       if (resultArray[i] == 1 && resultArray[i+1] == 0) {
+         finalArray[finalArray_index] = 1;
+       }
+       else if (resultArray[i] == 0 && resultArray[i+1] == 1) {
+         finalArray[finalArray_index] = 0;
+       }
+       else {
+         // The read code is not in manchester, ignore this read tag and try again
+         // free the allocated memory and end the function
+         finalArray_index = 0;
+         return;
+       }
+       finalArray_index++;
+    }
+    finalArray_index = 0;
+}
+ 
 
 
 
@@ -98,7 +199,7 @@ void checkRFID(){
       if(debug) {
         for(int i = 0; i < maxBuf;
         i++) {
-           // Serial.print((int)raw[i]);
+           //Serial.print((int)raw[i]);
           //Serial.print("/");
         }
         //Serial.println("///raw data");
@@ -109,32 +210,28 @@ void checkRFID(){
       // first convert pulse durations into raw bits
       int tot1 = 0;
       int tot0 = 0;
-      int tote = 0;
       int totp = 0;
+      int tote = 0;
       raw[0] = 0;
       for(int i = 1; i < maxBuf; i++) {
         int v = raw[i];
-        if(v == 4) {
-          raw[i] = 0;
+        if(v > 46 && v < 50) {
+          raw[i] = 1;
           tot0++;
         }
-        else if(v == 5) {
-          raw[i] = raw[i - 1];
-          totp++;
-        }
-        else if(v == 6 || v == 7) {
-          raw[i] = 1;
+        else if(v > 70 && v < 74) {
+            raw[i] = raw[i-1];
+            totp++;
+        }        
+        else if(v > 94 && v < 98) {
+          raw[i] = 0;
           tot1++;
         }
         else {
           raw[i] = 101; // error code
           tote++;
-        }  
+        } 
       }  
-
-      
-      //************
-      
       
       // next, search for a "start tag" of 15 high bits in a row
       int samecnt = 0;
@@ -147,7 +244,7 @@ void checkRFID(){
         }
         else {
           // got new bit pattern
-          if(samecnt >= 15 && lastv == 1) {
+          if(samecnt >= 15 && lastv == 1) {   // if 111111110
             // got a start tag prefix, record index and exit
             start = i;
             break;
@@ -194,7 +291,7 @@ void checkRFID(){
       index = 0;
     }
     else {
-      Delay(5 * ONE_MS);
+      //Delay(5 * ONE_MS);
     }  
    
 }
@@ -207,7 +304,16 @@ void checkRFID(){
 
 void process_buf(int start) {
 
-    
+    int rawtest[100] = {0,0,0,1,1,0,0,1,0,1,
+                    1,1,1,0,0,1,0,0,1,1,
+                    0,1,1,1,0,1,1,0,0,0,
+                    0,0,0,0,1,0,1,1,0,0,
+                    0,0,0,0,0,1,1,0,0,0,
+                    0,0,0,1,1,0,0,1,0,1,
+                    1,1,1,0,0,1,0,0,1,1,
+                    0,1,1,1,0,1,1,0,0,0,
+                    0,0,0,0,1,0,1,1,0,0,
+                    0,0,0,0,0,1,1,0,0,0}; 
     
   // first convert multi bit codes (11111100000...) into manchester bit codes
   int lastv = 0;
@@ -223,7 +329,7 @@ void process_buf(int start) {
     }
     else {
       // got a new bit value, process the last group
-      if(samecnt >= 3 && samecnt <= 8) {
+      if(samecnt >= 15 && samecnt <= 8) {
         manch[manchindex++] = lastv;
       }
       else if(samecnt >= 9 && samecnt <= 14) {
@@ -231,20 +337,20 @@ void process_buf(int start) {
         manch[manchindex++] = lastv;
         manch[manchindex++] = lastv;
       }
-      else if(samecnt >= 15 && lastv == 0) {
+      else if(samecnt >= 3 && lastv == 0) {///////////////////////////////////////////////////////////15
         //Serial.println("got end tag");
         // got an end tag, exit
         break;
       }
-      else {
+     // else {///////////////////////////////////////////////////////////////////////inte kommenterad
         // last bit group was either too long or too short
         //Serial.print("****got bad bit pattern in buffer, count: ");
        // Serial.print(samecnt);
        // Serial.print(", value: ");
        // Serial.println(lastv);
       //  err_flash(3);
-        return;
-      }  
+       // return;
+      //}  
       samecnt = 1;
       lastv = raw[i];
     } //new bit pattern
@@ -259,12 +365,12 @@ void process_buf(int start) {
     else if(manch[i] == 0 && manch[i+1] == 1) {
       final[findex] = 0;
     }
-    else {
+    //else {///////////////////////////////////////////////////////////////////////////////inte kommenterad
       // invalid manchester code, exit
    //   Serial.println("****got invalid manchester code");
      // err_flash(3);
-      return;
-    }
+     // return;
+    //}
   }
  
   // convert bits 28 thru 28+16 into a 16 bit integer

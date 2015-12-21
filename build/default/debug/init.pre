@@ -25,7 +25,7 @@ unsigned char DATA7);
 unsigned char count;
 unsigned char MAP_REC_BATTERYSTATUS;
 unsigned char MAP_REC_VELOCITY;
-unsigned char MAP_REC_HEARTBEAT;
+unsigned char temp_D2;
 unsigned char temp_D3;
 unsigned char temp_D4;
 unsigned char temp_D5;
@@ -34,7 +34,6 @@ unsigned char temp_D7;
 
 
 unsigned char MAP_BITDATA;
-unsigned char MAP_ACCELERATOR;
 
 
 
@@ -43,7 +42,8 @@ unsigned char buttonWasPressed;
 
 # 19 "I2C.h"
 typedef unsigned char byte;
-extern int I2C_FLAG = 0;
+int I2C_FLAG;
+int FIRST_SEND;
 
 extern void checkI2C();
 extern void I2CSetup();
@@ -55,7 +55,7 @@ volatile byte i2c_reg_addr = 0;
 volatile byte i2c_reg_map[16] = {0,};
 volatile byte i2c_byte_count = 0;
 
-# 55
+# 56
 int MAP_HEARTBEAT;
 int MAP_BRAKE;
 int MAP_BACKLIGHT;
@@ -20895,6 +20895,7 @@ void InitDevice(void);
 
 int MAP_HEARTBEAT;
 int Interrupt_counter;
+int heartBeatCounter;
 
 # 9 "init.c"
 void InitDevice(void){
@@ -20923,15 +20924,21 @@ TRISC = 0b00011000;
 LATCbits.LATC6 = 0;
 LATCbits.LATC7 = 0;
 
+# 39
+T0CONbits.TMR0ON = 1;
+T0CONbits.T08BIT = 0;
+T0CONbits.T0CS = 0;
+
+T0CONbits.PSA = 0;
+T0CONbits.T0PS = 7;
+
 # 51
-MAP_HEARTBEAT = 0;
 MAP_BRAKE = 0;
 MAP_BACKLIGHT = 0;
 MAP_V_BLINK = 0;
 MAP_H_BLINK = 0;
 MAP_DIRECTION = 0;
 MAP_SAFETYPIN = 0;
-MAP_ACCELERATOR = 0;
 
 }
 
@@ -20940,8 +20947,6 @@ void setup_Interrupt(){
 RCONbits.IPEN = 1;
 INTCONbits.GIEH = 1;
 INTCONbits.GIEL = 1;
-
-
-
+INTCONbits.TMR0IE = 1;
 
 }

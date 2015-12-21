@@ -16694,55 +16694,58 @@ Version 3.2 HI-TECH Software Intermediate Code
 "15
 [v _Interrupt_counter `i ~T0 @X0 1 e ]
 [; ;init.h: 15: int Interrupt_counter;
+"16
+[v _heartBeatCounter `i ~T0 @X0 1 e ]
+[; ;init.h: 16: int heartBeatCounter;
 [; ;I2C.h: 19: typedef unsigned char byte;
 "20 I2C.h
 [v _I2C_FLAG `i ~T0 @X0 1 e ]
-[i _I2C_FLAG
--> 0 `i
-]
-[; ;I2C.h: 20: extern int I2C_FLAG = 0;
-[; ;I2C.h: 22: extern void checkI2C();
-[; ;I2C.h: 23: extern void I2CSetup();
-[; ;I2C.h: 24: void Delay(unsigned int count);
-"28
+[; ;I2C.h: 20: int I2C_FLAG;
+"21
+[v _FIRST_SEND `i ~T0 @X0 1 e ]
+[; ;I2C.h: 21: int FIRST_SEND;
+[; ;I2C.h: 23: extern void checkI2C();
+[; ;I2C.h: 24: extern void I2CSetup();
+[; ;I2C.h: 25: void Delay(unsigned int count);
+"29
 [v _i2c_reg_addr `Vuc ~T0 @X0 1 e ]
 [i _i2c_reg_addr
 -> -> 0 `i `uc
 ]
-[; ;I2C.h: 28: volatile byte i2c_reg_addr = 0;
-"29
+[; ;I2C.h: 29: volatile byte i2c_reg_addr = 0;
+"30
 [v _i2c_reg_map `Vuc ~T0 @X0 -> 16 `i e ]
 [i _i2c_reg_map
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-[; ;I2C.h: 29: volatile byte i2c_reg_map[16] = {0,};
-"30
+[; ;I2C.h: 30: volatile byte i2c_reg_map[16] = {0,};
+"31
 [v _i2c_byte_count `Vuc ~T0 @X0 1 e ]
 [i _i2c_byte_count
 -> -> 0 `i `uc
 ]
-[; ;I2C.h: 30: volatile byte i2c_byte_count = 0;
-[; ;I2C.h: 55: int MAP_HEARTBEAT;
-"56
-[v _MAP_BRAKE `i ~T0 @X0 1 e ]
-[; ;I2C.h: 56: int MAP_BRAKE;
+[; ;I2C.h: 31: volatile byte i2c_byte_count = 0;
+[; ;I2C.h: 56: int MAP_HEARTBEAT;
 "57
-[v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
-[; ;I2C.h: 57: int MAP_BACKLIGHT;
+[v _MAP_BRAKE `i ~T0 @X0 1 e ]
+[; ;I2C.h: 57: int MAP_BRAKE;
 "58
-[v _MAP_V_BLINK `i ~T0 @X0 1 e ]
-[; ;I2C.h: 58: int MAP_V_BLINK;
+[v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
+[; ;I2C.h: 58: int MAP_BACKLIGHT;
 "59
-[v _MAP_H_BLINK `i ~T0 @X0 1 e ]
-[; ;I2C.h: 59: int MAP_H_BLINK;
+[v _MAP_V_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 59: int MAP_V_BLINK;
 "60
-[v _MAP_DIRECTION `i ~T0 @X0 1 e ]
-[; ;I2C.h: 60: int MAP_DIRECTION;
+[v _MAP_H_BLINK `i ~T0 @X0 1 e ]
+[; ;I2C.h: 60: int MAP_H_BLINK;
 "61
+[v _MAP_DIRECTION `i ~T0 @X0 1 e ]
+[; ;I2C.h: 61: int MAP_DIRECTION;
+"62
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
-[; ;I2C.h: 61: int MAP_SAFETYPIN;
+[; ;I2C.h: 62: int MAP_SAFETYPIN;
 "7 Other.c
 [v _Delay `(v ~T0 @X0 1 ef1`ui ]
 "8
