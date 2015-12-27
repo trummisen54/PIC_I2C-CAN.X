@@ -13,15 +13,33 @@
 #define ONE_MS      (unsigned int)(DEVICE_OSC/4)*80
 
 
-void checkRFID();
-void callback();
-void process_buf(int start);
-void setupRFID();
+int multiToSingle();
+void sample();
+int findStart();
+void singleToBit();
+void bitToCode(int start);
 
 
-void collectManch();
-void parseMultiBitToSingleBit (int startOffset);
-void decodeManchester(int finalArray[]);
+ 
+#define rawLength 500 //reduce to 100 or so for debugging
+#define singleArrayLength 200
+#define bitArrayLength 201
+
+
+
+#define   redLED 12
+#define   grnLED 11
+
+
+int val;
+int bitlenctr = 0;
+int curState = 0;
+char raw[rawLength];
+int rawIndex = 0;
+
+int singleArray[singleArrayLength];
+int bitArray[bitArrayLength];
+
 
 #endif	/* RFID_H */
 

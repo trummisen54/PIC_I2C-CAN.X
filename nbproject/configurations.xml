@@ -24,7 +24,6 @@
       <itemPath>Other.c</itemPath>
       <itemPath>RFID.c</itemPath>
       <itemPath>init.c</itemPath>
-      <itemPath>RFID_new.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

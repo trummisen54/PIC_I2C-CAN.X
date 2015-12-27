@@ -6,13 +6,16 @@
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/RFID.c</file>
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/config.h</file>
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/nbproject/Makefile-impl.mk</file>
+            <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/ECAN.h</file>
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/init.c</file>
-            <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/main.c</file>
+            <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/init.h</file>
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/RFID.h</file>
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/nbproject/Makefile-default.mk</file>
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/Other.c</file>
-            <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/RFID_new.c</file>
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/Other.h</file>
+            <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/main.c</file>
+            <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/RFID_new.h</file>
+            <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/RFID_new.c</file>
             <file>file:/C:/Users/E/MPLABXProjects/PIC_I2C-CAN.X/ECAN.c</file>
         </group>
     </open-files>

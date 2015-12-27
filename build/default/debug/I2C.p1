@@ -16986,13 +16986,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
 [; ;I2C.h: 62: int MAP_SAFETYPIN;
 [; ;Other.h: 11: void Delay(unsigned int count);
-[; ;RFID.h: 16: void checkRFID();
-[; ;RFID.h: 17: void callback();
-[; ;RFID.h: 18: void process_buf(int start);
-[; ;RFID.h: 19: void setupRFID();
-[; ;RFID.h: 22: void collectManch();
-[; ;RFID.h: 23: void parseMultiBitToSingleBit (int startOffset);
-[; ;RFID.h: 24: void decodeManchester(int finalArray[]);
+[; ;RFID.h: 16: int multiToSingle();
+[; ;RFID.h: 17: void sample();
+[; ;RFID.h: 18: int findStart();
+[; ;RFID.h: 19: void singleToBit();
+[; ;RFID.h: 20: void bitToCode(int start);
+"34 RFID.h
+[v _val `i ~T0 @X0 1 e ]
+[; ;RFID.h: 34: int val;
+"35
+[v _bitlenctr `i ~T0 @X0 1 e ]
+[i _bitlenctr
+-> 0 `i
+]
+[; ;RFID.h: 35: int bitlenctr = 0;
+"36
+[v _curState `i ~T0 @X0 1 e ]
+[i _curState
+-> 0 `i
+]
+[; ;RFID.h: 36: int curState = 0;
+"37
+[v _raw `uc ~T0 @X0 -> 500 `i e ]
+[; ;RFID.h: 37: char raw[500];
+"38
+[v _rawIndex `i ~T0 @X0 1 e ]
+[i _rawIndex
+-> 0 `i
+]
+[; ;RFID.h: 38: int rawIndex = 0;
+"40
+[v _singleArray `i ~T0 @X0 -> 200 `i e ]
+[; ;RFID.h: 40: int singleArray[200];
+"41
+[v _bitArray `i ~T0 @X0 -> 201 `i e ]
+[; ;RFID.h: 41: int bitArray[201];
 [; ;init.h: 12: void InitDevice(void);
 [; ;init.h: 14: int MAP_HEARTBEAT;
 "15 init.h

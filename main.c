@@ -6,6 +6,7 @@
 #include "Other.h"
 #include "RFID.h"
 #include "init.h"
+#include "RFID_new.h"
 
 
 
@@ -26,15 +27,24 @@ int main(void){
     HEARTBEAT_DIODE = 0;
     ERROR_DIODE = 0;
     
+    while(1){
+        
+        int start_condition = multiToSingle();
+        
+        if(start_condition == 1){
+            singleToBit();
+            int start = findStart();
+            bitToCode(start);
+        
+        }
+        Delay(10);
+    }
+    
+    
     
     
     while(1){
-        
-        while(1){
-            
-            Delay(1);
-            //checkRFID();
-        }
+         
         
         if(ECAN_Receive()){
             FIRST_SEND = 0;
@@ -101,10 +111,9 @@ void interrupt ISR(){
     
     Interrupt_counter++;
   
-    if(Interrupt_counter == 10){//2
-        
-        //callback();//rfid
-        collectManch();
+    if(Interrupt_counter == 2){//2   2 = 125kHZ       // 10på emilkod
+              
+        sample();
         Interrupt_counter = 0;
     }
     

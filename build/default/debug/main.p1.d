@@ -6,4 +6,5 @@ I2C.h  \
 RFID.h  \
 config.h  \
 ECAN.h  \
+RFID_new.h  \
 Other.h 

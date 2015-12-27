@@ -21023,15 +21023,21 @@ int MAP_SAFETYPIN;
 void Delay(unsigned int count);
 
 # 16 "RFID.h"
-void checkRFID();
-void callback();
-void process_buf(int start);
-void setupRFID();
+int multiToSingle();
+void sample();
+int findStart();
+void singleToBit();
+void bitToCode(int start);
 
+# 34
+int val;
+int bitlenctr = 0;
+int curState = 0;
+char raw[500];
+int rawIndex = 0;
 
-void collectManch();
-void parseMultiBitToSingleBit (int startOffset);
-void decodeManchester(int finalArray[]);
+int singleArray[200];
+int bitArray[201];
 
 # 12 "init.h"
 void InitDevice(void);

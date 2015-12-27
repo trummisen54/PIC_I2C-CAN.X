@@ -25,396 +25,183 @@
  
  */
 
+
+//#define bort2
+#ifndef bort2
+
 #include "RFID.h"
 #include "config.h"
 #include "Other.h"
 #include <stdio.h>
- 
-int ledPin = 13; // LED connected to digital pin 13
-int inPin = 7;   // sensing digital pin 7
-int val;
-int bitlenctr = 0;
-int curState = 0;
- 
-#define maxBuf 1000 //reduce to 100 or so for debugging
-#define debug  0
- 
-char raw[maxBuf];
- 
-int index = 0;
-int bufnum = 0;
-#define   redLED 12
-#define   grnLED 11
 
 
-//testcode
 
-#define bitl 700
-
-int bitArray[bitl];
-int point = 0;
-int resultArray[150];
-int finalArray[150];
-
-
- 
-void setupRFID()
+void sample()
 {
 
- 
-  //pinMode(ledPin, OUTPUT);      // sets the digital pin 13 as output for scope monitoring
-  
-
-  //pinMode(grnLED, OUTPUT);
-  //pinMode(redLED, OUTPUT);
-  //digitalWrite(grnLED, 0);
-  //digitalWrite(redLED, 1);
-}
- 
-void callback()
-{
-    
-    
-    //LATCbits.LATC7 ^= 1; //Measure with oscilloscope to se actual freq
-    
-    
   val = PORTBbits.RB0;
-  
-  //digitalWrite(ledPin, val); // for monitoring
-  
   bitlenctr++;
-  
-  printf("%d", bitlenctr);
+
   if(val != curState) {
     // got a transition
     curState = val;
     if(val == 1) {
       // got a start of cycle (low to high transition)
-      if(index < maxBuf) {
-        raw[index++] = bitlenctr;
+      if(rawIndex < rawLength) {
+        raw[rawIndex++] = bitlenctr;
       }
       else{
         INTCONbits.TMR0IE = 0; //Disables the TMR0 overflow interrupt
+        
       }
       bitlenctr = 1;
     }
   }  
-  
 }
 
-
-
-void collectManch(){
-  val = PORTBbits.RB0;
-  
-  bitArray[point] = val;
-  point++;
-  
-  if(point >= bitl){
-      INTCONbits.TMR0IE = 0; //Disables the TMR0 overflow interrupt
-      parseMultiBitToSingleBit(0);
-      decodeManchester(finalArray);
-  }
-}
-
-void parseMultiBitToSingleBit (int startOffset) {
-  int i = startOffset; // the offset value of the start tag
-  int lastVal = 0; // what was the value of the last bit
-  int inARow = 0; // how many identical bits are in a row// this may need to be 1 but seems to work fine
-  int resultArray_index = 0;
-  for (;i < 500; i++) {
-    if (bitArray [i] == lastVal) {
-      inARow++;
-    }
-    else {
-      // End of the group of bits with the same value
-      if (inARow >= 4 && inARow <= 8) {
-        // there are between 4 and 8 bits of the same value in a row
-        // Add one bit to the resulting array
-        resultArray[resultArray_index] = lastVal;
-        resultArray_index += 1;
-      }
-      else if (inARow >= 9 && inARow <= 14) {
-        // there are between 9 and 14 bits of the same value in a row
-        // Add two bits to the resulting array
-        resultArray[resultArray_index] = lastVal;
-        resultArray[resultArray_index+1] = lastVal;
-        resultArray_index += 2;
-      }
-      else if (inARow >= 15 && lastVal == 0) {
-        // there are more then 15 identical bits in a row, and they are 0s
-        // this is an end tag
-        break;
-      }
-      // group of bits was not the end tag, continue parsing data
-      inARow = 1;
-      lastVal = bitArray[i];
-      if (resultArray_index >= 90) {
-        //return;
-      }
-    }
-  }
-  
-  
-}
-
-//------------------------------------------
-  // MANCHESTER DECODING
-  //------------------------------------------
-
-
-void decodeManchester(int finalArray[]){
-    
-    
-    int finalArray_index = 0;
-    for (int i = 0; i < 88; i+=2) { // ignore the parody bit ([88][89])
-       if (resultArray[i] == 1 && resultArray[i+1] == 0) {
-         finalArray[finalArray_index] = 1;
-       }
-       else if (resultArray[i] == 0 && resultArray[i+1] == 1) {
-         finalArray[finalArray_index] = 0;
-       }
-       else {
-         // The read code is not in manchester, ignore this read tag and try again
-         // free the allocated memory and end the function
-         finalArray_index = 0;
-         return;
-       }
-       finalArray_index++;
-    }
-    finalArray_index = 0;
-}
  
-
-
-
-void checkRFID(){  
+int multiToSingle(){
     
+    if(rawIndex >= rawLength) {
+
+        int _long = 0;
+        int _middle = 0;
+        int _short = 0;
+        int totError = 0;
+
+        raw[0] = 0;
+
+        for(int i = 1; i < rawLength; i++) {
+            int v = raw[i];
+            if(v > 44 && v < 53) {
+                singleArray[i] = 1;
+                _short++;
+            }
+            else if(v > 70 && v < 79) {
+                singleArray[i] = 2;
+                _middle++;
+            }        
+            else if(v > 95 && v < 104) {
+                singleArray[i] = 3;
+                _long++;
+            }
+            else {
+                singleArray[i] = 999;//error
+                totError++;
+            } 
+        }
+        return 1;
+    }
+    return -1;
+}
+
+int findStart(){
+    int count = 0;
     
-    if(index >= maxBuf) {
+    for(int i = 0; i<bitArrayLength; i++){
+        if(bitArray[i] != 2){//ifnot invalid code, (earlier out of phase)
+            
+            if(bitArray[i] == 1){
+                count++;
+                if(count == 9){ // have got start pattern (1111111110)
+                    return i+1;
+                }
+            }
+            else{
+                count = 0;
+            }
+            
+        }
+    }
+}
 
-      //Serial.print("got buf num: ");
-      //Serial.println(bufnum);
-
-      if(debug) {
-        for(int i = 0; i < maxBuf;
-        i++) {
-           //Serial.print((int)raw[i]);
-          //Serial.print("/");
-        }
-        //Serial.println("///raw data");
-        Delay(ONE_MS * 2000);
-      }
-
-      // analyze this buffer
-      // first convert pulse durations into raw bits
-      int tot1 = 0;
-      int tot0 = 0;
-      int totp = 0;
-      int tote = 0;
-      raw[0] = 0;
-      for(int i = 1; i < maxBuf; i++) {
-        int v = raw[i];
-        if(v > 46 && v < 50) {
-          raw[i] = 1;
-          tot0++;
-        }
-        else if(v > 70 && v < 74) {
-            raw[i] = raw[i-1];
-            totp++;
-        }        
-        else if(v > 94 && v < 98) {
-          raw[i] = 0;
-          tot1++;
-        }
-        else {
-          raw[i] = 101; // error code
-          tote++;
-        } 
-      }  
-      
-      // next, search for a "start tag" of 15 high bits in a row
-      int samecnt = 0;
-      int start = -1;
-      int lastv = 0;
-      for(int i = 0; i < maxBuf; i++) {
-        if(raw[i] == lastv) {
-          // inside one same bit pattern, keep scanning
-          samecnt++;
-        }
-        else {
-          // got new bit pattern
-          if(samecnt >= 15 && lastv == 1) {   // if 111111110
-            // got a start tag prefix, record index and exit
+void singleToBit(){
+    
+    int lastVal = 1;
+    int start = 0;
+    int OutOfPhaseCorrected = 0;
+    int oopcCount = 0;
+    
+    for(int i = 0; i<singleArrayLength; i++){
+        if(singleArray[i] != 0 && singleArray[i] != 999){
             start = i;
             break;
-          }
-          // either group of 0s, or fewer than 15 1s, so not a valid tag, keep scanning
-          samecnt = 1;
-          lastv = raw[i];
-        }  
-      }
+        }
+        if(i == singleArrayLength){
+            while(1){}//Error
+        }
+    
+    }
+    int k = 0;
+    for(int i = 0; i<singleArrayLength; i++){
+        if(k >= bitArrayLength - 1){break;}
+        
+        if(lastVal == 1){
 
-      // if a valid prefix tag was found, process the buffer
-      if(start > 0 && start < (maxBuf - 5*90)) { //adjust to allow room for full dataset past start point
-        process_buf(start);
-      }
-      else {
-       // Serial.println("no valid data found in buffer");
-      }
-      
-      /*
-      if(debug) {
-        for(int i = 0; i < maxBuf;
-          i++) {
-           // Serial.print((int)raw[i]);
-          //Serial.print("/");
+            if(singleArray[i+start] == 1){
+                bitArray[k++] = 1;
+            }
+            else if(singleArray[i+start] == 2){
+                bitArray[k++] = 0;
+                bitArray[k++] = 0;
+            }
+            else if(singleArray[i+start] == 3){
+                bitArray[k++] = 0;
+                bitArray[k++] = 1;
+            }
+        }
+        else{
+            if(singleArray[i+start] == 1){
+                bitArray[k++] = 0;
+            }
+            else if(singleArray[i+start] == 2){
+                bitArray[k++] = 1;
+            }
+            else if(singleArray[i+start] == 3){
+                
+                oopcCount++;
+                if (OutOfPhaseCorrected == 0){
+                    OutOfPhaseCorrected = k;
+                    while(OutOfPhaseCorrected > 0){
+                        bitArray[--OutOfPhaseCorrected] = 2;
+                    }
+                    
+                }
+                
+                bitArray[k++] = 0;
+                bitArray[k++] = 1;
+                
+                
+            }
         }
         
-        Serial.print("///\nbuffer stats: zeroes:");
-        Serial.print(tot0);
-        Serial.print("/ones:");
-        Serial.print(tot1);
-        Serial.print("/prevs:");
-        Serial.print(totp);
-        Serial.print("/errs:");
-        Serial.println(tote);  
-        delay(1000);
-      
-          
-      }
-      */
+        if(bitArray[k-1] == 1){
+            lastVal = 1;
+        }
+        else{lastVal = 0;}
 
-      // start new buffer, reset all parameters
-      bufnum++;
-      curState = 0;
-      index = 0;
     }
-    else {
-      //Delay(5 * ONE_MS);
-    }  
-   
-}
-
-
- 
-// process an input buffer with a valid start tag
-// start argument is index to first 0 bit past prefix tag of 15+ ones
-
-
-void process_buf(int start) {
-
-    int rawtest[100] = {0,0,0,1,1,0,0,1,0,1,
-                    1,1,1,0,0,1,0,0,1,1,
-                    0,1,1,1,0,1,1,0,0,0,
-                    0,0,0,0,1,0,1,1,0,0,
-                    0,0,0,0,0,1,1,0,0,0,
-                    0,0,0,1,1,0,0,1,0,1,
-                    1,1,1,0,0,1,0,0,1,1,
-                    0,1,1,1,0,1,1,0,0,0,
-                    0,0,0,0,1,0,1,1,0,0,
-                    0,0,0,0,0,1,1,0,0,0}; 
     
-  // first convert multi bit codes (11111100000...) into manchester bit codes
-  int lastv = 0;
-  int samecnt = 0;
-  char manch[91];
-  char final[45];
-  int manchindex = 0;
- 
-  //Serial.println("got a valid prefix, processing data buffer...");
-  for(int i = start + 1; i < maxBuf && manchindex < 90; i++) {
-    if(raw[i] == lastv) {
-      samecnt++;
+    for(int i = 0; i< bitArrayLength; i++){
+        bitArray[i] = bitArray[i] ^ 1;
     }
-    else {
-      // got a new bit value, process the last group
-      if(samecnt >= 15 && samecnt <= 8) {
-        manch[manchindex++] = lastv;
-      }
-      else if(samecnt >= 9 && samecnt <= 14) {
-        // assume a double bit, so record as two separate bits
-        manch[manchindex++] = lastv;
-        manch[manchindex++] = lastv;
-      }
-      else if(samecnt >= 3 && lastv == 0) {///////////////////////////////////////////////////////////15
-        //Serial.println("got end tag");
-        // got an end tag, exit
-        break;
-      }
-     // else {///////////////////////////////////////////////////////////////////////inte kommenterad
-        // last bit group was either too long or too short
-        //Serial.print("****got bad bit pattern in buffer, count: ");
-       // Serial.print(samecnt);
-       // Serial.print(", value: ");
-       // Serial.println(lastv);
-      //  err_flash(3);
-       // return;
-      //}  
-      samecnt = 1;
-      lastv = raw[i];
-    } //new bit pattern
-  }
- 
- // Serial.println("converting manchester code to binary...");
-  // got manchester version, convert to final bits
-  for(int i = 0, findex = 0; i < 90; i += 2, findex++) {
-    if(manch[i] == 1 && manch[i+1] == 0) {
-      final[findex] = 1;
-    }
-    else if(manch[i] == 0 && manch[i+1] == 1) {
-      final[findex] = 0;
-    }
-    //else {///////////////////////////////////////////////////////////////////////////////inte kommenterad
-      // invalid manchester code, exit
-   //   Serial.println("****got invalid manchester code");
-     // err_flash(3);
-     // return;
-    //}
-  }
- 
-  // convert bits 28 thru 28+16 into a 16 bit integer
-  int code = 0;
-  int par = 0;
-  for(int i = 28, k = 15; i < 28+16; i++, k--) {
-    code |= (int)final[i] << k;
-  }
-  int paritybit = final[28+16];
-  for(int i = 0; i < 45; i++) {
-    par ^= final[i];
-  }
- 
-  if(par) {  
-  //  Serial.print("got valid code: ");
-   // Serial.println((unsigned int)code);
-    // do something here with the detected code...
-    //
- //   //
-   // digitalWrite(redLED, 0);
- //   digitalWrite(grnLED, 1);
-//    Delay(ONE_MS * 2000);
-  //  digitalWrite(grnLED, 0);
- //   digitalWrite(redLED, 1);
-  }
-  else {
-//    Serial.println("****parity error for retrieved code");
-//    err_flash(3);
-  }  
+    
 }
 
-
- 
-// flash red for duration seconds
-
-/*
-void err_flash(int duration) {
-  return;
-  for(int i = 0; i < duration*10; i++) {
-    digitalWrite(redLED, 0);
-    delay(50);
-    digitalWrite(redLED, 1);
-    delay(50);
-  }
+void bitToCode(int start){
+    int code[30];
+    
+    for(int i = 0; i<30; i++){
+        code[i] = (0b1111 & (bitArray[i*5+start] << 3)) | 
+                (0b1111 & (bitArray[i*5+start+1] << 2)) | 
+                (0b1111 & (bitArray[i*5+start+2] << 1)) | 
+                (0b1111 & (bitArray[i*5+start+3] << 0));
+    }
+    
+    while(1){
+        int stanna = 4;
+    }
 }
- */
+    
   
+#endif

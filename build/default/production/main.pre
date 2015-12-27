@@ -21023,15 +21023,20 @@ int MAP_SAFETYPIN;
 void Delay(unsigned int count);
 
 # 16 "RFID.h"
-void checkRFID();
-void callback();
-void process_buf(int start);
-void setupRFID();
+int multiToSingle();
+void sample();
+int findStart();
+void singleToBit(int start);
 
+# 33
+int val;
+int bitlenctr = 0;
+int curState = 0;
+char raw[500];
+int rawIndex = 0;
 
-void collectManch();
-void parseMultiBitToSingleBit (char * buffer, int startOffset, int outputBuffer[]);
-void decodeManchester(int finalArray[], int resultArray[]);
+int singleArray[200];
+int bitArray[201];
 
 # 12 "init.h"
 void InitDevice(void);
@@ -21040,7 +21045,11 @@ int MAP_HEARTBEAT;
 int Interrupt_counter;
 int heartBeatCounter;
 
-# 14 "main.c"
+# 11 "RFID_new.h"
+int startRFID_new();
+void newIsr();
+
+# 15 "main.c"
 int main(void){
 
 InitDevice();
@@ -21056,15 +21065,24 @@ LATAbits.LATA7 = 1;
 LATCbits.LATC6 = 0;
 LATCbits.LATC7 = 0;
 
-
-
 while(1){
 
-while(1){
+int start_condition = multiToSingle;
 
-Delay(1);
+if(start_condition == 1){
+int start = findStart();
+singleToBit(start);
+
 
 }
+Delay(10);
+}
+
+
+
+
+while(1){
+
 
 if(ECAN_Receive()){
 FIRST_SEND = 0;
@@ -21104,7 +21122,7 @@ i2c_reg_map[15]);
 
 }
 
-# 81
+# 91
 Delay((unsigned int)(64/4)*80 * 5);
 }
 
@@ -21114,13 +21132,12 @@ return 0;
 
 void interrupt ISR(){
 
-# 102
+# 112
 Interrupt_counter++;
 
-if(Interrupt_counter == 10){
+if(Interrupt_counter == 2){
 
-
-collectManch();
+sample();
 Interrupt_counter = 0;
 }
 
