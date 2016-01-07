@@ -17,14 +17,9 @@ int heartBeatCounter;
 
 
 
-#define CHIP_ALIVE_DIODE    LATAbits.LATA7
-#define HEARTBEAT_DIODE     LATCbits.LATC6
-#define ERROR_DIODE         LATCbits.LATC7
-
-
-
-
-
+#define CHIP_ALIVE_DIODE    LATCbits.LATC7
+#define HEARTBEAT_DIODE     LATAbits.LATA7
+#define ERROR_DIODE         LATCbits.LATC6
 
 
 

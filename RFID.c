@@ -90,9 +90,9 @@ int multiToSingle(){
                 totError++;
             } 
         }
-        return 1;
+        return 1;//start ok
     }
-    return -1;
+    return -1;//start not ok
 }
 
 int findStart(){

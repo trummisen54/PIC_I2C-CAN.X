@@ -97,7 +97,9 @@ void ECAN_Transmit(unsigned char SIDH,
 
 //RECEIVE FROM SLAVE DATA
 unsigned char count;
-unsigned char MAP_REC_BATTERYSTATUS;
+unsigned char temp_D0;
+unsigned char MAP_REC_BATTERYSTATUS0;
+unsigned char MAP_REC_BATTERYSTATUS1;
 unsigned char MAP_REC_VELOCITY;
 unsigned char temp_D2;
 unsigned char temp_D3;
@@ -123,6 +125,7 @@ unsigned char buttonWasPressed;
 #define H_BLINK_BIT     4
 #define DIRECTION_BIT   5
 #define SAFETYPIN_BIT   6
+#define STOP_BIT        7
 
 
 

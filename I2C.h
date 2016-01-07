@@ -35,14 +35,14 @@ volatile byte           i2c_byte_count   = 0;
  * 1 = batteristatus
  */
 
-#define REC_BATTERYSTATUS   0
-#define REC_VELOCITY        1
-//#define REC_HEARTBEAT       2
-//#define RAC_BATTERYSTATUS   3
-//#define REC_HEARTBEAT       4
-//#define RAC_BATTERYSTATUS   5
+#define REC_BATTERYSTATUS0  0
+#define REC_BATTERYSTATUS1  1
+#define REC_BATTERYSTATUS2  2// not used
+#define REC_BATTERYSTATUS3  3// not used
+#define REC_VELOCITY        4
+#define REC_HEARTBEAT       5
 //#define RAC_BATTERYSTATUS   6
-//#define RAC_BATTERYSTATUS   7
+#define SEND_STOP           7
 #define SEND_HEARTBEAT      8
 #define SEND_BRAKE          9
 #define SEND_BACKLIGHT      10
@@ -60,6 +60,7 @@ int MAP_V_BLINK;
 int MAP_H_BLINK;
 int MAP_DIRECTION;
 int MAP_SAFETYPIN;
+int MAP_STOP;
 
 
 #endif	/* I2C_H */

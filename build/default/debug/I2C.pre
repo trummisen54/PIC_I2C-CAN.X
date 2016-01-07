@@ -20978,7 +20978,9 @@ unsigned char DATA7);
 
 
 unsigned char count;
-unsigned char MAP_REC_BATTERYSTATUS;
+unsigned char temp_D0;
+unsigned char MAP_REC_BATTERYSTATUS0;
+unsigned char MAP_REC_BATTERYSTATUS1;
 unsigned char MAP_REC_VELOCITY;
 unsigned char temp_D2;
 unsigned char temp_D3;
@@ -21018,6 +21020,7 @@ int MAP_V_BLINK;
 int MAP_H_BLINK;
 int MAP_DIRECTION;
 int MAP_SAFETYPIN;
+int MAP_STOP;
 
 # 11 "Other.h"
 void Delay(unsigned int count);

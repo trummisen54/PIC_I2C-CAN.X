@@ -16746,6 +16746,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "62
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
 [; ;I2C.h: 62: int MAP_SAFETYPIN;
+"63
+[v _MAP_STOP `i ~T0 @X0 1 e ]
+[; ;I2C.h: 63: int MAP_STOP;
 "7 Other.c
 [v _Delay `(v ~T0 @X0 1 ef1`ui ]
 "8
@@ -16774,9 +16777,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Other.c: 15: void error(){
 [e :U _error ]
 [f ]
-[; ;Other.c: 16: LATCbits.LATC7 = 1;
+[; ;Other.c: 16: LATCbits.LATC6 = 1;
 "16
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
+[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
 [; ;Other.c: 18: }
 "18
 [e :UE 2600 ]

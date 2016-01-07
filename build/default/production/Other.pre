@@ -20857,6 +20857,7 @@ int MAP_V_BLINK;
 int MAP_H_BLINK;
 int MAP_DIRECTION;
 int MAP_SAFETYPIN;
+int MAP_STOP;
 
 # 7 "Other.c"
 void Delay(unsigned int count)
@@ -20868,6 +20869,6 @@ while(count--);
 
 
 void error(){
-LATCbits.LATC7 = 1;
+LATCbits.LATC6 = 1;
 
 }

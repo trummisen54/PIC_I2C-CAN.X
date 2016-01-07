@@ -17071,38 +17071,44 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _count `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 99: unsigned char count;
 "100
-[v _MAP_REC_BATTERYSTATUS `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 100: unsigned char MAP_REC_BATTERYSTATUS;
+[v _temp_D0 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 100: unsigned char temp_D0;
 "101
-[v _MAP_REC_VELOCITY `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 101: unsigned char MAP_REC_VELOCITY;
+[v _MAP_REC_BATTERYSTATUS0 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 101: unsigned char MAP_REC_BATTERYSTATUS0;
 "102
-[v _temp_D2 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char temp_D2;
+[v _MAP_REC_BATTERYSTATUS1 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char MAP_REC_BATTERYSTATUS1;
 "103
-[v _temp_D3 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 103: unsigned char temp_D3;
+[v _MAP_REC_VELOCITY `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 103: unsigned char MAP_REC_VELOCITY;
 "104
-[v _temp_D4 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 104: unsigned char temp_D4;
+[v _temp_D2 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 104: unsigned char temp_D2;
 "105
-[v _temp_D5 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 105: unsigned char temp_D5;
+[v _temp_D3 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 105: unsigned char temp_D3;
 "106
-[v _temp_D6 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 106: unsigned char temp_D6;
+[v _temp_D4 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 106: unsigned char temp_D4;
 "107
+[v _temp_D5 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 107: unsigned char temp_D5;
+"108
+[v _temp_D6 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 108: unsigned char temp_D6;
+"109
 [v _temp_D7 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 107: unsigned char temp_D7;
-"110
+[; ;ECAN.h: 109: unsigned char temp_D7;
+"112
 [v _MAP_BITDATA `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 110: unsigned char MAP_BITDATA;
-"114
+[; ;ECAN.h: 112: unsigned char MAP_BITDATA;
+"116
 [v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 114: unsigned int heartbeatCount;
-"115
+[; ;ECAN.h: 116: unsigned int heartbeatCount;
+"117
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 115: unsigned char buttonWasPressed;
+[; ;ECAN.h: 117: unsigned char buttonWasPressed;
 [; ;I2C.h: 19: typedef unsigned char byte;
 "20 I2C.h
 [v _I2C_FLAG `i ~T0 @X0 1 e ]
@@ -17154,6 +17160,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "62
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
 [; ;I2C.h: 62: int MAP_SAFETYPIN;
+"63
+[v _MAP_STOP `i ~T0 @X0 1 e ]
+[; ;I2C.h: 63: int MAP_STOP;
 "90 ECAN.c
 [v _temp_EIDH `uc ~T0 @X0 1 e ]
 [; ;ECAN.c: 90: unsigned char temp_EIDH;
@@ -17431,21 +17440,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.c: 227: temp_DLC = RXB0DLC;
 "227
 [e = _temp_DLC _RXB0DLC ]
-[; ;ECAN.c: 228: MAP_REC_BATTERYSTATUS = RXB0D0;
+[; ;ECAN.c: 228: temp_D0 = RXB0D0;
 "228
-[e = _MAP_REC_BATTERYSTATUS _RXB0D0 ]
+[e = _temp_D0 _RXB0D0 ]
 [; ;ECAN.c: 229: MAP_REC_VELOCITY = RXB0D1;
 "229
 [e = _MAP_REC_VELOCITY _RXB0D1 ]
 [; ;ECAN.c: 230: temp_D2 = RXB0D2;
 "230
 [e = _temp_D2 _RXB0D2 ]
-[; ;ECAN.c: 231: temp_D3 = RXB0D3;
+[; ;ECAN.c: 231: MAP_REC_BATTERYSTATUS0 = RXB0D3;
 "231
-[e = _temp_D3 _RXB0D3 ]
-[; ;ECAN.c: 232: temp_D4 = RXB0D4;
+[e = _MAP_REC_BATTERYSTATUS0 _RXB0D3 ]
+[; ;ECAN.c: 232: MAP_REC_BATTERYSTATUS1 = RXB0D4;
 "232
-[e = _temp_D4 _RXB0D4 ]
+[e = _MAP_REC_BATTERYSTATUS1 _RXB0D4 ]
 [; ;ECAN.c: 233: temp_D5 = RXB0D5;
 "233
 [e = _temp_D5 _RXB0D5 ]
@@ -17487,21 +17496,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.c: 245: temp_DLC = RXB1DLC;
 "245
 [e = _temp_DLC _RXB1DLC ]
-[; ;ECAN.c: 246: MAP_REC_BATTERYSTATUS = RXB1D0;
+[; ;ECAN.c: 246: temp_D0 = RXB1D0;
 "246
-[e = _MAP_REC_BATTERYSTATUS _RXB1D0 ]
+[e = _temp_D0 _RXB1D0 ]
 [; ;ECAN.c: 247: MAP_REC_VELOCITY = RXB1D1;
 "247
 [e = _MAP_REC_VELOCITY _RXB1D1 ]
 [; ;ECAN.c: 248: temp_D2 = RXB1D2;
 "248
 [e = _temp_D2 _RXB1D2 ]
-[; ;ECAN.c: 249: temp_D3 = RXB1D3;
+[; ;ECAN.c: 249: MAP_REC_BATTERYSTATUS0 = RXB1D3;
 "249
-[e = _temp_D3 _RXB1D3 ]
-[; ;ECAN.c: 250: temp_D4 = RXB1D4;
+[e = _MAP_REC_BATTERYSTATUS0 _RXB1D3 ]
+[; ;ECAN.c: 250: MAP_REC_BATTERYSTATUS1 = RXB1D4;
 "250
-[e = _temp_D4 _RXB1D4 ]
+[e = _MAP_REC_BATTERYSTATUS1 _RXB1D4 ]
 [; ;ECAN.c: 251: temp_D5 = RXB1D5;
 "251
 [e = _temp_D5 _RXB1D5 ]
@@ -17543,21 +17552,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.c: 263: temp_DLC = B0DLC;
 "263
 [e = _temp_DLC _B0DLC ]
-[; ;ECAN.c: 264: MAP_REC_BATTERYSTATUS = B0D0;
+[; ;ECAN.c: 264: temp_D0 = B0D0;
 "264
-[e = _MAP_REC_BATTERYSTATUS _B0D0 ]
+[e = _temp_D0 _B0D0 ]
 [; ;ECAN.c: 265: MAP_REC_VELOCITY = B0D1;
 "265
 [e = _MAP_REC_VELOCITY _B0D1 ]
 [; ;ECAN.c: 266: temp_D2 = B0D2;
 "266
 [e = _temp_D2 _B0D2 ]
-[; ;ECAN.c: 267: temp_D3 = B0D3;
+[; ;ECAN.c: 267: MAP_REC_BATTERYSTATUS0 = B0D3;
 "267
-[e = _temp_D3 _B0D3 ]
-[; ;ECAN.c: 268: temp_D4 = B0D4;
+[e = _MAP_REC_BATTERYSTATUS0 _B0D3 ]
+[; ;ECAN.c: 268: MAP_REC_BATTERYSTATUS1 = B0D4;
 "268
-[e = _temp_D4 _B0D4 ]
+[e = _MAP_REC_BATTERYSTATUS1 _B0D4 ]
 [; ;ECAN.c: 269: temp_D5 = B0D5;
 "269
 [e = _temp_D5 _B0D5 ]
@@ -17805,22 +17814,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 2634 ]
 [; ;ECAN.c: 364: }
-[; ;ECAN.c: 365: }
+[; ;ECAN.c: 365: if(i2c_reg_map[7] != MAP_STOP){
 "365
+[e $ ! != -> *U + &U _i2c_reg_map * -> -> -> 7 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i _MAP_STOP 2635  ]
+{
+[; ;ECAN.c: 366: setBit(7, i2c_reg_map[7]);
+"366
+[e ( _setBit (2 , -> 7 `i -> *U + &U _i2c_reg_map * -> -> -> 7 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+[; ;ECAN.c: 367: MAP_STOP = i2c_reg_map[7];
+"367
+[e = _MAP_STOP -> *U + &U _i2c_reg_map * -> -> -> 7 `i `ui `ux -> -> # *U &U _i2c_reg_map `ui `ux `i ]
+"368
+}
+[e :U 2635 ]
+[; ;ECAN.c: 368: }
+[; ;ECAN.c: 369: }
+"369
 [e :UE 2627 ]
 }
-"367
+"371
 [v _setBit `(v ~T0 @X0 1 ef2`i`i ]
 {
-[; ;ECAN.c: 367: void setBit(int shift, int value){
+[; ;ECAN.c: 371: void setBit(int shift, int value){
 [e :U _setBit ]
 [v _shift `i ~T0 @X0 1 r1 ]
 [v _value `i ~T0 @X0 1 r2 ]
 [f ]
-[; ;ECAN.c: 368: MAP_BITDATA = MAP_BITDATA ^ (1 << shift);
-"368
+[; ;ECAN.c: 372: MAP_BITDATA = MAP_BITDATA ^ (1 << shift);
+"372
 [e = _MAP_BITDATA -> ^ -> _MAP_BITDATA `i << -> 1 `i _shift `uc ]
-[; ;ECAN.c: 369: }
-"369
-[e :UE 2635 ]
+[; ;ECAN.c: 373: }
+"373
+[e :UE 2636 ]
 }

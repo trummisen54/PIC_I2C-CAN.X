@@ -177,38 +177,44 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _count `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 99: unsigned char count;
 "100
-[v _MAP_REC_BATTERYSTATUS `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 100: unsigned char MAP_REC_BATTERYSTATUS;
+[v _temp_D0 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 100: unsigned char temp_D0;
 "101
-[v _MAP_REC_VELOCITY `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 101: unsigned char MAP_REC_VELOCITY;
+[v _MAP_REC_BATTERYSTATUS0 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 101: unsigned char MAP_REC_BATTERYSTATUS0;
 "102
-[v _temp_D2 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char temp_D2;
+[v _MAP_REC_BATTERYSTATUS1 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char MAP_REC_BATTERYSTATUS1;
 "103
-[v _temp_D3 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 103: unsigned char temp_D3;
+[v _MAP_REC_VELOCITY `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 103: unsigned char MAP_REC_VELOCITY;
 "104
-[v _temp_D4 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 104: unsigned char temp_D4;
+[v _temp_D2 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 104: unsigned char temp_D2;
 "105
-[v _temp_D5 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 105: unsigned char temp_D5;
+[v _temp_D3 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 105: unsigned char temp_D3;
 "106
-[v _temp_D6 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 106: unsigned char temp_D6;
+[v _temp_D4 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 106: unsigned char temp_D4;
 "107
+[v _temp_D5 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 107: unsigned char temp_D5;
+"108
+[v _temp_D6 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 108: unsigned char temp_D6;
+"109
 [v _temp_D7 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 107: unsigned char temp_D7;
-"110
+[; ;ECAN.h: 109: unsigned char temp_D7;
+"112
 [v _MAP_BITDATA `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 110: unsigned char MAP_BITDATA;
-"114
+[; ;ECAN.h: 112: unsigned char MAP_BITDATA;
+"116
 [v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 114: unsigned int heartbeatCount;
-"115
+[; ;ECAN.h: 116: unsigned int heartbeatCount;
+"117
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 115: unsigned char buttonWasPressed;
+[; ;ECAN.h: 117: unsigned char buttonWasPressed;
 [; ;I2C.h: 19: typedef unsigned char byte;
 "20 I2C.h
 [v _I2C_FLAG `i ~T0 @X0 1 e ]
@@ -260,6 +266,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "62
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
 [; ;I2C.h: 62: int MAP_SAFETYPIN;
+"63
+[v _MAP_STOP `i ~T0 @X0 1 e ]
+[; ;I2C.h: 63: int MAP_STOP;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16981,50 +16990,53 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.c: 43: T0CONbits.PSA = 0;
 "43
 [e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
-[; ;init.c: 44: T0CONbits.T0PS = 7;
-"44
-[e = . . _T0CONbits 0 0 -> -> 7 `i `uc ]
-[; ;init.c: 51: MAP_BRAKE = 0;
-"51
-[e = _MAP_BRAKE -> 0 `i ]
-[; ;init.c: 52: MAP_BACKLIGHT = 0;
-"52
-[e = _MAP_BACKLIGHT -> 0 `i ]
-[; ;init.c: 53: MAP_V_BLINK = 0;
-"53
-[e = _MAP_V_BLINK -> 0 `i ]
-[; ;init.c: 54: MAP_H_BLINK = 0;
-"54
-[e = _MAP_H_BLINK -> 0 `i ]
-[; ;init.c: 55: MAP_DIRECTION = 0;
+[; ;init.c: 50: T0CONbits.T0PS = 3;
+"50
+[e = . . _T0CONbits 0 0 -> -> 3 `i `uc ]
+[; ;init.c: 55: MAP_BRAKE = 0;
 "55
-[e = _MAP_DIRECTION -> 0 `i ]
-[; ;init.c: 56: MAP_SAFETYPIN = 0;
+[e = _MAP_BRAKE -> 0 `i ]
+[; ;init.c: 56: MAP_BACKLIGHT = 0;
 "56
-[e = _MAP_SAFETYPIN -> 0 `i ]
-[; ;init.c: 58: }
+[e = _MAP_BACKLIGHT -> 0 `i ]
+[; ;init.c: 57: MAP_V_BLINK = 0;
+"57
+[e = _MAP_V_BLINK -> 0 `i ]
+[; ;init.c: 58: MAP_H_BLINK = 0;
 "58
+[e = _MAP_H_BLINK -> 0 `i ]
+[; ;init.c: 59: MAP_DIRECTION = 0;
+"59
+[e = _MAP_DIRECTION -> 0 `i ]
+[; ;init.c: 60: MAP_SAFETYPIN = 0;
+"60
+[e = _MAP_SAFETYPIN -> 0 `i ]
+[; ;init.c: 61: MAP_STOP = 0;
+"61
+[e = _MAP_STOP -> 0 `i ]
+[; ;init.c: 63: }
+"63
 [e :UE 2596 ]
 }
-"61
+"66
 [v _setup_Interrupt `(v ~T0 @X0 1 ef ]
 {
-[; ;init.c: 61: void setup_Interrupt(){
+[; ;init.c: 66: void setup_Interrupt(){
 [e :U _setup_Interrupt ]
 [f ]
-[; ;init.c: 62: RCONbits.IPEN = 1;
-"62
-[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-[; ;init.c: 63: INTCONbits.GIEH = 1;
-"63
-[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
-[; ;init.c: 64: INTCONbits.GIEL = 1;
-"64
-[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
-[; ;init.c: 65: INTCONbits.TMR0IE = 1;
-"65
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-[; ;init.c: 67: }
+[; ;init.c: 67: RCONbits.IPEN = 1;
 "67
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+[; ;init.c: 68: INTCONbits.GIEH = 1;
+"68
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+[; ;init.c: 69: INTCONbits.GIEL = 1;
+"69
+[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
+[; ;init.c: 70: INTCONbits.TMR0IE = 1;
+"70
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;init.c: 72: }
+"72
 [e :UE 2597 ]
 }

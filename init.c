@@ -41,10 +41,14 @@ void InitDevice(void){
     T0CONbits.T0CS = 0; //not counter
     //T0CONbits.T0SE = 0;
     T0CONbits.PSA = 0; //enable prescaler
-    T0CONbits.T0PS = 7; //011 = 1:16
-    
     //T0CON = 1000 0011
     
+    #ifdef TEST_RFID
+    T0CONbits.T0PS = 7; //111 = 1:256
+    #endif
+    #ifndef TEST_RFID
+    T0CONbits.T0PS = 3; //011 = 1:16
+    #endif
     
 
     
@@ -54,6 +58,7 @@ void InitDevice(void){
     MAP_H_BLINK = 0;
     MAP_DIRECTION = 0;
     MAP_SAFETYPIN = 0;
+    MAP_STOP = 0;
     
 }
 

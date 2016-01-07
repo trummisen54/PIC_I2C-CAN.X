@@ -225,11 +225,11 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = RXB0SIDH;
         temp_SIDL = RXB0SIDL;
         temp_DLC = RXB0DLC;
-        MAP_REC_BATTERYSTATUS = RXB0D0;
+        temp_D0 = RXB0D0;
         MAP_REC_VELOCITY = RXB0D1; 
         temp_D2 = RXB0D2;
-        temp_D3 = RXB0D3;
-        temp_D4 = RXB0D4;
+        MAP_REC_BATTERYSTATUS0 = RXB0D3;
+        MAP_REC_BATTERYSTATUS1 = RXB0D4;
         temp_D5 = RXB0D5;
         temp_D6 = RXB0D6;
         temp_D7 = RXB0D7;
@@ -243,11 +243,11 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = RXB1SIDH;
         temp_SIDL = RXB1SIDL;
         temp_DLC = RXB1DLC;
-        MAP_REC_BATTERYSTATUS = RXB1D0;
+        temp_D0 = RXB1D0;
         MAP_REC_VELOCITY = RXB1D1;
         temp_D2 = RXB1D2;
-        temp_D3 = RXB1D3;
-        temp_D4 = RXB1D4;
+        MAP_REC_BATTERYSTATUS0 = RXB1D3;
+        MAP_REC_BATTERYSTATUS1 = RXB1D4;
         temp_D5 = RXB1D5;
         temp_D6 = RXB1D6;
         temp_D7 = RXB1D7;
@@ -261,11 +261,11 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = B0SIDH;
         temp_SIDL = B0SIDL;
         temp_DLC = B0DLC;
-        MAP_REC_BATTERYSTATUS = B0D0;
+        temp_D0 = B0D0;
         MAP_REC_VELOCITY = B0D1;
         temp_D2 = B0D2;
-        temp_D3 = B0D3;
-        temp_D4 = B0D4;
+        MAP_REC_BATTERYSTATUS0 = B0D3;
+        MAP_REC_BATTERYSTATUS1 = B0D4;
         temp_D5 = B0D5;
         temp_D6 = B0D6;
         temp_D7 = B0D7;
@@ -361,6 +361,10 @@ void zipCAN(){
     if(i2c_reg_map[SEND_SAFETYPIN] != MAP_SAFETYPIN){
         setBit(SAFETYPIN_BIT, i2c_reg_map[SEND_SAFETYPIN]);
         MAP_SAFETYPIN = i2c_reg_map[SEND_SAFETYPIN];
+    }
+    if(i2c_reg_map[SEND_STOP] != MAP_STOP){
+        setBit(STOP_BIT, i2c_reg_map[SEND_STOP]);
+        MAP_STOP = i2c_reg_map[SEND_STOP];
     }
 }
 

@@ -81,5 +81,10 @@
 
 
 
+//#define TEST_RFID
+
+
+
+
 #endif	/* CONFIG_H */
 

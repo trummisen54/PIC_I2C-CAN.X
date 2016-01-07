@@ -23,7 +23,9 @@ unsigned char DATA7);
 
 
 unsigned char count;
-unsigned char MAP_REC_BATTERYSTATUS;
+unsigned char temp_D0;
+unsigned char MAP_REC_BATTERYSTATUS0;
+unsigned char MAP_REC_BATTERYSTATUS1;
 unsigned char MAP_REC_VELOCITY;
 unsigned char temp_D2;
 unsigned char temp_D3;
@@ -63,6 +65,7 @@ int MAP_V_BLINK;
 int MAP_H_BLINK;
 int MAP_DIRECTION;
 int MAP_SAFETYPIN;
+int MAP_STOP;
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -20930,15 +20933,20 @@ T0CONbits.T08BIT = 0;
 T0CONbits.T0CS = 0;
 
 T0CONbits.PSA = 0;
-T0CONbits.T0PS = 7;
 
-# 51
+# 50
+T0CONbits.T0PS = 3;
+
+
+
+
 MAP_BRAKE = 0;
 MAP_BACKLIGHT = 0;
 MAP_V_BLINK = 0;
 MAP_H_BLINK = 0;
 MAP_DIRECTION = 0;
 MAP_SAFETYPIN = 0;
+MAP_STOP = 0;
 
 }
 
